@@ -1,0 +1,723 @@
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SimpleDevTools offers free, privacy-focused developer tools that run entirely client-side.">
+    <title>SimpleDevTools - Privacy-First Developer Utilities</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify/Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Theme Initialization Script (Prevents Flash) -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        // Light Mode
+                        lightBg: '#FFFFFF',
+                        lightSurface: '#FAFAFA',
+
+                        // Dark Mode
+                        darkBg: '#000000',
+                        darkSurface: '#111111', // Very subtle off-black
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Grid Backgrounds */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .dark .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .bg-dot-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .dark .bg-dot-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        }
+
+        /* Glass Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .glass-nav {
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .dark .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Ad Units */
+        .ad-unit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dark .ad-unit {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .ad-unit::after {
+            content: 'Advertisement';
+            color: rgba(0, 0, 0, 0.2);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .dark .ad-unit::after {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative">
+
+    <!-- Background Layers -->
+    <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
+    <!-- Grid -->
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
+    <!-- Dots (Overlay) -->
+    <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none mask-image-fade"></div>
+
+    <!-- Top Glow Effect -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 bg-black dark:bg-white text-white dark:text-black rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <span class="font-mono font-bold text-lg leading-none">&lt;/&gt;</span>
+                </div>
+                <span class="font-display font-medium text-lg tracking-tight">SimpleDevTools</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
+                <a href="#tools" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
+                <a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy</a>
+
+                <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
+
+                <a href="https://github.com" target="_blank"
+                    class="hover:text-black dark:hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white focus:outline-none">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Icon -->
+            <button class="md:hidden p-2 text-neutral-600 dark:text-neutral-300">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="pt-32 pb-12 px-6 max-w-7xl mx-auto">
+
+        <!-- Hero Section -->
+        <section class="text-center max-w-4xl mx-auto mb-20 relative">
+            <div class="animate-slide-up" style="animation-delay: 0.1s;">
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1 mb-8 text-xs font-medium tracking-wide text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    Client-Side v2.0 Live
+                </span>
+
+                <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.1]">
+                    <span class="text-gradient">Developer tools for the</span><br class="hidden md:block">
+                    <span class="text-neutral-400 dark:text-neutral-500">privacy conscious.</span>
+                </h1>
+
+                <p class="text-lg text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Fast, secure utilities running entirely in your browser. No server uploads. No data collection. Just
+                    code.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#tools"
+                        class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-neutral-500/10">
+                        Start Building <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#how-it-works"
+                        class="w-full sm:w-auto px-8 py-3 bg-white dark:bg-white/5 border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-200 rounded-lg font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all flex items-center justify-center gap-2">
+                        Documentation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD POSITION 1: Leaderboard -->
+        <div class="w-full mb-24 animate-fade-in">
+            <div class="ad-unit w-full max-w-[728px] h-[90px]" id="ad-top-leaderboard">
+                <!-- AdSense Leaderboard Code -->
+            </div>
+        </div>
+
+        <!-- Features Grid (Bento Style) -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+            <!-- Large Card -->
+            <div class="md:col-span-2 glass-card p-8 rounded-xl relative overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-neutral-50 to-transparent dark:from-white/5 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <i data-lucide="zap" class="w-32 h-32"></i>
+                </div>
+                <div class="relative z-10">
+                    <div
+                        class="w-10 h-10 bg-black dark:bg-white text-white dark:text-black rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="zap" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-medium mb-2 tracking-tight">Zero Latency</h3>
+                    <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md">
+                        Powered by your device's CPU. Formatters, converters, and validators execute instantly without
+                        round-trips to a remote server.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card p-8 rounded-xl group">
+                <div
+                    class="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center mb-6 text-neutral-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display text-xl font-medium mb-2 tracking-tight">Local Execution</h3>
+                <p class="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
+                    Data never leaves your browser window. What you paste stays private.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-8 rounded-xl group">
+                <div
+                    class="w-10 h-10 bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center mb-6 text-neutral-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                </div>
+                <h3 class="font-display text-xl font-medium mb-2 tracking-tight">Open Standard</h3>
+                <p class="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
+                    Built on modern web technologies without bloated frameworks.
+                </p>
+            </div>
+
+            <!-- Card 4 (Visual) -->
+            <div class="md:col-span-2 glass-card p-8 rounded-xl flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1">
+                    <h3 class="font-display text-2xl font-medium mb-2 tracking-tight">Developer Experience</h3>
+                    <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Designed to be the tool you wish you had. Clean UI, keyboard shortcuts (coming soon), and
+                        instant feedback.
+                    </p>
+                </div>
+                <div
+                    class="w-full md:w-1/3 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-4 font-mono text-xs shadow-sm">
+                    <div class="flex gap-1.5 mb-3">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
+                    </div>
+                    <div class="space-y-2 opacity-50">
+                        <div class="h-2 bg-neutral-200 dark:bg-neutral-700 rounded w-3/4"></div>
+                        <div class="h-2 bg-neutral-200 dark:bg-neutral-700 rounded w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+
+            <!-- Content Column -->
+            <div class="lg:col-span-8">
+
+                <!-- Tools Grid -->
+                <section id="tools" class="mb-24">
+                    <div
+                        class="flex items-end justify-between mb-8 border-b border-neutral-200 dark:border-neutral-800 pb-4">
+                        <div>
+                            <h2 class="font-display text-2xl font-semibold tracking-tight">Essential Utilities</h2>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Daily drivers for modern
+                                development</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Tool Card Component -->
+                        <a href="/json-formatter.html"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="file-json" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">JSON Formatter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Validate, minify, and beautify
+                                JSON data instantly.</p>
+                        </a>
+
+                        <a href="#"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="binary" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">Base64 Converter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Encode and decode text strings
+                                safely.</p>
+                        </a>
+
+                        <a href="#"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="regex" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">Regex Tester</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Test regular expressions against
+                                patterns.</p>
+                        </a>
+
+                        <a href="#"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="fingerprint" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">UUID Generator</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Generate cryptographically strong
+                                v4 UUIDs.</p>
+                        </a>
+
+                        <a href="#"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="hash" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">Hash Generator</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">MD5, SHA-256 hashing directly
+                                in-browser.</p>
+                        </a>
+
+                        <a href="#"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="image" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">Image Compressor</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Optimize PNG/JPGs locally without
+                                upload.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- AD POSITION 2: In-Content -->
+                <div class="mb-16">
+                    <div class="ad-unit w-full max-w-[100%] h-[250px]" id="ad-content-rect-1">
+                        <!-- AdSense Rectangle Code -->
+                    </div>
+                </div>
+
+                <!-- Technical Content -->
+                <section class="mb-20">
+                    <h2 class="font-display text-3xl font-semibold mb-6 tracking-tight">The client-side paradigm</h2>
+                    <div
+                        class="prose dark:prose-invert prose-neutral max-w-none text-neutral-600 dark:text-neutral-400">
+                        <p class="mb-6">
+                            Traditional web tools operate on a server-client model. You upload data, the server
+                            processes it, and sends back the result. While functional, this introduces two critical
+                            flaws: latency and privacy risk.
+                        </p>
+                        <p class="mb-6">
+                            <strong>SimpleDevTools</strong> inverts this model. By leveraging the V8 JavaScript engine
+                            present in modern browsers, we execute complex logic directly on your machine.
+                        </p>
+
+                        <div
+                            class="my-8 p-6 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800">
+                            <h4
+                                class="text-sm font-semibold uppercase tracking-wider text-neutral-900 dark:text-neutral-100 mb-4">
+                                Architecture Comparison</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span>Server-Side (Others)</span>
+                                        <span class="text-red-500">~200-500ms</span>
+                                    </div>
+                                    <div class="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-red-400 w-[80%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span>Client-Side (Us)</span>
+                                        <span class="text-green-500">&lt; 5ms</span>
+                                    </div>
+                                    <div class="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
+                                        <div class="h-full bg-green-500 w-[5%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>
+                            There is no network request. When you paste a 5MB JSON file, it is parsed by your CPU. This
+                            ensures that sensitive data—API keys, PII, configuration secrets—never leaves your local
+                            environment.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="hidden lg:col-span-4 lg:block space-y-8">
+                <div class="sticky top-24">
+                    <!-- AD POSITION 3 -->
+                    <div class="ad-unit w-[300px] h-[600px] mx-auto mb-8" id="ad-sidebar-1">
+                        <!-- Skyscraper Ad -->
+                    </div>
+
+                    <!-- Mini Info Card -->
+                    <div
+                        class="bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-lg p-6 backdrop-blur-sm">
+                        <div class="flex items-center gap-2 mb-3 text-neutral-900 dark:text-white">
+                            <i data-lucide="info" class="w-4 h-4"></i>
+                            <span class="font-medium text-sm">Did you know?</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mb-4">
+                            You can use this website offline. Once loaded, the service worker caches the tools so you
+                            can work without an internet connection.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- How it Works (Visual) -->
+        <section id="how-it-works" class="mb-24 py-12 border-t border-neutral-200 dark:border-neutral-800">
+            <h2 class="font-display text-2xl font-semibold tracking-tight text-center mb-12">Workflow</h2>
+
+            <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Connector Line -->
+                <div
+                    class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent -translate-y-1/2 hidden md:block z-0">
+                </div>
+
+                <!-- Step 1 -->
+                <div
+                    class="relative z-10 bg-white dark:bg-black p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 text-center">
+                    <div
+                        class="w-12 h-12 bg-neutral-100 dark:bg-neutral-900 rounded-full flex items-center justify-center mx-auto mb-4 font-mono font-medium text-lg">
+                        1</div>
+                    <h4 class="font-medium mb-1">Input</h4>
+                    <p class="text-xs text-neutral-500">Paste code into browser</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    class="relative z-10 bg-white dark:bg-black p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 text-center shadow-lg shadow-blue-500/5 dark:shadow-blue-500/10 border-b-2 border-b-blue-500">
+                    <div
+                        class="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-medium mb-1">Process</h4>
+                    <p class="text-xs text-neutral-500">JavaScript Execution</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    class="relative z-10 bg-white dark:bg-black p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 text-center">
+                    <div
+                        class="w-12 h-12 bg-neutral-100 dark:bg-neutral-900 rounded-full flex items-center justify-center mx-auto mb-4 font-mono font-medium text-lg">
+                        3</div>
+                    <h4 class="font-medium mb-1">Output</h4>
+                    <p class="text-xs text-neutral-500">Instant Result</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Ad -->
+        <div class="w-full mb-12">
+            <div class="ad-unit w-full h-[100px]" id="ad-footer"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="border-t border-neutral-200 dark:border-neutral-800 pt-16 pb-8 text-sm">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-6 h-6 bg-black dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
+                            <span class="font-mono font-bold text-xs leading-none">/</span>
+                        </div>
+                        <span class="font-display font-semibold tracking-tight">SimpleDevTools</span>
+                    </div>
+                    <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
+                        Privacy-first utilities for the modern web. Built with passion for the open source community.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4">Resources</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="#"
+                                class="hover:text-black dark:hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">API
+                                Reference</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4">Legal</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="/privacy-policy.html"
+                                class="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms.html" class="hover:text-black dark:hover:text-white transition-colors">Terms
+                                of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                <p class="text-neutral-400 text-xs">© 2026 SimpleDevTools Inc.</p>
+                <div class="flex items-center gap-6 mt-4 md:mt-0">
+                    <a href="#" class="text-neutral-400 hover:text-black dark:hover:text-white transition-colors"><i
+                            data-lucide="github" class="w-4 h-4"></i></a>
+                    <a href="#" class="text-neutral-400 hover:text-black dark:hover:text-white transition-colors"><i
+                            data-lucide="twitter" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Router Script -->
+    <script src="router.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', () => {
+            // Toggle Class
+            document.documentElement.classList.toggle('dark');
+
+            // Save Preference
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

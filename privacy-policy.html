@@ -1,0 +1,365 @@
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Privacy Policy for SimpleDevTools. We prioritize your privacy with client-side execution and zero data collection.">
+    <title>Privacy Policy – SimpleDevTools</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify/Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Theme Initialization Script -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+
+    <!-- Router Script -->
+    <script src="router.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lightBg: '#FFFFFF',
+                        darkBg: '#050505', // Deep black for contrast
+                        accent: '#2563EB',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        .dark .bg-grid {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Navigation Blur */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass-nav {
+            background: rgba(5, 5, 5, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Typography Utilities */
+        h2 {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] bg-grid h-[60vh] pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+                    <span class="font-mono font-bold text-lg leading-none">&lt;/&gt;</span>
+                </div>
+                <span class="font-display font-medium text-lg tracking-tight">SimpleDevTools</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
+                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
+                <a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy</a>
+                <a href="mailto:contact@simpledevtools.tech"
+                    class="hover:text-black dark:hover:text-white transition-colors">Contact</a>
+
+                <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white focus:outline-none"
+                    aria-label="Toggle theme">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle (Visual Only) -->
+            <button class="md:hidden p-2 text-neutral-600 dark:text-neutral-400">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Header -->
+            <header class="mb-16 pb-8 border-b border-neutral-200 dark:border-neutral-800">
+                <div class="flex items-center gap-2 mb-4 text-sm font-medium text-blue-600 dark:text-blue-400">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    <span>Transparency First</span>
+                </div>
+                <h1
+                    class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-neutral-900 dark:text-white">
+                    Privacy Policy</h1>
+                <p class="text-neutral-500 dark:text-neutral-400 text-lg">
+                    Last updated: October 24, 2023
+                </p>
+            </header>
+
+            <!-- Content Area -->
+            <div class="space-y-16 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+
+                <!-- Introduction -->
+                <section>
+                    <p class="text-lg mb-6 text-neutral-800 dark:text-neutral-200">
+                        At <span class="font-semibold text-black dark:text-white">SimpleDevTools.tech</span>, we believe
+                        that developer utilities should not come at the cost of data privacy. Our philosophy is simple:
+                        what happens in your browser stays in your browser.
+                    </p>
+                    <p>
+                        This Privacy Policy outlines the types of information we do not collect, how our client-side
+                        architecture protects your data, and how we manage third-party services like Google AdSense to
+                        keep this site free.
+                    </p>
+                </section>
+
+                <!-- Information Collection -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        1. Information We Collect</h2>
+                    <p class="mb-4">
+                        We are proud to state that we do <strong>not</strong> collect, store, or process any personal
+                        information (PII) from our users.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-neutral-300 dark:marker:text-neutral-700">
+                        <li><strong>No Accounts:</strong> You do not need to register or log in to use our tools.</li>
+                        <li><strong>No Form Data:</strong> The code, JSON, text, or images you paste into our tools are
+                            processed locally. We never see it.</li>
+                        <li><strong>No Server Logs:</strong> Since we do not process your input data on our servers,
+                            there are no logs containing your sensitive work.</li>
+                    </ul>
+                </section>
+
+                <!-- Architecture -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        2. How Our Tools Work</h2>
+                    <div
+                        class="bg-neutral-50 dark:bg-neutral-900/50 p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 mb-4">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 p-2 bg-white dark:bg-neutral-800 rounded-lg shadow-sm">
+                                <i data-lucide="cpu" class="w-5 h-5 text-neutral-900 dark:text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-neutral-900 dark:text-white mb-2">Client-Side Execution</h3>
+                                <p class="text-sm">
+                                    All calculations, formatting, and conversions happen within your browser's
+                                    JavaScript engine (e.g., V8). When you click "Format JSON" or "Generate UUID," the
+                                    data never travels over the network to a backend server.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        This architecture ensures that even if you accidentally paste an API key or a database
+                        connection string, it remains strictly on your local machine.
+                    </p>
+                </section>
+
+                <!-- Cookies & Ads -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        3. Cookies &amp; Third-Party Services</h2>
+                    <p class="mb-4">
+                        While our core tools do not use cookies, we use third-party services to maintain the website and
+                        keep it free for everyone.
+                    </p>
+
+                    <h3 class="font-medium text-neutral-900 dark:text-white mt-6 mb-2">Google AdSense</h3>
+                    <p class="mb-4">
+                        We use Google AdSense to display advertisements. Google and its partners use cookies to serve
+                        ads based on your prior visits to our website or other websites on the internet.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 marker:text-neutral-300 dark:marker:text-neutral-700">
+                        <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on
+                            your visit to SimpleDevTools.tech and/or other sites on the Internet.</li>
+                        <li>You may opt out of personalized advertising by visiting <a
+                                href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer"
+                                class="text-blue-600 dark:text-blue-400 hover:underline">Google Ad Settings</a>.</li>
+                    </ul>
+                </section>
+
+                <!-- Analytics -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        4. Analytics</h2>
+                    <p>
+                        We may use privacy-preserving analytics tools to understand aggregate usage patterns (e.g.,
+                        "Which tool is most popular?"). These tools do not track individual user behavior, do not use
+                        fingerprinting, and do not store personal data.
+                    </p>
+                </section>
+
+                <!-- Security -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        5. Data Security</h2>
+                    <p>
+                        Security is inherent to our design. By eliminating the transfer of data to a server, we
+                        eliminate the risk of data interception in transit (Man-in-the-Middle attacks) or data breaches
+                        on a backend database. We serve this website over HTTPS to ensure the integrity of the code
+                        delivered to your browser.
+                    </p>
+                </section>
+
+                <!-- Changes -->
+                <section>
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        6. Changes to This Policy</h2>
+                    <p>
+                        We may update our Privacy Policy from time to time. We will notify you of any changes by posting
+                        the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically
+                        for any changes.
+                    </p>
+                </section>
+
+                <!-- Contact -->
+                <section class="pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                    <h2
+                        class="font-display text-2xl font-semibold text-neutral-900 dark:text-white mb-4 tracking-tight">
+                        Contact Us</h2>
+                    <p class="mb-4">
+                        If you have any questions about this Privacy Policy, please contact us:
+                    </p>
+                    <a href="mailto:contact@simpledevtools.tech"
+                        class="inline-flex items-center gap-2 text-neutral-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        contact@simpledevtools.tech
+                    </a>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+
+
+
+    <footer class="border-t border-neutral-200 dark:border-neutral-800 pt-16 pb-8 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-6 h-6 bg-black dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
+                        <span class="font-mono font-bold text-xs leading-none">/</span>
+                    </div>
+                    <span class="font-display font-semibold tracking-tight">SimpleDevTools</span>
+                </div>
+                <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
+                    Privacy-first utilities for the modern web. Built with passion for the open source community.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-medium mb-4">Resources</h4>
+                <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                    <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Documentation</a></li>
+                    <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">API Reference</a></li>
+                    <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Status</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-medium mb-4">Legal</h4>
+                <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                    <li><a href="/privacy-policy.html" class="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="/terms.html" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
+            <p class="text-neutral-400 text-xs">© 2026 SimpleDevTools Inc.</p>
+            <div class="flex items-center gap-6 mt-4 md:mt-0">
+                <a href="#" class="text-neutral-400 hover:text-black dark:hover:text-white transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
+                <a href="#" class="text-neutral-400 hover:text-black dark:hover:text-white transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+        </body>
+    <!-- Logic -->
+    <script>
+        // Icons
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+    </script>
+
+
+
+</html>
