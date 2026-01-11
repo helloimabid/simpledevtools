@@ -145,21 +145,22 @@ class SimpleRouter {
     }
   }
 
-  attachFooterLinks() {
-    const footerLinks = document.querySelectorAll("footer a");
-    footerLinks.forEach((link) => {
-      const href = link.getAttribute("href");
+    attachFooterLinks() {
+        const footerLinks = document.querySelectorAll("footer a");
+        footerLinks.forEach((link) => {
+            const href = link.getAttribute("href");
 
-      // Only handle internal links
-      if (href && !href.startsWith("http") && !href.startsWith("mailto:")) {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.navigate(href);
+            // Only handle internal links
+            if (href && !href.startsWith("http") && !href.startsWith("mailto:")) {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    this.navigate(href);
+                });
+            }
         });
-      }
-    });
-  }
-}
+    }
+    }
+
 
 // Initialize router when DOM is ready
 if (document.readyState === "loading") {
