@@ -99,13 +99,13 @@ class SimpleRouter {
       }
 
       // Replace footer if present
-      const newFooter = doc.querySelector("footer");
-      const currentFooter = document.querySelector("footer");
-      if (newFooter && currentFooter) {
-        currentFooter.innerHTML = newFooter.innerHTML;
-        // Re-attach click handlers to footer links
-        this.attachFooterLinks();
-      }
+    //   const newFooter = doc.querySelector("footer");
+    //   const currentFooter = document.querySelector("footer");
+    //   if (newFooter && currentFooter) {
+    //     currentFooter.innerHTML = newFooter.innerHTML;
+    //     // Re-attach click handlers to footer links
+    //     this.attachFooterLinks();
+    //   }
 
       // Re-initialize icons and scripts
       if (window.lucide) {
