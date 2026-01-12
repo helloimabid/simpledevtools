@@ -228,40 +228,7 @@
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 group">
-                <img src="logo.png" alt="SimpleDevTools Logo" class="w-8 h-8">
-                <span class="font-display font-medium text-lg tracking-tight">SimpleDevTools</span>
-            </a>
 
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
-                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
-                <a href="#tools" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
-                <a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy</a>
-
-                <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
-
-                <a href="https://github.com" target="_blank"
-                    class="hover:text-black dark:hover:text-white transition-colors">
-                    <i data-lucide="github" class="w-4 h-4"></i>
-                </a>
-
-                <!-- Theme Toggle Button -->
-                <button id="theme-toggle"
-                    class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white focus:outline-none">
-                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
-                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
-                </button>
-            </div>
-
-            <!-- Mobile Menu Icon -->
-            <!-- <button class="md:hidden p-2 text-neutral-600 dark:text-neutral-300">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button> -->
-        </div>
-    </nav>
 
     <!-- Main Content Wrapper -->
     <main class="pt-32 pb-12 px-6 max-w-7xl mx-auto">
@@ -397,68 +364,68 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <!-- Tool Card Component -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(140px,auto)]">
+
                         <a href="/json-formatter"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col justify-between">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
-                                    <i data-lucide="file-json" class="w-5 h-5"></i>
+                                    <i data-lucide="file-json" class="w-6 h-6"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
-                            <h3 class="font-medium text-base mb-1">JSON Formatter</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Validate, minify, and beautify
-                                JSON data instantly.</p>
+                            <div>
+                                <h3 class="font-medium text-lg mb-1">JSON Formatter</h3>
+                                <p class="text-sm text-neutral-500 dark:text-neutral-400">Validate, minify, and beautify
+                                    JSON data instantly.</p>
+                            </div>
                         </a>
 
                         <a href="/base64-encoder"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
                                     <i data-lucide="binary" class="w-5 h-5"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
-                            <h3 class="font-medium text-base mb-1">Base64 Converter</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Encode and decode text strings
-                                safely.</p>
+                            <h3 class="font-medium text-base mb-1">Base64</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Encode/decode strings.</p>
                         </a>
 
                         <a href="/regex-tester"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
                                     <i data-lucide="regex" class="w-5 h-5"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
                             <h3 class="font-medium text-base mb-1">Regex Tester</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Test regular expressions against
-                                patterns.</p>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Test patterns.</p>
                         </a>
 
                         <a href="/uuid-generator"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
                                     <i data-lucide="fingerprint" class="w-5 h-5"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
@@ -467,38 +434,71 @@
                                 v4 UUIDs.</p>
                         </a>
 
+                        <a href="/image-compressor"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col justify-between">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="image" class="w-6 h-6"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-lg mb-1">Image Compressor</h3>
+                                <p class="text-sm text-neutral-500 dark:text-neutral-400">Optimize PNG/JPGs locally
+                                    without upload.</p>
+                            </div>
+                        </a>
+
                         <a href="/hash-generator"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
                                     <i data-lucide="hash" class="w-5 h-5"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
                             <h3 class="font-medium text-base mb-1">Hash Generator</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">MD5, SHA-256 hashing directly
-                                in-browser.</p>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">MD5, SHA-256 hashing.</p>
                         </a>
 
-                        <a href="/image-compressor"
-                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900">
+                        <a href="/password-strength"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                             <div class="flex items-start justify-between mb-3">
                                 <div
                                     class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
-                                    <i data-lucide="image" class="w-5 h-5"></i>
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
                                 </div>
                                 <div
-                                    class="opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
-                            <h3 class="font-medium text-base mb-1">Image Compressor</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Optimize PNG/JPGs locally without
-                                upload.</p>
+                            <h3 class="font-medium text-base mb-1">Password Check</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Analyze strength.</p>
+                        </a>
+
+                        <a href="/jwt-decoder"
+                            class="glass-card p-5 rounded-lg group relative overflow-hidden hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                                    <i data-lucide="key" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-medium text-base mb-1">JWT Decoder</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Decode JWT tokens locally.</p>
                         </a>
                     </div>
                 </section>
@@ -635,59 +635,11 @@
             <div class="ad-unit w-full h-[100px]" id="ad-footer"></div>
         </div>
 
-        <!-- Footer -->
-            <footer
-                class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                        <div class="col-span-1 md:col-span-2">
-                            <div class="flex items-center gap-2 mb-4">
-                                <div
-                                    class="w-6 h-6 bg-neutral-900 dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
-                                    <span class="font-mono font-bold text-xs leading-none">/</span>
-                                </div>
-                                <span
-                                    class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
-                            </div>
-                            <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
-                                Privacy-first utilities for the modern web. Built for developers, by developers.
-                            </p>
-                        </div>
-            
-                        <div>
-                            <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Legal</h4>
-                            <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                                <li><a href="privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy
-                                        Policy</a></li>
-                                <li><a href="terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of
-                                        Service</a></li>
-                            </ul>
-                        </div>
-            
-                        <div>
-                            <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Social</h4>
-                            <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                                <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">GitHub</a></li>
-                                <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Twitter / X</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-            
-                    <div
-                        class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
-                        <p class="text-neutral-400 text-xs">© SimpleDevTools.tech. All rights reserved.</p>
-                        <div class="flex items-center gap-2 mt-4 md:mt-0">
-                            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                            <span class="text-xs text-neutral-400">Systems Operational</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+        <script src="layout.js"></script>
 
     </main>
 
-    <script src="mobile-menu.js"></script>
+
 
     <!-- Scripts -->
     <script>

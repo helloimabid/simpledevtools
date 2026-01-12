@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+dis-allow: /layout.js
 
 Sitemap: https://simpledevtools.tech/sitemap.xml

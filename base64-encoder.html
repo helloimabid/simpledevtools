@@ -77,7 +77,7 @@
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/20 blur-[100px] rounded-full pointer-events-none z-0">
     </div>
 
-    <nav class="fixed top-0 w-full z-50 glass transition-colors duration-300">
+    <!-- <nav class="fixed top-0 w-full z-50 glass transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 group">
                 <img src="logo.png" alt="SimpleDevTools Logo" class="w-8 h-8">
@@ -94,7 +94,7 @@
                 </button>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
@@ -196,7 +196,7 @@
         </div>
     </main>
 
-    <footer
+    <!-- <footer
         class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -244,8 +244,8 @@
                 </div>
             </div>
         </div>
-    </footer>
-    <script src="mobile-menu.js"></script>
+    </footer> -->
+    <script src="layout.js"></script>
     <script>
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
 
@@ -288,10 +288,10 @@
             }, 2000);
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
+        // themeToggleBtn.addEventListener('click', () => {
+        //     document.documentElement.classList.toggle('dark');
+        //     localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        // });
     </script>
 </body>
 
