@@ -631,9 +631,52 @@
         submitBtn.addEventListener('click', async (e) => {
             e.preventDefault();
 
-            if (!validateForm()) {
+            // Basic validation
+            let isValid = true;
+
+            if (!nameInput.value.trim()) {
+                showError('name', true);
+                isValid = false;
+            } else {
+                showError('name', false);
+            }
+
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showError('email', true);
+                isValid = false;
+            } else {
+                showError('email', false);
+            }
+
+            if (!subjectInput.value) {
+                showError('subject', true);
+                isValid = false;
+            } else {
+                showError('subject', false);
+            }
+
+            if (!messageTextarea.value.trim()) {
+                showError('message', true);
+                isValid = false;
+            } else {
+                showError('message', false);
+            }
+
+            if (!isValid) {
                 showAlert('Please fill in all required fields correctly.', 'error');
                 return;
+            }
+
+            // Additional email validation with API if syntactically valid
+            if (emailRegex.test(email)) {
+                await validateEmail(email);
+                // Check if API validation failed
+                if (!document.getElementById('emailError').classList.contains('hidden')) {
+                    showAlert('Please correct the email address.', 'error');
+                    return;
+                }
             }
 
             // Disable button and show loading state
