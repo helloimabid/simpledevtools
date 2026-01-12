@@ -439,15 +439,7 @@ Example:
         }, 2000);
     }
 
-    // Theme Toggle
-    themeToggleBtn.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-        if (document.documentElement.classList.contains('dark')) {
-            localStorage.theme = 'dark';
-        } else {
-            localStorage.theme = 'light';
-        }
-    });
+   
 
     // Auto-format on paste (optional quality of life)
     inputArea.addEventListener('paste', () => {

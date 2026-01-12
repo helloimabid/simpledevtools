@@ -291,11 +291,7 @@
         flagI.addEventListener('change', testRegex);
         flagM.addEventListener('change', testRegex);
 
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
-
+     
         // Test on load
         testRegex();
     </script>

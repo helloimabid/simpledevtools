@@ -19,12 +19,12 @@ function injectLayout() {
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
                 <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
-                <a href="/password-strength" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
+                <a href="/tools" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
                 <a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy</a>
 
                 <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
 
-                <a href="https://github.com" target="_blank" class="hover:text-black dark:hover:text-white transition-colors">
+                <a href="https://github.com" target="https://github.com/helloimabid/simpledevtools" class="hover:text-black dark:hover:text-white transition-colors">
                     <i data-lucide="github" class="w-4 h-4"></i>
                 </a>
 

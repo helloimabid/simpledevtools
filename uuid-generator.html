@@ -221,10 +221,7 @@
             uuidList.innerHTML = '<div class="text-center text-neutral-400 dark:text-neutral-600 py-12">Click "Generate" to create UUIDs</div>';
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
+        
 
         // Generate 1 UUID on load
         window.addEventListener('load', generateUUIDs);

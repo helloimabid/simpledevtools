@@ -646,20 +646,6 @@
         // Initialize Icons
         lucide.createIcons();
 
-        // Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-
-        themeToggleBtn.addEventListener('click', () => {
-            // Toggle Class
-            document.documentElement.classList.toggle('dark');
-
-            // Save Preference
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
-        });
 
         // Animation Observer
         const observer = new IntersectionObserver((entries) => {
