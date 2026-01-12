@@ -86,6 +86,15 @@
 
 <body
     class="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex flex-col min-h-screen">
+    <!-- Fallback navigation for crawlers without JS -->
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/privacy-policy" class="underline">Privacy</a> |
+            <a href="/terms" class="underline">Terms</a>
+        </nav>
+    </noscript>
     <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
     <div
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-green-500/10 dark:bg-green-500/20 blur-[100px] rounded-full pointer-events-none z-0">

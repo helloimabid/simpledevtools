@@ -205,14 +205,23 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        </style>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
      crossorigin="anonymous"></script>
-</head>
+        </head>
 
 <body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative">
-
-    <!-- Background Layers -->
+    <!-- Fallback navigation for crawlers without JS -->
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="#tools" class="underline">Tools</a> |
+            <a href="/privacy-policy" class="underline">Privacy</a> |
+            <a href="/terms" class="underline">Terms</a>
+        </nav>
+    </noscript>
+    <div class="fixed inset-0 z-[-1] bg-grid h-[60vh] pointer-events-none"></div>
     <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
     <!-- Grid -->
     <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
