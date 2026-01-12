@@ -204,15 +204,15 @@ function initializeMobileMenu() {
                             </a>
                         </li>
                         <li>
-                            <a href="#tools" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group mobile-menu-link">
+                            <a href="/tools" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group mobile-menu-link">
                                 <i data-lucide="wrench" class="w-5 h-5 text-neutral-500 group-hover:text-black dark:group-hover:text-white"></i>
                                 <span class="font-medium">Tools</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/privacy-policy" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group">
+                            <a href="/how-it-works" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group">
                                 <i data-lucide="shield" class="w-5 h-5 text-neutral-500 group-hover:text-black dark:group-hover:text-white"></i>
-                                <span class="font-medium">Privacy Policy</span>
+                                <span class="font-medium">How It Works</span>
                             </a>
                         </li>
                         <li>
