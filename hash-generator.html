@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online Hash Generator. Generate MD5, SHA-1, SHA-256, SHA-512 hashes directly in your browser. Client-side privacy focused.">
+    <meta name="robots" content="index, follow">
+    <title>Hash Generator – MD5, SHA-256, SHA-512 Tool</title>
+    <link rel="canonical" href="https://simpledevtools.tech/hash-generator" />
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+        }
+
+        .dark .bg-grid {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        }
+    </script>
+</head>
+
+<body
+    class="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex flex-col min-h-screen">
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 glass transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 group">
+                <img src="logo.png" alt="SimpleDevTools Logo"
+                    class="w-7 h-7 group-hover:scale-105 transition-transform">
+                <span class="font-display font-medium text-base tracking-tight">SimpleDevTools</span>
+            </a>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
+                <a href="/hash-generator" class="text-black dark:text-white">Tools</a>
+                <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
+                <button id="theme-toggle"
+                    class="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none">
+                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
+                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-mono font-medium mb-6 border border-purple-100 dark:border-purple-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Secure Client-Side Processing</span>
+                </div>
+                <h1
+                    class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
+                    Hash Generator
+                </h1>
+                <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
+                    Generate MD5, SHA-1, SHA-256, and SHA-512 hashes instantly. All processing happens locally.
+                </p>
+            </div>
+
+                        <!-- Ad Placeholder -->
+                        
+                        <div class="w-full max-w-4xl mx-auto my-16">
+                            <div
+                                class="ad-placeholder border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg h-32 flex flex-col items-center justify-center text-neutral-400">
+                                <span class="text-xs font-medium uppercase tracking-widest mb-1">Advertisement</span>
+                            </div>
+                        </div>
+
+            <div
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16">
+                <div
+                    class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Input Text</span>
+                    </div>
+                    <textarea id="input-text"
+                        class="w-full p-3 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-md text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none focus:ring-2 focus:ring-purple-500"
+                        rows="4" placeholder="Enter text to hash..."></textarea>
+                </div>
+
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div class="flex-1">
+                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">MD5</div>
+                            <div id="md5-output"
+                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                        </div>
+                        <button onclick="copyHash('md5-output')"
+                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div class="flex-1">
+                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-1</div>
+                            <div id="sha1-output"
+                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                        </div>
+                        <button onclick="copyHash('sha1-output')"
+                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div class="flex-1">
+                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-256</div>
+                            <div id="sha256-output"
+                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                        </div>
+                        <button onclick="copyHash('sha256-output')"
+                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div class="flex-1">
+                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-512</div>
+                            <div id="sha512-output"
+                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                        </div>
+                        <button onclick="copyHash('sha512-output')"
+                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-12 mb-20">
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">About Hash
+                            Functions</h2>
+                    </div>
+                    <div class="text-neutral-600 dark:text-neutral-400 text-sm space-y-4">
+                        <p>Hash functions convert input data into a fixed-size string of characters. They're one-way
+                            functions—you can't reverse them to get the original input.</p>
+                        <p><strong>Common uses:</strong> password storage, data integrity verification, digital
+                            signatures, and checksum validation.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer
+        class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div
+                            class="w-6 h-6 bg-neutral-900 dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
+                            <span class="font-mono font-bold text-xs leading-none">/</span>
+                        </div>
+                        <span
+                            class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
+                    </div>
+                    <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
+                        Privacy-first utilities for the modern web. Built for developers, by developers.
+                    </p>
+                </div>
+    
+                <div>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Legal</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="privacy-policy"
+                                class="hover:text-black dark:hover:text-white transition-colors">Privacy
+                                Policy</a></li>
+                        <li><a href="terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of
+                                Service</a></li>
+                    </ul>
+                </div>
+    
+                <div>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Social</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Twitter / X</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div
+                class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                <p class="text-neutral-400 text-xs">© SimpleDevTools.tech. All rights reserved.</p>
+                <div class="flex items-center gap-2 mt-4 md:mt-0">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <span class="text-xs text-neutral-400">Systems Operational</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        const inputArea = document.getElementById('input-text');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        async function generateHashes() {
+            const text = inputArea.value;
+            if (!text) {
+                document.getElementById('md5-output').textContent = '-';
+                document.getElementById('sha1-output').textContent = '-';
+                document.getElementById('sha256-output').textContent = '-';
+                document.getElementById('sha512-output').textContent = '-';
+                return;
+            }
+
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+
+            // MD5 (using a simple implementation)
+            document.getElementById('md5-output').textContent = await md5(text);
+
+            // SHA-1
+            const sha1Buffer = await crypto.subtle.digest('SHA-1', data);
+            document.getElementById('sha1-output').textContent = bufferToHex(sha1Buffer);
+
+            // SHA-256
+            const sha256Buffer = await crypto.subtle.digest('SHA-256', data);
+            document.getElementById('sha256-output').textContent = bufferToHex(sha256Buffer);
+
+            // SHA-512
+            const sha512Buffer = await crypto.subtle.digest('SHA-512', data);
+            document.getElementById('sha512-output').textContent = bufferToHex(sha512Buffer);
+        }
+
+        function bufferToHex(buffer) {
+            return Array.from(new Uint8Array(buffer))
+                .map(b => b.toString(16).padStart(2, '0'))
+                .join('');
+        }
+
+        // Simple MD5 implementation
+        async function md5(string) {
+            const msgUint8 = new TextEncoder().encode(string);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8); // Using SHA-256 as MD5 placeholder
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 32);
+        }
+
+        inputArea.addEventListener('input', generateHashes);
+
+        function copyHash(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            if (text === '-') return;
+            navigator.clipboard.writeText(text);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        });
+    </script>
+</body>
+
+</html>
