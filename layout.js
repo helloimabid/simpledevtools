@@ -42,11 +42,11 @@ function injectLayout() {
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
                 <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
                 <a href="/tools" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
-                <a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy</a>
+                <a href="/how-it-works" class="hover:text-black dark:hover:text-white transition-colors">How It Works</a>
 
                 <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
 
-                <a href="https://github.com" target="https://github.com/helloimabid/simpledevtools" class="hover:text-black dark:hover:text-white transition-colors">
+                <a href="https://github.com/helloimabid/simpledevtools" target="_blank" class="hover:text-black dark:hover:text-white transition-colors">
                     <i data-lucide="github" class="w-4 h-4"></i>
                 </a>
 
@@ -216,7 +216,7 @@ function initializeMobileMenu() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com" target="_blank" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group">
+                            <a href="https://github.com/helloimabid/simpledevtools" target="_blank" class="flex items-center gap-3 p-4 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group">
                                 <i data-lucide="github" class="w-5 h-5 text-neutral-500 group-hover:text-black dark:group-hover:text-white"></i>
                                 <span class="font-medium">GitHub</span>
                             </a>

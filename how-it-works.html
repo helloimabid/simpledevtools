@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Learn how SimpleDevTools processes your data locally within your browser. Privacy-first, secure, and offline-capable developer tools.">
+    <title>How It Works - SimpleDevTools</title>
+
+    <link rel="canonical" href="https://simpledevtools.tech/how-it-works" />
+<script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify/Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        // Light Mode
+                        lightBg: '#FFFFFF',
+                        lightSurface: '#FAFAFA',
+
+                        // Dark Mode
+                        darkBg: '#000000',
+                        darkSurface: '#111111', 
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Grid Backgrounds */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .dark .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .bg-dot-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .dark .bg-dot-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        }
+
+        /* Glass Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .glass-nav {
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .dark .glass-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+
+    <!-- Background Layers -->
+    <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
+    <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
+
+    <!-- Top Glow Effect -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none"></div>
+
+   <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/privacy-policy" class="underline">Privacy</a> |
+            <a href="/terms" class="underline">Terms</a>
+        </nav>
+    </noscript>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+
+        <!-- Hero Section -->
+        <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
+            <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+                <span class="text-gradient">How SimpleDevTools Works</span>
+            </h1>
+            <p class="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                Everything runs locally. Your data never leaves your browser.
+            </p>
+        </div>
+
+        <!-- Step-by-Step Flow -->
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 animate-slide-up" style="animation-delay: 0.1s;">
+            
+            <!-- Connection Line (Desktop) -->
+            <div class="hidden md:block absolute top-[2.5rem] left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent z-[-1]"></div>
+
+            <!-- Step 1 -->
+            <div class="flex flex-col items-center text-center group">
+                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="clipboard-copy" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
+                </div>
+                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">1. Paste your data</h3>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                    Input your code, image, or text directly into the tool's interface.
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex flex-col items-center text-center group">
+                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="cpu" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
+                </div>
+                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">2. Local Processing</h3>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                    JavaScript running in your browser processes the input instantly.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex flex-col items-center text-center group">
+                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="check-circle-2" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
+                </div>
+                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">3. Instant Result</h3>
+                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                    Get your formatted or converted output immediately. No network calls.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="mb-10 text-center animate-slide-up" style="animation-delay: 0.2s;">
+            <h2 class="font-display text-2xl md:text-3xl font-medium tracking-tight mb-4">Why Client-Side?</h2>
+            <p class="text-neutral-500 dark:text-neutral-400">Security and speed by design.</p>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 animate-slide-up" style="animation-delay: 0.3s;">
+            
+            <!-- No Uploads -->
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+                    <i data-lucide="shield-check" class="w-6 h-6 stroke-[1.5]"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">No Server Uploads</h3>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Your sensitive data (JSON, Base64 strings, or images) is never sent to our servers. It stays in your RAM.
+                    </p>
+                </div>
+            </div>
+
+            <!-- No Tracking -->
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+                    <i data-lucide="eye-off" class="w-6 h-6 stroke-[1.5]"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">No User Tracking</h3>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        We don't use analytics scripts that record your inputs or behavior. We respect your privacy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- No Storage -->
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+                    <i data-lucide="database-zap" class="w-6 h-6 stroke-[1.5]"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">Zero Persistence</h3>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Once you close the tab, your data is gone. We don't store anything in databases or local storage.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Performance -->
+            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
+                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+                    <i data-lucide="zap" class="w-6 h-6 stroke-[1.5]"></i>
+                </div>
+                <div>
+                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">Blazing Fast</h3>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Since there's no network latency, tools react instantly. Works offline once the page is loaded.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy & Security Footer Note -->
+        <div class="max-w-4xl mx-auto glass-card p-8 rounded-2xl text-center animate-slide-up" style="animation-delay: 0.4s;">
+            <div class="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mx-auto mb-4 text-neutral-900 dark:text-white">
+                <i data-lucide="lock" class="w-6 h-6 stroke-[1.5]"></i>
+            </div>
+            <h2 class="font-display text-xl font-medium mb-3 tracking-tight">Privacy Policy Summary</h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
+                SimpleDevTools is open regarding its operations. We only use local storage for your 
+                theme preference (Dark/Light mode). No cookies for tracking purposes are set.
+            </p>
+            <a href="/privacy-policy" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white hover:opacity-70 transition-opacity">
+                Read full Privacy Policy <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+
+    </main>
+
+   <script src="layout.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        
+    </script>
+
+</body>
+
+</html>

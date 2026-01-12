@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse our collection of free, privacy-first developer tools including JSON formatters, Base64 converters, and more.">
+    <title>All Tools - SimpleDevTools</title>
+
+    <link rel="canonical" href="https://simpledevtools.tech/tools" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        rel="stylesheet">
+     <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+     crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify/Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+  
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lightBg: '#FFFFFF',
+                        lightSurface: '#FAFAFA',
+                        darkBg: '#000000',
+                        darkSurface: '#111111', 
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .dark .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .bg-dot-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .dark .bg-dot-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .glass-nav {
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Bento Card Styles */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .bento-card {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px) scale(1.005);
+            border-color: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .bento-card:hover {
+            background: rgba(30, 30, 30, 0.6);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+        .dark ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+
+        .text-gradient {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+<noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/privacy-policy" class="underline">Privacy</a> |
+            <a href="/terms" class="underline">Terms</a>
+        </nav>
+    </noscript>
+    <!-- Background Layers -->
+    <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
+    <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
+
+    <!-- Top Glow Effect -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none"></div>
+   
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+
+        <!-- Page Header -->
+        <div class="mb-12 max-w-2xl animate-fade-in">
+            <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+                <span class="text-gradient">Developer Tools</span>
+            </h1>
+            <p class="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                Fast, privacy-first tools that run entirely in your browser.
+            </p>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-slide-up" style="animation-delay: 0.1s;">
+            
+            <!-- JSON Formatter (Large Square: 2x2) -->
+            <a href="/json-formatter" class="bento-card rounded-2xl p-8 lg:col-span-2 lg:row-span-2 relative overflow-hidden group h-full flex flex-col justify-between min-h-[320px]">
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Decorative Code Background -->
+                <div class="absolute right-0 top-0 p-8 opacity-[0.03] dark:opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform duration-700 ease-out origin-top-right">
+                    <pre class="font-mono text-sm leading-tight text-right">
+{
+  "json": true,
+  "status": "ok",
+  "data": [...]
+}</pre>
+                </div>
+                
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="file-json" class="w-7 h-7 stroke-[1.5]"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-semibold mb-3 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">JSON Formatter</h3>
+                    <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-sm">
+                        Validate, minify, and beautify JSON instantly. Includes syntax highlighting and error detection for complex structures.
+                    </p>
+                </div>
+                <div class="mt-8 flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <span>Open Tool</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                </div>
+            </a>
+
+            <!-- Base64 Converter (Wide: 2 cols) -->
+            <a href="/base64-encoder" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group min-h-[180px] flex flex-col justify-center">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute right-[-20px] top-[-20px] opacity-[0.03] dark:opacity-[0.05] group-hover:rotate-12 transition-transform duration-700 pointer-events-none">
+                    <i data-lucide="binary" class="w-48 h-48"></i>
+                </div>
+                
+                <div class="relative z-10 flex items-start gap-5">
+                    <div class="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 group-hover:rotate-6 transition-transform duration-300">
+                        <i data-lucide="arrow-left-right" class="w-6 h-6 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Base64 Encoder / Decoder</h3>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                            Convert text or files to Base64 format and back. Supports URL-safe encoding.
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- UUID Generator (Standard: 1 col) -->
+            <a href="/uuid-generator" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-10 h-10 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="fingerprint" class="w-5 h-5 stroke-[1.5]"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">UUID Generator</h3>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Generate v4 UUIDs individually or in bulk instantly.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Regex Tester (Standard: 1 col) -->
+            <a href="/regex-tester" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-10 h-10 bg-rose-500/10 dark:bg-rose-500/20 rounded-lg flex items-center justify-center text-rose-600 dark:text-rose-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="regex" class="w-5 h-5 stroke-[1.5]"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">Regex Tester</h3>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Test patterns with real-time match highlighting.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Hash Generator (Wide: 2 cols) -->
+            <a href="/hash-generator" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group flex flex-col justify-center">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <!-- Abstract Hash Pattern -->
+                <div class="absolute right-4 bottom-4 flex gap-1 opacity-[0.1] dark:opacity-[0.15]">
+                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                </div>
+
+                <div class="relative z-10 flex items-center gap-5">
+                    <div class="w-12 h-12 bg-orange-500/10 dark:bg-orange-500/20 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                        <i data-lucide="hash" class="w-6 h-6 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight">Hash Generator</h3>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                            Compute MD5, SHA-1, SHA-256 hashes via Web Crypto API.
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Image Compressor (Wide: 2 cols) -->
+            <a href="/image-compressor" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group flex flex-col justify-center">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute right-0 bottom-0 w-24 h-24 bg-gradient-to-tl from-cyan-500/10 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <div class="relative z-10 flex items-center gap-5">
+                    <div class="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-600 dark:text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="image" class="w-6 h-6 stroke-[1.5]"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight">Image Compressor</h3>
+                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                            Optimize Any Image Format images client-side without quality loss.
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- JWT Decoder (Standard: 1 col) -->
+            <a href="/jwt-decoder" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-10 h-10 bg-amber-500/10 dark:bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="key" class="w-5 h-5 stroke-[1.5]"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">JWT Decoder</h3>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Decode and verify JSON Web Tokens instantly with header and payload display.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Password Strength Analyzer (Standard: 1 col) -->
+            <a href="/password-strength-analyzer" class="bento-card rounded-2xl p-6 lg:col-span-3 relative overflow-hidden group flex flex-col justify-between">
+                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                    <div class="w-10 h-10 bg-red-500/10 dark:bg-red-500/20 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-check" class="w-5 h-5 stroke-[1.5]"></i>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">Password Strength Analyzer</h3>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Check password security with entropy scoring and breach detection.
+                    </p>
+                </div>
+            </a>
+            
+        </div>
+
+    </main>
+
+    
+    <script src="layout.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        
+    </script>
+
+</body>
+
+</html>
