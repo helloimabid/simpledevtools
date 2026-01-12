@@ -67,9 +67,7 @@ function injectLayout() {
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-6 h-6 bg-neutral-900 dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
-                            <span class="font-mono font-bold text-xs leading-none">/</span>
-                        </div>
+                       <img src="logo.png" alt="SimpleDevTools" class="w-8 h-8">
                         <span class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
                     </div>
                     <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
@@ -78,20 +76,28 @@ function injectLayout() {
                 </div>
 
                 <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Legal</h4>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Tools</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="/json-formatter" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter</a></li>
+                        <li><a href="/base64-encoder" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
+                        <li><a href="/hash-generator" class="hover:text-black dark:hover:text-white transition-colors">Hash Generator</a></li>
+                        <li><a href="/uuid-generator" class="hover:text-black dark:hover:text-white transition-colors">UUID Generator</a></li>
+                        <li><a href="/regex-tester" class="hover:text-black dark:hover:text-white transition-colors">Regex Tester</a></li>
+                        <li><a href="/jwt-decoder" class="hover:text-black dark:hover:text-white transition-colors">JWT Decoder</a></li>
+                        <li><a href="/image-compressor" class="hover:text-black dark:hover:text-white transition-colors">Image Compressor</a></li>
+                        <li><a href="/password-strength-analyzer" class="hover:text-black dark:hover:text-white transition-colors">Password Strength Analyzer</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Social</h4>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Legal</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">GitHub</a></li>
-                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Twitter / X</a></li>
+                        <li><a href="/privacy-policy" class="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a></li>
                     </ul>
                 </div>
+
+
             </div>
 
             <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
