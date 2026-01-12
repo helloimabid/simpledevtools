@@ -1,15 +1,18 @@
+
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Free online JSON Formatter &amp; Validator. Parse, validate, beautify and minify JSON data instantly in your browser. Client-side privacy focused.">
+        content="Free online JSON Formatter &amp; Validator. Parse, validate, beautify and minify JSON data instantly in your browser. Features 'Magic Fix' for errors and interactive Tree View. Client-side privacy focused.">
     <meta name="robots" content="index, follow">
     <title>JSON Formatter &amp; Validator – Free Online Tool</title>
     <meta name="google-adsense-account" content="ca-pub-9710571190649081">
     <link rel="canonical" href="https://simpledevtools.tech/json-formatter" />
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -107,7 +110,6 @@
         /* Editor Styling */
         .editor-textarea {
             field-sizing: content;
-            /* Modern browser support */
             min-height: 400px;
         }
 
@@ -119,12 +121,98 @@
         .dark .ad-placeholder {
             background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 10px, transparent 10px, transparent 20px);
         }
+
+        /* Tree View Styles */
+        .json-tree {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .json-key {
+            color: #d946ef;
+        }
+
+        /* fuchsia-500 */
+        .dark .json-key {
+            color: #e879f9;
+        }
+
+        /* fuchsia-400 */
+        .json-string {
+            color: #16a34a;
+        }
+
+        /* green-600 */
+        .dark .json-string {
+            color: #4ade80;
+        }
+
+        /* green-400 */
+        .json-number {
+            color: #2563eb;
+        }
+
+        /* blue-600 */
+        .dark .json-number {
+            color: #60a5fa;
+        }
+
+        /* blue-400 */
+        .json-boolean {
+            color: #dc2626;
+        }
+
+        /* red-600 */
+        .dark .json-boolean {
+            color: #f87171;
+        }
+
+        /* red-400 */
+        .json-null {
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        /* gray-400 */
+
+        .tree-caret {
+            cursor: pointer;
+            user-select: none;
+            display: inline-block;
+            margin-right: 4px;
+            transition: transform 0.1s ease;
+            color: #6b7280;
+        }
+
+        .tree-caret-down {
+            transform: rotate(90deg);
+        }
+
+        .nested {
+            padding-left: 20px;
+            overflow: hidden;
+            height: auto;
+        }
+
+        .collapsed {
+            height: 0;
+            display: none;
+        }
+
+        .array-bracket,
+        .object-brace {
+            color: #4b5563;
+        }
+
+        .dark .array-bracket,
+        .dark .object-brace {
+            color: #9ca3af;
+        }
     </style>
 
-    
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
-     crossorigin="anonymous"></script>
-   
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
 </head>
 
 <body
@@ -138,38 +226,33 @@
             <a href="/terms" class="underline">Terms</a>
         </nav>
     </noscript>
+
     <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
     <div
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0">
     </div>
 
-    <!-- Background Decoration -->
-
-  
-
     <!-- Main Content -->
     <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-7xl mx-auto">
 
             <!-- Header Section -->
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-medium mb-6 border border-indigo-100 dark:border-indigo-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
-                    <span>Secure Client-Side Processing</span>
+                    <span>Processed locally. No data reaches our servers.</span>
                 </div>
                 <h1
                     class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
                     JSON Formatter &amp; Validator
                 </h1>
                 <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
-                    Parse, validate, and beautify your JSON data instantly. This tool works entirely in your browser—no
-                    data is ever sent to a server.
+                    Parse, validate, and beautify your JSON data instantly. Includes Magic Fix and Tree View.
                 </p>
             </div>
 
             <!-- Ad Placeholder -->
-
             <div class="w-full max-w-4xl mx-auto my-16">
                 <div
                     class="ad-placeholder border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg h-32 flex flex-col items-center justify-center text-neutral-400">
@@ -184,30 +267,43 @@
                 <!-- Toolbar -->
                 <div
                     class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3">
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider px-2">Actions</span>
-                        <button onclick="formatJSON()"
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="formatJSON(2)"
                             class="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium rounded-md transition-colors shadow-sm">
-                            <i data-lucide="braces" class="w-3.5 h-3.5"></i>
-                            Format
+                            <i data-lucide="align-left" class="w-3.5 h-3.5"></i>
+                            2 Spaces
+                        </button>
+                        <button onclick="formatJSON(4)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="align-left" class="w-3.5 h-3.5"></i>
+                            4 Spaces
                         </button>
                         <button onclick="minifyJSON()"
                             class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
                             <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
                             Minify
                         </button>
+                        <button onclick="magicFix()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+                            Magic Fix
+                        </button>
                     </div>
 
-                    <div class="flex items-center gap-2">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="loadSample()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-xs font-medium transition-colors">
+                            Sample
+                        </button>
                         <button onclick="clearAll()"
                             class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
                             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                             Clear
                         </button>
-                        <button onclick="copyOutput()" id="copy-btn"
+                        <button onclick="downloadJSON()"
                             class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                            <span id="copy-text">Copy Result</span>
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Save
                         </button>
                     </div>
                 </div>
@@ -216,39 +312,54 @@
                 <div
                     class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
                     <!-- Input -->
-                    <div class="flex flex-col h-full">
+                    <div class="flex flex-col h-full relative">
                         <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500">
-                            Input
+                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500 flex justify-between">
+                            <span>Input</span>
+                            <span id="input-stats">0 chars</span>
                         </div>
                         <textarea id="json-input"
                             class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed"
-                            placeholder="Paste your JSON here...
-Example:
-{
-  &quot;name&quot;: &quot;SimpleDevTools&quot;,
-  &quot;secure&quot;: true,
-  &quot;tools&quot;: [&quot;formatter&quot;, &quot;validator&quot;]
-}" spellcheck="false"></textarea>
+                            placeholder="Paste your JSON here..." spellcheck="false"></textarea>
                     </div>
 
                     <!-- Output -->
-                    <div class="flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
+                    <div class="flex flex-col h-full bg-neutral-50/20 dark:bg-black/20 relative">
                         <div
                             class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 flex justify-between items-center">
-                            <span class="text-xs font-mono text-neutral-500">Output</span>
-                            <span id="status-badge"
-                                class="hidden text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Valid
-                                JSON</span>
+                            <div class="flex gap-2">
+                                <button onclick="switchView('text')" id="tab-text"
+                                    class="text-xs font-mono font-bold text-neutral-900 dark:text-white px-2 py-0.5 rounded bg-white dark:bg-neutral-800 shadow-sm transition-all">Text</button>
+                                <button onclick="switchView('tree')" id="tab-tree"
+                                    class="text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white px-2 py-0.5 transition-all">Tree
+                                    View</button>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span id="status-badge"
+                                    class="hidden text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Valid</span>
+                                <button onclick="copyOutput()" id="copy-btn"
+                                    class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                                    title="Copy to Clipboard">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
                         </div>
+
                         <div class="relative flex-1 overflow-hidden">
-                            <textarea id="json-output" readonly=""
+                            <!-- Text View -->
+                            <textarea id="json-output" readonly
                                 class="w-full h-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-700 dark:text-neutral-300 resize-none outline-none leading-relaxed"
-                                placeholder="Formatted result will appear here..."></textarea>
+                                placeholder="Result will appear here..."></textarea>
+
+                            <!-- Tree View (Hidden by default) -->
+                            <div id="json-tree-view" class="hidden w-full h-full p-4 overflow-auto bg-transparent">
+                                <div class="text-neutral-400 italic text-center mt-20 text-xs">Parse JSON to view tree
+                                    structure</div>
+                            </div>
 
                             <!-- Error Overlay -->
                             <div id="error-box"
-                                class="hidden absolute bottom-4 left-4 right-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg backdrop-blur-sm">
+                                class="hidden absolute bottom-4 left-4 right-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg backdrop-blur-sm shadow-lg">
                                 <div class="flex items-start gap-3">
                                     <i data-lucide="alert-circle"
                                         class="w-5 h-5 text-red-600 dark:text-red-400 shrink-0 mt-0.5"></i>
@@ -264,55 +375,119 @@ Example:
                 </div>
             </div>
 
-            
-            
-
             <!-- SEO Content -->
-            <div class="max-w-3xl mx-auto space-y-12 mb-20">
-                <section>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
-                            <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
-                        </div>
-                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">What does this
-                            tool do?</h2>
-                    </div>
-                    <div
-                        class="prose prose-sm prose-neutral dark:prose-invert max-w-none text-neutral-600 dark:text-neutral-400">
-                        <p>
-                            JSON (JavaScript Object Notation) is a lightweight data-interchange format. While easy for
-                            machines to parse, raw JSON often comes minified (single line), making it hard for humans to
-                            read.
-                        </p>
-                        <p class="mt-2">
-                            This <strong>JSON Formatter &amp; Validator</strong> takes your raw JSON string and:
-                        </p>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li><strong>Formats</strong> it with proper indentation (pretty-print) for readability.</li>
-                            <li><strong>Validates</strong> the syntax to ensure it adheres to JSON standards.</li>
-                            <li><strong>Minifies</strong> the code to reduce file size for production use.</li>
-                        </ul>
-                    </div>
-                </section>
+            <div class="max-w-4xl mx-auto space-y-16 mb-20">
 
-                <section>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
-                            <i data-lucide="lock" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                <article class="prose prose-neutral dark:prose-invert max-w-none">
+                    <h2 class="font-display text-2xl font-semibold mb-6">What makes a valid JSON?</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400">
+                        JSON (JavaScript Object Notation) is a lightweight data-interchange format. To be considered
+                        valid, it must strictly follow these rules:
+                    </p>
+                    <ul class="text-neutral-600 dark:text-neutral-400 list-disc pl-5 space-y-2 mt-4">
+                        <li>Data is in name/value pairs.</li>
+                        <li>Data is separated by commas.</li>
+                        <li>Curly braces <code>{}</code> hold objects.</li>
+                        <li>Square brackets <code>[]</code> hold arrays.</li>
+                        <li>Keys must be strings enclosed in double quotes <code>"key"</code>.</li>
+                    </ul>
+
+                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Common Syntax Errors & Fixes</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400">Our <strong>Magic Fix</strong> button attempts to
+                        automatically correct these common mistakes:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 not-prose">
+                        <div
+                            class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
+                            <h3 class="font-medium text-red-800 dark:text-red-300 mb-2 flex items-center gap-2"><i
+                                    data-lucide="x" class="w-4 h-4"></i> Trailing Commas</h3>
+                            <code class="text-xs bg-white dark:bg-black p-1 rounded">{"a": 1,}</code>
                         </div>
-                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">Is this tool
-                            secure?</h2>
+                        <div
+                            class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
+                            <h3 class="font-medium text-red-800 dark:text-red-300 mb-2 flex items-center gap-2"><i
+                                    data-lucide="x" class="w-4 h-4"></i> Single Quotes</h3>
+                            <code class="text-xs bg-white dark:bg-black p-1 rounded">{'a': 'value'}</code>
+                        </div>
                     </div>
-                    <div
-                        class="prose prose-sm prose-neutral dark:prose-invert max-w-none text-neutral-600 dark:text-neutral-400">
-                        <p>
-                            Yes. <strong>This tool works entirely on the client side. No data is sent to any
-                                server.</strong> All processing happens locally within your web browser using
-                            JavaScript's native capabilities. You can even disconnect your internet and the tool will
-                            still function.
-                        </p>
+
+                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Format Comparison</h2>
+                    <div class="overflow-x-auto not-prose rounded-lg border border-neutral-200 dark:border-neutral-800">
+                        <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-400">
+                            <thead
+                                class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-white font-medium">
+                                <tr>
+                                    <th class="p-4">Feature</th>
+                                    <th class="p-4">JSON</th>
+                                    <th class="p-4">XML</th>
+                                    <th class="p-4">YAML</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800 bg-white dark:bg-black">
+                                <tr>
+                                    <td class="p-4 font-medium">Readability</td>
+                                    <td class="p-4">High</td>
+                                    <td class="p-4">Low</td>
+                                    <td class="p-4">Very High</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Parsing Speed</td>
+                                    <td class="p-4 text-emerald-600 font-semibold">Fastest</td>
+                                    <td class="p-4">Slow</td>
+                                    <td class="p-4">Medium</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Comments</td>
+                                    <td class="p-4">No</td>
+                                    <td class="p-4">Yes</td>
+                                    <td class="p-4">Yes</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </section>
+
+                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Frequently Asked Questions</h2>
+                    <div class="not-prose space-y-4">
+                        <details
+                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
+                            <summary
+                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
+                                <span>Is my data sent to a server?</span>
+                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
+                                        class="w-4 h-4"></i></span>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                No. This tool runs entirely in your browser using JavaScript. Your JSON data never
+                                leaves your device.
+                            </div>
+                        </details>
+                        <details
+                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
+                            <summary
+                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
+                                <span>Can this tool handle large files?</span>
+                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
+                                        class="w-4 h-4"></i></span>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                Yes, it is optimized for performance. However, extremely large files (10MB+) might cause
+                                slight delays depending on your device's RAM since everything is processed client-side.
+                            </div>
+                        </details>
+                        <details
+                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
+                            <summary
+                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
+                                <span>What does Minify do?</span>
+                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
+                                        class="w-4 h-4"></i></span>
+                            </summary>
+                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                Minification removes all unnecessary whitespace, newlines, and indentation from the
+                                JSON. This reduces the file size, making it ideal for data transmission.
+                            </div>
+                        </details>
+                    </div>
+                </article>
 
                 <section>
                     <div class="flex items-center gap-3 mb-4">
@@ -349,106 +524,264 @@ Example:
         </div>
     </main>
 
-   
-</body>
-<script src="layout.js"></script>
+    <script src="layout.js"></script>
 
-<!-- Core Logic -->
-<script>
-    // Initialize Icons
-    lucide.createIcons({
-        attrs: { 'stroke-width': 1.5 }
-    });
+    <!-- Core Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
 
-    // DOM Elements
-    const inputArea = document.getElementById('json-input');
-    const outputArea = document.getElementById('json-output');
-    const errorBox = document.getElementById('error-box');
-    const errorMessage = document.getElementById('error-message');
-    const statusBadge = document.getElementById('status-badge');
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const copyBtn = document.getElementById('copy-btn');
+        // DOM Elements
+        const inputArea = document.getElementById('json-input');
+        const outputArea = document.getElementById('json-output');
+        const treeView = document.getElementById('json-tree-view');
+        const errorBox = document.getElementById('error-box');
+        const errorMessage = document.getElementById('error-message');
+        const statusBadge = document.getElementById('status-badge');
+        const copyBtn = document.getElementById('copy-btn');
+        const tabText = document.getElementById('tab-text');
+        const tabTree = document.getElementById('tab-tree');
+        const inputStats = document.getElementById('input-stats');
 
+        let currentObj = null;
+        let activeView = 'text'; // 'text' or 'tree'
 
-    // Logic: Format JSON
-    function formatJSON() {
-        processJSON(2);
-    }
+        // --- Core Formatting & Minifying ---
+        function formatJSON(indent = 2) {
+            processJSON(indent);
+            if (activeView === 'tree') renderTree(currentObj);
+        }
 
-    // Logic: Minify JSON
-    function minifyJSON() {
-        processJSON(0);
-    }
+        function minifyJSON() {
+            processJSON(0);
+        }
 
-    // Logic: Core Processing
-    function processJSON(indent) {
-        const raw = inputArea.value.trim();
+        function processJSON(indent) {
+            const raw = inputArea.value.trim();
+            resetUI();
 
-        // Reset UI
-        errorBox.classList.add('hidden');
-        statusBadge.classList.add('hidden');
-        outputArea.value = '';
+            if (!raw) return;
 
-        if (!raw) return;
+            try {
+                currentObj = JSON.parse(raw);
+                outputArea.value = JSON.stringify(currentObj, null, indent);
 
-        try {
-            const parsed = JSON.parse(raw);
-            outputArea.value = JSON.stringify(parsed, null, indent);
+                // Update Tree View as well
+                renderTree(currentObj);
 
-            // Success UI
+                showSuccessUI();
+            } catch (e) {
+                showErrorUI(e.message);
+            }
+        }
+
+        // --- Magic Fix ---
+        function magicFix() {
+            let text = inputArea.value;
+            if (!text) return;
+
+            // 1. Remove trailing commas
+            text = text.replace(/,\s*([\]}])/g, '$1');
+            // 2. Replace single quotes with double quotes
+            text = text.replace(/'/g, '"');
+            // 3. Quote unquoted keys (alphanumeric)
+            text = text.replace(/([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:/g, '$1"$2":');
+
+            inputArea.value = text;
+
+            // Try to format immediately to verify fix
+            try {
+                const parsed = JSON.parse(text);
+                formatJSON(2);
+                alert("Magic Fix Applied!");
+            } catch (e) {
+                // If still invalid, just show the fixed text
+                processJSON(2); // This will trigger the error UI with the new text
+            }
+        }
+
+        // --- View Switching (Tabs) ---
+        function switchView(view) {
+            activeView = view;
+
+            if (view === 'text') {
+                outputArea.classList.remove('hidden');
+                treeView.classList.add('hidden');
+                tabText.classList.add('bg-white', 'dark:bg-neutral-800', 'shadow-sm', 'text-neutral-900', 'dark:text-white', 'font-bold');
+                tabText.classList.remove('text-neutral-500', 'hover:text-neutral-900');
+                tabTree.classList.remove('bg-white', 'dark:bg-neutral-800', 'shadow-sm', 'text-neutral-900', 'dark:text-white', 'font-bold');
+                tabTree.classList.add('text-neutral-500');
+            } else {
+                outputArea.classList.add('hidden');
+                treeView.classList.remove('hidden');
+                tabTree.classList.add('bg-white', 'dark:bg-neutral-800', 'shadow-sm', 'text-neutral-900', 'dark:text-white', 'font-bold');
+                tabTree.classList.remove('text-neutral-500');
+                tabText.classList.remove('bg-white', 'dark:bg-neutral-800', 'shadow-sm', 'text-neutral-900', 'dark:text-white', 'font-bold');
+                tabText.classList.add('text-neutral-500');
+
+                // Re-render tree if object exists
+                if (currentObj) renderTree(currentObj);
+            }
+        }
+
+        // --- Tree View Rendering ---
+        function renderTree(data) {
+            treeView.innerHTML = '';
+            if (!data) return;
+            treeView.appendChild(createTreeNode('root', data, true));
+        }
+
+        function createTreeNode(key, value, isRoot = false) {
+            const container = document.createElement('div');
+            container.className = 'json-tree';
+            if (!isRoot) container.classList.add('ml-4');
+
+            const type = value === null ? 'null' : Array.isArray(value) ? 'array' : typeof value;
+
+            if (type === 'object' || type === 'array') {
+                const isEmpty = Object.keys(value).length === 0;
+                const header = document.createElement('div');
+                header.className = 'flex items-start hover:bg-neutral-100 dark:hover:bg-neutral-800/50 rounded px-1 -ml-1 cursor-pointer';
+
+                const caret = document.createElement('span');
+                caret.className = `tree-caret ${isEmpty ? 'opacity-30' : 'tree-caret-down'}`;
+                caret.innerHTML = '▶';
+                caret.style.fontSize = '10px';
+                caret.style.marginRight = '6px';
+
+                const keySpan = isRoot ? '' : `<span class="json-key">"${key}"</span>: `;
+                const openBracket = type === 'array' ? '[' : '{';
+                const closeBracket = type === 'array' ? ']' : '}';
+                const count = Object.keys(value).length;
+                const info = isEmpty ? '' : `<span class="text-neutral-400 text-xs ml-2 select-none"> ${type === 'array' ? `(${count})` : '{...}'} </span>`;
+
+                header.innerHTML = `${keySpan}<span class="array-bracket">${openBracket}</span>${info}`;
+                header.prepend(caret);
+
+                const children = document.createElement('div');
+                children.className = 'nested border-l border-neutral-200 dark:border-neutral-800 ml-1.5 pl-3';
+
+                if (!isEmpty) {
+                    Object.keys(value).forEach(k => children.appendChild(createTreeNode(k, value[k])));
+                    header.onclick = (e) => {
+                        e.stopPropagation();
+                        children.classList.toggle('collapsed');
+                        caret.classList.toggle('tree-caret-down');
+                        if (children.classList.contains('collapsed')) {
+                            if (!header.querySelector('.collapsed-hint')) {
+                                header.innerHTML += `<span class="collapsed-hint text-neutral-400 text-xs ml-2 select-none">...</span>`;
+                            }
+                        } else {
+                            header.querySelector('.collapsed-hint')?.remove();
+                        }
+                    };
+                }
+
+                container.appendChild(header);
+                container.appendChild(children);
+                if (!isEmpty) {
+                    const footer = document.createElement('div');
+                    footer.className = 'ml-4 array-bracket';
+                    footer.innerText = closeBracket;
+                    container.appendChild(footer);
+                } else {
+                    header.innerHTML += `<span class="array-bracket">${closeBracket}</span>`;
+                }
+            } else {
+                const row = document.createElement('div');
+                row.className = 'px-1 hover:bg-neutral-100 dark:hover:bg-neutral-800/50 rounded';
+                const keySpan = isRoot ? '' : `<span class="json-key">"${key}"</span>: `;
+                let valSpan = '';
+                if (type === 'string') valSpan = `<span class="json-string">"${escapeHtml(value)}"</span>`;
+                else if (type === 'number') valSpan = `<span class="json-number">${value}</span>`;
+                else if (type === 'boolean') valSpan = `<span class="json-boolean">${value}</span>`;
+                else if (type === 'null') valSpan = `<span class="json-null">null</span>`;
+                row.innerHTML = `${keySpan}${valSpan}`;
+                container.appendChild(row);
+            }
+            return container;
+        }
+
+        // --- Utilities ---
+        function clearAll() {
+            inputArea.value = '';
+            outputArea.value = '';
+            treeView.innerHTML = '<div class="text-neutral-400 italic text-center mt-20 text-xs">Parse JSON to view tree structure</div>';
+            resetUI();
+            inputArea.focus();
+            updateStats();
+        }
+
+        function loadSample() {
+            const sample = {
+                "project": "SimpleDevTools",
+                "active": true,
+                "users": [
+                    { "id": 1, "role": "admin" },
+                    { "id": 2, "role": "editor" }
+                ],
+                "meta": { "created": "2024-01-01", "version": 1.2 }
+            };
+            inputArea.value = JSON.stringify(sample, null, 2);
+            formatJSON(2);
+            updateStats();
+        }
+
+        function downloadJSON() {
+            if (!outputArea.value) return;
+            const blob = new Blob([outputArea.value], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'formatted-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyOutput() {
+            if (!outputArea.value) return;
+            navigator.clipboard.writeText(outputArea.value);
+            // Visual feedback
+            const icon = copyBtn.querySelector('i');
+            copyBtn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i>';
+            setTimeout(() => {
+                copyBtn.innerHTML = '';
+                copyBtn.appendChild(icon);
+                lucide.createIcons();
+            }, 2000);
+        }
+
+        function resetUI() {
+            errorBox.classList.add('hidden');
+            statusBadge.classList.add('hidden');
+            currentObj = null;
+        }
+
+        function showSuccessUI() {
             statusBadge.classList.remove('hidden');
-            statusBadge.textContent = "Valid JSON";
+            statusBadge.textContent = "Valid";
             statusBadge.className = "text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400";
-            copyBtn.disabled = false;
-            copyBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
 
-
-        } catch (e) {
-            // Error UI
+        function showErrorUI(msg) {
             errorBox.classList.remove('hidden');
-            errorMessage.textContent = `Error: ${e.message}. Please check JSON syntax (quotes, commas, brackets).`;
-            copyBtn.disabled = true;
-            copyBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-
+            errorMessage.textContent = msg;
             statusBadge.classList.remove('hidden');
             statusBadge.textContent = "Invalid";
             statusBadge.className = "text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
         }
-    }
 
-    // Logic: Clear All
-    function clearAll() {
-        inputArea.value = '';
-        outputArea.value = '';
-        errorBox.classList.add('hidden');
-        statusBadge.classList.add('hidden');
-        inputArea.focus();
-    }
+        function escapeHtml(text) {
+            return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
 
-    // Logic: Copy to Clipboard
-    function copyOutput() {
-        if (!outputArea.value) return;
+        function updateStats() {
+            inputStats.textContent = `${inputArea.value.length} chars`;
+        }
 
-        outputArea.select();
-        outputArea.setSelectionRange(0, 99999); // Mobile
-        navigator.clipboard.writeText(outputArea.value);
-
-        const btn = document.getElementById('copy-btn');
-        const originalText = document.getElementById('copy-text').innerText;
-
-        document.getElementById('copy-text').innerText = "Copied!";
-        setTimeout(() => {
-            document.getElementById('copy-text').innerText = originalText;
-        }, 2000);
-    }
-
-   
-
-    // Auto-format on paste (optional quality of life)
-    inputArea.addEventListener('paste', () => {
-        setTimeout(formatJSON, 100);
-    });
-</script>
+        // Listeners
+        inputArea.addEventListener('input', updateStats);
+    </script>
+</body>
 
 </html>
