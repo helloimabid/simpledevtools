@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    ensureAdSense();
     injectLayout();
     initializeTheme();
     initializeMobileMenu();
@@ -7,6 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 });
+
+function ensureAdSense() {
+    const ADSENSE_CLIENT = 'ca-pub-9710571190649081';
+
+    const existingMeta = document.querySelector('meta[name="google-adsense-account"]');
+    if (!existingMeta) {
+        const meta = document.createElement('meta');
+        meta.name = 'google-adsense-account';
+        meta.content = ADSENSE_CLIENT;
+        document.head.appendChild(meta);
+    }
+
+    const existingScript = document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
+    if (existingScript) return;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
+    script.crossOrigin = 'anonymous';
+    document.head.appendChild(script);
+}
 
 function injectLayout() {
     const navHTML = `
