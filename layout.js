@@ -64,7 +64,7 @@ function injectLayout() {
     const footerHTML = `
     <footer class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
                        <img src="logo.png" alt="SimpleDevTools" class="w-8 h-8">
@@ -96,7 +96,12 @@ function injectLayout() {
                         <li><a href="/terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a></li>
                     </ul>
                 </div>
-
+                <div>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Contact</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="/contact" class="hover:text-black dark:hover:text-white transition-colors">Contact Me</a></li>
+                    </ul>
+                </div>
 
             </div>
 

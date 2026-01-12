@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Get in touch with SimpleDevTools. Share your feedback, report issues, or suggest new features.">
+    <title>Contact Us - SimpleDevTools</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lightBg: '#FFFFFF',
+                        lightSurface: '#FAFAFA',
+                        darkBg: '#000000',
+                        darkSurface: '#111111',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .dark .bg-grid-pattern {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+
+        .bg-dot-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .dark .bg-dot-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .dark .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #000, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Input Styles */
+        .input-field {
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .dark .input-field:focus {
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Success/Error Animation */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+
+
+
+
+    <!-- Ambient Backgrounds -->
+    <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-screen"></div>
+    <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
+    <!-- Top Glow -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-screen-lg h-96 bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
+    </div>
+
+
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-12 px-6 max-w-7xl mx-auto w-full">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+
+            <!-- Left Column: Header & Context -->
+            <div class="lg:col-span-5 flex flex-col justify-center animate-slide-up">
+                <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1 mb-6 text-xs font-medium tracking-wide text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800 w-fit">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    Support & Feedback
+                </span>
+
+                <h1
+                    class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight mb-6 leading-[1.1]">
+                    <span class="text-gradient">Get in touch</span><br>
+                    <span class="text-neutral-400 dark:text-neutral-500">with me.</span>
+                </h1>
+
+                <p class="text-lg text-neutral-500 dark:text-neutral-400 mb-10 leading-relaxed">
+                    Found a bug in a utility? Have a suggestion for a new tool?
+                    Since everything runs client-side, I rely on your feedback to improve the ecosystem.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Email</h3>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">For general inquiries and
+                                partnerships.</p>
+                            <a href="mailto:me@sadmanabid.me"
+                                class="text-sm font-medium text-neutral-900 dark:text-white mt-2 inline-block border-b border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white transition-colors">me@sadmanabid.me</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            <i data-lucide="bug" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Report Issues</h3>
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Something not working? Let me
+                                know the browser version.</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="flex items-start gap-4">
+                        <div
+                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Social</h3>
+                            <div class="flex gap-4 mt-3">
+                                <a href="#"
+                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                        data-lucide="twitter" class="w-5 h-5"></i></a>
+                                <a href="#"
+                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                        data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#"
+                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                        data-lucide="linkedin" class="w-5 h-5"></i></a>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div class="lg:col-span-7 flex items-center">
+                <div class="glass-card w-full p-8 sm:p-10 rounded-2xl animate-slide-up" style="animation-delay: 0.1s;">
+                    <form onsubmit="event.preventDefault();" class="space-y-6">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div class="space-y-2">
+                                <label for="name"
+                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Name</label>
+                                <div class="relative group">
+                                    <div
+                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-blue-500 transition-colors">
+                                        <i data-lucide="user" class="w-4 h-4"></i>
+                                    </div>
+                                    <input type="text" id="name" placeholder="John Doe"
+                                        class="custom-input w-full rounded-lg py-2.5 pl-10 pr-4 text-sm placeholder:text-neutral-400 bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black">
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email"
+                                    class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Email</label>
+                                <div class="relative group">
+                                    <div
+                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-blue-500 transition-colors">
+                                        <i data-lucide="at-sign" class="w-4 h-4"></i>
+                                    </div>
+                                    <input type="email" id="email" placeholder="john@example.com"
+                                        class="custom-input w-full rounded-lg py-2.5 pl-10 pr-4 text-sm placeholder:text-neutral-400 bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject Dropdown (Custom Style) -->
+                        <div class="space-y-2">
+                            <label for="subject"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Subject</label>
+                            <div class="relative">
+                                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400">
+                                    <i data-lucide="tag" class="w-4 h-4"></i>
+                                </div>
+                                <div class="custom-input w-full rounded-lg py-2.5 pl-10 pr-10 text-sm bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black text-neutral-700 dark:text-neutral-200 cursor-pointer flex items-center justify-between"
+                                    id="subject-dropdown" tabindex="0">
+                                    <span id="subject-selected">Report a Bug</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"
+                                        id="subject-chevron"></i>
+                                </div>
+                                <input type="hidden" id="subject" value="Report a Bug">
+                                <ul class="absolute top-full left-0 right-0 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg mt-1 shadow-lg z-10 max-h-60 overflow-y-auto transition-all duration-200 opacity-0 scale-95 pointer-events-none"
+                                    id="subject-options">
+                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                        data-value="Report a Bug">Report a Bug</li>
+                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                        data-value="Feature Request">Feature Request</li>
+                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                        data-value="General Inquiry">General Inquiry</li>
+                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                        data-value="Partnership">Partnership</li>
+                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                        data-value="Other">Other</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="space-y-2">
+                            <label for="message"
+                                class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Message</label>
+                            <textarea id="message" rows="5" placeholder="Describe the issue or suggestion..."
+                                class="custom-input w-full rounded-lg p-3 text-sm placeholder:text-neutral-400 bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black resize-y"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button id="submitBtn" type="submit"
+                            class="w-full sm:w-auto px-8 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-lg text-sm font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-neutral-500/10 active:scale-[0.98]">
+                            Send Message <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section / Bottom Info -->
+        <section class="mt-24 pt-12 border-t border-neutral-200 dark:border-neutral-800">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-2">Response Time</h4>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        I am a solo developer. I typically respond within 24-48 hours for critical bugs.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-2">Privacy First</h4>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Your message contents are sent via encrypted email. No data is stored in a database.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-display font-medium text-lg mb-2">Community</h4>
+                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        Join our <a href="https://discord.gg/ATmCBvgrPU" class="underline hover:text-black dark:hover:text-white">Discord server</a>
+                        for real-time discussions with other developers using the tools.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Animation Observer (Copied from original)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        });
+    </script>
+
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // API endpoint - change this to your backend endpoint
+        const API_ENDPOINT = 'https://contact-api-worker.helloimabid.workers.dev/api/contact';
+
+        // Form elements
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageTextarea = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const alertContainer = document.getElementById('alertContainer');
+
+        // Dropdown elements
+        const subjectDropdown = document.getElementById('subject-dropdown');
+        const subjectSelected = document.getElementById('subject-selected');
+        const subjectChevron = document.getElementById('subject-chevron');
+        const subjectOptions = document.getElementById('subject-options');
+        let isDropdownOpen = false;
+
+        // Dropdown functionality
+        subjectDropdown.addEventListener('click', () => {
+            isDropdownOpen = !isDropdownOpen;
+            if (isDropdownOpen) {
+                subjectOptions.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                subjectOptions.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+                subjectChevron.classList.add('rotate-180');
+            } else {
+                subjectOptions.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                subjectOptions.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                subjectChevron.classList.remove('rotate-180');
+            }
+        });
+
+        subjectOptions.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI') {
+                const value = e.target.getAttribute('data-value');
+                subjectSelected.textContent = value;
+                subjectInput.value = value;
+                isDropdownOpen = false;
+                subjectOptions.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                subjectOptions.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                subjectChevron.classList.remove('rotate-180');
+            }
+        });
+
+        // Close dropdown on outside click
+        document.addEventListener('click', (e) => {
+            if (!subjectDropdown.contains(e.target) && !subjectOptions.contains(e.target)) {
+                isDropdownOpen = false;
+                subjectOptions.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                subjectOptions.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                subjectChevron.classList.remove('rotate-180');
+            }
+        });
+
+        // Validation helpers
+        function showError(fieldId, show = true) {
+            const errorEl = document.getElementById(`${fieldId}Error`);
+            const inputEl = document.getElementById(fieldId);
+            if (show) {
+                errorEl.classList.remove('hidden');
+                inputEl.classList.add('border-red-500', 'shake');
+                setTimeout(() => inputEl.classList.remove('shake'), 500);
+            } else {
+                errorEl.classList.add('hidden');
+                inputEl.classList.remove('border-red-500');
+            }
+        }
+
+        function showAlert(message, type = 'success') {
+            const bgColor = type === 'success'
+                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
+                : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800';
+            const textColor = type === 'success'
+                ? 'text-green-800 dark:text-green-200'
+                : 'text-red-800 dark:text-red-200';
+            const icon = type === 'success' ? 'check-circle' : 'alert-circle';
+
+            alertContainer.innerHTML = `
+                <div class="mb-6 p-4 ${bgColor} border rounded-lg flex items-start gap-3 animate-slide-up">
+                    <i data-lucide="${icon}" class="w-5 h-5 ${textColor} flex-shrink-0 mt-0.5"></i>
+                    <p class="text-sm ${textColor}">${message}</p>
+                </div>
+            `;
+            lucide.createIcons();
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    alertContainer.innerHTML = '';
+                }, 5000);
+            }
+        }
+
+        // Email validation with debouncing
+        let emailValidationTimeout;
+        emailInput.addEventListener('input', () => {
+            clearTimeout(emailValidationTimeout);
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                showError('email', false);
+                emailInput.classList.remove('border-green-500');
+                return;
+            }
+
+            // Basic email format check
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email', true);
+                emailInput.classList.remove('border-green-500');
+                return;
+            }
+
+            emailValidationTimeout = setTimeout(async () => {
+                await validateEmail(email);
+            }, 800);
+        });
+
+        async function validateEmail(email) {
+            const validatingEl = document.getElementById('emailValidating');
+            validatingEl.classList.remove('hidden');
+            showError('email', false);
+
+            try {
+                const response = await fetch(`${API_ENDPOINT}/validate-email`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                validatingEl.classList.add('hidden');
+
+                if (data.valid) {
+                    showError('email', false);
+                    emailInput.classList.add('border-green-500');
+                } else {
+                    showError('email', true);
+                    document.getElementById('emailError').textContent = data.message || 'This email appears to be invalid';
+                    emailInput.classList.remove('border-green-500');
+                }
+            } catch (error) {
+                console.error('Email validation error:', error);
+                validatingEl.classList.add('hidden');
+                // On error, just do basic validation
+                showError('email', false);
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+
+            if (!nameInput.value.trim()) {
+                showError('name', true);
+                isValid = false;
+            } else {
+                showError('name', false);
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+                showError('email', true);
+                isValid = false;
+            } else {
+                showError('email', false);
+            }
+
+            if (!subjectInput.value) {
+                showError('subject', true);
+                isValid = false;
+            } else {
+                showError('subject', false);
+            }
+
+            if (!messageTextarea.value.trim()) {
+                showError('message', true);
+                isValid = false;
+            } else {
+                showError('message', false);
+            }
+
+            return isValid;
+        }
+
+        // Submit handler
+        submitBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (!validateForm()) {
+                showAlert('Please fill in all required fields correctly.', 'error');
+                return;
+            }
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+
+            try {
+                const formData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    category: subjectInput.value.trim(),
+                    subject: subjectInput.value.trim(),
+                    message: messageTextarea.value.trim()
+                };
+
+                const response = await fetch(`${API_ENDPOINT}/submit`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    showAlert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+
+                    // Reset form
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    subjectInput.value = 'Report a Bug';
+                    subjectSelected.textContent = 'Report a Bug';
+                    messageTextarea.value = '';
+                    emailInput.classList.remove('border-green-500');
+                } else {
+                    throw new Error(data.message || 'Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showAlert('Oops! Something went wrong. Please try again later or email us directly.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Message';
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+                lucide.createIcons();
+            }
+        });
+
+        // Clear errors on input
+        [nameInput, emailInput, subjectDropdown, messageTextarea].forEach(field => {
+            field.addEventListener('input', () => {
+                if (field.value.trim()) {
+                    showError(field.id, false);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
