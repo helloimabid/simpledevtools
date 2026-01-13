@@ -172,6 +172,7 @@ function initializeMobileMenu() {
             button.className = 'md:hidden p-2 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors';
             button.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
             button.id = 'mobile-menu-button';
+            button.setAttribute('aria-label', 'Toggle menu');
 
             nav.appendChild(button);
             lucide.createIcons();
@@ -194,7 +195,7 @@ function initializeMobileMenu() {
                         <img src="logo.png" alt="SimpleDevTools Logo" class="w-6 h-6">
                         <span class="font-display font-medium text-lg tracking-tight">Menu</span>
                     </div>
-                    <button id="menu-close" class="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                    <button id="menu-close" class="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Close menu">
                         <i data-lucide="x" class="w-6 h-6"></i>
                     </button>
                 </div>
