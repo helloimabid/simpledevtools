@@ -1,0 +1,26 @@
+{
+  "name": "simpledevtools",
+  "version": "1.0.0",
+  "description": "Privacy-first developer utilities for modern web",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "keywords": [
+    "developer-tools",
+    "privacy",
+    "client-side",
+    "utilities",
+    "json",
+    "base64",
+    "hash",
+    "uuid",
+    "regex"
+  ],
+  "author": "Sadman Abid",
+  "license": "MIT"
+}
