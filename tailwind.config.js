@@ -15,7 +15,8 @@ module.exports = {
     "./terms.html",
     "./how-it-works.html",
     "./contact.html",
-    "./layout.js"
+    "./layout.js",
+
   ],
   theme: {
     extend: {
