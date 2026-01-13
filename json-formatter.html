@@ -53,11 +53,16 @@
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.3s ease-out forwards',
+                        'pulse-border': 'pulseBorder 2s infinite',
                     },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseBorder: {
+                            '0%, 100%': { borderColor: 'rgba(79, 70, 229, 0.5)' },
+                            '50%': { borderColor: 'rgba(79, 70, 229, 0.1)' },
                         }
                     }
                 }
@@ -125,10 +130,35 @@
             background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0, rgba(255, 255, 255, 0.02) 10px, transparent 10px, transparent 20px);
         }
 
+        /* Improved Tree View Styles using Details/Summary */
         .json-tree {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.875rem;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        details>summary {
+            list-style: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details>summary::before {
+            content: '▶';
+            display: inline-block;
+            font-size: 0.6em;
+            margin-right: 6px;
+            transition: transform 0.15s ease;
+            color: #9ca3af;
+            vertical-align: middle;
+        }
+
+        details[open]>summary::before {
+            transform: rotate(90deg);
         }
 
         .json-key {
@@ -168,30 +198,6 @@
             font-style: italic;
         }
 
-        .tree-caret {
-            cursor: pointer;
-            user-select: none;
-            display: inline-block;
-            margin-right: 4px;
-            transition: transform 0.1s ease;
-            color: #6b7280;
-        }
-
-        .tree-caret-down {
-            transform: rotate(90deg);
-        }
-
-        .nested {
-            padding-left: 20px;
-            overflow: hidden;
-            height: auto;
-        }
-
-        .collapsed {
-            height: 0;
-            display: none;
-        }
-
         .array-bracket,
         .object-brace {
             color: #4b5563;
@@ -200,6 +206,72 @@
         .dark .array-bracket,
         .dark .object-brace {
             color: #9ca3af;
+        }
+
+        .search-highlight {
+            background-color: rgba(251, 191, 36, 0.4);
+            border-radius: 2px;
+        }
+
+        .dark .search-highlight {
+            background-color: rgba(251, 191, 36, 0.3);
+        }
+
+        /* Realtime Validation Styles */
+        .valid-json {
+            border-color: #10b981 !important;
+            /* emerald-500 */
+            background-color: rgba(16, 185, 129, 0.01);
+        }
+
+        .invalid-json {
+            border-color: #ef4444 !important;
+            /* red-500 */
+            background-color: rgba(239, 68, 68, 0.01);
+        }
+
+        /* Top Error Banner */
+        #top-error-banner {
+            transition: all 0.2s ease-out;
+            transform-origin: top;
+        }
+
+        #top-error-banner.hidden {
+            display: none;
+        }
+
+        /* Dropdown for Convert */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            right: 0;
+            top: 100%;
+            margin-top: 0.25rem;
+        }
+
+        .dark .dropdown-content {
+            background-color: #171717;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Drag Overlay */
+        #drag-overlay {
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%236366F1FF' stroke-width='3' stroke-dasharray='12%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
         }
     </style>
 
@@ -213,8 +285,7 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- Fallback navigation for crawlers without JS -->
+
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
             <a href="/" class="underline">Home</a> |
@@ -242,32 +313,32 @@
                 </div>
                 <h1
                     class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
-                    JSON Formatter, Validator & TypeScript Converter
+                    JSON Formatter & Converter
                 </h1>
                 <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
-                    Parse, validate, beautify, minify JSON, and convert to TypeScript instantly. Includes Magic Fix and
-                    Tree View.
+                    Parse, validate, beautify, and convert JSON to TypeScript, YAML, and CSV instantly.
                 </p>
             </div>
 
-            <!-- Ad Placeholder -->
-            <div class="w-full max-w-4xl mx-auto my-16">
-                <div
-                    class="ad-placeholder border border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg h-32 flex flex-col items-center justify-center text-neutral-400">
-                    <span class="text-xs font-medium uppercase tracking-widest mb-1">Advertisement</span>
-                </div>
-            </div>
-
             <!-- Tool Interface -->
-            <div
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16 animate-fade-in">
+            <div id="json-formatter"
+                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16 animate-fade-in relative">
 
                 <!-- Toolbar -->
                 <div
                     class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3">
                     <div class="flex flex-wrap items-center gap-2">
+                        <!-- Primary Format Button -->
                         <button onclick="formatJSON(2)"
                             class="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium rounded-md transition-colors shadow-sm">
+                            <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                            Format / Validate
+                        </button>
+
+                        <div class="w-px h-6 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
+
+                        <button onclick="formatJSON(2)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
                             <i data-lucide="align-left" class="w-3.5 h-3.5"></i>
                             2 Spaces
                         </button>
@@ -284,18 +355,47 @@
                         <button onclick="magicFix()"
                             class="flex items-center gap-1.5 px-3 py-1.5 text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-xs font-medium rounded-md transition-colors">
                             <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
-                            Magic Fix
+                            Fix
                         </button>
-                        <!-- Added JSON to TypeScript converter button -->
-                        <button onclick="jsonToTypeScript()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors"
-                            title="Convert JSON to TypeScript interface">
-                            <i data-lucide="code" class="w-3.5 h-3.5"></i>
-                            JSON to TS
-                        </button>
+
+                        <!-- Divider -->
+                        <div class="w-px h-6 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
+
+                        <!-- Convert Dropdown -->
+                        <div class="dropdown">
+                            <button
+                                class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-all">
+                                <i data-lucide="arrow-right-left" class="w-3.5 h-3.5"></i>
+                                Convert To...
+                                <i data-lucide="chevron-down" class="w-3 h-3 ml-1"></i>
+                            </button>
+                            <div class="dropdown-content p-1">
+                                <button onclick="jsonToTypeScript()"
+                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    <i data-lucide="code-2" class="w-3.5 h-3.5"></i> TypeScript
+                                </button>
+                                <button onclick="jsonToYAML()"
+                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    <i data-lucide="file-code" class="w-3.5 h-3.5"></i> YAML
+                                </button>
+                                <button onclick="jsonToCSV()"
+                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    <i data-lucide="table" class="w-3.5 h-3.5"></i> CSV
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="document.getElementById('file-upload').click()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-xs font-medium transition-colors"
+                            title="Upload File">
+                            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                            Upload
+                        </button>
+                        <input type="file" id="file-upload" class="hidden" accept=".json,.txt"
+                            onchange="handleFileUpload(this)">
+
                         <button onclick="loadSample()"
                             class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-xs font-medium transition-colors">
                             Sample
@@ -305,8 +405,8 @@
                             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
                             Clear
                         </button>
-                        <button onclick="downloadJSON()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                        <button onclick="downloadOutput()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-sm">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i>
                             Save
                         </button>
@@ -317,15 +417,57 @@
                 <div
                     class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
                     <!-- Input -->
-                    <div class="flex flex-col h-full relative">
+                    <div class="flex flex-col h-full relative group" id="drop-zone">
                         <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500 flex justify-between">
-                            <span>Input</span>
-                            <span id="input-stats">0 chars</span>
+                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500 flex justify-between items-center shrink-0">
+                            <span class="flex items-center gap-2">
+                                Input
+                                <span
+                                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[10px] text-neutral-400">JSON</span>
+                                <!-- Realtime Status Indicator -->
+                                <span id="realtime-status" class="hidden flex items-center gap-1 ml-2 transition-all">
+                                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i>
+                                    <span class="text-emerald-600 dark:text-emerald-400 font-medium">Valid</span>
+                                </span>
+                            </span>
+                            <div class="flex items-center gap-3">
+                                <span id="auto-save-indicator"
+                                    class="opacity-0 transition-opacity duration-300 text-[10px] text-emerald-500 flex items-center gap-1">
+                                    <i data-lucide="save" class="w-3 h-3"></i> Saved
+                                </span>
+                                <span id="input-stats">0 chars</span>
+                            </div>
                         </div>
+
+                        <!-- Top Error Banner -->
+                        <div id="top-error-banner"
+                            class="hidden bg-red-50 dark:bg-red-900/20 border-b border-red-100 dark:border-red-900/50 p-3 animate-fade-in shrink-0">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="alert-circle"
+                                    class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-medium text-red-800 dark:text-red-300">Syntax Error</p>
+                                    <p id="top-error-message"
+                                        class="text-[11px] text-red-600 dark:text-red-400 font-mono mt-0.5 break-all line-clamp-2">
+                                    </p>
+                                </div>
+                                <button onclick="dismissError()"
+                                    class="text-red-400 hover:text-red-600 dark:hover:text-red-300">
+                                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Drag & Drop Overlay -->
+                        <div id="drag-overlay"
+                            class="absolute inset-2 z-20 hidden flex-col items-center justify-center bg-indigo-50/90 dark:bg-indigo-900/90 backdrop-blur-sm rounded-lg pointer-events-none transition-all">
+                            <i data-lucide="file-up" class="w-10 h-10 text-indigo-500 mb-2"></i>
+                            <p class="text-sm font-medium text-indigo-700 dark:text-indigo-300">Drop JSON file here</p>
+                        </div>
+
                         <textarea id="json-input"
-                            class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed"
-                            placeholder="Paste your JSON here..." spellcheck="false"></textarea>
+                            class="flex-1 w-full p-4 bg-transparent border-2 border-transparent focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed transition-colors"
+                            placeholder="Paste JSON here, or drag & drop a file..." spellcheck="false"></textarea>
                     </div>
 
                     <!-- Output -->
@@ -334,17 +476,40 @@
                             class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 flex justify-between items-center">
                             <div class="flex gap-2">
                                 <button onclick="switchView('text')" id="tab-text"
-                                    class="text-xs font-mono font-bold text-neutral-900 dark:text-white px-2 py-0.5 rounded bg-white dark:bg-neutral-800 shadow-sm transition-all">Text</button>
+                                    class="text-xs font-mono font-bold text-neutral-900 dark:text-white px-2 py-0.5 rounded bg-white dark:bg-neutral-800 shadow-sm transition-all border border-neutral-200 dark:border-neutral-700">Text</button>
                                 <button onclick="switchView('tree')" id="tab-tree"
-                                    class="text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white px-2 py-0.5 transition-all">Tree
-                                    View</button>
+                                    class="text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white px-2 py-0.5 transition-all border border-transparent">Tree</button>
+                            </div>
+
+                            <!-- Tree View Controls (Hidden by default) -->
+                            <div id="tree-controls"
+                                class="hidden flex items-center gap-2 mr-auto ml-4 border-l border-neutral-200 dark:border-neutral-700 pl-4">
+                                <div class="relative">
+                                    <i data-lucide="search"
+                                        class="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-neutral-400"></i>
+                                    <input type="text" id="tree-search" placeholder="Filter..."
+                                        oninput="filterTree(this.value)"
+                                        class="w-24 focus:w-40 transition-all pl-7 pr-2 py-0.5 text-xs bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:text-white placeholder:text-neutral-400">
+                                </div>
+                                <button onclick="expandAll()"
+                                    class="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded text-neutral-500"
+                                    title="Expand All">
+                                    <i data-lucide="chevrons-down-up" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <button onclick="collapseAll()"
+                                    class="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded text-neutral-500"
+                                    title="Collapse All">
+                                    <i data-lucide="chevrons-up-down" class="w-3.5 h-3.5"></i>
+                                </button>
                             </div>
 
                             <div class="flex items-center gap-2">
                                 <span id="status-badge"
                                     class="hidden text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Valid</span>
+                                <span id="format-badge"
+                                    class="hidden text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">JSON</span>
                                 <button onclick="copyOutput()" id="copy-btn"
-                                    class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                                    class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800"
                                     title="Copy to Clipboard">
                                     <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                                 </button>
@@ -353,540 +518,591 @@
 
                         <div class="relative flex-1 overflow-hidden">
                             <!-- Text View -->
-                             
                             <textarea id="json-output" readonly
                                 class="w-full h-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-700 dark:text-neutral-300 resize-none outline-none leading-relaxed"
                                 placeholder="Result will appear here..."></textarea>
 
                             <!-- Tree View (Hidden by default) -->
-                            <div id="json-tree-view" class="hidden w-full h-full p-4 overflow-auto bg-transparent">
+                            <div id="json-tree-view"
+                                class="hidden w-full h-full p-4 overflow-auto bg-transparent scrollbar-thin">
                                 <div class="text-neutral-400 italic text-center mt-20 text-xs">Parse JSON to view tree
                                     structure</div>
                             </div>
 
-                            <!-- Error Overlay -->
-                            <div id="error-box"
-                                class="hidden absolute bottom-4 left-4 right-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg backdrop-blur-sm shadow-lg">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="alert-circle"
-                                        class="w-5 h-5 text-red-600 dark:text-red-400 shrink-0 mt-0.5"></i>
-                                    <div>
-                                        <h4 class="text-sm font-medium text-red-800 dark:text-red-300">Invalid JSON</h4>
-                                        <p id="error-message"
-                                            class="text-xs text-red-600 dark:text-red-400 mt-1 font-mono break-all"></p>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Error Box Removed (Moved to top) -->
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SEO Content -->
-            <div class="max-w-4xl mx-auto space-y-16 mb-20">
-            
+            <!-- New educational SEO section: The Modern Language of Data -->
+            <section class="mt-20 pt-16 border-t border-neutral-200 dark:border-neutral-800">
                 <article class="prose prose-neutral dark:prose-invert max-w-none">
-                    <h2 class="font-display text-2xl font-semibold mb-6">What makes a valid JSON?</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400">
-                        JSON (JavaScript Object Notation) is a lightweight data-interchange format. To be considered
-                        valid, it must strictly follow these rules:
+                    <h2 class="font-display text-3xl font-semibold mb-4 text-neutral-900 dark:text-white">The Modern
+                        Language of
+                        Data: A Deep Dive into JSON</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed mb-8">
+                        If you've ever worked with APIs or exchanged data between applications, you've encountered
+                        <strong>JSON</strong>. Pronounced like the name "Jason," JSON has become the world's most
+                        beloved data
+                        interchange format. But what makes it so special? Let's explore this essential technology that
+                        powers
+                        modern web development.
                     </p>
-                    <ul class="text-neutral-600 dark:text-neutral-400 list-disc pl-5 space-y-2 mt-4">
-                        <li>Data is in name/value pairs.</li>
-                        <li>Data is separated by commas.</li>
-                        <li>Curly braces <code>{}</code> hold objects.</li>
-                        <li>Square brackets <code>[]</code> hold arrays.</li>
-                        <li>Keys must be strings enclosed in double quotes <code>"key"</code>.</li>
-                    </ul>
-            
-                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Common Syntax Errors & Fixes</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400">Our <strong>Magic Fix</strong> button attempts to
-                        automatically correct these common mistakes:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 not-prose">
-                        <div class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-                            <h3 class="font-medium text-red-800 dark:text-red-300 mb-2 flex items-center gap-2"><i data-lucide="x"
-                                    class="w-4 h-4"></i> Trailing Commas</h3>
-                            <code class="text-xs bg-white dark:bg-black p-1 rounded">{"a": 1,}</code>
-                        </div>
-                        <div class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-                            <h3 class="font-medium text-red-800 dark:text-red-300 mb-2 flex items-center gap-2"><i data-lucide="x"
-                                    class="w-4 h-4"></i> Single Quotes</h3>
-                            <code class="text-xs bg-white dark:bg-black p-1 rounded">{'a': 'value'}</code>
-                        </div>
+
+                    <!-- What is JSON Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-12 mb-4 text-neutral-900 dark:text-white">What is
+                        JSON?
+                    </h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                        <strong>JSON</strong> stands for JavaScript Object Notation. Created in 2001 by Douglas
+                        Crockford, it's
+                        a minimalist, text-based format designed for lightweight data exchange between servers and
+                        clients.
+                        While inspired by JavaScript syntax, JSON is completely language-independent.
+                    </p>
+                    <div
+                        class="bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-200 dark:border-indigo-900/30 rounded-lg p-6 not-prose mb-6">
+                        <h4 class="font-medium text-neutral-900 dark:text-white mb-3">Design Principles:</h4>
+                        <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2">
+                            <li class="flex items-start gap-2"><span
+                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Minimal and
+                                    textual—no
+                                    unnecessary complexity</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Easy for
+                                    humans to
+                                    read and write</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Simple for
+                                    machines to
+                                    parse and generate</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Avoids feature
+                                    creep
+                                    to remain stable—it doesn't even have a version number</span></li>
+                        </ul>
                     </div>
-            
-                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Format Comparison</h2>
-                    <div class="overflow-x-auto not-prose rounded-lg border border-neutral-200 dark:border-neutral-800">
-                        <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-400">
-                            <thead class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-white font-medium">
-                                <tr>
-                                    <th class="p-4">Feature</th>
-                                    <th class="p-4">JSON</th>
-                                    <th class="p-4">XML</th>
-                                    <th class="p-4">YAML</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800 bg-white dark:bg-black">
-                                <tr>
-                                    <td class="p-4 font-medium">Readability</td>
-                                    <td class="p-4">High</td>
-                                    <td class="p-4">Low</td>
-                                    <td class="p-4">Very High</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-4 font-medium">Parsing Speed</td>
-                                    <td class="p-4 text-emerald-600 font-semibold">Fastest</td>
-                                    <td class="p-4">Slow</td>
-                                    <td class="p-4">Medium</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-4 font-medium">Comments</td>
-                                    <td class="p-4">No</td>
-                                    <td class="p-4">Yes</td>
-                                    <td class="p-4">Yes</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            
-                    <h2 class="font-display text-2xl font-semibold mt-12 mb-6">Frequently Asked Questions</h2>
-                    <div class="not-prose space-y-4">
-                        <details
-                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
-                            <summary
-                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
-                                <span>Is my data sent to a server?</span>
-                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
-                                        class="w-4 h-4"></i></span>
-                            </summary>
-                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                                No. This tool runs entirely in your browser using JavaScript. Your JSON data never
-                                leaves your device.
-                            </div>
-                        </details>
-                        <details
-                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
-                            <summary
-                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
-                                <span>Can this tool handle large files?</span>
-                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
-                                        class="w-4 h-4"></i></span>
-                            </summary>
-                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                                Yes, it is optimized for performance. However, extremely large files (10MB+) might cause
-                                slight delays depending on your device's RAM since everything is processed client-side.
-                            </div>
-                        </details>
-                        <details
-                            class="group bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg open:ring-1 open:ring-indigo-500/20">
-                            <summary
-                                class="flex justify-between items-center p-4 font-medium cursor-pointer list-none text-neutral-900 dark:text-white">
-                                <span>What does Minify do?</span>
-                                <span class="transition group-open:rotate-180"><i data-lucide="chevron-down"
-                                        class="w-4 h-4"></i></span>
-                            </summary>
-                            <div class="px-4 pb-4 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                                Minification removes all unnecessary whitespace, newlines, and indentation from the
-                                JSON this reduces the file size, making it ideal for data transmission.
-                            </div>
-                        </details>
-                    </div>
-                </article>
-            
-                <section>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
-                            <i data-lucide="wrench" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
-                        </div>
-                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">Related Tools</h2>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <a href="/jwt-decoder"
-                            class="block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500/50 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all group">
-                            <h3
-                                class="font-medium text-neutral-900 dark:text-white text-sm mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                                JWT Decoder</h3>
-                            <p class="text-xs text-neutral-500">Decode JSON Web Tokens instantly.</p>
-                        </a>
-                        <a href="/base64-encoder"
-                            class="block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500/50 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all group">
-                            <h3
-                                class="font-medium text-neutral-900 dark:text-white text-sm mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                                Base64 Converter</h3>
-                            <p class="text-xs text-neutral-500">Encode and decode Base64 strings.</p>
-                        </a>
-                        <a href="/hash-generator"
-                            class="block p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-indigo-500/50 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all group">
-                            <h3
-                                class="font-medium text-neutral-900 dark:text-white text-sm mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                                Hash Generator</h3>
-                            <p class="text-xs text-neutral-500">MD5, SHA-256, SHA-512 hashing.</p>
-                        </a>
-                    </div>
-                </section>
-            
-                <!-- New educational SEO section: The Modern Language of Data -->
-                <section class="mt-20 pt-16 border-t border-neutral-200 dark:border-neutral-800">
-                    <article class="prose prose-neutral dark:prose-invert max-w-none">
-                        <h2 class="font-display text-3xl font-semibold mb-4 text-neutral-900 dark:text-white">The Modern Language of
-                            Data: A Deep Dive into JSON</h2>
-                        <p class="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed mb-8">
-                            If you've ever worked with APIs or exchanged data between applications, you've encountered
-                            <strong>JSON</strong>. Pronounced like the name "Jason," JSON has become the world's most beloved data
-                            interchange format. But what makes it so special? Let's explore this essential technology that powers
-                            modern web development.
-                        </p>
-            
-                        <!-- What is JSON Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-12 mb-4 text-neutral-900 dark:text-white">What is JSON?
-                        </h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-4">
-                            <strong>JSON</strong> stands for JavaScript Object Notation. Created in 2001 by Douglas Crockford, it's
-                            a minimalist, text-based format designed for lightweight data exchange between servers and clients.
-                            While inspired by JavaScript syntax, JSON is completely language-independent.
-                        </p>
+
+                    <!-- JSON Structure Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The
+                        Blueprint:
+                        How JSON is Structured</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        JSON is built on two universal structures that virtually all programming languages understand:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-6">
                         <div
-                            class="bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-200 dark:border-indigo-900/30 rounded-lg p-6 not-prose mb-6">
-                            <h4 class="font-medium text-neutral-900 dark:text-white mb-3">Design Principles:</h4>
-                            <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2">
-                                <li class="flex items-start gap-2"><span
-                                        class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Minimal and textual—no
-                                        unnecessary complexity</span></li>
-                                <li class="flex items-start gap-2"><span
-                                        class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Easy for humans to
-                                        read and write</span></li>
-                                <li class="flex items-start gap-2"><span
-                                        class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Simple for machines to
-                                        parse and generate</span></li>
-                                <li class="flex items-start gap-2"><span
-                                        class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Avoids feature creep
-                                        to remain stable—it doesn't even have a version number</span></li>
-                            </ul>
+                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
+                            <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span class="text-lg text-fuchsia-500">{}</span> Objects
+                            </h4>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An unordered collection of
+                                key-value
+                                pairs enclosed in curly braces.</p>
+                            <code
+                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 overflow-x-auto">{"name": "John", "age": 30}</code>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Keys must always be
+                                strings in
+                                double quotes</p>
                         </div>
-            
-                        <!-- JSON Structure Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The Blueprint:
-                            How JSON is Structured</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            JSON is built on two universal structures that virtually all programming languages understand:
-                        </p>
-            
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-6">
-                            <div
-                                class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
-                                <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                    <span class="text-lg text-fuchsia-500">{}</span> Objects
-                                </h4>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An unordered collection of key-value
-                                    pairs enclosed in curly braces.</p>
-                                <code
-                                    class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 overflow-x-auto">{"name": "John", "age": 30}</code>
-                                <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Keys must always be strings in
-                                    double quotes</p>
-                            </div>
-                            <div
-                                class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
-                                <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                    <span class="text-lg text-blue-500">[]</span> Arrays
-                                </h4>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An ordered list of values enclosed in
-                                    square brackets.</p>
-                                <code
-                                    class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 overflow-x-auto">["apple", "banana", 42]</code>
-                                <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Can contain any valid JSON
-                                    values</p>
-                            </div>
-                        </div>
-            
-                        <!-- Data Types Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The 6 JSON Data
-                            Types</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            JSON supports these core data types, ensuring compatibility across all programming languages:
-                        </p>
-            
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 not-prose mb-8">
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">1</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">String</h5>
-                                    <p class="text-xs text-neutral-500">Unicode characters in double quotes</p>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-blue-600 dark:text-blue-400 mt-0.5">2</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Number</h5>
-                                    <p class="text-xs text-neutral-500">Integers and decimals (no NaN or Infinity)</p>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-red-600 dark:text-red-400 mt-0.5">3</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Boolean</h5>
-                                    <p class="text-xs text-neutral-500">true or false</p>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-gray-600 dark:text-gray-400 mt-0.5">4</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Null</h5>
-                                    <p class="text-xs text-neutral-500">Represents an empty value</p>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-fuchsia-600 dark:text-fuchsia-400 mt-0.5">5</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Object</h5>
-                                    <p class="text-xs text-neutral-500">Nested structures allowed</p>
-                                </div>
-                            </div>
-                            <div
-                                class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                                <span class="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">6</span>
-                                <div>
-                                    <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Array</h5>
-                                    <p class="text-xs text-neutral-500">Lists within lists</p>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <!-- JSON vs XML Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON vs XML: Why
-                            JSON Won</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            Before JSON dominated, XML was the standard for data exchange. However, JSON offers significant
-                            advantages:
-                        </p>
-            
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
-                            <div
-                                class="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-4">
-                                <h5 class="font-semibold text-emerald-900 dark:text-emerald-100 mb-2 flex items-center gap-2">
-                                    <i data-lucide="zap" class="w-4 h-4"></i> Bandwidth
-                                </h5>
-                                <p class="text-sm text-emerald-800 dark:text-emerald-200">JSON is much more compact, using less
-                                    bandwidth and loading faster on mobile networks.</p>
-                            </div>
-                            <div
-                                class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                                <h5 class="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
-                                    <i data-lucide="cpu" class="w-4 h-4"></i> Parsing Speed
-                                </h5>
-                                <p class="text-sm text-blue-800 dark:text-blue-200">Browsers parse JSON natively with JavaScript,
-                                    whereas XML requires complex DOM operations.</p>
-                            </div>
-                            <div
-                                class="bg-violet-50 dark:bg-violet-900/10 border border-violet-200 dark:border-violet-900/30 rounded-lg p-4">
-                                <h5 class="font-semibold text-violet-900 dark:text-violet-100 mb-2 flex items-center gap-2">
-                                    <i data-lucide="code" class="w-4 h-4"></i> Direct Mapping
-                                </h5>
-                                <p class="text-sm text-violet-800 dark:text-violet-200">JSON maps directly to objects and arrays in
-                                    code, whereas XML has no natural mapping.</p>
-                            </div>
-                        </div>
-            
-                        <!-- JSON Parse and Stringify Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON Parse &
-                            Stringify: Core Operations</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            Two essential operations power JSON in every application:
-                        </p>
-            
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-8">
-                            <div class="border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10 p-5 rounded-lg">
-                                <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.stringify()</h5>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JavaScript object into a
-                                    JSON string for transmission or storage.</p>
-                                <code
-                                    class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 mb-2">const json = JSON.stringify({name: "John"})</code>
-                                <p class="text-xs text-neutral-500">Result: <code
-                                        class="bg-white dark:bg-black p-1 rounded">{"name":"John"}</code></p>
-                            </div>
-                            <div class="border-l-4 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-lg">
-                                <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.parse()</h5>
-                                <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JSON string back into a
-                                    usable JavaScript object.</p>
-                                <code
-                                    class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 mb-2">const obj = JSON.parse(jsonString)</code>
-                                <p class="text-xs text-neutral-500">Result: Accessible as <code
-                                        class="bg-white dark:bg-black p-1 rounded">obj.name</code></p>
-                            </div>
-                        </div>
-            
-                        <!-- JSON Validator & Best Practices -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">Validation &
-                            Security Best Practices</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            A <a href="#json-formatter"
-                                class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON validator</a> is
-                            essential for ensuring data integrity and security. Always validate incoming JSON to prevent injection
-                            attacks and data corruption.
-                        </p>
-            
                         <div
-                            class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg p-6 not-prose mb-8">
-                            <h5 class="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
-                                <i data-lucide="shield-alert" class="w-5 h-5"></i> Security Tips
+                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
+                            <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
+                                <span class="text-lg text-blue-500">[]</span> Arrays
+                            </h4>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An ordered list of values
+                                enclosed in
+                                square brackets.</p>
+                            <code
+                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 overflow-x-auto">["apple", "banana", 42]</code>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Can contain any valid
+                                JSON
+                                values</p>
+                        </div>
+                    </div>
+
+                    <!-- Data Types Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The 6
+                        JSON Data
+                        Types</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        JSON supports these core data types, ensuring compatibility across all programming languages:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 not-prose mb-8">
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span
+                                class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">1</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">String</h5>
+                                <p class="text-xs text-neutral-500">Unicode characters in double quotes</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span class="font-mono text-sm font-bold text-blue-600 dark:text-blue-400 mt-0.5">2</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Number</h5>
+                                <p class="text-xs text-neutral-500">Integers and decimals (no NaN or Infinity)</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span class="font-mono text-sm font-bold text-red-600 dark:text-red-400 mt-0.5">3</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Boolean</h5>
+                                <p class="text-xs text-neutral-500">true or false</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span class="font-mono text-sm font-bold text-gray-600 dark:text-gray-400 mt-0.5">4</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Null</h5>
+                                <p class="text-xs text-neutral-500">Represents an empty value</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span
+                                class="font-mono text-sm font-bold text-fuchsia-600 dark:text-fuchsia-400 mt-0.5">5</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Object</h5>
+                                <p class="text-xs text-neutral-500">Nested structures allowed</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            <span
+                                class="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">6</span>
+                            <div>
+                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Array</h5>
+                                <p class="text-xs text-neutral-500">Lists within lists</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JSON vs XML Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON vs
+                        XML: Why
+                        JSON Won</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        Before JSON dominated, XML was the standard for data exchange. However, JSON offers significant
+                        advantages:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
+                        <div
+                            class="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-4">
+                            <h5
+                                class="font-semibold text-emerald-900 dark:text-emerald-100 mb-2 flex items-center gap-2">
+                                <i data-lucide="zap" class="w-4 h-4"></i> Bandwidth
                             </h5>
-                            <ul class="text-sm text-amber-800 dark:text-amber-200 space-y-2">
-                                <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Always use a <a class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" href="/json-formatter"><strong>JSON validator</strong></a> before processing untrusted data</span></li>
-                                <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Implement server-side
-                                        validation to prevent JSON injection attacks</span></li>
-                                <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Never use
-                                        <code>eval()</code> to parse JSON—always use <code>JSON.parse()</code></span></li>
-                                <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Sanitize user input before
-                                        converting to JSON strings</span></li>
-                            </ul>
+                            <p class="text-sm text-emerald-800 dark:text-emerald-200">JSON is much more compact, using
+                                less
+                                bandwidth and loading faster on mobile networks.</p>
                         </div>
-            
-                        <!-- Advanced JSON Uses -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">Advanced JSON
-                            Applications</h3>
-                        <p class="text-neutral-600 dark:text-neutral-400 mb-6">
-                            JSON has evolved far beyond simple data exchange. Here are specialized formats built on JSON:
-                        </p>
-            
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
-                            <div
-                                class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                                <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JWT</h5>
-                                <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">JSON Web Tokens for secure
-                                    authentication and authorization in APIs.</p>
-                                <span
-                                    class="inline-block text-xs font-mono bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-200 px-2 py-1 rounded">Authentication</span>
-                            </div>
-                            <div
-                                class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                                <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON-LD</h5>
-                                <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Linked Data format for SEO and
-                                    structured data on the web.</p>
-                                <span
-                                    class="inline-block text-xs font-mono bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-200 px-2 py-1 rounded">SEO</span>
-                            </div>
-                            <div
-                                class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                                <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">GeoJSON</h5>
-                                <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Represents geographic features like
-                                    coordinates and polygons.</p>
-                                <span
-                                    class="inline-block text-xs font-mono bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-200 px-2 py-1 rounded">Mapping</span>
-                            </div>
-                        </div>
-            
-                        <!-- Infographic Section -->
-                        <h3 class="font-display text-2xl font-semibold mt-10 mb-6 text-neutral-900 dark:text-white">JSON: The
-                            Universal Language of Data</h3>
                         <div
-                            class="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
-                            <img src="https://i.ibb.co.com/0yyKLfPZ/json-universal-language-of-data-infographic.png"
-                                alt="JSON: The Universal Language of Data infographic showing statistics about JSON efficiency, file sizes, and parsing speeds"
-                                class="w-full h-auto" loading="lazy">
+                            class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
+                            <h5 class="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+                                <i data-lucide="cpu" class="w-4 h-4"></i> Parsing Speed
+                            </h5>
+                            <p class="text-sm text-blue-800 dark:text-blue-200">Browsers parse JSON natively with
+                                JavaScript,
+                                whereas XML requires complex DOM operations.</p>
                         </div>
-            
-                        <!-- Conclusion -->
-                        <p class="text-neutral-600 dark:text-neutral-400 mt-8 text-base leading-relaxed">
-                            <strong>JSON</strong> has become the de facto standard for data interchange because of its simplicity,
-                            efficiency, and universal support. Whether you're building REST APIs, configuring cloud services, or
-                            exchanging data between microservices, understanding JSON—and using the right <a href="#json-formatter"
-                                class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON formatter</a> tools—is
-                            essential for modern development.
-                        </p>
-                    </article>
-                </section>
-            </div>
+                        <div
+                            class="bg-violet-50 dark:bg-violet-900/10 border border-violet-200 dark:border-violet-900/30 rounded-lg p-4">
+                            <h5 class="font-semibold text-violet-900 dark:text-violet-100 mb-2 flex items-center gap-2">
+                                <i data-lucide="code" class="w-4 h-4"></i> Direct Mapping
+                            </h5>
+                            <p class="text-sm text-violet-800 dark:text-violet-200">JSON maps directly to objects and
+                                arrays in
+                                code, whereas XML has no natural mapping.</p>
+                        </div>
+                    </div>
+
+                    <!-- JSON Parse and Stringify Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON
+                        Parse &
+                        Stringify: Core Operations</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        Two essential operations power JSON in every application:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-8">
+                        <div class="border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10 p-5 rounded-lg">
+                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.stringify()</h5>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JavaScript object
+                                into a
+                                JSON string for transmission or storage.</p>
+                            <code
+                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 mb-2">const json = JSON.stringify({name: "John"})</code>
+                            <p class="text-xs text-neutral-500">Result: <code
+                                    class="bg-white dark:bg-black p-1 rounded">{"name":"John"}</code></p>
+                        </div>
+                        <div class="border-l-4 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-lg">
+                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.parse()</h5>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JSON string back
+                                into a
+                                usable JavaScript object.</p>
+                            <code
+                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 mb-2">const obj = JSON.parse(jsonString)</code>
+                            <p class="text-xs text-neutral-500">Result: Accessible as <code
+                                    class="bg-white dark:bg-black p-1 rounded">obj.name</code></p>
+                        </div>
+                    </div>
+
+                    <!-- JSON Validator & Best Practices -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">
+                        Validation &
+                        Security Best Practices</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        A <a href="#json-formatter"
+                            class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON validator</a>
+                        is
+                        essential for ensuring data integrity and security. Always validate incoming JSON to prevent
+                        injection
+                        attacks and data corruption.
+                    </p>
+
+                    <div
+                        class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg p-6 not-prose mb-8">
+                        <h5 class="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
+                            <i data-lucide="shield-alert" class="w-5 h-5"></i> Security Tips
+                        </h5>
+                        <ul class="text-sm text-amber-800 dark:text-amber-200 space-y-2">
+                            <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Always use a <a
+                                        class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+                                        href="/json-formatter"><strong>JSON validator</strong></a> before processing
+                                    untrusted data</span></li>
+                            <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Implement
+                                    server-side
+                                    validation to prevent JSON injection attacks</span></li>
+                            <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Never use
+                                    <code>eval()</code> to parse JSON—always use <code>JSON.parse()</code></span></li>
+                            <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Sanitize user
+                                    input before
+                                    converting to JSON strings</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Advanced JSON Uses -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">Advanced
+                        JSON
+                        Applications</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                        JSON has evolved far beyond simple data exchange. Here are specialized formats built on JSON:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
+                        <div
+                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
+                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JWT</h5>
+                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">JSON Web Tokens for secure
+                                authentication and authorization in APIs.</p>
+                            <span
+                                class="inline-block text-xs font-mono bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-200 px-2 py-1 rounded">Authentication</span>
+                        </div>
+                        <div
+                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
+                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON-LD</h5>
+                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Linked Data format for SEO
+                                and
+                                structured data on the web.</p>
+                            <span
+                                class="inline-block text-xs font-mono bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-200 px-2 py-1 rounded">SEO</span>
+                        </div>
+                        <div
+                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
+                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">GeoJSON</h5>
+                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Represents geographic
+                                features like
+                                coordinates and polygons.</p>
+                            <span
+                                class="inline-block text-xs font-mono bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-200 px-2 py-1 rounded">Mapping</span>
+                        </div>
+                    </div>
+
+                    <!-- Infographic Section -->
+                    <h3 class="font-display text-2xl font-semibold mt-10 mb-6 text-neutral-900 dark:text-white">JSON:
+                        The
+                        Universal Language of Data</h3>
+                    <div
+                        class="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+                        <img src="https://i.ibb.co.com/0yyKLfPZ/json-universal-language-of-data-infographic.png"
+                            alt="JSON: The Universal Language of Data infographic showing statistics about JSON efficiency, file sizes, and parsing speeds"
+                            class="w-full h-auto" loading="lazy">
+                    </div>
+
+                    <!-- Conclusion -->
+                    <p class="text-neutral-600 dark:text-neutral-400 mt-8 text-base leading-relaxed">
+                        <strong>JSON</strong> has become the de facto standard for data interchange because of its
+                        simplicity,
+                        efficiency, and universal support. Whether you're building REST APIs, configuring cloud
+                        services, or
+                        exchanging data between microservices, understanding JSON—and using the right <a
+                            href="#json-formatter"
+                            class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON formatter</a>
+                        tools—is
+                        essential for modern development.
+                    </p>
+                </article>
+            </section>
         </div>
+
     </main>
 
-    
 
     <script src="layout.js"></script>
 
     <script>
+        // State Management
+        let currentMode = 'json'; // json, ts, yaml, csv
+        const inputArea = document.getElementById('json-input');
+        const outputArea = document.getElementById('json-output');
+        const dropZone = document.getElementById('drop-zone');
+        let debounceTimer;
+
+        // Initialization
+        window.onload = function () {
+            lucide.createIcons();
+            loadFromStorage();
+        }
+
+        // --- Realtime Validation ---
+        function validateLive(value) {
+            const statusEl = document.getElementById('realtime-status');
+            const inputEl = document.getElementById('json-input');
+
+            if (!value.trim()) {
+                statusEl.classList.add('hidden');
+                inputEl.classList.remove('valid-json', 'invalid-json');
+                dismissError();
+                return;
+            }
+
+            try {
+                JSON.parse(value);
+                // Valid
+                statusEl.classList.remove('hidden');
+                statusEl.innerHTML = '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i><span class="text-emerald-600 dark:text-emerald-400 font-medium">Valid</span>';
+                inputEl.classList.remove('invalid-json');
+                inputEl.classList.add('valid-json');
+                dismissError();
+            } catch (e) {
+                // Invalid
+                statusEl.classList.remove('hidden');
+                statusEl.innerHTML = '<i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-500"></i><span class="text-red-600 dark:text-red-400 font-medium">Invalid</span>';
+                inputEl.classList.remove('valid-json');
+                inputEl.classList.add('invalid-json');
+
+                // Show error message on top (Realtime)
+                showError(e.message, true);
+            }
+            lucide.createIcons();
+        }
+
+        // --- Core Formatting & Conversion ---
 
         function formatJSON(indent = 2) {
-            const input = document.getElementById('json-input').value.trim();
-            if (!input) return showError('Please paste JSON first');
+            currentMode = 'json';
+            const input = inputArea.value.trim();
+            if (!input) {
+                showError('Please paste JSON first');
+                return;
+            }
             try {
                 const parsed = JSON.parse(input);
                 const formatted = JSON.stringify(parsed, null, indent);
-                displayOutput(formatted);
+                displayOutput(formatted, 'JSON');
                 updateStats();
+                saveToStorage();
+
+                // If tree view is active, update it
+                if (!document.getElementById('json-tree-view').classList.contains('hidden')) {
+                    renderTree(formatted);
+                }
+
+                // Explicitly valid state
+                validateLive(formatted);
             } catch (e) {
                 showError(e.message);
             }
         }
 
         function minifyJSON() {
-            const input = document.getElementById('json-input').value.trim();
+            currentMode = 'json';
+            const input = inputArea.value.trim();
             if (!input) return showError('Please paste JSON first');
             try {
                 const parsed = JSON.parse(input);
                 const minified = JSON.stringify(parsed);
-                displayOutput(minified);
+                displayOutput(minified, 'JSON');
                 updateStats();
+                saveToStorage();
             } catch (e) {
                 showError(e.message);
             }
         }
 
-        function processJSON(indent) {
-            const input = document.getElementById('json-input').value.trim();
-            try {
-                const parsed = JSON.parse(input);
-                const formatted = JSON.stringify(parsed, null, indent);
-                document.getElementById('json-output').value = formatted;
-                document.getElementById('status-badge').textContent = 'Valid';
-                document.getElementById('status-badge').classList.remove('hidden');
-                document.getElementById('error-box').classList.add('hidden');
-                updateStats();
-            } catch (error) {
-                showError(error.message);
-            }
-        }
-
         function magicFix() {
-            let input = document.getElementById('json-input').value;
-            input = input.replace(/,\s*}/g, '}').replace(/,\s*\]/g, ']');
-            input = input.replace(/'/g, '"');
-            input = input.replace(/(\w+):/g, '"$1":');
-            document.getElementById('json-input').value = input;
+            let input = inputArea.value;
+            // Common fixes
+            input = input.replace(/,\s*}/g, '}').replace(/,\s*\]/g, ']'); // Trailing commas
+            input = input.replace(/'/g, '"'); // Single quotes to double
+            input = input.replace(/(\w+):/g, '"$1":'); // Unquoted keys
+            inputArea.value = input;
             formatJSON(2);
         }
 
         function jsonToTypeScript() {
-            const input = document.getElementById('json-input').value.trim();
+            const input = inputArea.value.trim();
             if (!input) return showError('Please paste JSON first');
             try {
                 const parsed = JSON.parse(input);
                 const typescript = generateTypeScriptInterface(parsed);
-                displayOutput(typescript);
-                updateStats();
+                displayOutput(typescript, 'TypeScript');
+                currentMode = 'ts';
+                switchView('text'); // Force text view for TS
             } catch (e) {
                 showError('Invalid JSON: ' + e.message);
             }
         }
 
+        function jsonToYAML() {
+            const input = inputArea.value.trim();
+            if (!input) return showError('Please paste JSON first');
+            try {
+                const parsed = JSON.parse(input);
+                const yaml = toYAML(parsed);
+                displayOutput(yaml, 'YAML');
+                currentMode = 'yaml';
+                switchView('text');
+            } catch (e) {
+                showError('Invalid JSON: ' + e.message);
+            }
+        }
+
+        function jsonToCSV() {
+            const input = inputArea.value.trim();
+            if (!input) return showError('Please paste JSON first');
+            try {
+                const parsed = JSON.parse(input);
+                const csv = toCSV(parsed);
+                displayOutput(csv, 'CSV');
+                currentMode = 'csv';
+                switchView('text');
+            } catch (e) {
+                showError('Conversion Error: ' + e.message);
+            }
+        }
+
+        // --- Helper Generators ---
+
+        function toYAML(obj, indent = 0) {
+            const spacing = '  '.repeat(indent);
+            let yaml = '';
+
+            if (obj === null) return 'null';
+            if (typeof obj !== 'object') return String(obj);
+
+            if (Array.isArray(obj)) {
+                if (obj.length === 0) return '[]';
+                obj.forEach(item => {
+                    if (typeof item === 'object' && item !== null) {
+                        yaml += `${spacing}- \n${toYAML(item, indent + 1).replace(/^/gm, '  ')}`;
+                    } else {
+                        yaml += `${spacing}- ${item}\n`;
+                    }
+                });
+                return simpleYAML(obj, indent);
+            }
+
+            return simpleYAML(obj, indent);
+        }
+
+        function simpleYAML(data, indentLevel = 0) {
+            let output = "";
+            const indent = "  ".repeat(indentLevel);
+
+            if (Array.isArray(data)) {
+                data.forEach(item => {
+                    if (typeof item === 'object' && item !== null) {
+                        output += `${indent}-\n${simpleYAML(item, indentLevel + 1)}`;
+                    } else {
+                        output += `${indent}- ${item}\n`;
+                    }
+                });
+            } else if (typeof data === 'object' && data !== null) {
+                Object.keys(data).forEach(key => {
+                    const value = data[key];
+                    if (typeof value === 'object' && value !== null) {
+                        if (Array.isArray(value) && value.length === 0) {
+                            output += `${indent}${key}: []\n`;
+                        } else if (Object.keys(value).length === 0) {
+                            output += `${indent}${key}: {}\n`;
+                        } else {
+                            output += `${indent}${key}:\n${simpleYAML(value, indentLevel + 1)}`;
+                        }
+                    } else {
+                        output += `${indent}${key}: ${value}\n`;
+                    }
+                });
+            } else {
+                output += `${indent}${data}\n`;
+            }
+            return output;
+        }
+
+        function toCSV(obj) {
+            let array = Array.isArray(obj) ? obj : [obj];
+            if (array.length === 0) return '';
+
+            // Flatten objects
+            const flatten = (data, prefix = '') => {
+                let result = {};
+                for (const key in data) {
+                    if (typeof data[key] === 'object' && data[key] !== null) {
+                        const flatObject = flatten(data[key], prefix + key + '.');
+                        result = { ...result, ...flatObject };
+                    } else {
+                        result[prefix + key] = data[key];
+                    }
+                }
+                return result;
+            };
+
+            const flatArray = array.map(item => flatten(item));
+
+            // Get all unique headers
+            const headers = Array.from(new Set(flatArray.flatMap(Object.keys)));
+
+            const csvRows = [
+                headers.join(','),
+                ...flatArray.map(row => headers.map(header => {
+                    const val = row[header] === undefined ? '' : row[header];
+                    return JSON.stringify(val).replace(/\\"/g, '""'); // Handle quotes
+                }).join(','))
+            ];
+
+            return csvRows.join('\n');
+        }
+
         function generateTypeScriptInterface(obj, name = 'Root', indent = '') {
             let ts = '';
-            if (indent === '') {
-                ts += `interface ${name} {\n`;
-            }
+            if (indent === '') ts += `interface ${name} {\n`;
 
             for (const [key, value] of Object.entries(obj)) {
                 const type = getTypeScriptType(value);
-                ts += `${indent}  ${key}: ${type};\n`;
+                const safeKey = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : `"${key}"`;
+                ts += `${indent}  ${safeKey}: ${type};\n`;
             }
 
-            if (indent === '') {
-                ts += `}\n`;
-            }
-
+            if (indent === '') ts += `}\n`;
             return ts;
         }
 
@@ -898,169 +1114,334 @@
                 return `${type}[]`;
             }
             if (typeof value === 'object') {
-                const nested = generateTypeScriptInterface(value, '', '');
                 return `{ ${Object.keys(value).map(k => `${k}: ${getTypeScriptType(value[k])}`).join('; ')} }`;
             }
-            if (typeof value === 'string') return 'string';
-            if (typeof value === 'number') return 'number';
-            if (typeof value === 'boolean') return 'boolean';
-            return 'unknown';
+            return typeof value;
         }
+
+        // --- Interaction & Storage ---
+
+        function saveToStorage() {
+            localStorage.setItem('json_input_backup', inputArea.value);
+            const indicator = document.getElementById('auto-save-indicator');
+            indicator.classList.remove('opacity-0');
+            setTimeout(() => indicator.classList.add('opacity-0'), 2000);
+        }
+
+        function loadFromStorage() {
+            const saved = localStorage.getItem('json_input_backup');
+            if (saved) {
+                inputArea.value = saved;
+                updateStats();
+                // Trigger debounce validation
+                validateLive(saved);
+            }
+        }
+
+        inputArea.addEventListener('input', () => {
+            updateStats();
+
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                validateLive(inputArea.value);
+                saveToStorage();
+            }, 300); // 300ms debounce
+        });
+
+        function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            readFile(file);
+        }
+
+        function readFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                inputArea.value = e.target.result;
+                formatJSON(2);
+            };
+            reader.readAsText(file);
+        }
+
+        // Drag & Drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        dropZone.addEventListener('dragenter', () => {
+            document.getElementById('drag-overlay').classList.remove('hidden');
+            document.getElementById('drag-overlay').classList.add('flex');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            if (e.relatedTarget && !dropZone.contains(e.relatedTarget)) {
+                document.getElementById('drag-overlay').classList.add('hidden');
+                document.getElementById('drag-overlay').classList.remove('flex');
+            }
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            document.getElementById('drag-overlay').classList.add('hidden');
+            document.getElementById('drag-overlay').classList.remove('flex');
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) readFile(files[0]);
+        });
+
+
+        // --- UI & View Management ---
 
         function switchView(view) {
             const textView = document.getElementById('json-output');
             const treeView = document.getElementById('json-tree-view');
+            const treeControls = document.getElementById('tree-controls');
             const tabText = document.getElementById('tab-text');
             const tabTree = document.getElementById('tab-tree');
 
             if (view === 'text') {
                 textView.classList.remove('hidden');
                 treeView.classList.add('hidden');
-                tabText.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800');
-                tabTree.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800');
+                treeControls.classList.add('hidden');
+
+                tabText.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabText.classList.remove('border-transparent');
+
+                tabTree.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabTree.classList.add('border-transparent');
             } else {
+                if (currentMode !== 'json') {
+                    showError("Tree view is only available for JSON");
+                    return;
+                }
+                // Try to render tree, might fail if invalid JSON in output
+                try {
+                    renderTree(inputArea.value); // Re-render from input to be safe
+                } catch (e) {
+                    showError("Valid JSON required for tree view");
+                    return;
+                }
+
                 textView.classList.add('hidden');
                 treeView.classList.remove('hidden');
-                tabTree.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800');
-                tabText.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800');
-                renderTree(document.getElementById('json-output').value);
+                treeControls.classList.remove('hidden');
+                treeControls.classList.add('flex');
+
+                tabTree.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabTree.classList.remove('border-transparent');
+
+                tabText.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabText.classList.add('border-transparent');
             }
         }
 
+        // Improved Tree Rendering with Details/Summary
         function renderTree(jsonStr) {
             try {
                 const data = JSON.parse(jsonStr);
                 const treeView = document.getElementById('json-tree-view');
                 treeView.innerHTML = createTreeNode('root', data, true);
+                lucide.createIcons();
             } catch (e) {
-                console.error('Tree render error:', e);
+                // Silent catch for tree view
             }
         }
 
         function createTreeNode(key, value, isRoot = false) {
-            let html = '';
-            if (isRoot) {
-                html = `<div class="json-tree">`;
+            if (value === null) return `<div class="ml-4"><span class="json-key">"${key}"</span>: <span class="json-null">null</span></div>`;
+
+            const isArray = Array.isArray(value);
+            const isObject = typeof value === 'object';
+
+            if (isObject) {
+                const isEmpty = isArray ? value.length === 0 : Object.keys(value).length === 0;
+                const openBracket = isArray ? '[' : '{';
+                const closeBracket = isArray ? ']' : '}';
+
+                if (isEmpty) {
+                    return `<div class="ml-4"><span class="json-key">"${key}"</span>: <span class="object-brace">${openBracket}${closeBracket}</span></div>`;
+                }
+
+                let html = `<details open class="ml-4 group">
+                    <summary class="hover:bg-black/5 dark:hover:bg-white/5 rounded px-1 -ml-1">
+                        <span class="json-key">"${key}"</span>: <span class="object-brace">${openBracket}</span>
+                        <span class="text-neutral-400 text-[10px] ml-2">${isArray ? value.length + ' items' : Object.keys(value).length + ' keys'}</span>
+                    </summary>
+                    <div class="border-l border-neutral-200 dark:border-neutral-800 ml-1 pl-1">`;
+
+                if (isArray) {
+                    value.forEach((item, index) => {
+                        html += typeof item === 'object' && item !== null
+                            ? createTreeNode(index, item)
+                            : `<div class="ml-4"><span class="text-neutral-400 text-xs mr-2">${index}:</span>${formatPrimitive(item)}</div>`;
+                    });
+                } else {
+                    Object.entries(value).forEach(([k, v]) => {
+                        html += typeof v === 'object' && v !== null
+                            ? createTreeNode(k, v)
+                            : `<div class="ml-4"><span class="json-key">"${k}"</span>: ${formatPrimitive(v)}</div>`;
+                    });
+                }
+
+                html += `</div><div class="ml-4 object-brace">${closeBracket}</div></details>`;
+                return html;
             }
 
-            if (value === null) {
-                html += `<div class="json-null">null</div>`;
-            } else if (Array.isArray(value)) {
-                html += `<div><span class="array-bracket">[</span>`;
-                value.forEach((item, i) => {
-                    html += createTreeNode(`[${i}]`, item);
-                });
-                html += `<span class="array-bracket">]</span></div>`;
-            } else if (typeof value === 'object') {
-                html += `<div><span class="object-brace">{</span>`;
-                Object.entries(value).forEach(([k, v]) => {
-                    html += `<div style="margin-left: 20px;"><span class="json-key">"${k}"</span>: `;
-                    if (typeof v === 'object' && v !== null) {
-                        html += createTreeNode(k, v);
-                    } else if (typeof v === 'string') {
-                        html += `<span class="json-string">"${v}"</span>`;
-                    } else if (typeof v === 'number') {
-                        html += `<span class="json-number">${v}</span>`;
-                    } else if (typeof v === 'boolean') {
-                        html += `<span class="json-boolean">${v}</span>`;
-                    }
-                    html += `</div>`;
-                });
-                html += `<span class="object-brace">}</span></div>`;
-            } else if (typeof value === 'string') {
-                html += `<span class="json-string">"${value}"</span>`;
-            } else if (typeof value === 'number') {
-                html += `<span class="json-number">${value}</span>`;
-            } else if (typeof value === 'boolean') {
-                html += `<span class="json-boolean">${value}</span>`;
+            return `<div class="ml-4"><span class="json-key">"${key}"</span>: ${formatPrimitive(value)}</div>`;
+        }
+
+        function formatPrimitive(v) {
+            if (typeof v === 'string') return `<span class="json-string">"${v}"</span>`;
+            if (typeof v === 'number') return `<span class="json-number">${v}</span>`;
+            if (typeof v === 'boolean') return `<span class="json-boolean">${v}</span>`;
+            return `<span class="json-null">null</span>`;
+        }
+
+        // Tree Controls
+        function expandAll() {
+            document.querySelectorAll('#json-tree-view details').forEach(el => el.open = true);
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('#json-tree-view details').forEach(el => el.open = false);
+        }
+
+        function filterTree(query) {
+            const treeView = document.getElementById('json-tree-view');
+            if (!query) {
+                treeView.querySelectorAll('.hidden-node').forEach(el => el.classList.remove('hidden-node'));
+                treeView.querySelectorAll('.search-highlight').forEach(el => el.classList.remove('search-highlight'));
+                return;
             }
 
-            if (isRoot) {
-                html += `</div>`;
+            query = query.toLowerCase();
+            expandAll();
+
+            const walker = document.createTreeWalker(treeView, NodeFilter.SHOW_TEXT, null, false);
+            let node;
+            while (node = walker.nextNode()) {
+                const text = node.textContent.toLowerCase();
+                const parent = node.parentElement;
+                if (text === '{' || text === '}' || text === '[' || text === ']') continue;
+
+                if (text.includes(query)) {
+                    parent.classList.add('search-highlight');
+                } else {
+                    parent.classList.remove('search-highlight');
+                }
             }
-            return html;
+        }
+
+
+        // --- Utilities ---
+
+        function displayOutput(text, type) {
+            outputArea.value = text;
+            document.getElementById('status-badge').textContent = 'Valid';
+            document.getElementById('status-badge').classList.remove('hidden');
+
+            const formatBadge = document.getElementById('format-badge');
+            formatBadge.textContent = type;
+            formatBadge.classList.remove('hidden');
+
+            dismissError();
+        }
+
+        function showError(message, isRealtime = false) {
+            const banner = document.getElementById('top-error-banner');
+            const msgEl = document.getElementById('top-error-message');
+
+            msgEl.textContent = message;
+            banner.classList.remove('hidden');
+
+            // Hide valid badges
+            document.getElementById('status-badge').classList.add('hidden');
+            document.getElementById('format-badge').classList.add('hidden');
+        }
+
+        function dismissError() {
+            document.getElementById('top-error-banner').classList.add('hidden');
+        }
+
+        function updateStats() {
+            const input = inputArea.value;
+            document.getElementById('input-stats').textContent = input.length + ' chars';
         }
 
         function clearAll() {
-            document.getElementById('json-input').value = '';
-            document.getElementById('json-output').value = '';
-            document.getElementById('error-box').classList.add('hidden');
+            inputArea.value = '';
+            outputArea.value = '';
+            inputArea.classList.remove('valid-json', 'invalid-json');
+            document.getElementById('realtime-status').classList.add('hidden');
+            dismissError();
             document.getElementById('status-badge').classList.add('hidden');
+            document.getElementById('format-badge').classList.add('hidden');
+            localStorage.removeItem('json_input_backup');
             updateStats();
         }
 
         function loadSample() {
             const sample = {
-                "name": "John Doe",
-                "email": "john@example.com",
-                "age": 30,
-                "isActive": true,
-                "address": {
-                    "street": "123 Main St",
-                    "city": "New York",
-                    "zip": "10001"
-                },
-                "hobbies": ["reading", "coding", "hiking"]
+                "name": "Super Hero Squad",
+                "formed": 2016,
+                "secretBase": "Super tower",
+                "active": true,
+                "members": [
+                    {
+                        "name": "Molecule Man",
+                        "age": 29,
+                        "secretIdentity": "Dan Jukes",
+                        "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+                    },
+                    {
+                        "name": "Madame Uppercut",
+                        "age": 39,
+                        "secretIdentity": "Jane Wilson",
+                        "powers": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"]
+                    }
+                ]
             };
-            document.getElementById('json-input').value = JSON.stringify(sample, null, 2);
+            inputArea.value = JSON.stringify(sample, null, 2);
             formatJSON(2);
         }
 
-        function downloadJSON() {
-            const output = document.getElementById('json-output').value;
+        function downloadOutput() {
+            const output = outputArea.value;
             if (!output) return showError('No output to download');
-            const blob = new Blob([output], { type: 'application/json' });
+
+            let type = 'application/json';
+            let ext = 'json';
+            if (currentMode === 'yaml') { type = 'text/yaml'; ext = 'yaml'; }
+            if (currentMode === 'csv') { type = 'text/csv'; ext = 'csv'; }
+            if (currentMode === 'ts') { type = 'text/plain'; ext = 'ts'; }
+
+            const blob = new Blob([output], { type: type });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'data.json';
+            a.download = `data.${ext}`;
             a.click();
             URL.revokeObjectURL(url);
         }
 
         function copyOutput() {
-            const output = document.getElementById('json-output').value;
+            const output = outputArea.value;
             if (!output) return;
             navigator.clipboard.writeText(output).then(() => {
                 const btn = document.getElementById('copy-btn');
-                btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i>';
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i>';
                 setTimeout(() => {
                     btn.innerHTML = '<i data-lucide="copy" class="w-3.5 h-3.5"></i>';
+                    lucide.createIcons();
                 }, 2000);
                 lucide.createIcons();
             });
         }
-
-        function displayOutput(text) {
-            document.getElementById('json-output').value = text;
-            document.getElementById('status-badge').textContent = 'Valid';
-            document.getElementById('status-badge').classList.remove('hidden');
-            document.getElementById('error-box').classList.add('hidden');
-            updateStats();
-        }
-
-        function showError(message) {
-            document.getElementById('error-message').textContent = message;
-            document.getElementById('error-box').classList.remove('hidden');
-            document.getElementById('status-badge').classList.add('hidden');
-        }
-
-        function updateStats() {
-            const input = document.getElementById('json-input').value;
-            document.getElementById('input-stats').textContent = input.length + ' chars';
-        }
-
-        function resetUI() {
-            document.getElementById('json-input').value = '';
-            document.getElementById('json-output').value = '';
-            document.getElementById('error-box').classList.add('hidden');
-        }
-
-        // Input listener
-        document.getElementById('json-input').addEventListener('input', updateStats);
-
-        // Initialize Lucide icons
-        lucide.createIcons();
     </script>
 </body>
 
