@@ -8,232 +8,631 @@
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                j = d.createElement(s), dl = l != 'dataLength' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
     <!-- End Google Tag Manager -->
+    
+    <!-- Enhanced SEO with structured data and improved meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Free online Base64 Encoder & Decoder. Encode and decode text strings safely in your browser. Client-side privacy focused.">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Free online Base64 Encoder & Decoder with advanced features. Encode/decode text, files, auto-detect format, URL-safe variants, real-time conversion, statistics, history & more. Client-side privacy.">
+    <meta name="keywords" content="base64, encoder, decoder, base64 encoding, encoding tool, free tool, online encoder, text encoding, url safe base64, base64 converter">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="SimpleDevTools">
+    <meta property="og:title" content="Base64 Encoder & Decoder – Free Online Tool">
+    <meta property="og:description" content="Advanced Base64 encoder/decoder with file support, real-time conversion, statistics, and history.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="google-adsense-account" content="ca-pub-9710571190649081">
-    <title>Base64 Encoder/Decoder – Free Online Tool</title>
+    <title>Base64 Encoder/Decoder – Free Online Tool | SimpleDevTools</title>
     <link rel="canonical" href="https://simpledevtools.tech/base64-encoder" />
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Base64 Encoder & Decoder",
+      "description": "Free online Base64 encoder and decoder tool with advanced features",
+      "url": "https://simpledevtools.tech/base64-encoder",
+      "applicationCategory": "UtilityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools"
+      }
+    }
+    </script>
+    
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
-        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://unpkg.com/lucide@latest"></script>
-
-   
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        /* Smooth animations and transitions */
+        * {
+            transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+        }
+        
+        /* Tab animations */
+        .tab-btn {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1px;
+        }
+        
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        
+        /* Tab content animations */
+        .tab-content {
+            animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Button hover effects */
+        button {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        button:hover {
+            transform: translateY(-1px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        /* Card animations */
+        .bg-white, .dark\\:bg-neutral-900 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Input animations */
+        textarea, input {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        textarea:focus, input:focus {
+            transform: scale(1.01);
+        }
+        
+        /* Stats card animations */
+        .grid > div {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .grid > div:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* History item animations */
+        #history-list > div {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #history-list > div:hover {
+            transform: translateX(4px);
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), transparent);
+        }
+        
+        /* FAQ animations */
+        details {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        details[open] {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.02), transparent);
+        }
+        
+        /* Loading animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-pulse-subtle {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .animate-count {
+            animation: countUp 0.4s ease-out;
+        }
+        
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
 </head>
 
-<body
-
-    class="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex flex-col min-h-screen">
+<body class="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex flex-col min-h-screen">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <!-- Fallback navigation for crawlers without JS -->
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
-            <a href="/" class="underline">Home</a> |
-            <a href="/tools" class="underline">Tools</a> |
-            <a href="/privacy-policy" class="underline">Privacy</a> |
-            <a href="/terms" class="underline">Terms</a>
+            <a href="/" class="underline">Home</a> | <a href="/tools" class="underline">Tools</a> | <a href="/privacy-policy" class="underline">Privacy</a> | <a href="/terms" class="underline">Terms</a>
         </nav>
     </noscript>
+    
     <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
-    <div
-        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/20 blur-[100px] rounded-full pointer-events-none z-0">
-    </div>
-
-    <!-- <nav class="fixed top-0 w-full z-50 glass transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 group">
-                <img src="logo.png" alt="SimpleDevTools Logo" class="w-8 h-8">
-                <span class="font-display font-medium text-base tracking-tight">SimpleDevTools</span>
-            </a>
-            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-500 dark:text-neutral-400">
-                <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
-                <a href="/base64-encoder" class="text-black dark:text-white">Tools</a>
-                <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
-                <button id="theme-toggle"
-                    class="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors focus:outline-none">
-                    <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
-                    <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
-                </button>
-            </div>
-        </div>
-    </nav> -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
     <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-mono font-medium mb-6 border border-blue-100 dark:border-blue-900/30">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-mono font-medium mb-6 border border-blue-100 dark:border-blue-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Secure Client-Side Processing</span>
                 </div>
-                <h1
-                    class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
-                    Base64 Encoder & Decoder
-                </h1>
-                <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
-                    Encode and decode Base64 strings instantly. All processing happens locally in your browser.
-                </p>
+                <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">Base64 Encoder & Decoder</h1>
+                <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">Encode and decode Base64 strings instantly with advanced features. All processing happens locally in your browser.</p>
             </div>
            
-            <div
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16">
-                <div
-                    class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3">
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider px-2">Actions</span>
-                        <button onclick="encodeBase64()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors">
-                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                            Encode
-                        </button>
-                        <button onclick="decodeBase64()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 text-xs font-medium rounded-md transition-colors">
-                            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-                            Decode
-                        </button>
+            <!-- Added tabs for multiple features -->
+            <div class="mb-6 flex gap-2 flex-wrap border-b border-neutral-200 dark:border-neutral-800">
+                <button onclick="switchTab('converter', this)" class="tab-btn active px-4 py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600">
+                    <i data-lucide="arrow-right-left" class="w-4 h-4 inline mr-2"></i>Converter
+                </button>
+                <button onclick="switchTab('file', this)" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-700">
+                    <i data-lucide="file" class="w-4 h-4 inline mr-2"></i>File Encoder
+                </button>
+                <button onclick="switchTab('batch', this)" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-700">
+                    <i data-lucide="copy" class="w-4 h-4 inline mr-2"></i>Batch Mode
+                </button>
+                <button onclick="switchTab('stats', this)" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-700">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4 inline mr-2"></i>Statistics
+                </button>
+                <button onclick="switchTab('history', this)" class="tab-btn px-4 py-2 text-sm font-medium border-b-2 border-transparent text-neutral-500 hover:text-neutral-700">
+                    <i data-lucide="history" class="w-4 h-4 inline mr-2"></i>History
+                </button>
+            </div>
+
+            <!-- Main Converter Tab -->
+            <div id="converter-tab" class="tab-content">
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16">
+                    <div class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider px-2">Actions</span>
+                            <button onclick="encodeBase64()" class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors">
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>Encode
+                            </button>
+                            <button onclick="decodeBase64()" class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 text-xs font-medium rounded-md transition-colors">
+                                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>Decode
+                            </button>
+                            <!-- Auto-detect feature -->
+                            <button onclick="autoDetectAndConvert()" class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 text-xs font-medium rounded-md transition-colors">
+                                <i data-lucide="zap" class="w-3.5 h-3.5"></i>Auto
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <!-- URL-safe toggle -->
+                            <label class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-600 dark:text-neutral-400 cursor-pointer">
+                                <input type="checkbox" id="url-safe-toggle" class="w-4 h-4">
+                                URL-Safe
+                            </label>
+                            <!-- Real-time toggle -->
+                            <label class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-neutral-600 dark:text-neutral-400 cursor-pointer">
+                                <input type="checkbox" id="realtime-toggle" class="w-4 h-4">
+                                Real-time
+                            </label>
+                            <button onclick="clearAll()" class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Clear
+                            </button>
+                            <button onclick="copyOutput()" class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 text-xs font-medium rounded-md transition-colors">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i><span id="copy-text">Copy Result</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="clearAll()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                            Clear
-                        </button>
-                        <button onclick="copyOutput()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 text-xs font-medium rounded-md transition-colors">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                            <span id="copy-text">Copy Result</span>
-                        </button>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
+                        <div class="flex flex-col h-full">
+                            <div class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500">Input</div>
+                            <textarea id="input-text" class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed" placeholder="Enter text to encode or Base64 string to decode..." spellcheck="false"></textarea>
+                        </div>
+                        <div class="flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
+                            <div class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500">Output</div>
+                            <textarea id="output-text" readonly class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-700 dark:text-neutral-300 resize-none outline-none leading-relaxed" placeholder="Result will appear here..."></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
-                    <div class="flex flex-col h-full">
-                        <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500">
-                            Input
-                        </div>
-                        <textarea id="input-text"
-                            class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed"
-                            placeholder="Enter text to encode or Base64 string to decode..."
-                            spellcheck="false"></textarea>
+                <!-- QR Code Generator -->
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16 p-6">
+                    <h3 class="text-sm font-semibold mb-4 flex items-center gap-2">
+                        <i data-lucide="qr-code" class="w-4 h-4"></i>QR Code Generator
+                    </h3>
+                    <button onclick="generateQRCode()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors mb-4">Generate QR Code</button>
+                    <div id="qrcode-container" class="flex justify-center p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg"></div>
+                </div>
+            </div>
+
+            <!-- File Encoder Tab -->
+            <div id="file-tab" class="tab-content hidden">
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden p-6 mb-16">
+                    <h3 class="text-lg font-semibold mb-4">Encode/Decode Files</h3>
+                    
+                    <!-- Action Selection -->
+                    <div class="mb-4 flex gap-2">
+                        <button onclick="setFileMode('encode')" id="encode-mode-btn" class="px-4 py-2 bg-blue-600 text-white text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="arrow-right" class="w-3 h-3 inline mr-1"></i>Encode
+                        </button>
+                        <button onclick="setFileMode('decode')" id="decode-mode-btn" class="px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="arrow-left" class="w-3 h-3 inline mr-1"></i>Decode
+                        </button>
                     </div>
-                    <div class="flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
-                        <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500">
-                            Output
+                    
+                    <div id="file-drop-zone" class="border-2 border-dashed border-neutral-300 dark:border-neutral-700 rounded-lg p-8 text-center cursor-pointer transition-all duration-300 hover:border-blue-400 dark:hover:border-blue-500" onclick="document.getElementById('file-input').click()">
+                        <i data-lucide="upload-cloud" class="w-12 h-12 mx-auto mb-3 text-neutral-400"></i>
+                        <p class="text-sm font-medium mb-1">Click to upload or drag and drop</p>
+                        <p class="text-xs text-neutral-500">Any file type (max 10MB)</p>
+                    </div>
+                    <input type="file" id="file-input" class="hidden" onchange="handleFileUpload(event)">
+                    <div id="file-result" class="mt-6 hidden">
+                        <div class="mb-4 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <p class="text-xs text-neutral-500 mb-2">File Info:</p>
+                            <p id="file-info" class="text-sm font-mono"></p>
                         </div>
-                        <textarea id="output-text" readonly
-                            class="flex-1 w-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-700 dark:text-neutral-300 resize-none outline-none leading-relaxed"
-                            placeholder="Result will appear here..."></textarea>
+                        <div id="file-preview" class="mb-4 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg hidden">
+                            <p class="text-xs text-neutral-500 mb-2">Preview:</p>
+                            <pre id="file-preview-content" class="text-xs font-mono max-h-40 overflow-auto text-neutral-700 dark:text-neutral-300"></pre>
+                        </div>
+                        <button onclick="downloadFileResult()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors">Download</button>
                     </div>
                 </div>
             </div>
 
+            <!-- Batch Mode Tab -->
+            <div id="batch-tab" class="tab-content hidden">
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden p-6 mb-16">
+                    <h3 class="text-lg font-semibold mb-4">Batch Processing</h3>
+                    <textarea id="batch-input" placeholder="Enter multiple lines to process (one per line)..." class="w-full p-4 border border-neutral-200 dark:border-neutral-700 rounded-lg mb-4 text-xs font-mono h-40 resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    <div class="flex gap-2 mb-4">
+                        <button onclick="processBatch('encode')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors">Encode All</button>
+                        <button onclick="processBatch('decode')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-md transition-colors">Decode All</button>
+                    </div>
+                    <textarea id="batch-output" readonly placeholder="Results will appear here..." class="w-full p-4 border border-neutral-200 dark:border-neutral-700 rounded-lg text-xs font-mono h-40 resize-none bg-neutral-50 dark:bg-neutral-800"></textarea>
+                    <button onclick="copyBatchOutput()" class="mt-4 px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors">Copy Results</button>
+                </div>
+            </div>
+
+            <!-- Statistics Tab -->
+            <div id="stats-tab" class="tab-content hidden">
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden p-6 mb-16">
+                    <h3 class="text-lg font-semibold mb-6">Conversion Statistics</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <p class="text-xs text-neutral-500 mb-2">Input Size</p>
+                            <p id="stat-input-size" class="text-xl font-mono font-semibold">0 B</p>
+                        </div>
+                        <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <p class="text-xs text-neutral-500 mb-2">Output Size</p>
+                            <p id="stat-output-size" class="text-xl font-mono font-semibold">0 B</p>
+                        </div>
+                        <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <p class="text-xs text-neutral-500 mb-2">Expansion Ratio</p>
+                            <p id="stat-ratio" class="text-xl font-mono font-semibold">0%</p>
+                        </div>
+                        <div class="p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                            <p class="text-xs text-neutral-500 mb-2">Characters</p>
+                            <p id="stat-chars" class="text-xl font-mono font-semibold">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history-tab" class="tab-content hidden">
+                <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden p-6 mb-16">
+                    <h3 class="text-lg font-semibold mb-4">Conversion History</h3>
+                    <div id="history-list" class="space-y-3 max-h-96 overflow-y-auto">
+                        <p class="text-sm text-neutral-500">No history yet. Start converting!</p>
+                    </div>
+                    <button onclick="clearHistory()" class="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-medium rounded-md transition-colors">Clear History</button>
+                </div>
+            </div>
+
+            <!-- Information Sections -->
             <div class="max-w-3xl mx-auto space-y-12 mb-20">
-                <section>
+                <!-- <section>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
                             <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </div>
-                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">What is Base64?
-                        </h2>
+                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">What is Base64?</h2>
                     </div>
                     <div class="text-neutral-600 dark:text-neutral-400 text-sm space-y-4">
-                        <p>Base64 is an encoding scheme that converts binary data into an ASCII string format. It's
-                            commonly used to encode data that needs to be transmitted over media designed to handle
-                            text.</p>
-                        <p>Common use cases include embedding images in HTML/CSS, encoding credentials, and transmitting
-                            data in JSON or XML.</p>
+                        <p>Base64 is an encoding scheme that converts binary data into an ASCII string format. It's commonly used to encode data that needs to be transmitted over media designed to handle text.</p>
+                        <p>Common use cases include embedding images in HTML/CSS, encoding credentials, transmitting data in JSON or XML, and email attachments.</p>
+                    </div>
+                </section> -->
+
+                <!-- Enhanced FAQ for SEO -->
+                <section>
+                    <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <details class="group border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 cursor-pointer">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is Base64 encryption?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transform group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">No, Base64 is encoding, not encryption. It's reversible and doesn't provide security. Never use it for sensitive data without actual encryption.</p>
+                        </details>
+                        <details class="group border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 cursor-pointer">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What does URL-safe Base64 mean?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transform group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">URL-safe Base64 replaces + with - and / with _ to avoid issues in URLs and filenames while maintaining the same encoding principle.</p>
+                        </details>
+                        <details class="group border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 cursor-pointer">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Why does my output have "=" at the end?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transform group-open:rotate-180 transition"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">The = signs are padding. Base64 works with groups of 3 bytes, so padding is added when the input isn't divisible by 3.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Add comprehensive article about Base64 for SEO improvement -->
+                <section>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="book-open" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="font-display text-2xl font-semibold text-neutral-900 dark:text-white">Decoding the Mystery: What is Base64 Encoding?</h2>
+                    </div>
+
+                    <div class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed space-y-6">
+                        <p>In the world of web development and data transmission, you've likely encountered long, garbled strings of text that look like <span class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded font-mono text-xs">SGVsbG8sIFdvcmxkIQ==</span>. This is Base64 encoding, a popular method used to represent binary data in an ASCII string format. Its primary function is to act as a bridge, ensuring that data remains intact and unmodified while traveling across systems designed only to handle text, such as email or JSON.</p>
+
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">Why Do We Use It?</h3>
+                            <p class="mb-3">Most modern computers deal with 8-bit bytes, but many legacy systems (like early email protocols) were not "8-bit clean" and would mangle or interpret certain binary characters as "control codes". Base64 solves this by converting "unfriendly" binary data into a "safe" alphabet of 64 printable characters.</p>
+                            <p class="font-medium text-neutral-900 dark:text-white mb-2">Common use cases include:</p>
+                            <ul class="space-y-1 list-disc list-inside">
+                                <li><strong>Email Attachments:</strong> Sending images or PDFs via MIME.</li>
+                                <li><strong>Web Development:</strong> Embedding small images directly into HTML or CSS using Data URLs.</li>
+                                <li><strong>Authentication:</strong> Passing credentials or JSON Web Tokens (JWT) in HTTP headers.</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">How the Magic Happens (The 3-to-4 Rule)</h3>
+                            <p class="mb-3">The encoding process works by treating binary data numerically and translating it into a base-64 representation.</p>
+                            <ol class="space-y-2 list-decimal list-inside">
+                                <li><strong>Grouping:</strong> The algorithm takes three 8-bit bytes (24 bits total).</li>
+                                <li><strong>Splitting:</strong> These 24 bits are reorganized into four 6-bit groups.</li>
+                                <li><strong>Mapping:</strong> Each 6-bit group (which can represent a value from 0–63) is matched to a character in the Base64 Alphabet: A-Z, a-z, 0-9, +, and /.</li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-4 overflow-x-auto">
+                            <p class="font-semibold text-neutral-900 dark:text-white mb-3 text-xs">Diagram: The Bit-Shifting Process</p>
+                            <table class="w-full text-xs font-mono text-neutral-700 dark:text-neutral-300">
+                                <thead>
+                                    <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                        <th class="text-left py-2 px-2">Step</th>
+                                        <th class="text-left py-2 px-2">First Byte (8 bits)</th>
+                                        <th class="text-left py-2 px-2">Second Byte (8 bits)</th>
+                                        <th class="text-left py-2 px-2">Third Byte (8 bits)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                        <td class="py-2 px-2 font-medium">Original Binary</td>
+                                        <td class="py-2 px-2">01010100</td>
+                                        <td class="py-2 px-2">01001000</td>
+                                        <td class="py-2 px-2">01010011</td>
+                                    </tr>
+                                    <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                        <td class="py-2 px-2 font-medium">Regrouped (6-bit)</td>
+                                        <td class="py-2 px-2">010101</td>
+                                        <td class="py-2 px-2">000100</td>
+                                        <td class="py-2 px-2">100001</td>
+                                    </tr>
+                                    <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                        <td class="py-2 px-2 font-medium">Decimal Value</td>
+                                        <td class="py-2 px-2">21</td>
+                                        <td class="py-2 px-2">4</td>
+                                        <td class="py-2 px-2">33</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 px-2 font-medium">Base64 Character</td>
+                                        <td class="py-2 px-2">V</td>
+                                        <td class="py-2 px-2">E</td>
+                                        <td class="py-2 px-2">h</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">What's with the "=" at the end?</h3>
+                            <p>You will often see one or two equal signs (=) at the end of a Base64 string. This is padding. Because Base64 requires groups of three bytes to create four characters perfectly, the encoder adds "zero bits" and the = symbol if the input data isn't perfectly divisible by three.</p>
+                            <ul class="space-y-1 list-disc list-inside mt-2">
+                                <li>One = sign means the original data had two bytes left over.</li>
+                                <li>Two == signs mean there was only one byte left over.</li>
+                            </ul>
+                        </div>
+
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">The "URL-Safe" Variant</h3>
+                            <p>Standard Base64 uses + and /, which can cause issues in web addresses because / is a path separator and + can be interpreted as a space. To fix this, developers use Base64URL, which replaces + with - and / with _.</p>
+                        </div>
+
+                        <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg p-4">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="alert-circle" class="w-5 h-5 text-red-600 dark:text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <div>
+                                    <h3 class="font-semibold text-red-900 dark:text-red-200 mb-1">A Critical Warning: Encoding ≠ Encryption</h3>
+                                    <p class="text-red-800 dark:text-red-300 text-xs">It is a common misconception that Base64 is a security tool. Base64 is NOT encryption. It does not protect your data or provide confidentiality; anyone with a decoder can instantly see the original content. Never use Base64 to store passwords or sensitive secrets without actual cryptographic hashing or encryption beforehand.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">Why Use Our Local Tool?</h3>
+                            <p>Our Base64 Encoder & Decoder processes your data locally in your browser. Unlike other online tools, your data is never sent to a server, providing an extra layer of privacy for your strings and files—supported by the nature of browser-based functions like <span class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded font-mono text-xs">atob</span> and <span class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded font-mono text-xs">btoa</span>.</p>
+                        </div>
+
+                        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
+                            <h3 class="font-semibold text-neutral-900 dark:text-white mb-2">Analogy for Understanding</h3>
+                            <p class="text-sm">Think of Base64 as a shipping container. Your raw binary data (like an image) is a fragile, oddly shaped sculpture. If you try to mail it as-is, it might get caught in the machinery. Encoding is like placing that sculpture into a standardized, sturdy box (Base64) that fits perfectly on every delivery truck. Decoding is simply opening the box at the destination to reveal the original sculpture, unchanged and intact.</p>
+                        </div>
+                        <img src="https://i.ibb.co.com/zh471b2p/Infographic-Base64-Explained.png" alt="Base64 Explanation Infographic" class="w-full h-auto rounded-lg mt-4" loading="lazy">
                     </div>
                 </section>
             </div>
         </div>
     </main>
 
-    <!-- <footer
-        class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div
-                            class="w-6 h-6 bg-neutral-900 dark:bg-white text-white dark:text-black rounded flex items-center justify-center">
-                            <span class="font-mono font-bold text-xs leading-none">/</span>
-                        </div>
-                        <span
-                            class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
-                    </div>
-                    <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
-                        Privacy-first utilities for the modern web. Built for developers, by developers.
-                    </p>
-                </div>
-    
-                <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Legal</h4>
-                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="privacy-policy"
-                                class="hover:text-black dark:hover:text-white transition-colors">Privacy
-                                Policy</a></li>
-                        <li><a href="terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of
-                                Service</a></li>
-                    </ul>
-                </div>
-    
-                <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Social</h4>
-                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">GitHub</a></li>
-                        <li><a href="#" class="hover:text-black dark:hover:text-white transition-colors">Twitter / X</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-    
-            <div
-                class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">
-                <p class="text-neutral-400 text-xs">© SimpleDevTools.tech. All rights reserved.</p>
-                <div class="flex items-center gap-2 mt-4 md:mt-0">
-                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                    <span class="text-xs text-neutral-400">Systems Operational</span>
-                </div>
-            </div>
-        </div>
-    </footer> -->
     <script src="layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
 
         const inputArea = document.getElementById('input-text');
         const outputArea = document.getElementById('output-text');
-        const themeToggleBtn = document.getElementById('theme-toggle');
+        const realtimeToggle = document.getElementById('realtime-toggle');
+        let conversionHistory = JSON.parse(localStorage.getItem('b64History')) || [];
+        let fileMode = 'encode'; // Default mode
+        let lastFileResult = null;
+
+        function switchTab(tabName, buttonElement) {
+            // Hide all tab contents with fade out
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.style.opacity = '0';
+                t.style.transform = 'translateY(20px)';
+                setTimeout(() => t.classList.add('hidden'), 200);
+            });
+            
+            // Show selected tab content with fade in
+            setTimeout(() => {
+                const selectedTab = document.getElementById(tabName + '-tab');
+                selectedTab.classList.remove('hidden');
+                setTimeout(() => {
+                    selectedTab.style.opacity = '1';
+                    selectedTab.style.transform = 'translateY(0)';
+                }, 50);
+            }, 200);
+            
+            // Remove active styling from all tabs
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'border-blue-600', 'text-blue-600');
+                b.classList.add('border-transparent', 'text-neutral-500');
+            });
+            
+            // Add active styling to clicked tab
+            if (buttonElement) {
+                buttonElement.classList.remove('border-transparent', 'text-neutral-500');
+                buttonElement.classList.add('active', 'border-blue-600', 'text-blue-600');
+            }
+        }
+
+        realtimeToggle.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                inputArea.addEventListener('input', handleRealtimeConversion);
+            } else {
+                inputArea.removeEventListener('input', handleRealtimeConversion);
+            }
+        });
+
+        function handleRealtimeConversion() {
+            autoDetectAndConvert();
+        }
+
+        function autoDetectAndConvert() {
+            const text = inputArea.value.trim();
+            if (!text) return;
+            try {
+                const decoded = atob(text);
+                outputArea.value = decodeURIComponent(escape(decoded));
+                addToHistory(text, outputArea.value, 'decoded');
+            } catch (e) {
+                encodeBase64();
+            }
+        }
 
         function encodeBase64() {
             const text = inputArea.value;
             if (!text) return;
             try {
-                outputArea.value = btoa(unescape(encodeURIComponent(text)));
+                let encoded = btoa(unescape(encodeURIComponent(text)));
+                if (document.getElementById('url-safe-toggle').checked) {
+                    encoded = encoded.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+                }
+                outputArea.value = encoded;
+                addToHistory(text, encoded, 'encoded');
+                updateStats();
             } catch (e) {
                 alert('Error encoding: ' + e.message);
             }
@@ -243,7 +642,14 @@
             const text = inputArea.value;
             if (!text) return;
             try {
-                outputArea.value = decodeURIComponent(escape(atob(text)));
+                let toDecode = text;
+                if (document.getElementById('url-safe-toggle').checked) {
+                    toDecode = text.replace(/-/g, '+').replace(/_/g, '/');
+                    while (toDecode.length % 4) toDecode += '=';
+                }
+                outputArea.value = decodeURIComponent(escape(atob(toDecode)));
+                addToHistory(text, outputArea.value, 'decoded');
+                updateStats();
             } catch (e) {
                 alert('Error decoding: Invalid Base64 string');
             }
@@ -264,7 +670,286 @@
             }, 2000);
         }
 
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Validate file size (10MB limit)
+            const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+            if (file.size > maxSize) {
+                alert('File size exceeds 10MB limit. Please choose a smaller file.');
+                return;
+            }
+            
+            // Show loading state
+            const dropZone = document.getElementById('file-drop-zone');
+            const originalContent = dropZone.innerHTML;
+            dropZone.innerHTML = `
+                <i data-lucide="loader-2" class="w-12 h-12 mx-auto mb-3 text-blue-500 animate-spin"></i>
+                <p class="text-sm font-medium mb-1">Processing file...</p>
+                <p class="text-xs text-neutral-500">${(file.size / 1024).toFixed(2)} KB</p>
+            `;
+            lucide.createIcons();
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    let result;
+                    let resultText;
+                    
+                    if (fileMode === 'encode') {
+                        // Encode mode: convert file to Base64
+                        const encoded = btoa(String.fromCharCode(...new Uint8Array(e.target.result)));
+                        result = encoded;
+                        resultText = `${file.name} (${(file.size / 1024).toFixed(2)} KB) → ${(encoded.length / 1024).toFixed(2)} KB encoded`;
+                        lastFileResult = { name: file.name + '.b64.txt', data: encoded, type: 'text/plain' };
+                        
+                        // Show preview for text files
+                        if (file.type.startsWith('text/') || file.name.endsWith('.txt') || file.name.endsWith('.b64')) {
+                            const preview = document.getElementById('file-preview');
+                            const previewContent = document.getElementById('file-preview-content');
+                            preview.classList.remove('hidden');
+                            previewContent.textContent = encoded.substring(0, 500) + (encoded.length > 500 ? '...' : '');
+                        } else {
+                            document.getElementById('file-preview').classList.add('hidden');
+                        }
+                    } else {
+                        // Decode mode: try to decode Base64 content
+                        const content = String.fromCharCode(...new Uint8Array(e.target.result));
+                        try {
+                            const decoded = atob(content);
+                            result = decoded;
+                            resultText = `${file.name} (${(file.size / 1024).toFixed(2)} KB) → ${(decoded.length / 1024).toFixed(2)} KB decoded`;
+                            lastFileResult = { name: file.name.replace('.b64', '.decoded.txt'), data: decoded, type: 'text/plain' };
+                            
+                            // Show preview
+                            const preview = document.getElementById('file-preview');
+                            const previewContent = document.getElementById('file-preview-content');
+                            preview.classList.remove('hidden');
+                            previewContent.textContent = decoded.substring(0, 500) + (decoded.length > 500 ? '...' : '');
+                        } catch (decodeError) {
+                            throw new Error('File does not contain valid Base64 data');
+                        }
+                    }
+                    
+                    document.getElementById('file-result').classList.remove('hidden');
+                    document.getElementById('file-info').innerText = resultText;
+                    
+                    // Reset drop zone with success state
+                    dropZone.innerHTML = `
+                        <i data-lucide="check-circle" class="w-12 h-12 mx-auto mb-3 text-green-500"></i>
+                        <p class="text-sm font-medium mb-1">File ${fileMode === 'encode' ? 'encoded' : 'decoded'} successfully!</p>
+                        <p class="text-xs text-neutral-500">Click to upload another file</p>
+                    `;
+                    lucide.createIcons();
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        dropZone.innerHTML = originalContent;
+                        lucide.createIcons();
+                    }, 2000);
+                    
+                } catch (error) {
+                    alert(`Error ${fileMode === 'encode' ? 'encoding' : 'decoding'} file: ${error.message}`);
+                    dropZone.innerHTML = originalContent;
+                    lucide.createIcons();
+                }
+            };
+            
+            reader.onerror = () => {
+                alert('Error reading file. Please try again.');
+                dropZone.innerHTML = originalContent;
+                lucide.createIcons();
+            };
+            
+            reader.readAsArrayBuffer(file);
+        }
 
+        function downloadFileResult() {
+            if (!lastFileResult) return;
+            const element = document.createElement('a');
+            element.setAttribute('href', `data:${lastFileResult.type};charset=utf-8,${encodeURIComponent(lastFileResult.data)}`);
+            element.setAttribute('download', lastFileResult.name);
+            element.click();
+        }
+
+        function processBatch(mode) {
+            const input = document.getElementById('batch-input').value;
+            const output = document.getElementById('batch-output');
+            const lines = input.split('\n').filter(l => l.trim());
+            const results = lines.map(line => {
+                try {
+                    return mode === 'encode' ? btoa(unescape(encodeURIComponent(line))) : decodeURIComponent(escape(atob(line)));
+                } catch (e) {
+                    return `[ERROR] ${line}`;
+                }
+            });
+            output.value = results.join('\n');
+        }
+
+        function copyBatchOutput() {
+            const output = document.getElementById('batch-output');
+            if (!output.value) return;
+            navigator.clipboard.writeText(output.value);
+        }
+
+        function updateStats() {
+            const inputSize = new Blob([inputArea.value]).size;
+            const outputSize = new Blob([outputArea.value]).size;
+            const ratio = inputSize > 0 ? ((outputSize / inputSize - 1) * 100).toFixed(2) : 0;
+            
+            // Animate stat updates
+            const stats = [
+                { id: 'stat-input-size', value: formatBytes(inputSize) },
+                { id: 'stat-output-size', value: formatBytes(outputSize) },
+                { id: 'stat-ratio', value: ratio + '%' },
+                { id: 'stat-chars', value: outputArea.value.length }
+            ];
+            
+            stats.forEach((stat, index) => {
+                const element = document.getElementById(stat.id);
+                element.classList.remove('animate-count');
+                void element.offsetWidth; // Trigger reflow
+                element.classList.add('animate-count');
+                element.textContent = stat.value;
+            });
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function generateQRCode() {
+            const text = outputArea.value;
+            if (!text) {
+                alert('Please generate an output first');
+                return;
+            }
+            const container = document.getElementById('qrcode-container');
+            container.innerHTML = '';
+            
+            // Check if qrcodejs library is available
+            if (typeof QRCode !== 'undefined') {
+                try {
+                    // Create QR code with qrcodejs library
+                    new QRCode(container, {
+                        text: text,
+                        width: 200,
+                        height: 200,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.M
+                    });
+                    
+                } catch (error) {
+                    console.error('QR Code generation error:', error);
+                    container.innerHTML = '<p class="text-sm text-neutral-500">Error generating QR code</p>';
+                }
+            } else {
+                console.error('QRCode library not loaded');
+                // Fallback if QRCode library not loaded
+                container.innerHTML = '<p class="text-sm text-neutral-500">QR Code library not loaded</p>';
+            }
+        }
+
+        function setFileMode(mode) {
+            fileMode = mode;
+            const encodeBtn = document.getElementById('encode-mode-btn');
+            const decodeBtn = document.getElementById('decode-mode-btn');
+            
+            if (mode === 'encode') {
+                encodeBtn.className = 'px-4 py-2 bg-blue-600 text-white text-xs font-medium rounded-md transition-colors';
+                decodeBtn.className = 'px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors';
+            } else {
+                decodeBtn.className = 'px-4 py-2 bg-blue-600 text-white text-xs font-medium rounded-md transition-colors';
+                encodeBtn.className = 'px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors';
+            }
+        }
+
+        function addToHistory(input, output, type) {
+            conversionHistory.unshift({ input: input.substring(0, 50), output: output.substring(0, 50), type, time: new Date().toLocaleTimeString() });
+            if (conversionHistory.length > 20) conversionHistory.pop();
+            localStorage.setItem('b64History', JSON.stringify(conversionHistory));
+            updateHistoryDisplay();
+        }
+
+        function updateHistoryDisplay() {
+            const list = document.getElementById('history-list');
+            if (conversionHistory.length === 0) {
+                list.innerHTML = '<p class="text-sm text-neutral-500">No history yet. Start converting!</p>';
+                return;
+            }
+            
+            // Add fade effect
+            list.style.opacity = '0';
+            setTimeout(() => {
+                list.innerHTML = conversionHistory.map((h, i) => `
+                    <div class="p-3 bg-neutral-50 dark:bg-neutral-800 rounded text-xs font-mono" style="animation: slideInLeft 0.3s ease-out ${i * 0.05}s both">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-blue-600">${h.type}</span>
+                            <span class="text-neutral-500">${h.time}</span>
+                        </div>
+                        <div class="text-neutral-600 dark:text-neutral-400 truncate">${h.input}...</div>
+                    </div>
+                `).join('');
+                list.style.opacity = '1';
+            }, 200);
+        }
+
+        function clearHistory() {
+            conversionHistory = [];
+            localStorage.removeItem('b64History');
+            updateHistoryDisplay();
+        }
+
+        // Initial render
+        updateHistoryDisplay();
+        
+        // Drag and Drop functionality
+        const dropZone = document.getElementById('file-drop-zone');
+        
+        if (dropZone) {
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight(e) {
+                dropZone.classList.add('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/20');
+                dropZone.classList.remove('border-neutral-300', 'dark:border-neutral-700');
+            }
+            
+            function unhighlight(e) {
+                dropZone.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/20');
+                dropZone.classList.add('border-neutral-300', 'dark:border-neutral-700');
+            }
+            
+            dropZone.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                if (files.length > 0) {
+                    handleFileUpload({ target: { files: files } });
+                }
+            }
+        }
     </script>
 </body>
 
