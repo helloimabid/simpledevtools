@@ -36,7 +36,99 @@
     <!-- Iconify/Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    
+    <style>
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            min-width: 160px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 4px;
+        }
+
+        .dark .dropdown-content {
+            background: rgba(31, 41, 55, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .dropdown:hover .dropdown-content,
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content button {
+            white-space: nowrap;
+        }
+
+        /* Enhanced Drag & Drop Styles */
+        #drop-zone {
+            transition: all 0.3s ease;
+        }
+
+        #drop-zone.drag-over {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .dark #drop-zone.drag-over {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        #drag-overlay {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .file-info {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            z-index: 10;
+            display: none;
+        }
+
+        .drop-hint {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(99, 102, 241, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        #drop-zone:hover .drop-hint {
+            opacity: 1;
+        }
+    </style>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
         crossorigin="anonymous"></script>
@@ -125,6 +217,7 @@
                         <div class="w-px h-6 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
 
                         <!-- Convert Dropdown -->
+                         
                         <div class="dropdown">
                             <button
                                 class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-all">
@@ -226,6 +319,18 @@
                             class="absolute inset-2 z-20 hidden flex-col items-center justify-center bg-indigo-50/90 dark:bg-indigo-900/90 backdrop-blur-sm rounded-lg pointer-events-none transition-all">
                             <i data-lucide="file-up" class="w-10 h-10 text-indigo-500 mb-2"></i>
                             <p class="text-sm font-medium text-indigo-700 dark:text-indigo-300">Drop JSON file here</p>
+                            <p class="text-xs text-indigo-600 dark:text-indigo-400 mt-1">Supports .json, .txt files</p>
+                        </div>
+
+                        <!-- File Info Display -->
+                        <div id="file-info" class="file-info">
+                            <span id="file-name">filename.json</span> • <span id="file-size">0 KB</span>
+                        </div>
+
+                        <!-- Drop Hint -->
+                        <div class="drop-hint">
+                            <i data-lucide="upload" class="w-3 h-3 inline mr-1"></i>
+                            Drag & drop files here
                         </div>
 
                         <textarea id="json-input"
@@ -598,7 +703,7 @@
                         class="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
                         <img src="https://i.ibb.co.com/0yyKLfPZ/json-universal-language-of-data-infographic.png"
                             alt="JSON: The Universal Language of Data infographic showing statistics about JSON efficiency, file sizes, and parsing speeds"
-                            class="w-full h-auto" loading="lazy">
+                            class="w-full  h-auto" loading="lazy">
                     </div>
 
                     <!-- Conclusion -->
@@ -919,14 +1024,87 @@
 
         function readFile(file) {
             const reader = new FileReader();
+            
+            // Show file info
+            const fileInfo = document.getElementById('file-info');
+            const fileName = document.getElementById('file-name');
+            const fileSize = document.getElementById('file-size');
+            
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+            fileInfo.style.display = 'block';
+            
+            // Validate file type
+            const validTypes = ['application/json', 'text/plain'];
+            const validExtensions = ['.json', '.txt'];
+            const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+            
+            if (!validTypes.includes(file.type) && !validExtensions.includes(fileExtension)) {
+                showError('Invalid file type. Please upload a JSON or text file.');
+                fileInfo.style.display = 'none';
+                return;
+            }
+            
             reader.onload = (e) => {
                 inputArea.value = e.target.result;
                 formatJSON(2);
+                
+                // Hide file info after successful load
+                setTimeout(() => {
+                    fileInfo.style.display = 'none';
+                }, 3000);
+                
+                // Show success feedback
+                showSuccess(`File "${file.name}" loaded successfully`);
             };
+            
+            reader.onerror = () => {
+                showError('Failed to read file. Please try again.');
+                fileInfo.style.display = 'none';
+            };
+            
             reader.readAsText(file);
         }
 
-        // Drag & Drop
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showSuccess(message) {
+            // Create success toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2';
+            toast.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i><span class="text-sm">${message}</span>`;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function showError(message) {
+            // Create error toast
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 flex items-center gap-2';
+            toast.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4"></i><span class="text-sm">${message}</span>`;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 3000);
+            }, 5000);
+        }
+
+        // Enhanced Drag & Drop
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropZone.addEventListener(eventName, preventDefaults, false);
         });
@@ -936,26 +1114,69 @@
             e.stopPropagation();
         }
 
-        dropZone.addEventListener('dragenter', () => {
+        // Add visual feedback for drag states
+        dropZone.addEventListener('dragenter', (e) => {
+            dropZone.classList.add('drag-over');
             document.getElementById('drag-overlay').classList.remove('hidden');
             document.getElementById('drag-overlay').classList.add('flex');
         });
 
+        dropZone.addEventListener('dragover', (e) => {
+            dropZone.classList.add('drag-over');
+        });
+
         dropZone.addEventListener('dragleave', (e) => {
+            // Only remove if leaving the drop zone entirely
             if (e.relatedTarget && !dropZone.contains(e.relatedTarget)) {
+                dropZone.classList.remove('drag-over');
                 document.getElementById('drag-overlay').classList.add('hidden');
                 document.getElementById('drag-overlay').classList.remove('flex');
             }
         });
 
         dropZone.addEventListener('drop', (e) => {
+            dropZone.classList.remove('drag-over');
             document.getElementById('drag-overlay').classList.add('hidden');
             document.getElementById('drag-overlay').classList.remove('flex');
+            
             const dt = e.dataTransfer;
             const files = dt.files;
-            if (files.length > 0) readFile(files[0]);
+            
+            if (files.length > 0) {
+                // Handle multiple files (take the first valid JSON file)
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const validExtensions = ['.json', '.txt'];
+                    const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
+                    
+                    if (validExtensions.includes(fileExtension)) {
+                        readFile(file);
+                        break;
+                    }
+                }
+            }
         });
 
+        // Add keyboard support for drag operations
+        dropZone.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Cancel drag operation
+                dropZone.classList.remove('drag-over');
+                document.getElementById('drag-overlay').classList.add('hidden');
+                document.getElementById('drag-overlay').classList.remove('flex');
+            }
+        });
+
+        // Add paste support
+        dropZone.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const text = e.clipboardData.getData('text');
+            if (text) {
+                inputArea.value = text;
+                formatJSON(2);
+                showSuccess('JSON pasted successfully');
+            }
+        });
 
         // --- UI & View Management ---
 
