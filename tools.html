@@ -15,8 +15,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Browse our collection of free, privacy-first developer tools including JSON formatters, Base64 converters, and more.">
-    <title>All Tools - SimpleDevTools</title>
+        content="Free online developer tools: JSON formatter, Base64 encoder, regex tester, UUID generator, image compressor, hash generator, JWT decoder. Privacy-first, no server uploads.">
+    <title>Free Developer Tools: JSON Formatter, Base64, Regex, UUID, JWT | SimpleDevTools</title>
 
     <link rel="canonical" href="https://simpledevtools.tech/tools" />
 
@@ -36,8 +36,67 @@
 
     <!-- Iconify/Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "SimpleDevTools - Developer Utilities",
+      "description": "Privacy-first developer tools collection",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "JSON Formatter & Validator",
+          "url": "https://simpledevtools.tech/json-formatter"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Base64 Encoder & Decoder", 
+          "url": "https://simpledevtools.tech/base64-encoder"
+        }
+        ,
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Regex Tester",
+          "url": "https://simpledevtools.tech/regex-tester"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "UUID Generator",
+          "url": "https://simpledevtools.tech/uuid-generator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Hash Generator",
+          "url": "https://simpledevtools.tech/hash-generator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Image Compressor",
+          "url": "https://simpledevtools.tech/image-compressor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "JWT Decoder",
+          "url": "https://simpledevtools.tech/jwt-decoder"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Password Strength Analyzer",  
+          "url": "https://simpledevtools.tech/password-strength-analyzer"
+        }
+      ]
+    }
+    </script>
 
-  
 
     <!-- Tailwind Config -->
     <script>
@@ -196,6 +255,129 @@
                 Fast, privacy-first tools that run entirely in your browser.
             </p>
         </div>
+    <section class="mb-16 animate-slide-up" style="animation-delay: 0.05s;">
+        <h2 class="text-3xl font-display font-bold mb-8 text-neutral-900 dark:text-neutral-100">Tools by Category</h2>
+    
+        <div class="grid md:grid-cols-3 gap-4">
+    
+            <div
+                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+    
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="database" class="w-5 h-5 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Data Tools</h3>
+                    </div>
+    
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/json-formatter"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                JSON Formatter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/base64-encoder"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                Base64 Encoder
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/jwt-decoder"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                JWT Decoder
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div
+                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+    
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="shield" class="w-5 h-5 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Security Tools</h3>
+                    </div>
+    
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/hash-generator"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                Hash Generator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/password-strength-analyzer"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                Password Analyzer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div
+                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+    
+                <div class="relative z-10">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="zap" class="w-5 h-5 stroke-[1.5]"></i>
+                        </div>
+                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Utility Tools</h3>
+                    </div>
+    
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="/uuid-generator"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                UUID Generator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/regex-tester"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                Regex Tester
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/image-compressor"
+                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                Image Compressor
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+        </div>
+    </section>
 
         <!-- Bento Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-slide-up" style="animation-delay: 0.1s;">
