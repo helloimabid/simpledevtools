@@ -38,144 +38,7 @@
 <link rel="stylesheet" href="./dist/output.css">
 
  
-    <style>
-        /* Base styles */
-        body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Grid Backgrounds */
-        .bg-grid-pattern {
-            background-size: 40px 40px;
-            background-image:
-                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-        }
-
-        .dark .bg-grid-pattern {
-            background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-
-        .bg-dot-pattern {
-            background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-
-        .dark .bg-dot-pattern {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-        }
-
-        /* Glass Utilities */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .dark .glass-nav {
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            transition: all 0.2s ease;
-        }
-
-        .dark .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .dark .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Ad Units */
-        .ad-unit {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px dashed rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .dark .ad-unit {
-            background: rgba(255, 255, 255, 0.02);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .ad-unit::after {
-            content: 'Advertisement';
-            color: rgba(0, 0, 0, 0.2);
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-
-        .dark .ad-unit::after {
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #000, #444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .dark .text-gradient {
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
         crossorigin="anonymous"></script>
@@ -190,7 +53,7 @@
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
             <a href="/" class="underline">Home</a> |
-            <a href="/tools" class="underline">Tools</a> |
+            <a href="/tools class="underline">Tools</a> |
             <a href="/how-it-works" class="underline">How it works</a> |
             <a href="/terms" class="underline">Terms</a>
         </nav>
@@ -236,7 +99,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href=/tools"
+                    <a href=/tools
                         class="w-full sm:w-auto px-8 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-neutral-500/10">
                         Start Building <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
@@ -248,12 +111,7 @@
             </div>
         </section>
 
-        <!-- AD POSITION 1: Leaderboard -->
-        <div class="w-full mb-24 animate-fade-in">
-            <div class="ad-unit w-full max-w-[728px] h-[90px]" id="ad-top-leaderboard">
-                <!-- AdSense Leaderboard Code -->
-            </div>
-        </div>
+      
 
         <!-- Features Grid (Bento Style) -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
@@ -483,12 +341,7 @@
                     </div>
                 </section>
 
-                <!-- AD POSITION 2: In-Content -->
-                <div class="mb-16">
-                    <div class="ad-unit w-full max-w-[100%] h-[250px]" id="ad-content-rect-1">
-                        <!-- AdSense Rectangle Code -->
-                    </div>
-                </div>
+               
 
                 <!-- Technical Content -->
                 <section class="mb-20">
@@ -545,10 +398,7 @@
             <!-- Sidebar -->
             <aside class="hidden lg:col-span-4 lg:block space-y-8">
                 <div class="sticky top-24">
-                    <!-- AD POSITION 3 -->
-                    <div class="ad-unit w-[300px] h-[600px] mx-auto mb-8" id="ad-sidebar-1">
-                        <!-- Skyscraper Ad -->
-                    </div>
+                    
 
                     <!-- Mini Info Card -->
                     <div
@@ -610,10 +460,7 @@
             </div>
         </section>
 
-        <!-- Footer Ad -->
-        <div class="w-full mb-12">
-            <div class="ad-unit w-full h-[100px]" id="ad-footer"></div>
-        </div>
+        
 
         <script src="layout.js"></script>
 
