@@ -1,37 +1,41 @@
-document.addEventListener('DOMContentLoaded', () => {
-    ensureAdSense();
-    injectLayout();
-    initializeTheme();
-    initializeMobileMenu();
-    // Re-initialize icons since we just added new DOM elements
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  ensureAdSense();
+  injectLayout();
+  initializeTheme();
+  initializeMobileMenu();
+  // Re-initialize icons since we just added new DOM elements
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
 });
 
 function ensureAdSense() {
-    const ADSENSE_CLIENT = 'ca-pub-9710571190649081';
+  const ADSENSE_CLIENT = "ca-pub-9710571190649081";
 
-    const existingMeta = document.querySelector('meta[name="google-adsense-account"]');
-    if (!existingMeta) {
-        const meta = document.createElement('meta');
-        meta.name = 'google-adsense-account';
-        meta.content = ADSENSE_CLIENT;
-        document.head.appendChild(meta);
-    }
+  const existingMeta = document.querySelector(
+    'meta[name="google-adsense-account"]'
+  );
+  if (!existingMeta) {
+    const meta = document.createElement("meta");
+    meta.name = "google-adsense-account";
+    meta.content = ADSENSE_CLIENT;
+    document.head.appendChild(meta);
+  }
 
-    const existingScript = document.querySelector('script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
-    if (existingScript) return;
+  const existingScript = document.querySelector(
+    'script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+  );
+  if (existingScript) return;
 
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
-    script.crossOrigin = 'anonymous';
-    document.head.appendChild(script);
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
+  script.crossOrigin = "anonymous";
+  document.head.appendChild(script);
 }
 
 function injectLayout() {
-    const navHTML = `
+  const navHTML = `
     <nav class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300 border-b border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-md bg-white/70 dark:bg-black/70">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 group">
@@ -61,7 +65,7 @@ function injectLayout() {
     </nav>
     `;
 
-    const footerHTML = `
+  const footerHTML = `
     <footer class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
@@ -122,72 +126,79 @@ function injectLayout() {
     </footer>
     `;
 
-    // Inject Nav at the start of body
-    document.body.insertAdjacentHTML('afterbegin', navHTML);
+  // Inject Nav at the start of body
+  document.body.insertAdjacentHTML("afterbegin", navHTML);
 
-    // Inject Footer at the end of body
-    document.body.insertAdjacentHTML('beforeend', footerHTML);
+  // Inject Footer at the end of body
+  document.body.insertAdjacentHTML("beforeend", footerHTML);
 }
 
 function initializeTheme() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtn = document.getElementById("theme-toggle");
 
-    // Check initial state
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
+  // Check initial state
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        });
-    }
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    });
+  }
 }
 
 function initializeMobileMenu() {
+  const MobileMenu = (() => {
+    // Private variables
+    let isOpen = false;
+    let menuButton = null;
+    let mobileMenu = null;
+    let overlay = null;
 
-    const MobileMenu = (() => {
-        // Private variables
-        let isOpen = false;
-        let menuButton = null;
-        let mobileMenu = null;
-        let overlay = null;
+    /**
+     * Create mobile menu button if it doesn't exist
+     */
+    const createMenuButton = () => {
+      // Check if button already exists
+      const existingBtn = document.querySelector(".md\\:hidden button");
+      if (existingBtn) return existingBtn;
 
-        /**
-         * Create mobile menu button if it doesn't exist
-         */
-        const createMenuButton = () => {
-            // Check if button already exists
-            const existingBtn = document.querySelector('.md\\:hidden button');
-            if (existingBtn) return existingBtn;
+      // Create new button
+      const nav = document.querySelector("nav .max-w-7xl");
+      if (!nav) return null;
 
-            // Create new button
-            const nav = document.querySelector('nav .max-w-7xl');
-            if (!nav) return null;
+      const button = document.createElement("button");
+      button.className =
+        "md:hidden p-2 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors";
+      button.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      button.id = "mobile-menu-button";
+      button.setAttribute("aria-label", "Toggle menu");
 
-            const button = document.createElement('button');
-            button.className = 'md:hidden p-2 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg transition-colors';
-            button.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-            button.id = 'mobile-menu-button';
-            button.setAttribute('aria-label', 'Toggle menu');
+      nav.appendChild(button);
+      lucide.createIcons();
 
-            nav.appendChild(button);
-            lucide.createIcons();
+      return button;
+    };
 
-            return button;
-        };
-
-        /**
-         * Create mobile menu HTML structure
-         */
-        const createMobileMenu = () => {
-            const menu = document.createElement('div');
-            menu.id = 'mobile-menu';
-            menu.className = 'fixed inset-y-0 right-0 w-full max-w-sm bg-white dark:bg-black border-l border-neutral-200 dark:border-neutral-800 transform translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl';
-            menu.innerHTML = `
+    /**
+     * Create mobile menu HTML structure
+     */
+    const createMobileMenu = () => {
+      const menu = document.createElement("div");
+      menu.id = "mobile-menu";
+      menu.className =
+        "fixed inset-y-0 right-0 w-full max-w-sm bg-white dark:bg-black border-l border-neutral-200 dark:border-neutral-800 transform translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl";
+      menu.innerHTML = `
             <div class="flex flex-col h-full">
                 <!-- Header -->
                 <div class="flex items-center justify-between p-6 border-b border-neutral-200 dark:border-neutral-800">
@@ -256,179 +267,180 @@ function initializeMobileMenu() {
                 </div>
             </div>
         `;
-            document.body.appendChild(menu);
-            return menu;
-        };
+      document.body.appendChild(menu);
+      return menu;
+    };
 
-        /**
-         * Create overlay element
-         */
-        const createOverlay = () => {
-            const overlayEl = document.createElement('div');
-            overlayEl.id = 'mobile-menu-overlay';
-            overlayEl.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40';
-            document.body.appendChild(overlayEl);
-            return overlayEl;
-        };
+    /**
+     * Create overlay element
+     */
+    const createOverlay = () => {
+      const overlayEl = document.createElement("div");
+      overlayEl.id = "mobile-menu-overlay";
+      overlayEl.className =
+        "fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40";
+      document.body.appendChild(overlayEl);
+      return overlayEl;
+    };
 
-        /**
-         * Open mobile menu
-         */
-        const openMenu = () => {
-            isOpen = true;
-            document.body.style.overflow = 'hidden';
+    /**
+     * Open mobile menu
+     */
+    const openMenu = () => {
+      isOpen = true;
+      document.body.style.overflow = "hidden";
 
-            // Show overlay
-            overlay.classList.remove('pointer-events-none');
-            setTimeout(() => {
-                overlay.classList.remove('opacity-0');
-            }, 10);
+      // Show overlay
+      overlay.classList.remove("pointer-events-none");
+      setTimeout(() => {
+        overlay.classList.remove("opacity-0");
+      }, 10);
 
-            // Slide in menu
-            setTimeout(() => {
-                mobileMenu.classList.remove('translate-x-full');
-            }, 10);
+      // Slide in menu
+      setTimeout(() => {
+        mobileMenu.classList.remove("translate-x-full");
+      }, 10);
 
-            // Update button icon
-            const icon = menuButton.querySelector('i');
-            if (icon) {
-                icon.setAttribute('data-lucide', 'x');
-                lucide.createIcons();
-            }
-        };
+      // Update button icon
+      const icon = menuButton.querySelector("i");
+      if (icon) {
+        icon.setAttribute("data-lucide", "x");
+        lucide.createIcons();
+      }
+    };
 
-        /**
-         * Close mobile menu
-         */
-        const closeMenu = () => {
-            isOpen = false;
-            document.body.style.overflow = '';
+    /**
+     * Close mobile menu
+     */
+    const closeMenu = () => {
+      isOpen = false;
+      document.body.style.overflow = "";
 
-            // Hide menu
-            mobileMenu.classList.add('translate-x-full');
+      // Hide menu
+      mobileMenu.classList.add("translate-x-full");
 
-            // Hide overlay
-            overlay.classList.add('opacity-0');
-            setTimeout(() => {
-                overlay.classList.add('pointer-events-none');
-            }, 300);
+      // Hide overlay
+      overlay.classList.add("opacity-0");
+      setTimeout(() => {
+        overlay.classList.add("pointer-events-none");
+      }, 300);
 
-            // Update button icon
-            const icon = menuButton.querySelector('i');
-            if (icon) {
-                icon.setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
-            }
-        };
+      // Update button icon
+      const icon = menuButton.querySelector("i");
+      if (icon) {
+        icon.setAttribute("data-lucide", "menu");
+        lucide.createIcons();
+      }
+    };
 
-        /**
-         * Toggle menu state
-         */
-        const toggleMenu = () => {
-            if (isOpen) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        };
+    /**
+     * Toggle menu state
+     */
+    const toggleMenu = () => {
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
 
-        /**
-         * Handle theme toggle in mobile menu
-         */
-        const handleMobileThemeToggle = () => {
-            document.documentElement.classList.toggle('dark');
+    /**
+     * Handle theme toggle in mobile menu
+     */
+    const handleMobileThemeToggle = () => {
+      document.documentElement.classList.toggle("dark");
 
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.theme = 'dark';
-            } else {
-                localStorage.theme = 'light';
-            }
+      if (document.documentElement.classList.contains("dark")) {
+        localStorage.theme = "dark";
+      } else {
+        localStorage.theme = "light";
+      }
 
-            // Reinitialize icons to update theme icons
-            lucide.createIcons();
-        };
+      // Reinitialize icons to update theme icons
+      lucide.createIcons();
+    };
 
-        /**
-         * Handle anchor link clicks (close menu on navigation)
-         */
-        const handleAnchorClick = (e) => {
-            const href = e.currentTarget.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                closeMenu();
-            }
-        };
+    /**
+     * Handle anchor link clicks (close menu on navigation)
+     */
+    const handleAnchorClick = (e) => {
+      const href = e.currentTarget.getAttribute("href");
+      if (href && href.startsWith("#")) {
+        closeMenu();
+      }
+    };
 
-        /**
-         * Initialize mobile menu
-         */
-        const init = () => {
-            // Create or get hamburger button
-            menuButton = createMenuButton();
+    /**
+     * Initialize mobile menu
+     */
+    const init = () => {
+      // Create or get hamburger button
+      menuButton = createMenuButton();
 
-            if (!menuButton) {
-                console.error('Could not create mobile menu button');
-                return;
-            }
+      if (!menuButton) {
+        console.error("Could not create mobile menu button");
+        return;
+      }
 
-            // console.log('Mobile menu button created/found:', menuButton);
+      // console.log('Mobile menu button created/found:', menuButton);
 
-            // Create menu and overlay
-            mobileMenu = createMobileMenu();
-            overlay = createOverlay();
+      // Create menu and overlay
+      mobileMenu = createMobileMenu();
+      overlay = createOverlay();
 
-            // console.log('Mobile menu created:', mobileMenu);
-            // console.log('Overlay created:', overlay);
+      // console.log('Mobile menu created:', mobileMenu);
+      // console.log('Overlay created:', overlay);
 
-            // Initialize Lucide icons for the new menu
-            lucide.createIcons();
+      // Initialize Lucide icons for the new menu
+      lucide.createIcons();
 
-            // Event listeners
-            menuButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                // console.log('Menu button clicked');
-                toggleMenu();
-            });
+      // Event listeners
+      menuButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        // console.log('Menu button clicked');
+        toggleMenu();
+      });
 
-            const closeButton = document.getElementById('menu-close');
-            closeButton.addEventListener('click', closeMenu);
+      const closeButton = document.getElementById("menu-close");
+      closeButton.addEventListener("click", closeMenu);
 
-            overlay.addEventListener('click', closeMenu);
+      overlay.addEventListener("click", closeMenu);
 
-            // Mobile theme toggle
-            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-            mobileThemeToggle.addEventListener('click', handleMobileThemeToggle);
+      // Mobile theme toggle
+      const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
+      mobileThemeToggle.addEventListener("click", handleMobileThemeToggle);
 
-            // Close menu when clicking anchor links
-            const anchorLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
-            anchorLinks.forEach(link => {
-                link.addEventListener('click', handleAnchorClick);
-            });
+      // Close menu when clicking anchor links
+      const anchorLinks = mobileMenu.querySelectorAll(".mobile-menu-link");
+      anchorLinks.forEach((link) => {
+        link.addEventListener("click", handleAnchorClick);
+      });
 
-            // Close menu on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isOpen) {
-                    closeMenu();
-                }
-            });
+      // Close menu on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isOpen) {
+          closeMenu();
+        }
+      });
 
-            // Close menu on window resize to desktop size
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768 && isOpen) {
-                    closeMenu();
-                }
-            });
+      // Close menu on window resize to desktop size
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768 && isOpen) {
+          closeMenu();
+        }
+      });
 
-            // console.log('Mobile menu initialized successfully');
-        };
+      // console.log('Mobile menu initialized successfully');
+    };
 
-        // Public API
-        return {
-            init,
-            open: openMenu,
-            close: closeMenu,
-            toggle: toggleMenu,
-            isOpen: () => isOpen
-        };
-    })();
-    MobileMenu.init();
+    // Public API
+    return {
+      init,
+      open: openMenu,
+      close: closeMenu,
+      toggle: toggleMenu,
+      isOpen: () => isOpen,
+    };
+  })();
+  MobileMenu.init();
 }
