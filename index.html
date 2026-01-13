@@ -7,7 +7,16 @@
         content="SimpleDevTools offers free, privacy-focused developer tools that run entirely client-side.">
     <meta name="google-adsense-account" content="ca-pub-9710571190649081">
     <title>SimpleDevTools - Privacy-First Developer Utilities</title>
-
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
 
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
 
@@ -16,16 +25,57 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="preload"
+    <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
+        rel="stylesheet">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- Tailwind CSS -->
-    <!-- Moved to end -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Iconify/Lucide Icons -->
-    <!-- Moved to end -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        // Light Mode
+                        lightBg: '#FFFFFF',
+                        lightSurface: '#FAFAFA',
+
+                        // Dark Mode
+                        darkBg: '#000000',
+                        darkSurface: '#111111', // Very subtle off-black
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         /* Base styles */
@@ -166,16 +216,8 @@
         }
     </style>
 
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
-    <!-- End Google Tag Manager -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative">
@@ -504,14 +546,14 @@
 
                         <div
                             class="my-8 p-6 bg-neutral-100 dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800">
-                            <h3
+                            <h4
                                 class="text-sm font-semibold uppercase tracking-wider text-neutral-900 dark:text-neutral-100 mb-4">
-                                Architecture Comparison</h3>
+                                Architecture Comparison</h4>
                             <div class="space-y-4">
                                 <div>
                                     <div class="flex justify-between text-xs mb-1">
                                         <span>Server-Side (Others)</span>
-                                        <span class="text-red-700 dark:text-red-400">~200-500ms</span>
+                                        <span class="text-red-500">~200-500ms</span>
                                     </div>
                                     <div class="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
                                         <div class="h-full bg-red-400 w-[80%]"></div>
@@ -520,7 +562,7 @@
                                 <div>
                                     <div class="flex justify-between text-xs mb-1">
                                         <span>Client-Side (Us)</span>
-                                        <span class="text-green-700 dark:text-green-400">&lt; 5ms</span>
+                                        <span class="text-green-500">&lt; 5ms</span>
                                     </div>
                                     <div class="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden">
                                         <div class="h-full bg-green-500 w-[5%]"></div>
@@ -612,56 +654,11 @@
             <div class="ad-unit w-full h-[100px]" id="ad-footer"></div>
         </div>
 
-        <script src="layout.js" defer></script>
+        <script src="layout.js"></script>
 
     </main>
 
 
-
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        // Light Mode
-                        lightBg: '#FFFFFF',
-                        lightSurface: '#FAFAFA',
-
-                        // Dark Mode
-                        darkBg: '#000000',
-                        darkSurface: '#111111', // Very subtle off-black
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.6s ease-out forwards',
-                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com" async></script>
-
-    <!-- Iconify/Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest" async></script>
 
     <!-- Scripts -->
     <script>
