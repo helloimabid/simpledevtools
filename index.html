@@ -22,23 +22,62 @@
 
     <link rel="canonical" href="https://simpledevtools.tech/" />
 
-    <!-- Google Fonts -->
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin="">
+
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//analytics.ahrefs.com">
+
+    <!-- Google Fonts with display=swap -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
         rel="stylesheet">
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="logo.png" as="image" type="image/png">
+    <link rel="preload" href="./dist/output.css" as="style">
 
     <!-- Iconify/Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 
-<link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./dist/output.css">
 
- 
-    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical above-the-fold styles */
+        body {
+            background-color: white;
+            color: #111827;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark body {
+            background-color: #000;
+            color: #f9fafb;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0.75rem;
+        }
+        .dark .glass-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Loading skeleton */
+        .skeleton { 
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    </style>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
         crossorigin="anonymous"></script>
@@ -529,6 +568,19 @@
                 }
             });
         });
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
     </script>
 
 </body>
