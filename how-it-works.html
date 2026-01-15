@@ -19,7 +19,7 @@
     <title>How It Works - SimpleDevTools</title>
 
     <link rel="canonical" href="https://simpledevtools.tech/how-it-works" />
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
     <meta name="google-adsense-account" content="ca-pub-9710571190649081">
 
     <!-- Google Fonts -->
@@ -30,19 +30,19 @@
         rel="stylesheet">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
+
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="./dist/output.css">
 
     <!-- Iconify/Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./dist/js/lucide.min.js"></script>
 
-    
 
- 
+
 </head>
 
-<body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+<body
+    class="relative flex flex-col min-h-screen transition-colors duration-300 bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100">
 
 
     <!-- Google Tag Manager (noscript) -->
@@ -51,13 +51,15 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- Background Layers -->
     <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
-    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-screen"></div>
     <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
 
     <!-- Top Glow Effect -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-linear-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
+    </div>
 
-   <noscript>
+    <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
             <a href="/" class="underline">Home</a> |
             <a href="/tools" class="underline">Tools</a> |
@@ -67,53 +69,61 @@
     </noscript>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+    <main class="w-full px-6 pt-32 pb-24 mx-auto grow max-w-7xl">
 
         <!-- Hero Section -->
-        <div class="text-center max-w-3xl mx-auto mb-20 animate-fade-in">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+        <div class="max-w-3xl mx-auto mb-20 text-center animate-fade-in">
+            <h1 class="mb-6 text-4xl font-semibold tracking-tight font-display md:text-5xl">
                 <span class="text-gradient">How SimpleDevTools Works</span>
             </h1>
-            <p class="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                 Everything runs locally. Your data never leaves your browser.
             </p>
         </div>
 
         <!-- Step-by-Step Flow -->
-        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 mb-24 animate-slide-up" style="animation-delay: 0.1s;">
-            
+        <div class="relative grid grid-cols-1 gap-12 mb-24 md:grid-cols-3 animate-slide-up"
+            style="animation-delay: 0.1s;">
+
             <!-- Connection Line (Desktop) -->
-            <div class="hidden md:block absolute top-[2.5rem] left-0 w-full h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent z-[-1]"></div>
+            <div
+                class="hidden md:block absolute top-10 left-0 w-full h-px bg-linear-to-r from-transparent via-neutral-200 dark:via-neutral-800 to-transparent z-[-1]">
+            </div>
 
             <!-- Step 1 -->
             <div class="flex flex-col items-center text-center group">
-                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
-                    <i data-lucide="clipboard-copy" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
+                <div
+                    class="z-10 flex items-center justify-center w-20 h-20 mb-6 transition-transform duration-300 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl group-hover:scale-105">
+                    <i data-lucide="clipboard-copy"
+                        class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">1. Paste your data</h3>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                <h3 class="mb-2 text-lg font-medium tracking-tight font-display">1. Paste your data</h3>
+                <p class="max-w-xs text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                     Input your code, image, or text directly into the tool's interface.
                 </p>
             </div>
 
             <!-- Step 2 -->
             <div class="flex flex-col items-center text-center group">
-                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
+                <div
+                    class="z-10 flex items-center justify-center w-20 h-20 mb-6 transition-transform duration-300 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl group-hover:scale-105">
                     <i data-lucide="cpu" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">2. Local Processing</h3>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                <h3 class="mb-2 text-lg font-medium tracking-tight font-display">2. Local Processing</h3>
+                <p class="max-w-xs text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                     JavaScript running in your browser processes the input instantly.
                 </p>
             </div>
 
             <!-- Step 3 -->
             <div class="flex flex-col items-center text-center group">
-                <div class="w-20 h-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl flex items-center justify-center mb-6 shadow-sm z-10 group-hover:scale-105 transition-transform duration-300">
-                    <i data-lucide="check-circle-2" class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
+                <div
+                    class="z-10 flex items-center justify-center w-20 h-20 mb-6 transition-transform duration-300 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl group-hover:scale-105">
+                    <i data-lucide="check-circle-2"
+                        class="w-8 h-8 text-neutral-700 dark:text-neutral-300 stroke-[1.5]"></i>
                 </div>
-                <h3 class="font-display text-lg font-medium mb-2 tracking-tight">3. Instant Result</h3>
-                <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xs">
+                <h3 class="mb-2 text-lg font-medium tracking-tight font-display">3. Instant Result</h3>
+                <p class="max-w-xs text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                     Get your formatted or converted output immediately. No network calls.
                 </p>
             </div>
@@ -121,60 +131,66 @@
 
         <!-- Section Title -->
         <div class="mb-10 text-center animate-slide-up" style="animation-delay: 0.2s;">
-            <h2 class="font-display text-2xl md:text-3xl font-medium tracking-tight mb-4">Why Client-Side?</h2>
+            <h2 class="mb-4 text-2xl font-medium tracking-tight font-display md:text-3xl">Why Client-Side?</h2>
             <p class="text-neutral-500 dark:text-neutral-400">Security and speed by design.</p>
         </div>
 
         <!-- Benefits Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 animate-slide-up" style="animation-delay: 0.3s;">
-            
+        <div class="grid grid-cols-1 gap-6 mb-24 md:grid-cols-2 animate-slide-up" style="animation-delay: 0.3s;">
+
             <!-- No Uploads -->
-            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
-                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+            <div class="flex items-start gap-4 p-6 glass-card rounded-xl">
+                <div
+                    class="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white shrink-0">
                     <i data-lucide="shield-check" class="w-6 h-6 stroke-[1.5]"></i>
                 </div>
                 <div>
-                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">No Server Uploads</h3>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                        Your sensitive data (JSON, Base64 strings, or images) is never sent to our servers. It stays in your RAM.
+                    <h3 class="mb-1 text-lg font-medium tracking-tight font-display">No Server Uploads</h3>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                        Your sensitive data (JSON, Base64 strings, or images) is never sent to our servers. It stays in
+                        your RAM.
                     </p>
                 </div>
             </div>
 
             <!-- No Tracking -->
-            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
-                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+            <div class="flex items-start gap-4 p-6 glass-card rounded-xl">
+                <div
+                    class="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white shrink-0">
                     <i data-lucide="eye-off" class="w-6 h-6 stroke-[1.5]"></i>
                 </div>
                 <div>
-                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">No User Tracking</h3>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-1 text-lg font-medium tracking-tight font-display">No User Tracking</h3>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                         We don't use analytics scripts that record your inputs or behavior. We respect your privacy.
                     </p>
                 </div>
             </div>
 
             <!-- No Storage -->
-            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
-                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+            <div class="flex items-start gap-4 p-6 glass-card rounded-xl">
+                <div
+                    class="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white shrink-0">
                     <i data-lucide="database-zap" class="w-6 h-6 stroke-[1.5]"></i>
                 </div>
                 <div>
-                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">Zero Persistence</h3>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                        Once you close the tab, your data is gone. We don't store anything in databases or local storage.
+                    <h3 class="mb-1 text-lg font-medium tracking-tight font-display">Zero Persistence</h3>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                        Once you close the tab, your data is gone. We don't store anything in databases or local
+                        storage.
                     </p>
                 </div>
             </div>
 
             <!-- Performance -->
-            <div class="glass-card p-6 rounded-xl flex items-start gap-4">
-                <div class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white shrink-0">
+            <div class="flex items-start gap-4 p-6 glass-card rounded-xl">
+                <div
+                    class="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white shrink-0">
                     <i data-lucide="zap" class="w-6 h-6 stroke-[1.5]"></i>
                 </div>
                 <div>
-                    <h3 class="font-display text-lg font-medium mb-1 tracking-tight">Blazing Fast</h3>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-1 text-lg font-medium tracking-tight font-display">Blazing Fast</h3>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Since there's no network latency, tools react instantly. Works offline once the page is loaded.
                     </p>
                 </div>
@@ -182,30 +198,33 @@
         </div>
 
         <!-- Privacy & Security Footer Note -->
-        <div class="max-w-4xl mx-auto glass-card p-8 rounded-2xl text-center animate-slide-up" style="animation-delay: 0.4s;">
-            <div class="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mx-auto mb-4 text-neutral-900 dark:text-white">
+        <div class="max-w-4xl p-8 mx-auto text-center glass-card rounded-2xl animate-slide-up"
+            style="animation-delay: 0.4s;">
+            <div
+                class="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white">
                 <i data-lucide="lock" class="w-6 h-6 stroke-[1.5]"></i>
             </div>
-            <h2 class="font-display text-xl font-medium mb-3 tracking-tight">Privacy Policy Summary</h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed mb-6">
-                SimpleDevTools is open regarding its operations. We only use local storage for your 
+            <h2 class="mb-3 text-xl font-medium tracking-tight font-display">Privacy Policy Summary</h2>
+            <p class="mb-6 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                SimpleDevTools is open regarding its operations. We only use local storage for your
                 theme preference (Dark/Light mode). No cookies for tracking purposes are set.
             </p>
-            <a href="/privacy-policy" class="inline-flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white hover:opacity-70 transition-opacity">
+            <a href="/privacy-policy"
+                class="inline-flex items-center gap-2 text-sm font-medium transition-opacity text-neutral-900 dark:text-white hover:opacity-70">
                 Read full Privacy Policy <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
 
     </main>
 
-   <script src="layout.js"></script>
+    <script src="layout.js"></script>
 
     <!-- Scripts -->
     <script>
         // Initialize Icons
         lucide.createIcons();
 
-        
+
     </script>
 
 </body>

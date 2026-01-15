@@ -26,16 +26,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
         rel="stylesheet">
-     <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="./dist/output.css">
 
     <!-- Iconify/Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <script src="./dist/js/lucide.min.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -97,17 +96,18 @@
     </script>
 
 
- 
+
 
 </head>
 
-<body class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+<body
+    class="relative flex flex-col min-h-screen transition-colors duration-300 bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-<noscript>
+    <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
             <a href="/" class="underline">Home</a> |
             <a href="/tools" class="underline">Tools</a> |
@@ -117,156 +117,167 @@
     </noscript>
     <!-- Background Layers -->
     <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
-    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-[100vh]"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern opacity-[0.6] pointer-events-none h-screen"></div>
     <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
 
     <!-- Top Glow Effect -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none"></div>
-   
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-linear-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
+    </div>
+
     <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+    <main class="w-full px-6 pt-32 pb-24 mx-auto grow max-w-7xl">
 
         <!-- Page Header -->
-        <div class="mb-12 max-w-2xl animate-fade-in">
-            <h1 class="font-display text-4xl md:text-5xl font-semibold tracking-tight mb-4">
+        <div class="max-w-2xl mb-12 animate-fade-in">
+            <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display md:text-5xl">
                 <span class="text-gradient">Developer Tools</span>
             </h1>
-            <p class="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
+            <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                 Fast, privacy-first tools that run entirely in your browser.
             </p>
         </div>
-    <section class="mb-16 animate-slide-up" style="animation-delay: 0.05s;">
-        <h2 class="text-3xl font-display font-bold mb-8 text-neutral-900 dark:text-neutral-100">Tools by Category</h2>
-    
-        <div class="grid md:grid-cols-3 gap-4">
-    
-            <div
-                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+        <section class="mb-16 animate-slide-up" style="animation-delay: 0.05s;">
+            <h2 class="mb-8 text-3xl font-bold font-display text-neutral-900 dark:text-neutral-100">Tools by Category
+            </h2>
+
+            <div class="grid gap-4 md:grid-cols-3">
+
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                </div>
-    
-                <div class="relative z-10">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-10 h-10 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="database" class="w-5 h-5 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Data Tools</h3>
+                    class="relative p-6 overflow-hidden border bento-card rounded-2xl group border-neutral-200/50 dark:border-white/10">
+                    <div
+                        class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-emerald-500/5 to-transparent group-hover:opacity-100">
                     </div>
-    
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="/json-formatter"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                JSON Formatter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/base64-encoder"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                Base64 Encoder
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/jwt-decoder"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                JWT Decoder
-                            </a>
-                        </li>
-                    </ul>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 transition-transform duration-300 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 group-hover:scale-110">
+                                <i data-lucide="database" class="w-5 h-5 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold font-display text-neutral-900 dark:text-white">Data Tools
+                            </h3>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="/json-formatter"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    JSON Formatter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/base64-encoder"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    Base64 Encoder
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/jwt-decoder"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-emerald-600 dark:hover:text-emerald-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    JWT Decoder
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-    
-            <div
-                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                </div>
-    
-                <div class="relative z-10">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-10 h-10 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="shield" class="w-5 h-5 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Security Tools</h3>
+                    class="relative p-6 overflow-hidden border bento-card rounded-2xl group border-neutral-200/50 dark:border-white/10">
+                    <div
+                        class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-blue-500/5 to-transparent group-hover:opacity-100">
                     </div>
-    
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="/hash-generator"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                Hash Generator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/password-strength-analyzer"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                Password Analyzer
-                            </a>
-                        </li>
-                    </ul>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 text-blue-600 transition-transform duration-300 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 dark:text-blue-400 group-hover:scale-110">
+                                <i data-lucide="shield" class="w-5 h-5 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold font-display text-neutral-900 dark:text-white">Security
+                                Tools</h3>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="/hash-generator"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    Hash Generator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/password-strength-analyzer"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    Password Analyzer
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-    
-            <div
-                class="bento-card rounded-2xl p-6 relative overflow-hidden group border border-neutral-200/50 dark:border-white/10">
+
                 <div
-                    class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                </div>
-    
-                <div class="relative z-10">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-10 h-10 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300">
-                            <i data-lucide="zap" class="w-5 h-5 stroke-[1.5]"></i>
-                        </div>
-                        <h3 class="font-display font-semibold text-xl text-neutral-900 dark:text-white">Utility Tools</h3>
+                    class="relative p-6 overflow-hidden border bento-card rounded-2xl group border-neutral-200/50 dark:border-white/10">
+                    <div
+                        class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-purple-500/5 to-transparent group-hover:opacity-100">
                     </div>
-    
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="/uuid-generator"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                UUID Generator
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/regex-tester"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                Regex Tester
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/image-compressor"
-                                class="flex items-center text-sm text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
-                                <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
-                                Image Compressor
-                            </a>
-                        </li>
-                    </ul>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 text-purple-600 transition-transform duration-300 rounded-lg bg-purple-500/10 dark:bg-purple-500/20 dark:text-purple-400 group-hover:scale-110">
+                                <i data-lucide="zap" class="w-5 h-5 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold font-display text-neutral-900 dark:text-white">Utility
+                                Tools</h3>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li>
+                                <a href="/uuid-generator"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    UUID Generator
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/regex-tester"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    Regex Tester
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/image-compressor"
+                                    class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-purple-600 dark:hover:text-purple-400">
+                                    <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                    Image Compressor
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
-    
-        </div>
-    </section>
+        </section>
 
         <!-- Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-slide-up" style="animation-delay: 0.1s;">
-            
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 animate-slide-up"
+            style="animation-delay: 0.1s;">
+
             <!-- JSON Formatter (Large Square: 2x2) -->
-            <a href="/json-formatter" class="bento-card rounded-2xl p-8 lg:col-span-2 lg:row-span-2 relative overflow-hidden group h-full flex flex-col justify-between min-h-[320px]">
-                <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/json-formatter"
+                class="bento-card rounded-2xl p-8 lg:col-span-2 lg:row-span-2 relative overflow-hidden group h-full flex flex-col justify-between min-h-[320px]">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-emerald-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <!-- Decorative Code Background -->
-                <div class="absolute right-0 top-0 p-8 opacity-[0.03] dark:opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform duration-700 ease-out origin-top-right">
+                <div
+                    class="absolute right-0 top-0 p-8 opacity-[0.03] dark:opacity-[0.05] pointer-events-none group-hover:scale-110 transition-transform duration-700 ease-out origin-top-right">
                     <pre class="font-mono text-sm leading-tight text-right">
 {
   "json": true,
@@ -274,36 +285,48 @@
   "data": [...]
 }</pre>
                 </div>
-                
+
                 <div class="relative z-10">
-                    <div class="w-14 h-14 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center mb-6 transition-transform duration-300 w-14 h-14 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-xl text-emerald-600 dark:text-emerald-400 group-hover:scale-110">
                         <i data-lucide="file-json" class="w-7 h-7 stroke-[1.5]"></i>
                     </div>
-                    <h3 class="font-display text-2xl font-semibold mb-3 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">JSON Formatter</h3>
-                    <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-sm">
-                        Validate, minify, and beautify JSON instantly. Includes syntax highlighting and error detection for complex structures.
+                    <h3
+                        class="mb-3 text-2xl font-semibold tracking-tight transition-colors font-display group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+                        JSON Formatter</h3>
+                    <p class="max-w-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                        Validate, minify, and beautify JSON instantly. Includes syntax highlighting and error detection
+                        for complex structures.
                     </p>
                 </div>
-                <div class="mt-8 flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                <div
+                    class="flex items-center mt-8 text-sm font-medium transition-all duration-300 -translate-x-4 opacity-0 text-emerald-600 dark:text-emerald-400 group-hover:opacity-100 group-hover:translate-x-0">
                     <span>Open Tool</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
                 </div>
             </a>
 
             <!-- Base64 Converter (Wide: 2 cols) -->
-            <a href="/base64-encoder" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group min-h-[180px] flex flex-col justify-center">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute right-[-20px] top-[-20px] opacity-[0.03] dark:opacity-[0.05] group-hover:rotate-12 transition-transform duration-700 pointer-events-none">
+            <a href="/base64-encoder"
+                class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group min-h-[180px] flex flex-col justify-center">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-blue-500/5 to-transparent group-hover:opacity-100">
+                </div>
+                <div
+                    class="absolute right-[-20px] top-[-20px] opacity-[0.03] dark:opacity-[0.05] group-hover:rotate-12 transition-transform duration-700 pointer-events-none">
                     <i data-lucide="binary" class="w-48 h-48"></i>
                 </div>
-                
+
                 <div class="relative z-10 flex items-start gap-5">
-                    <div class="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 group-hover:rotate-6 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 text-blue-600 transition-transform duration-300 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 dark:text-blue-400 shrink-0 group-hover:rotate-6">
                         <i data-lucide="arrow-left-right" class="w-6 h-6 stroke-[1.5]"></i>
                     </div>
                     <div>
-                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Base64 Encoder / Decoder</h3>
-                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        <h3
+                            class="mb-1 text-lg font-semibold tracking-tight transition-colors font-display group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                            Base64 Encoder / Decoder</h3>
+                        <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                             Convert text or files to Base64 format and back. Supports URL-safe encoding.
                         </p>
                     </div>
@@ -311,50 +334,62 @@
             </a>
 
             <!-- UUID Generator (Standard: 1 col) -->
-            <a href="/uuid-generator" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
-                <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/uuid-generator"
+                class="relative flex flex-col justify-between p-6 overflow-hidden bento-card rounded-2xl group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-purple-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <div class="relative z-10">
-                    <div class="w-10 h-10 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 mb-4 text-purple-600 transition-transform duration-300 rounded-lg bg-purple-500/10 dark:bg-purple-500/20 dark:text-purple-400 group-hover:scale-110">
                         <i data-lucide="fingerprint" class="w-5 h-5 stroke-[1.5]"></i>
                     </div>
-                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">UUID Generator</h3>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-2 text-lg font-semibold tracking-tight font-display">UUID Generator</h3>
+                    <p class="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Generate v4 UUIDs individually or in bulk instantly.
                     </p>
                 </div>
             </a>
 
             <!-- Regex Tester (Standard: 1 col) -->
-            <a href="/regex-tester" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
-                <div class="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/regex-tester"
+                class="relative flex flex-col justify-between p-6 overflow-hidden bento-card rounded-2xl group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-rose-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <div class="relative z-10">
-                    <div class="w-10 h-10 bg-rose-500/10 dark:bg-rose-500/20 rounded-lg flex items-center justify-center text-rose-600 dark:text-rose-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 mb-4 transition-transform duration-300 rounded-lg bg-rose-500/10 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 group-hover:scale-110">
                         <i data-lucide="regex" class="w-5 h-5 stroke-[1.5]"></i>
                     </div>
-                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">Regex Tester</h3>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-2 text-lg font-semibold tracking-tight font-display">Regex Tester</h3>
+                    <p class="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Test patterns with real-time match highlighting.
                     </p>
                 </div>
             </a>
 
             <!-- Hash Generator (Wide: 2 cols) -->
-            <a href="/hash-generator" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group flex flex-col justify-center">
-                <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/hash-generator"
+                class="relative flex flex-col justify-center p-6 overflow-hidden bento-card rounded-2xl lg:col-span-2 group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-orange-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <!-- Abstract Hash Pattern -->
                 <div class="absolute right-4 bottom-4 flex gap-1 opacity-[0.1] dark:opacity-[0.15]">
-                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
-                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
-                    <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
                 </div>
 
                 <div class="relative z-10 flex items-center gap-5">
-                    <div class="w-12 h-12 bg-orange-500/10 dark:bg-orange-500/20 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 text-orange-600 transition-transform duration-300 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 dark:text-orange-400 shrink-0 group-hover:rotate-12">
                         <i data-lucide="hash" class="w-6 h-6 stroke-[1.5]"></i>
                     </div>
                     <div>
-                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight">Hash Generator</h3>
-                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        <h3 class="mb-1 text-lg font-semibold tracking-tight font-display">Hash Generator</h3>
+                        <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                             Compute MD5, SHA-1, SHA-256 hashes via Web Crypto API.
                         </p>
                     </div>
@@ -362,17 +397,23 @@
             </a>
 
             <!-- Image Compressor (Wide: 2 cols) -->
-            <a href="/image-compressor" class="bento-card rounded-2xl p-6 lg:col-span-2 relative overflow-hidden group flex flex-col justify-center">
-                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute right-0 bottom-0 w-24 h-24 bg-gradient-to-tl from-cyan-500/10 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/image-compressor"
+                class="relative flex flex-col justify-center p-6 overflow-hidden bento-card rounded-2xl lg:col-span-2 group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-cyan-500/5 to-transparent group-hover:opacity-100">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-24 h-24 transition-opacity duration-500 rounded-tl-full opacity-0 bg-linear-to-tl from-cyan-500/10 to-transparent group-hover:opacity-100">
+                </div>
 
                 <div class="relative z-10 flex items-center gap-5">
-                    <div class="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center text-cyan-600 dark:text-cyan-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 transition-transform duration-300 rounded-lg bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 shrink-0 group-hover:scale-110">
                         <i data-lucide="image" class="w-6 h-6 stroke-[1.5]"></i>
                     </div>
                     <div>
-                        <h3 class="font-display text-lg font-semibold mb-1 tracking-tight">Image Compressor</h3>
-                        <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                        <h3 class="mb-1 text-lg font-semibold tracking-tight font-display">Image Compressor</h3>
+                        <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                             Optimize Any Image Format images client-side without quality loss.
                         </p>
                     </div>
@@ -380,38 +421,46 @@
             </a>
 
             <!-- JWT Decoder (Standard: 1 col) -->
-            <a href="/jwt-decoder" class="bento-card rounded-2xl p-6 relative overflow-hidden group flex flex-col justify-between">
-                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/jwt-decoder"
+                class="relative flex flex-col justify-between p-6 overflow-hidden bento-card rounded-2xl group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-amber-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <div class="relative z-10">
-                    <div class="w-10 h-10 bg-amber-500/10 dark:bg-amber-500/20 rounded-lg flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 mb-4 transition-transform duration-300 rounded-lg bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 group-hover:scale-110">
                         <i data-lucide="key" class="w-5 h-5 stroke-[1.5]"></i>
                     </div>
-                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">JWT Decoder</h3>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-2 text-lg font-semibold tracking-tight font-display">JWT Decoder</h3>
+                    <p class="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Decode and verify JSON Web Tokens instantly with header and payload display.
                     </p>
                 </div>
             </a>
 
             <!-- Password Strength Analyzer (Standard: 1 col) -->
-            <a href="/password-strength-analyzer" class="bento-card rounded-2xl p-6 lg:col-span-3 relative overflow-hidden group flex flex-col justify-between">
-                <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <a href="/password-strength-analyzer"
+                class="relative flex flex-col justify-between p-6 overflow-hidden bento-card rounded-2xl lg:col-span-3 group">
+                <div
+                    class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-red-500/5 to-transparent group-hover:opacity-100">
+                </div>
                 <div class="relative z-10">
-                    <div class="w-10 h-10 bg-red-500/10 dark:bg-red-500/20 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div
+                        class="flex items-center justify-center w-10 h-10 mb-4 text-red-600 transition-transform duration-300 rounded-lg bg-red-500/10 dark:bg-red-500/20 dark:text-red-400 group-hover:scale-110">
                         <i data-lucide="shield-check" class="w-5 h-5 stroke-[1.5]"></i>
                     </div>
-                    <h3 class="font-display text-lg font-semibold mb-2 tracking-tight">Password Strength Analyzer</h3>
-                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h3 class="mb-2 text-lg font-semibold tracking-tight font-display">Password Strength Analyzer</h3>
+                    <p class="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Check password security with entropy scoring and breach detection.
                     </p>
                 </div>
             </a>
-            
+
         </div>
 
     </main>
 
-    
+
     <script src="layout.js"></script>
 
     <!-- Scripts -->
@@ -419,7 +468,7 @@
         // Initialize Icons
         lucide.createIcons();
 
-        
+
     </script>
 
 </body>

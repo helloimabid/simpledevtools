@@ -30,18 +30,17 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
- 
+    <script src="./dist/js/lucide.min.js"></script>
 </head>
 
 <body
-    class="bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100 transition-colors duration-300 relative min-h-screen flex flex-col">
+    class="relative flex flex-col min-h-screen transition-colors duration-300 bg-lightBg dark:bg-darkBg text-neutral-900 dark:text-neutral-100">
 
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
-        style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Ambient Backgrounds -->
     <div class="fixed inset-0 z-[-1] bg-lightBg dark:bg-darkBg transition-colors duration-300"></div>
@@ -49,24 +48,24 @@
     <div class="fixed inset-0 z-[-1] bg-dot-pattern opacity-[0.3] pointer-events-none"></div>
     <!-- Top Glow -->
     <div
-        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-screen-lg h-96 bg-gradient-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-(--breakpoint-lg) h-96 bg-linear-to-b from-blue-50/50 to-transparent dark:from-blue-900/10 dark:to-transparent blur-[100px] z-[-1] rounded-full pointer-events-none">
     </div>
 
 
 
     <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-12 px-6 max-w-7xl mx-auto w-full">
+    <main class="w-full px-6 pt-32 pb-12 mx-auto grow max-w-7xl">
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
 
             <!-- Left Column: Header & Context -->
-            <div class="lg:col-span-5 flex flex-col justify-center animate-slide-up">
+            <div class="flex flex-col justify-center lg:col-span-5 animate-slide-up">
                 <span
                     class="inline-flex items-center gap-1.5 px-3 py-1 mb-6 text-xs font-medium tracking-wide text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800 w-fit">
-                    <span class="relative flex h-2 w-2">
+                    <span class="relative flex w-2 h-2">
                         <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            class="absolute inline-flex w-full h-full bg-blue-400 rounded-full opacity-75 animate-ping"></span>
+                        <span class="relative inline-flex w-2 h-2 bg-blue-500 rounded-full"></span>
                     </span>
                     Support & Feedback
                 </span>
@@ -77,7 +76,7 @@
                     <span class="text-neutral-400 dark:text-neutral-500">with me.</span>
                 </h1>
 
-                <p class="text-lg text-neutral-500 dark:text-neutral-400 mb-10 leading-relaxed">
+                <p class="mb-10 text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                     Found a bug in a utility? Have a suggestion for a new tool?
                     Since everything runs client-side, I rely on your feedback to improve the ecosystem.
                 </p>
@@ -85,46 +84,46 @@
                 <div class="space-y-6">
                     <div class="flex items-start gap-4">
                         <div
-                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            class="p-3 mt-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white">
                             <i data-lucide="mail" class="w-5 h-5"></i>
                         </div>
                         <div>
                             <h3 class="font-medium text-neutral-900 dark:text-white">Email</h3>
-                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">For general inquiries and
+                            <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">For general inquiries and
                                 partnerships.</p>
                             <a href="mailto:me@sadmanabid.me"
-                                class="text-sm font-medium text-neutral-900 dark:text-white mt-2 inline-block border-b border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white transition-colors">me@sadmanabid.me</a>
+                                class="inline-block mt-2 text-sm font-medium transition-colors border-b text-neutral-900 dark:text-white border-neutral-300 dark:border-neutral-700 hover:border-black dark:hover:border-white">me@sadmanabid.me</a>
                         </div>
                     </div>
 
                     <div class="flex items-start gap-4">
                         <div
-                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            class="p-3 mt-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white">
                             <i data-lucide="bug" class="w-5 h-5"></i>
                         </div>
                         <div>
                             <h3 class="font-medium text-neutral-900 dark:text-white">Report Issues</h3>
-                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Something not working? Let me
+                            <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Something not working? Let me
                                 know the browser version.</p>
                         </div>
                     </div>
 
                     <!-- <div class="flex items-start gap-4">
                         <div
-                            class="p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-neutral-900 dark:text-white mt-1">
+                            class="p-3 mt-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white">
                             <i data-lucide="message-square" class="w-5 h-5"></i>
                         </div>
                         <div>
                             <h3 class="font-medium text-neutral-900 dark:text-white">Social</h3>
                             <div class="flex gap-4 mt-3">
                                 <a href="#"
-                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                    class="transition-colors text-neutral-500 hover:text-black dark:hover:text-white"><i
                                         data-lucide="twitter" class="w-5 h-5"></i></a>
                                 <a href="#"
-                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                    class="transition-colors text-neutral-500 hover:text-black dark:hover:text-white"><i
                                         data-lucide="github" class="w-5 h-5"></i></a>
                                 <a href="#"
-                                    class="text-neutral-500 hover:text-black dark:hover:text-white transition-colors"><i
+                                    class="transition-colors text-neutral-500 hover:text-black dark:hover:text-white"><i
                                         data-lucide="linkedin" class="w-5 h-5"></i></a>
                             </div>
                         </div>
@@ -133,20 +132,20 @@
             </div>
 
             <!-- Right Column: Form -->
-            <div class="lg:col-span-7 flex items-center">
-                <div class="glass-card w-full p-8 sm:p-10 rounded-2xl animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="flex items-center lg:col-span-7">
+                <div class="w-full p-8 glass-card sm:p-10 rounded-2xl animate-slide-up" style="animation-delay: 0.1s;">
                     <div id="alertContainer"></div>
 
                     <form onsubmit="event.preventDefault();" class="space-y-6">
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <!-- Name -->
                             <div class="space-y-2">
                                 <label for="name"
                                     class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Name</label>
                                 <div class="relative group">
                                     <div
-                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-blue-500 transition-colors">
+                                        class="absolute transition-colors -translate-y-1/2 left-3 top-1/2 text-neutral-400 group-focus-within:text-blue-500">
                                         <i data-lucide="user" class="w-4 h-4"></i>
                                     </div>
                                     <input type="text" id="name" placeholder="John Doe"
@@ -164,7 +163,7 @@
                                     class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Email</label>
                                 <div class="relative group">
                                     <div
-                                        class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-blue-500 transition-colors">
+                                        class="absolute transition-colors -translate-y-1/2 left-3 top-1/2 text-neutral-400 group-focus-within:text-blue-500">
                                         <i data-lucide="at-sign" class="w-4 h-4"></i>
                                     </div>
                                     <input type="email" id="email" placeholder="john@example.com"
@@ -185,7 +184,7 @@
                             <label for="subject"
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Subject</label>
                             <div class="relative">
-                                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400">
+                                <div class="absolute -translate-y-1/2 left-3 top-1/2 text-neutral-400">
                                     <i data-lucide="tag" class="w-4 h-4"></i>
                                 </div>
                                 <div class="custom-input w-full rounded-lg py-2.5 pl-10 pr-10 text-sm bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black text-neutral-700 dark:text-neutral-200 cursor-pointer flex items-center justify-between"
@@ -199,17 +198,17 @@
                                     Please select a subject
                                 </span>
 
-                                <ul class="absolute top-full left-0 right-0 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg mt-1 shadow-lg z-10 max-h-60 overflow-y-auto transition-all duration-200 opacity-0 scale-95 pointer-events-none"
+                                <ul class="absolute left-0 right-0 z-10 mt-1 overflow-y-auto transition-all duration-200 scale-95 bg-white border rounded-lg shadow-lg opacity-0 pointer-events-none top-full dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 max-h-60"
                                     id="subject-options">
-                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                    <li class="px-3 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
                                         data-value="Report a Bug">Report a Bug</li>
-                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                    <li class="px-3 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
                                         data-value="Feature Request">Feature Request</li>
-                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                    <li class="px-3 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
                                         data-value="General Inquiry">General Inquiry</li>
-                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                    <li class="px-3 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
                                         data-value="Partnership">Partnership</li>
-                                    <li class="px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer"
+                                    <li class="px-3 py-2 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-700"
                                         data-value="Other">Other</li>
                                 </ul>
                             </div>
@@ -220,7 +219,7 @@
                             <label for="message"
                                 class="block text-sm font-medium text-neutral-700 dark:text-neutral-300">Message</label>
                             <textarea id="message" rows="5" placeholder="Describe the issue or suggestion..."
-                                class="custom-input w-full rounded-lg p-3 text-sm placeholder:text-neutral-400 bg-white dark:bg-neutral-800 focus:bg-white dark:focus:bg-black resize-y"></textarea>
+                                class="w-full p-3 text-sm bg-white rounded-lg resize-y custom-input placeholder:text-neutral-400 dark:bg-neutral-800 focus:bg-white dark:focus:bg-black"></textarea>
                             <span id="messageError" class="hidden text-xs text-red-500">
                                 Message is required
                             </span>
@@ -252,23 +251,23 @@
         </div>
 
         <!-- FAQ Section / Bottom Info -->
-        <section class="mt-24 pt-12 border-t border-neutral-200 dark:border-neutral-800">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <section class="pt-12 mt-24 border-t border-neutral-200 dark:border-neutral-800">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                 <div>
-                    <h4 class="font-display font-medium text-lg mb-2">Response Time</h4>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h4 class="mb-2 text-lg font-medium font-display">Response Time</h4>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                         I am a solo developer. I typically respond within 24-48 hours for critical bugs.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-display font-medium text-lg mb-2">Privacy First</h4>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h4 class="mb-2 text-lg font-medium font-display">Privacy First</h4>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Your message contents are sent via encrypted email. No data is stored in a database.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-display font-medium text-lg mb-2">Community</h4>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                    <h4 class="mb-2 text-lg font-medium font-display">Community</h4>
+                    <p class="text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                         Join our <a href="https://discord.gg/ATmCBvgrPU"
                             class="underline hover:text-black dark:hover:text-white">Discord server</a>
                         for real-time discussions with other developers using the tools.
@@ -392,7 +391,7 @@
 
             alertContainer.innerHTML = `
                 <div class="mb-6 p-4 ${bgColor} border rounded-lg flex items-start gap-3 animate-slide-up">
-                    <i data-lucide="${icon}" class="w-5 h-5 ${textColor} flex-shrink-0 mt-0.5"></i>
+                    <i data-lucide="${icon}" class="w-5 h-5 ${textColor} shrink-0 mt-0.5"></i>
                     <p class="text-sm ${textColor}">${message}</p>
                 </div>
             `;

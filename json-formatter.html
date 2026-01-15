@@ -30,11 +30,10 @@
         rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <!-- Tailwind CSS -->
-  <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="./dist/output.css">
 
     <!-- Iconify/Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <script src="./dist/js/lucide.min.js"></script>
     <style>
         /* Dropdown Styles */
         .dropdown {
@@ -91,8 +90,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .file-info {
@@ -152,7 +158,7 @@
 </head>
 
 <body
-    class="bg-white dark:bg-black text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex flex-col min-h-screen">
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
@@ -167,33 +173,34 @@
         </nav>
     </noscript>
 
-    <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
     <div
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0">
     </div>
 
     <!-- Main Content -->
-    <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto">
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="mx-auto max-w-7xl">
 
             <!-- Header Section -->
-            <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="max-w-2xl mx-auto mb-12 text-center">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-medium mb-6 border border-indigo-100 dark:border-indigo-900/30">
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-indigo-600 border border-indigo-100 rounded-full bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Processed locally. No data reaches our servers.</span>
                 </div>
                 <h1
-                    class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     JSON Formatter & Converter
                 </h1>
-                <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                     Parse, validate, beautify, and convert JSON to TypeScript, YAML, and CSV instantly.
                 </p>
-                
+
                 <!-- Guide Link -->
-                <div class="mt-6 flex justify-center">
-                    <a href="/guides/json-formatter-guide" class="inline-flex items-center gap-2 px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium transition-colors">
+                <div class="flex justify-center mt-6">
+                    <a href="/guides/json-formatter-guide"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-indigo-600 transition-colors dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
                         <i data-lucide="book-open" class="w-4 h-4"></i>
                         View User Guide
                     </a>
@@ -202,20 +209,20 @@
 
             <!-- Tool Interface -->
             <div id="json-formatter"
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16 animate-fade-in relative">
+                class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl animate-fade-in">
 
                 <!-- Toolbar -->
                 <div
-                    class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50 flex flex-wrap items-center justify-between gap-3">
+                    class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div class="flex flex-wrap items-center gap-2">
                         <!-- Primary Format Button -->
                         <button onclick="formatJSON(2)"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium rounded-md transition-colors shadow-sm">
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium rounded-md transition-colors shadow-xs">
                             <i data-lucide="play" class="w-3.5 h-3.5"></i>
                             Format / Validate
                         </button>
 
-                        <div class="w-px h-6 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
 
                         <button onclick="formatJSON(2)"
                             class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
@@ -239,10 +246,10 @@
                         </button>
 
                         <!-- Divider -->
-                        <div class="w-px h-6 bg-neutral-200 dark:bg-neutral-800 mx-1"></div>
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
 
                         <!-- Convert Dropdown -->
-                         
+
                         <div class="dropdown">
                             <button
                                 class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-all">
@@ -250,17 +257,17 @@
                                 Convert To...
                                 <i data-lucide="chevron-down" class="w-3 h-3 ml-1"></i>
                             </button>
-                            <div class="dropdown-content p-1">
+                            <div class="p-1 dropdown-content">
                                 <button onclick="jsonToTypeScript()"
-                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    class="flex items-center w-full gap-2 px-3 py-2 text-xs text-left text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xs">
                                     <i data-lucide="code-2" class="w-3.5 h-3.5"></i> TypeScript
                                 </button>
                                 <button onclick="jsonToYAML()"
-                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    class="flex items-center w-full gap-2 px-3 py-2 text-xs text-left text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xs">
                                     <i data-lucide="file-code" class="w-3.5 h-3.5"></i> YAML
                                 </button>
                                 <button onclick="jsonToCSV()"
-                                    class="w-full text-left flex items-center gap-2 px-3 py-2 text-xs text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-sm">
+                                    class="flex items-center w-full gap-2 px-3 py-2 text-xs text-left text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xs">
                                     <i data-lucide="table" class="w-3.5 h-3.5"></i> CSV
                                 </button>
                             </div>
@@ -287,7 +294,7 @@
                             Clear
                         </button>
                         <button onclick="downloadOutput()"
-                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-sm">
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-xs">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i>
                             Save
                         </button>
@@ -298,17 +305,17 @@
                 <div
                     class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
                     <!-- Input -->
-                    <div class="flex flex-col h-full relative group" id="drop-zone">
+                    <div class="relative flex flex-col h-full group" id="drop-zone">
                         <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 text-xs font-mono text-neutral-500 flex justify-between items-center shrink-0">
+                            class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
                             <span class="flex items-center gap-2">
                                 Input
                                 <span
-                                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[10px] text-neutral-400">JSON</span>
+                                    class="px-1.5 py-0.5 rounded-sm bg-neutral-100 dark:bg-neutral-800 text-[10px] text-neutral-400">JSON</span>
                                 <!-- Realtime Status Indicator -->
-                                <span id="realtime-status" class="hidden flex items-center gap-1 ml-2 transition-all">
+                                <span id="realtime-status" class="flex items-center hidden gap-1 ml-2 transition-all">
                                     <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i>
-                                    <span class="text-emerald-600 dark:text-emerald-400 font-medium">Valid</span>
+                                    <span class="font-medium text-emerald-600 dark:text-emerald-400">Valid</span>
                                 </span>
                             </span>
                             <div class="flex items-center gap-3">
@@ -322,7 +329,7 @@
 
                         <!-- Top Error Banner -->
                         <div id="top-error-banner"
-                            class="hidden bg-red-50 dark:bg-red-900/20 border-b border-red-100 dark:border-red-900/50 p-3 animate-fade-in shrink-0">
+                            class="hidden p-3 border-b border-red-100 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 animate-fade-in shrink-0">
                             <div class="flex items-start gap-2">
                                 <i data-lucide="alert-circle"
                                     class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
@@ -341,10 +348,10 @@
 
                         <!-- Drag & Drop Overlay -->
                         <div id="drag-overlay"
-                            class="absolute inset-2 z-20 hidden flex-col items-center justify-center bg-indigo-50/90 dark:bg-indigo-900/90 backdrop-blur-sm rounded-lg pointer-events-none transition-all">
-                            <i data-lucide="file-up" class="w-10 h-10 text-indigo-500 mb-2"></i>
+                            class="absolute z-20 flex-col items-center justify-center hidden transition-all rounded-lg pointer-events-none inset-2 bg-indigo-50/90 dark:bg-indigo-900/90 backdrop-blur-xs">
+                            <i data-lucide="file-up" class="w-10 h-10 mb-2 text-indigo-500"></i>
                             <p class="text-sm font-medium text-indigo-700 dark:text-indigo-300">Drop JSON file here</p>
-                            <p class="text-xs text-indigo-600 dark:text-indigo-400 mt-1">Supports .json, .txt files</p>
+                            <p class="mt-1 text-xs text-indigo-600 dark:text-indigo-400">Supports .json, .txt files</p>
                         </div>
 
                         <!-- File Info Display -->
@@ -354,43 +361,43 @@
 
                         <!-- Drop Hint -->
                         <div class="drop-hint">
-                            <i data-lucide="upload" class="w-3 h-3 inline mr-1"></i>
+                            <i data-lucide="upload" class="inline w-3 h-3 mr-1"></i>
                             Drag & drop files here
                         </div>
 
                         <textarea id="json-input"
-                            class="flex-1 w-full p-4 bg-transparent border-2 border-transparent focus:ring-0 text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none placeholder:text-neutral-400/50 leading-relaxed transition-colors"
+                            class="flex-1 w-full p-4 font-mono text-xs leading-relaxed transition-colors bg-transparent border-2 border-transparent resize-none focus:ring-0 sm:text-sm text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50"
                             placeholder="Paste JSON here, or drag & drop a file..." spellcheck="false"></textarea>
                     </div>
 
                     <!-- Output -->
-                    <div class="flex flex-col h-full bg-neutral-50/20 dark:bg-black/20 relative">
+                    <div class="relative flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
                         <div
-                            class="px-4 py-2 bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-100 dark:border-neutral-800 flex justify-between items-center">
+                            class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
                             <div class="flex gap-2">
                                 <button onclick="switchView('text')" id="tab-text"
-                                    class="text-xs font-mono font-bold text-neutral-900 dark:text-white px-2 py-0.5 rounded bg-white dark:bg-neutral-800 shadow-sm transition-all border border-neutral-200 dark:border-neutral-700">Text</button>
+                                    class="text-xs font-mono font-bold text-neutral-900 dark:text-white px-2 py-0.5 rounded-sm bg-white dark:bg-neutral-800 shadow-xs transition-all border border-neutral-200 dark:border-neutral-700">Text</button>
                                 <button onclick="switchView('tree')" id="tab-tree"
                                     class="text-xs font-mono text-neutral-500 hover:text-neutral-900 dark:hover:text-white px-2 py-0.5 transition-all border border-transparent">Tree</button>
                             </div>
 
                             <!-- Tree View Controls (Hidden by default) -->
                             <div id="tree-controls"
-                                class="hidden flex items-center gap-2 mr-auto ml-4 border-l border-neutral-200 dark:border-neutral-700 pl-4">
+                                class="flex items-center hidden gap-2 pl-4 ml-4 mr-auto border-l border-neutral-200 dark:border-neutral-700">
                                 <div class="relative">
                                     <i data-lucide="search"
-                                        class="absolute left-2 top-1/2 -translate-y-1/2 w-3 h-3 text-neutral-400"></i>
+                                        class="absolute w-3 h-3 -translate-y-1/2 left-2 top-1/2 text-neutral-400"></i>
                                     <input type="text" id="tree-search" placeholder="Filter..."
                                         oninput="filterTree(this.value)"
-                                        class="w-24 focus:w-40 transition-all pl-7 pr-2 py-0.5 text-xs bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-md focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:text-white placeholder:text-neutral-400">
+                                        class="w-24 focus:w-40 transition-all pl-7 pr-2 py-0.5 text-xs bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-md focus:outline-hidden focus:ring-1 focus:ring-indigo-500 dark:text-white placeholder:text-neutral-400">
                                 </div>
                                 <button onclick="expandAll()"
-                                    class="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded text-neutral-500"
+                                    class="p-1 rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-500"
                                     title="Expand All">
                                     <i data-lucide="chevrons-down-up" class="w-3.5 h-3.5"></i>
                                 </button>
                                 <button onclick="collapseAll()"
-                                    class="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded text-neutral-500"
+                                    class="p-1 rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-500"
                                     title="Collapse All">
                                     <i data-lucide="chevrons-up-down" class="w-3.5 h-3.5"></i>
                                 </button>
@@ -402,7 +409,7 @@
                                 <span id="format-badge"
                                     class="hidden text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">JSON</span>
                                 <button onclick="copyOutput()" id="copy-btn"
-                                    class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                                    class="p-1 transition-colors rounded-md text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
                                     title="Copy to Clipboard">
                                     <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                                 </button>
@@ -412,13 +419,13 @@
                         <div class="relative flex-1 overflow-hidden">
                             <!-- Text View -->
                             <textarea id="json-output" readonly
-                                class="w-full h-full p-4 bg-transparent border-0 focus:ring-0 text-xs sm:text-sm font-mono text-neutral-700 dark:text-neutral-300 resize-none outline-none leading-relaxed"
+                                class="w-full h-full p-4 font-mono text-xs leading-relaxed bg-transparent border-0 resize-none focus:ring-0 sm:text-sm text-neutral-700 dark:text-neutral-300 outline-hidden"
                                 placeholder="Result will appear here..."></textarea>
 
                             <!-- Tree View (Hidden by default) -->
                             <div id="json-tree-view"
                                 class="hidden w-full h-full p-4 overflow-auto bg-transparent scrollbar-thin">
-                                <div class="text-neutral-400 italic text-center mt-20 text-xs">Parse JSON to view tree
+                                <div class="mt-20 text-xs italic text-center text-neutral-400">Parse JSON to view tree
                                     structure</div>
                             </div>
 
@@ -429,12 +436,12 @@
             </div>
 
             <!-- New educational SEO section: The Modern Language of Data -->
-            <section class="mt-20 pt-16 border-t border-neutral-200 dark:border-neutral-800">
+            <section class="pt-16 mt-20 border-t border-neutral-200 dark:border-neutral-800">
                 <article class="prose prose-neutral dark:prose-invert max-w-none">
-                    <h2 class="font-display text-3xl font-semibold mb-4 text-neutral-900 dark:text-white">The Modern
+                    <h2 class="mb-4 text-3xl font-semibold font-display text-neutral-900 dark:text-white">The Modern
                         Language of
                         Data: A Deep Dive into JSON</h2>
-                    <p class="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed mb-8">
+                    <p class="mb-8 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
                         If you've ever worked with APIs or exchanged data between applications, you've encountered
                         <strong>JSON</strong>. Pronounced like the name "Jason," JSON has become the world's most
                         beloved data
@@ -444,10 +451,10 @@
                     </p>
 
                     <!-- What is JSON Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-12 mb-4 text-neutral-900 dark:text-white">What is
+                    <h3 class="mt-12 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">What is
                         JSON?
                     </h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">
                         <strong>JSON</strong> stands for JavaScript Object Notation. Created in 2001 by Douglas
                         Crockford, it's
                         a minimalist, text-based format designed for lightweight data exchange between servers and
@@ -455,143 +462,143 @@
                         While inspired by JavaScript syntax, JSON is completely language-independent.
                     </p>
                     <div
-                        class="bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-200 dark:border-indigo-900/30 rounded-lg p-6 not-prose mb-6">
-                        <h4 class="font-medium text-neutral-900 dark:text-white mb-3">Design Principles:</h4>
-                        <ul class="text-sm text-neutral-600 dark:text-neutral-400 space-y-2">
+                        class="p-6 mb-6 border border-indigo-200 rounded-lg bg-indigo-50 dark:bg-indigo-900/10 dark:border-indigo-900/30 not-prose">
+                        <h4 class="mb-3 font-medium text-neutral-900 dark:text-white">Design Principles:</h4>
+                        <ul class="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
                             <li class="flex items-start gap-2"><span
-                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Minimal and
+                                    class="font-bold text-indigo-600 dark:text-indigo-400">•</span> <span>Minimal and
                                     textual—no
                                     unnecessary complexity</span></li>
                             <li class="flex items-start gap-2"><span
-                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Easy for
+                                    class="font-bold text-indigo-600 dark:text-indigo-400">•</span> <span>Easy for
                                     humans to
                                     read and write</span></li>
                             <li class="flex items-start gap-2"><span
-                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Simple for
+                                    class="font-bold text-indigo-600 dark:text-indigo-400">•</span> <span>Simple for
                                     machines to
                                     parse and generate</span></li>
                             <li class="flex items-start gap-2"><span
-                                    class="text-indigo-600 dark:text-indigo-400 font-bold">•</span> <span>Avoids feature
+                                    class="font-bold text-indigo-600 dark:text-indigo-400">•</span> <span>Avoids feature
                                     creep
                                     to remain stable—it doesn't even have a version number</span></li>
                         </ul>
                     </div>
 
                     <!-- JSON Structure Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">The
                         Blueprint:
                         How JSON is Structured</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         JSON is built on two universal structures that virtually all programming languages understand:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-6">
+                    <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2 not-prose">
                         <div
-                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
-                            <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
+                            class="p-5 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <h4 class="flex items-center gap-2 mb-3 font-semibold text-neutral-900 dark:text-white">
                                 <span class="text-lg text-fuchsia-500">{}</span> Objects
                             </h4>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An unordered collection of
+                            <p class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">An unordered collection of
                                 key-value
                                 pairs enclosed in curly braces.</p>
                             <code
-                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 overflow-x-auto">{"name": "John", "age": 30}</code>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Keys must always be
+                                class="block p-2 overflow-x-auto font-mono text-xs bg-white rounded-sm dark:bg-black text-emerald-600 dark:text-emerald-400">{"name": "John", "age": 30}</code>
+                            <p class="mt-2 text-xs italic text-neutral-500 dark:text-neutral-500">Keys must always be
                                 strings in
                                 double quotes</p>
                         </div>
                         <div
-                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-5">
-                            <h4 class="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
+                            class="p-5 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <h4 class="flex items-center gap-2 mb-3 font-semibold text-neutral-900 dark:text-white">
                                 <span class="text-lg text-blue-500">[]</span> Arrays
                             </h4>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">An ordered list of values
+                            <p class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">An ordered list of values
                                 enclosed in
                                 square brackets.</p>
                             <code
-                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 overflow-x-auto">["apple", "banana", 42]</code>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-500 mt-2 italic">Can contain any valid
+                                class="block p-2 overflow-x-auto font-mono text-xs text-blue-600 bg-white rounded-sm dark:bg-black dark:text-blue-400">["apple", "banana", 42]</code>
+                            <p class="mt-2 text-xs italic text-neutral-500 dark:text-neutral-500">Can contain any valid
                                 JSON
                                 values</p>
                         </div>
                     </div>
 
                     <!-- Data Types Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">The 6
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">The 6
                         JSON Data
                         Types</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         JSON supports these core data types, ensuring compatibility across all programming languages:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 not-prose mb-8">
+                    <div class="grid grid-cols-1 gap-3 mb-8 md:grid-cols-2 not-prose">
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span
                                 class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">1</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">String</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">String</h5>
                                 <p class="text-xs text-neutral-500">Unicode characters in double quotes</p>
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span class="font-mono text-sm font-bold text-blue-600 dark:text-blue-400 mt-0.5">2</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Number</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">Number</h5>
                                 <p class="text-xs text-neutral-500">Integers and decimals (no NaN or Infinity)</p>
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span class="font-mono text-sm font-bold text-red-600 dark:text-red-400 mt-0.5">3</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Boolean</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">Boolean</h5>
                                 <p class="text-xs text-neutral-500">true or false</p>
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span class="font-mono text-sm font-bold text-gray-600 dark:text-gray-400 mt-0.5">4</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Null</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">Null</h5>
                                 <p class="text-xs text-neutral-500">Represents an empty value</p>
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span
                                 class="font-mono text-sm font-bold text-fuchsia-600 dark:text-fuchsia-400 mt-0.5">5</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Object</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">Object</h5>
                                 <p class="text-xs text-neutral-500">Nested structures allowed</p>
                             </div>
                         </div>
                         <div
-                            class="flex items-start gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                            class="flex items-start gap-3 p-3 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                             <span
                                 class="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">6</span>
                             <div>
-                                <h5 class="font-medium text-neutral-900 dark:text-white text-sm">Array</h5>
+                                <h5 class="text-sm font-medium text-neutral-900 dark:text-white">Array</h5>
                                 <p class="text-xs text-neutral-500">Lists within lists</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- JSON vs XML Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON vs
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">JSON vs
                         XML: Why
                         JSON Won</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         Before JSON dominated, XML was the standard for data exchange. However, JSON offers significant
                         advantages:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
+                    <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3 not-prose">
                         <div
-                            class="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-900/30 rounded-lg p-4">
+                            class="p-4 border rounded-lg bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30">
                             <h5
-                                class="font-semibold text-emerald-900 dark:text-emerald-100 mb-2 flex items-center gap-2">
+                                class="flex items-center gap-2 mb-2 font-semibold text-emerald-900 dark:text-emerald-100">
                                 <i data-lucide="zap" class="w-4 h-4"></i> Bandwidth
                             </h5>
                             <p class="text-sm text-emerald-800 dark:text-emerald-200">JSON is much more compact, using
@@ -599,8 +606,8 @@
                                 bandwidth and loading faster on mobile networks.</p>
                         </div>
                         <div
-                            class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                            <h5 class="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+                            class="p-4 border border-blue-200 rounded-lg bg-blue-50 dark:bg-blue-900/10 dark:border-blue-900/30">
+                            <h5 class="flex items-center gap-2 mb-2 font-semibold text-blue-900 dark:text-blue-100">
                                 <i data-lucide="cpu" class="w-4 h-4"></i> Parsing Speed
                             </h5>
                             <p class="text-sm text-blue-800 dark:text-blue-200">Browsers parse JSON natively with
@@ -608,8 +615,8 @@
                                 whereas XML requires complex DOM operations.</p>
                         </div>
                         <div
-                            class="bg-violet-50 dark:bg-violet-900/10 border border-violet-200 dark:border-violet-900/30 rounded-lg p-4">
-                            <h5 class="font-semibold text-violet-900 dark:text-violet-100 mb-2 flex items-center gap-2">
+                            class="p-4 border rounded-lg bg-violet-50 dark:bg-violet-900/10 border-violet-200 dark:border-violet-900/30">
+                            <h5 class="flex items-center gap-2 mb-2 font-semibold text-violet-900 dark:text-violet-100">
                                 <i data-lucide="code" class="w-4 h-4"></i> Direct Mapping
                             </h5>
                             <p class="text-sm text-violet-800 dark:text-violet-200">JSON maps directly to objects and
@@ -619,43 +626,43 @@
                     </div>
 
                     <!-- JSON Parse and Stringify Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">JSON
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">JSON
                         Parse &
                         Stringify: Core Operations</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         Two essential operations power JSON in every application:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose mb-8">
-                        <div class="border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10 p-5 rounded-lg">
-                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.stringify()</h5>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JavaScript object
+                    <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 not-prose">
+                        <div class="p-5 border-l-4 border-indigo-500 rounded-lg bg-indigo-50 dark:bg-indigo-900/10">
+                            <h5 class="mb-2 font-semibold text-neutral-900 dark:text-white">JSON.stringify()</h5>
+                            <p class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">Converts a JavaScript object
                                 into a
                                 JSON string for transmission or storage.</p>
                             <code
-                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-emerald-600 dark:text-emerald-400 mb-2">const json = JSON.stringify({name: "John"})</code>
+                                class="block p-2 mb-2 font-mono text-xs bg-white rounded-sm dark:bg-black text-emerald-600 dark:text-emerald-400">const json = JSON.stringify({name: "John"})</code>
                             <p class="text-xs text-neutral-500">Result: <code
-                                    class="bg-white dark:bg-black p-1 rounded">{"name":"John"}</code></p>
+                                    class="p-1 bg-white rounded-sm dark:bg-black">{"name":"John"}</code></p>
                         </div>
-                        <div class="border-l-4 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10 p-5 rounded-lg">
-                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON.parse()</h5>
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Converts a JSON string back
+                        <div class="p-5 border-l-4 rounded-lg border-emerald-500 bg-emerald-50 dark:bg-emerald-900/10">
+                            <h5 class="mb-2 font-semibold text-neutral-900 dark:text-white">JSON.parse()</h5>
+                            <p class="mb-3 text-sm text-neutral-600 dark:text-neutral-400">Converts a JSON string back
                                 into a
                                 usable JavaScript object.</p>
                             <code
-                                class="text-xs bg-white dark:bg-black p-2 rounded block font-mono text-blue-600 dark:text-blue-400 mb-2">const obj = JSON.parse(jsonString)</code>
+                                class="block p-2 mb-2 font-mono text-xs text-blue-600 bg-white rounded-sm dark:bg-black dark:text-blue-400">const obj = JSON.parse(jsonString)</code>
                             <p class="text-xs text-neutral-500">Result: Accessible as <code
-                                    class="bg-white dark:bg-black p-1 rounded">obj.name</code></p>
+                                    class="p-1 bg-white rounded-sm dark:bg-black">obj.name</code></p>
                         </div>
                     </div>
 
                     <!-- JSON Validator & Best Practices -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">
                         Validation &
                         Security Best Practices</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         A <a href="#json-formatter"
-                            class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON validator</a>
+                            class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline">JSON validator</a>
                         is
                         essential for ensuring data integrity and security. Always validate incoming JSON to prevent
                         injection
@@ -663,13 +670,13 @@
                     </p>
 
                     <div
-                        class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg p-6 not-prose mb-8">
-                        <h5 class="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
+                        class="p-6 mb-8 border rounded-lg bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30 not-prose">
+                        <h5 class="flex items-center gap-2 mb-3 font-semibold text-amber-900 dark:text-amber-100">
                             <i data-lucide="shield-alert" class="w-5 h-5"></i> Security Tips
                         </h5>
-                        <ul class="text-sm text-amber-800 dark:text-amber-200 space-y-2">
+                        <ul class="space-y-2 text-sm text-amber-800 dark:text-amber-200">
                             <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Always use a <a
-                                        class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium"
+                                        class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
                                         href="/json-formatter"><strong>JSON validator</strong></a> before processing
                                     untrusted data</span></li>
                             <li class="flex items-start gap-2"><span class="font-bold">•</span> <span>Implement
@@ -684,62 +691,62 @@
                     </div>
 
                     <!-- Advanced JSON Uses -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-4 text-neutral-900 dark:text-white">Advanced
+                    <h3 class="mt-10 mb-4 text-2xl font-semibold font-display text-neutral-900 dark:text-white">Advanced
                         JSON
                         Applications</h3>
-                    <p class="text-neutral-600 dark:text-neutral-400 mb-6">
+                    <p class="mb-6 text-neutral-600 dark:text-neutral-400">
                         JSON has evolved far beyond simple data exchange. Here are specialized formats built on JSON:
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose mb-8">
+                    <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3 not-prose">
                         <div
-                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JWT</h5>
-                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">JSON Web Tokens for secure
+                            class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <h5 class="mb-2 font-semibold text-neutral-900 dark:text-white">JWT</h5>
+                            <p class="mb-3 text-xs text-neutral-600 dark:text-neutral-400">JSON Web Tokens for secure
                                 authentication and authorization in APIs.</p>
                             <span
-                                class="inline-block text-xs font-mono bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-200 px-2 py-1 rounded">Authentication</span>
+                                class="inline-block px-2 py-1 font-mono text-xs text-indigo-700 bg-indigo-100 rounded-sm dark:bg-indigo-900 dark:text-indigo-200">Authentication</span>
                         </div>
                         <div
-                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">JSON-LD</h5>
-                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Linked Data format for SEO
+                            class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <h5 class="mb-2 font-semibold text-neutral-900 dark:text-white">JSON-LD</h5>
+                            <p class="mb-3 text-xs text-neutral-600 dark:text-neutral-400">Linked Data format for SEO
                                 and
                                 structured data on the web.</p>
                             <span
-                                class="inline-block text-xs font-mono bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-200 px-2 py-1 rounded">SEO</span>
+                                class="inline-block px-2 py-1 font-mono text-xs rounded-sm bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-200">SEO</span>
                         </div>
                         <div
-                            class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
-                            <h5 class="font-semibold text-neutral-900 dark:text-white mb-2">GeoJSON</h5>
-                            <p class="text-xs text-neutral-600 dark:text-neutral-400 mb-3">Represents geographic
+                            class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <h5 class="mb-2 font-semibold text-neutral-900 dark:text-white">GeoJSON</h5>
+                            <p class="mb-3 text-xs text-neutral-600 dark:text-neutral-400">Represents geographic
                                 features like
                                 coordinates and polygons.</p>
                             <span
-                                class="inline-block text-xs font-mono bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-200 px-2 py-1 rounded">Mapping</span>
+                                class="inline-block px-2 py-1 font-mono text-xs rounded-sm bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-200">Mapping</span>
                         </div>
                     </div>
 
                     <!-- Infographic Section -->
-                    <h3 class="font-display text-2xl font-semibold mt-10 mb-6 text-neutral-900 dark:text-white">JSON:
+                    <h3 class="mt-10 mb-6 text-2xl font-semibold font-display text-neutral-900 dark:text-white">JSON:
                         The
                         Universal Language of Data</h3>
                     <div
-                        class="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+                        class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
                         <img src="https://i.ibb.co.com/0yyKLfPZ/json-universal-language-of-data-infographic.png"
                             alt="JSON: The Universal Language of Data infographic showing statistics about JSON efficiency, file sizes, and parsing speeds"
-                            class="w-full  h-auto" loading="lazy">
+                            class="w-full h-auto" loading="lazy">
                     </div>
 
                     <!-- Conclusion -->
-                    <p class="text-neutral-600 dark:text-neutral-400 mt-8 text-base leading-relaxed">
+                    <p class="mt-8 text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
                         <strong>JSON</strong> has become the de facto standard for data interchange because of its
                         simplicity,
                         efficiency, and universal support. Whether you're building REST APIs, configuring cloud
                         services, or
                         exchanging data between microservices, understanding JSON—and using the right <a
                             href="#json-formatter"
-                            class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">JSON formatter</a>
+                            class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline">JSON formatter</a>
                         tools—is
                         essential for modern development.
                     </p>
@@ -782,14 +789,14 @@
                 JSON.parse(value);
                 // Valid
                 statusEl.classList.remove('hidden');
-                statusEl.innerHTML = '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i><span class="text-emerald-600 dark:text-emerald-400 font-medium">Valid</span>';
+                statusEl.innerHTML = '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-500"></i><span class="font-medium text-emerald-600 dark:text-emerald-400">Valid</span>';
                 inputEl.classList.remove('invalid-json');
                 inputEl.classList.add('valid-json');
                 dismissError();
             } catch (e) {
                 // Invalid
                 statusEl.classList.remove('hidden');
-                statusEl.innerHTML = '<i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-500"></i><span class="text-red-600 dark:text-red-400 font-medium">Invalid</span>';
+                statusEl.innerHTML = '<i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-500"></i><span class="font-medium text-red-600 dark:text-red-400">Invalid</span>';
                 inputEl.classList.remove('valid-json');
                 inputEl.classList.add('invalid-json');
 
@@ -1049,45 +1056,45 @@
 
         function readFile(file) {
             const reader = new FileReader();
-            
+
             // Show file info
             const fileInfo = document.getElementById('file-info');
             const fileName = document.getElementById('file-name');
             const fileSize = document.getElementById('file-size');
-            
+
             fileName.textContent = file.name;
             fileSize.textContent = formatFileSize(file.size);
             fileInfo.style.display = 'block';
-            
+
             // Validate file type
             const validTypes = ['application/json', 'text/plain'];
             const validExtensions = ['.json', '.txt'];
             const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
-            
+
             if (!validTypes.includes(file.type) && !validExtensions.includes(fileExtension)) {
                 showError('Invalid file type. Please upload a JSON or text file.');
                 fileInfo.style.display = 'none';
                 return;
             }
-            
+
             reader.onload = (e) => {
                 inputArea.value = e.target.result;
                 formatJSON(2);
-                
+
                 // Hide file info after successful load
                 setTimeout(() => {
                     fileInfo.style.display = 'none';
                 }, 3000);
-                
+
                 // Show success feedback
                 showSuccess(`File "${file.name}" loaded successfully`);
             };
-            
+
             reader.onerror = () => {
                 showError('Failed to read file. Please try again.');
                 fileInfo.style.display = 'none';
             };
-            
+
             reader.readAsText(file);
         }
 
@@ -1106,7 +1113,7 @@
             toast.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i><span class="text-sm">${message}</span>`;
             document.body.appendChild(toast);
             lucide.createIcons();
-            
+
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateX(100%)';
@@ -1121,7 +1128,7 @@
             toast.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4"></i><span class="text-sm">${message}</span>`;
             document.body.appendChild(toast);
             lucide.createIcons();
-            
+
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateX(100%)';
@@ -1163,17 +1170,17 @@
             dropZone.classList.remove('drag-over');
             document.getElementById('drag-overlay').classList.add('hidden');
             document.getElementById('drag-overlay').classList.remove('flex');
-            
+
             const dt = e.dataTransfer;
             const files = dt.files;
-            
+
             if (files.length > 0) {
                 // Handle multiple files (take the first valid JSON file)
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
                     const validExtensions = ['.json', '.txt'];
                     const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
-                    
+
                     if (validExtensions.includes(fileExtension)) {
                         readFile(file);
                         break;
@@ -1217,10 +1224,10 @@
                 treeView.classList.add('hidden');
                 treeControls.classList.add('hidden');
 
-                tabText.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabText.classList.add('shadow-xs', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
                 tabText.classList.remove('border-transparent');
 
-                tabTree.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabTree.classList.remove('shadow-xs', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
                 tabTree.classList.add('border-transparent');
             } else {
                 if (currentMode !== 'json') {
@@ -1240,10 +1247,10 @@
                 treeControls.classList.remove('hidden');
                 treeControls.classList.add('flex');
 
-                tabTree.classList.add('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabTree.classList.add('shadow-xs', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
                 tabTree.classList.remove('border-transparent');
 
-                tabText.classList.remove('shadow-sm', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
+                tabText.classList.remove('shadow-xs', 'bg-white', 'dark:bg-neutral-800', 'border-neutral-200', 'dark:border-neutral-700');
                 tabText.classList.add('border-transparent');
             }
         }
@@ -1276,17 +1283,17 @@
                 }
 
                 let html = `<details open class="ml-4 group">
-                    <summary class="hover:bg-black/5 dark:hover:bg-white/5 rounded px-1 -ml-1">
+                    <summary class="px-1 -ml-1 rounded-sm hover:bg-black/5 dark:hover:bg-white/5">
                         <span class="json-key">"${key}"</span>: <span class="object-brace">${openBracket}</span>
                         <span class="text-neutral-400 text-[10px] ml-2">${isArray ? value.length + ' items' : Object.keys(value).length + ' keys'}</span>
                     </summary>
-                    <div class="border-l border-neutral-200 dark:border-neutral-800 ml-1 pl-1">`;
+                    <div class="pl-1 ml-1 border-l border-neutral-200 dark:border-neutral-800">`;
 
                 if (isArray) {
                     value.forEach((item, index) => {
                         html += typeof item === 'object' && item !== null
                             ? createTreeNode(index, item)
-                            : `<div class="ml-4"><span class="text-neutral-400 text-xs mr-2">${index}:</span>${formatPrimitive(item)}</div>`;
+                            : `<div class="ml-4"><span class="mr-2 text-xs text-neutral-400">${index}:</span>${formatPrimitive(item)}</div>`;
                     });
                 } else {
                     Object.entries(value).forEach(([k, v]) => {

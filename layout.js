@@ -54,7 +54,7 @@ function injectLayout() {
                     <i data-lucide="github" class="w-4 h-4"></i>
                 </a>
 
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white focus:outline-none">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white focus:outline-hidden">
                     <i data-lucide="sun" class="w-4 h-4 block dark:hidden"></i>
                     <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
                 </button>
@@ -284,7 +284,7 @@ function initializeMobileMenu() {
       const overlayEl = document.createElement("div");
       overlayEl.id = "mobile-menu-overlay";
       overlayEl.className =
-        "fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 z-40";
+        "fixed inset-0 bg-black/50 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 z-40";
       document.body.appendChild(overlayEl);
       return overlayEl;
     };

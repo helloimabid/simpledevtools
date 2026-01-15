@@ -8,7 +8,8 @@
     "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.0"
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
   },
   "keywords": [
     "developer-tools",
@@ -22,5 +23,8 @@
     "regex"
   ],
   "author": "Sadman Abid",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lucide": "^0.562.0"
+  }
 }

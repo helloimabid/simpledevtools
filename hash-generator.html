@@ -29,9 +29,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+    <script src="./dist/js/lucide.min.js"></script>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Fallback navigation for crawlers without JS -->
@@ -43,105 +42,105 @@
             <a href="/terms" class="underline">Terms</a>
         </nav>
     </noscript>
-    <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-60"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
     <div
         class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full pointer-events-none z-0">
     </div>
 
-    
 
-    <main class="relative z-10 flex-grow pt-28 pb-20 px-4 sm:px-6">
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="max-w-2xl mx-auto mb-12 text-center">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-mono font-medium mb-6 border border-purple-100 dark:border-purple-900/30">
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-purple-600 border border-purple-100 rounded-full bg-purple-50 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Secure Client-Side Processing</span>
                 </div>
                 <h1
-                    class="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white mb-4">
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     Hash Generator
                 </h1>
-                <p class="text-neutral-500 dark:text-neutral-400 text-lg leading-relaxed">
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                     Generate MD5, SHA-1, SHA-256, and SHA-512 hashes instantly. All processing happens locally.
                 </p>
             </div>
 
-                       
+
 
             <div
-                class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl shadow-sm overflow-hidden mb-16">
+                class="mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
                 <div
-                    class="border-b border-neutral-200 dark:border-neutral-800 p-3 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    class="p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Input Text</span>
+                        <span class="text-xs font-bold tracking-wider uppercase text-neutral-400">Input Text</span>
                     </div>
                     <textarea id="input-text"
-                        class="w-full p-3 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-md text-sm font-mono text-neutral-800 dark:text-neutral-200 resize-none outline-none focus:ring-2 focus:ring-purple-500"
+                        class="w-full p-3 font-mono text-sm bg-white border rounded-md resize-none dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 outline-hidden focus:ring-2 focus:ring-purple-500"
                         rows="4" placeholder="Enter text to hash..."></textarea>
                 </div>
 
                 <div class="p-6 space-y-4">
-                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800">
                         <div class="flex-1">
-                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">MD5</div>
+                            <div class="mb-1 text-xs font-semibold text-neutral-500 dark:text-neutral-400">MD5</div>
                             <div id="md5-output"
-                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                                class="font-mono text-sm break-all text-neutral-900 dark:text-neutral-100">-</div>
                         </div>
                         <button onclick="copyHash('md5-output')"
-                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            class="p-2 ml-4 transition-colors rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700">
                             <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </button>
                     </div>
 
-                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800">
                         <div class="flex-1">
-                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-1</div>
+                            <div class="mb-1 text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-1</div>
                             <div id="sha1-output"
-                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                                class="font-mono text-sm break-all text-neutral-900 dark:text-neutral-100">-</div>
                         </div>
                         <button onclick="copyHash('sha1-output')"
-                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            class="p-2 ml-4 transition-colors rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700">
                             <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </button>
                     </div>
 
-                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800">
                         <div class="flex-1">
-                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-256</div>
+                            <div class="mb-1 text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-256</div>
                             <div id="sha256-output"
-                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                                class="font-mono text-sm break-all text-neutral-900 dark:text-neutral-100">-</div>
                         </div>
                         <button onclick="copyHash('sha256-output')"
-                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            class="p-2 ml-4 transition-colors rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700">
                             <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </button>
                     </div>
 
-                    <div class="flex items-center justify-between p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                    <div class="flex items-center justify-between p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800">
                         <div class="flex-1">
-                            <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400 mb-1">SHA-512</div>
+                            <div class="mb-1 text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-512</div>
                             <div id="sha512-output"
-                                class="font-mono text-sm text-neutral-900 dark:text-neutral-100 break-all">-</div>
+                                class="font-mono text-sm break-all text-neutral-900 dark:text-neutral-100">-</div>
                         </div>
                         <button onclick="copyHash('sha512-output')"
-                            class="ml-4 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+                            class="p-2 ml-4 transition-colors rounded-sm hover:bg-neutral-200 dark:hover:bg-neutral-700">
                             <i data-lucide="copy" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="max-w-3xl mx-auto space-y-12 mb-20">
+            <div class="max-w-3xl mx-auto mb-20 space-y-12">
                 <section>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
                             <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </div>
-                        <h2 class="font-display text-xl font-medium text-neutral-900 dark:text-white">About Hash
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">About Hash
                             Functions</h2>
                     </div>
-                    <div class="text-neutral-600 dark:text-neutral-400 text-sm space-y-4">
+                    <div class="space-y-4 text-sm text-neutral-600 dark:text-neutral-400">
                         <p>Hash functions convert input data into a fixed-size string of characters. They're one-way
                             functions—you can't reverse them to get the original input.</p>
                         <p><strong>Common uses:</strong> password storage, data integrity verification, digital
@@ -152,8 +151,8 @@
         </div>
     </main>
 
-    
-<script src="layout.js"></script>
+
+    <script src="layout.js"></script>
     <script>
         lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
 
@@ -211,8 +210,8 @@
             navigator.clipboard.writeText(text);
         }
 
-     
+
     </script>
-</body>
+    </body>
 
 </html>
