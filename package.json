@@ -5,10 +5,11 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.18",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18"
   },
   "keywords": [

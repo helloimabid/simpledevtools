@@ -39,7 +39,10 @@ function injectLayout() {
     <nav class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300 border-b border-neutral-200/50 dark:border-neutral-800/50 backdrop-blur-md bg-white/70 dark:bg-black/70">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="/" class="flex items-center gap-2 group">
-                <img src="../logo.png" alt="SimpleDevTools Logo" class="w-8 h-8 group-hover:scale-105 transition-transform">
+                <picture>
+                    <source srcset="../logo.webp" type="image/webp">
+                    <img src="../logo-small.png" alt="SimpleDevTools Logo" class="w-8 h-8 group-hover:scale-105 transition-transform" width="32" height="32">
+                </picture>
                 <span class="font-display font-medium text-lg tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
             </a>
 
@@ -71,7 +74,10 @@ function injectLayout() {
             <div class="grid grid-cols-1 md:grid-cols-6 gap-8 mb-12">
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center gap-2 mb-4">
-                       <img src="../logo.png" alt="SimpleDevTools" class="w-8 h-8">
+                       <picture>
+                           <source srcset="../logo.webp" type="image/webp">
+                           <img src="../logo-small.png" alt="SimpleDevTools" class="w-8 h-8" width="32" height="32">
+                       </picture>
                         <span class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
                     </div>
                     <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
@@ -209,7 +215,10 @@ function initializeMobileMenu() {
                 <!-- Header -->
                 <div class="flex items-center justify-between p-6 border-b border-neutral-200 dark:border-neutral-800">
                     <div class="flex items-center gap-2">
-                        <img src="../logo.png" alt="SimpleDevTools Logo" class="w-6 h-6">
+                        <picture>
+                            <source srcset="../logo.webp" type="image/webp">
+                            <img src="../logo-small.png" alt="SimpleDevTools Logo" class="w-6 h-6" width="24" height="24">
+                        </picture>
                         <span class="font-display font-medium text-lg tracking-tight">Menu</span>
                     </div>
                     <button id="menu-close" class="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors" aria-label="Close menu">
