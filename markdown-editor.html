@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online Markdown editor with live preview. Write and preview Markdown in real-time. Supports GitHub Flavored Markdown, tables, code blocks, and more.">
+    <meta name="keywords" content="markdown editor, markdown preview, online markdown, github markdown, markdown to html, live markdown preview, markdown converter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <title>Markdown Editor with Live Preview | SimpleDevTools</title>
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <link rel="canonical" href="https://simpledevtools.tech/markdown-editor" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Markdown Editor with Live Preview">
+    <meta property="og:description" content="Free online Markdown editor with real-time preview. Write beautiful documentation with GFM support.">
+    <meta property="og:url" content="https://simpledevtools.tech/markdown-editor">
+    <meta property="og:type" content="website">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Markdown Editor",
+      "description": "Free online Markdown editor with live preview. Supports GitHub Flavored Markdown.",
+      "url": "https://simpledevtools.tech/markdown-editor",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "Markdown Editor", "item": "https://simpledevtools.tech/markdown-editor"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is Markdown?", "acceptedAnswer": {"@type": "Answer", "text": "Markdown is a lightweight markup language that lets you write formatted text using plain text syntax. It's widely used for documentation, README files, and content writing."}},
+        {"@type": "Question", "name": "Does this support GitHub Flavored Markdown?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, this editor supports GFM features including tables, task lists, strikethrough, and fenced code blocks with syntax highlighting."}},
+        {"@type": "Question", "name": "Is my content saved?", "acceptedAnswer": {"@type": "Answer", "text": "Content is saved to your browser's local storage automatically. Your data never leaves your device unless you explicitly download it."}}
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        .code-editor {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            tab-size: 2;
+        }
+
+        /* Markdown Preview Styles */
+        .markdown-preview {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+        .markdown-preview h1 { font-size: 2em; font-weight: 700; margin: 1em 0 0.5em; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.3em; }
+        .markdown-preview h2 { font-size: 1.5em; font-weight: 600; margin: 1em 0 0.5em; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.3em; }
+        .markdown-preview h3 { font-size: 1.25em; font-weight: 600; margin: 1em 0 0.5em; }
+        .markdown-preview h4 { font-size: 1em; font-weight: 600; margin: 1em 0 0.5em; }
+        .markdown-preview p { margin: 0.5em 0 1em; }
+        .markdown-preview ul, .markdown-preview ol { margin: 0.5em 0 1em; padding-left: 2em; }
+        .markdown-preview li { margin: 0.25em 0; }
+        .markdown-preview blockquote { 
+            border-left: 4px solid #6366f1; 
+            padding: 0.5em 1em; 
+            margin: 1em 0; 
+            background: rgba(99, 102, 241, 0.05);
+            color: #4b5563;
+        }
+        .dark .markdown-preview blockquote { 
+            background: rgba(99, 102, 241, 0.1);
+            color: #9ca3af;
+        }
+        .markdown-preview code:not(pre code) { 
+            background: rgba(0,0,0,0.05); 
+            padding: 0.2em 0.4em; 
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875em;
+        }
+        .dark .markdown-preview code:not(pre code) { background: rgba(255,255,255,0.1); }
+        .markdown-preview pre { 
+            background: #1e1e1e; 
+            color: #d4d4d4;
+            padding: 1em; 
+            border-radius: 6px; 
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        .markdown-preview pre code { 
+            background: none; 
+            padding: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875em;
+        }
+        .markdown-preview a { color: #6366f1; text-decoration: underline; }
+        .markdown-preview a:hover { color: #4f46e5; }
+        .markdown-preview img { max-width: 100%; height: auto; border-radius: 6px; }
+        .markdown-preview hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }
+        .dark .markdown-preview hr { border-color: #374151; }
+        .markdown-preview table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+        .markdown-preview th, .markdown-preview td { border: 1px solid #e5e7eb; padding: 0.5em 1em; text-align: left; }
+        .dark .markdown-preview th, .dark .markdown-preview td { border-color: #374151; }
+        .markdown-preview th { background: #f9fafb; font-weight: 600; }
+        .dark .markdown-preview th { background: #1f2937; }
+        .markdown-preview input[type="checkbox"] { margin-right: 0.5em; }
+        .markdown-preview del { text-decoration: line-through; color: #9ca3af; }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="mx-auto max-w-7xl">
+
+            <!-- Header Section -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-purple-600 border border-purple-100 rounded-full bg-purple-50 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Processed locally. Auto-saved to browser.</span>
+                </div>
+                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Markdown Editor
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Write Markdown with live preview. Supports GitHub Flavored Markdown, tables, and code blocks.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+
+                <!-- Toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex flex-wrap items-center gap-1">
+                        <!-- Formatting buttons -->
+                        <button onclick="insertText('**', '**', 'bold')" title="Bold (Ctrl+B)"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="bold" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertText('*', '*', 'italic')" title="Italic (Ctrl+I)"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="italic" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertText('~~', '~~', 'strikethrough')" title="Strikethrough"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="strikethrough" class="w-4 h-4"></i>
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-700"></div>
+
+                        <button onclick="insertHeading(1)" title="Heading 1"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="heading-1" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertHeading(2)" title="Heading 2"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="heading-2" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertHeading(3)" title="Heading 3"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="heading-3" class="w-4 h-4"></i>
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-700"></div>
+
+                        <button onclick="insertList('ul')" title="Bullet List"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="list" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertList('ol')" title="Numbered List"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="list-ordered" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertList('task')" title="Task List"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="list-checks" class="w-4 h-4"></i>
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-700"></div>
+
+                        <button onclick="insertLink()" title="Link (Ctrl+K)"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="link" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertImage()" title="Image"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="image" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertCode()" title="Code Block"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="code" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertText('`', '`', 'code')" title="Inline Code"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="terminal" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertQuote()" title="Quote"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="quote" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertTable()" title="Table"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="table" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="insertHr()" title="Horizontal Rule"
+                            class="p-2 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-600 dark:text-neutral-400">
+                            <i data-lucide="minus" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="loadSample()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-purple-600 dark:hover:text-purple-400 text-xs font-medium transition-colors">
+                            Sample
+                        </button>
+                        <button onclick="clearAll()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            Clear
+                        </button>
+                        <button onclick="copyMarkdown()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            Copy MD
+                        </button>
+                        <button onclick="copyHTML()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="code" class="w-3.5 h-3.5"></i>
+                            Copy HTML
+                        </button>
+                        <button onclick="downloadMarkdown()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-purple-500 hover:bg-purple-600 text-white text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editor Area -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
+                    <!-- Input -->
+                    <div class="relative flex flex-col h-full">
+                        <div class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
+                            <span class="flex items-center gap-2">
+                                Markdown
+                                <span class="px-1.5 py-0.5 rounded-sm bg-purple-100 dark:bg-purple-900/30 text-[10px] text-purple-700 dark:text-purple-400 font-bold">MD</span>
+                            </span>
+                            <span id="input-stats">0 words • 0 chars</span>
+                        </div>
+
+                        <textarea id="md-input"
+                            class="flex-1 w-full p-4 leading-relaxed transition-colors bg-transparent resize-none focus:ring-0 text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50 code-editor"
+                            placeholder="Write your Markdown here..." spellcheck="false"></textarea>
+                    </div>
+
+                    <!-- Preview -->
+                    <div class="relative flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
+                        <div class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
+                            <span class="flex items-center gap-2 font-mono text-xs text-neutral-500">
+                                Preview
+                                <span class="px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/30 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Live</span>
+                            </span>
+                        </div>
+
+                        <div id="md-preview" class="flex-1 w-full p-6 overflow-auto text-neutral-800 dark:text-neutral-200 markdown-preview"></div>
+                    </div>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="flex items-center justify-between px-4 py-2 text-xs border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-neutral-500">
+                    <div class="flex items-center gap-4">
+                        <span id="last-saved">Auto-save enabled</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>+<kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">B</kbd> Bold
+                        <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>+<kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">I</kbd> Italic
+                        <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>+<kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">K</kbd> Link
+                    </div>
+                </div>
+            </div>
+
+            <!-- Markdown Cheat Sheet -->
+            <div class="p-6 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="flex items-center gap-2 mb-6 text-lg font-semibold text-neutral-900 dark:text-white">
+                    <i data-lucide="book-open" class="w-5 h-5 text-purple-500"></i>
+                    Markdown Cheat Sheet
+                </h2>
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Basic Formatting</h3>
+                        <div class="space-y-2 font-mono text-sm">
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">**bold**</code><span class="text-neutral-500">Bold</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">*italic*</code><span class="text-neutral-500">Italic</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">~~strike~~</code><span class="text-neutral-500">Strikethrough</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">`code`</code><span class="text-neutral-500">Inline code</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Headings</h3>
+                        <div class="space-y-2 font-mono text-sm">
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400"># H1</code><span class="text-neutral-500">Heading 1</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">## H2</code><span class="text-neutral-500">Heading 2</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">### H3</code><span class="text-neutral-500">Heading 3</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Links & Images</h3>
+                        <div class="space-y-2 font-mono text-sm">
+                            <div><code class="text-purple-600 dark:text-purple-400">[text](url)</code><span class="ml-2 text-neutral-500">Link</span></div>
+                            <div><code class="text-purple-600 dark:text-purple-400">![alt](url)</code><span class="ml-2 text-neutral-500">Image</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Lists</h3>
+                        <div class="space-y-2 font-mono text-sm">
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">- item</code><span class="text-neutral-500">Bullet list</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">1. item</code><span class="text-neutral-500">Numbered list</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">- [ ] task</code><span class="text-neutral-500">Task list</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Blocks</h3>
+                        <div class="space-y-2 font-mono text-sm">
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">&gt; quote</code><span class="text-neutral-500">Blockquote</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">---</code><span class="text-neutral-500">Horizontal rule</span></div>
+                            <div class="flex justify-between"><code class="text-purple-600 dark:text-purple-400">```code```</code><span class="text-neutral-500">Code block</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-3 font-medium text-neutral-800 dark:text-neutral-200">Tables</h3>
+                        <pre class="text-xs text-purple-600 dark:text-purple-400">| Col 1 | Col 2 |
+|-------|-------|
+| A     | B     |</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mb-16">
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What is Markdown?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Markdown is a lightweight markup language created by John Gruber. It lets you write formatted text using simple, readable syntax that can be converted to HTML. It's widely used for documentation, README files, blog posts, and more.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What is GitHub Flavored Markdown (GFM)?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            GFM is GitHub's extended version of Markdown that adds features like tables, task lists, strikethrough text, fenced code blocks, and automatic URL linking. This editor supports all GFM features.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Is my content saved?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes, your content is automatically saved to your browser's local storage. This means your work persists even if you close the browser. However, the data stays on your device - it's never uploaded to any server.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Can I export to HTML?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes! Click the "Copy HTML" button to copy the rendered HTML to your clipboard. You can also download your Markdown as a .md file for use in other applications.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="/html-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                            <i data-lucide="code" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">HTML Formatter</div>
+                            <div class="text-xs text-neutral-500">Format HTML</div>
+                        </div>
+                    </a>
+                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                            <i data-lucide="braces" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                            <div class="text-xs text-neutral-500">Format JSON</div>
+                        </div>
+                    </a>
+                    <a href="/diff-checker" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-red-100 dark:bg-red-900/30">
+                            <i data-lucide="git-compare" class="w-4 h-4 text-red-600 dark:text-red-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">Diff Checker</div>
+                            <div class="text-xs text-neutral-500">Compare text</div>
+                        </div>
+                    </a>
+                    <a href="/lorem-ipsum" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-gray-100 dark:bg-gray-900/30">
+                            <i data-lucide="text" class="w-4 h-4 text-gray-600 dark:text-gray-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">Lorem Ipsum</div>
+                            <div class="text-xs text-neutral-500">Generate placeholder</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        const mdInput = document.getElementById('md-input');
+        const mdPreview = document.getElementById('md-preview');
+        const inputStats = document.getElementById('input-stats');
+        const lastSaved = document.getElementById('last-saved');
+
+        // Load saved content
+        const saved = localStorage.getItem('markdown-editor-content');
+        if (saved) {
+            mdInput.value = saved;
+            updatePreview();
+            updateStats();
+        }
+
+        // Update on input
+        mdInput.addEventListener('input', () => {
+            updatePreview();
+            updateStats();
+            saveContent();
+        });
+
+        function updateStats() {
+            const text = mdInput.value;
+            const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            const chars = text.length;
+            inputStats.textContent = `${words} words • ${chars.toLocaleString()} chars`;
+        }
+
+        function saveContent() {
+            localStorage.setItem('markdown-editor-content', mdInput.value);
+            lastSaved.textContent = `Saved at ${new Date().toLocaleTimeString()}`;
+        }
+
+        function updatePreview() {
+            const md = mdInput.value;
+            mdPreview.innerHTML = parseMarkdown(md);
+        }
+
+        // Simple Markdown parser
+        function parseMarkdown(md) {
+            let html = md;
+            
+            // Escape HTML
+            html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            // Code blocks (before other processing)
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+            
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            
+            // Headings
+            html = html.replace(/^######\s+(.+)$/gm, '<h6>$1</h6>');
+            html = html.replace(/^#####\s+(.+)$/gm, '<h5>$1</h5>');
+            html = html.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
+            html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^#\s+(.+)$/gm, '<h1>$1</h1>');
+            
+            // Bold and italic
+            html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            html = html.replace(/___(.+?)___/g, '<strong><em>$1</em></strong>');
+            html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+            html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+            
+            // Strikethrough
+            html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
+            
+            // Links and images
+            html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+            
+            // Blockquotes
+            html = html.replace(/^&gt;\s+(.+)$/gm, '<blockquote>$1</blockquote>');
+            
+            // Horizontal rules
+            html = html.replace(/^(-{3,}|_{3,}|\*{3,})$/gm, '<hr>');
+            
+            // Task lists
+            html = html.replace(/^- \[x\]\s+(.+)$/gm, '<li><input type="checkbox" checked disabled> $1</li>');
+            html = html.replace(/^- \[ \]\s+(.+)$/gm, '<li><input type="checkbox" disabled> $1</li>');
+            
+            // Unordered lists
+            html = html.replace(/^[-*+]\s+(.+)$/gm, '<li>$1</li>');
+            
+            // Ordered lists
+            html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
+            
+            // Wrap list items
+            html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => {
+                if (match.includes('type="checkbox"')) {
+                    return '<ul style="list-style: none; padding-left: 0;">' + match + '</ul>';
+                }
+                return '<ul>' + match + '</ul>';
+            });
+            
+            // Tables
+            html = html.replace(/^\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/gm, (match, header, body) => {
+                const headers = header.split('|').filter(h => h.trim()).map(h => `<th>${h.trim()}</th>`).join('');
+                const rows = body.trim().split('\n').map(row => {
+                    const cells = row.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('');
+                    return `<tr>${cells}</tr>`;
+                }).join('');
+                return `<table><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
+            });
+            
+            // Paragraphs (last)
+            html = html.replace(/^(?!<[a-z]|$)(.+)$/gm, '<p>$1</p>');
+            
+            // Clean up empty paragraphs
+            html = html.replace(/<p>\s*<\/p>/g, '');
+            
+            // Convert newlines in paragraphs to br
+            html = html.replace(/<\/p>\n<p>/g, '</p><p>');
+            
+            return html;
+        }
+
+        // Toolbar functions
+        function insertText(before, after, placeholder) {
+            const start = mdInput.selectionStart;
+            const end = mdInput.selectionEnd;
+            const text = mdInput.value;
+            const selected = text.substring(start, end) || placeholder;
+            
+            mdInput.value = text.substring(0, start) + before + selected + after + text.substring(end);
+            mdInput.selectionStart = start + before.length;
+            mdInput.selectionEnd = start + before.length + selected.length;
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertHeading(level) {
+            const prefix = '#'.repeat(level) + ' ';
+            const start = mdInput.selectionStart;
+            const lineStart = mdInput.value.lastIndexOf('\n', start - 1) + 1;
+            
+            mdInput.value = mdInput.value.substring(0, lineStart) + prefix + mdInput.value.substring(lineStart);
+            mdInput.selectionStart = mdInput.selectionEnd = lineStart + prefix.length;
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertList(type) {
+            const prefixes = { ul: '- ', ol: '1. ', task: '- [ ] ' };
+            const prefix = prefixes[type];
+            const start = mdInput.selectionStart;
+            const lineStart = mdInput.value.lastIndexOf('\n', start - 1) + 1;
+            
+            mdInput.value = mdInput.value.substring(0, lineStart) + prefix + mdInput.value.substring(lineStart);
+            mdInput.selectionStart = mdInput.selectionEnd = lineStart + prefix.length;
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertLink() {
+            insertText('[', '](url)', 'link text');
+        }
+
+        function insertImage() {
+            insertText('![', '](image-url)', 'alt text');
+        }
+
+        function insertCode() {
+            const start = mdInput.selectionStart;
+            const text = '\n```\ncode\n```\n';
+            mdInput.value = mdInput.value.substring(0, start) + text + mdInput.value.substring(start);
+            mdInput.selectionStart = start + 5;
+            mdInput.selectionEnd = start + 9;
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertQuote() {
+            const start = mdInput.selectionStart;
+            const lineStart = mdInput.value.lastIndexOf('\n', start - 1) + 1;
+            mdInput.value = mdInput.value.substring(0, lineStart) + '> ' + mdInput.value.substring(lineStart);
+            mdInput.selectionStart = mdInput.selectionEnd = lineStart + 2;
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertTable() {
+            const start = mdInput.selectionStart;
+            const text = '\n| Column 1 | Column 2 | Column 3 |\n|----------|----------|----------|\n| Cell 1   | Cell 2   | Cell 3   |\n';
+            mdInput.value = mdInput.value.substring(0, start) + text + mdInput.value.substring(start);
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function insertHr() {
+            const start = mdInput.selectionStart;
+            mdInput.value = mdInput.value.substring(0, start) + '\n---\n' + mdInput.value.substring(start);
+            mdInput.focus();
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function loadSample() {
+            mdInput.value = `# Welcome to Markdown Editor
+
+This is a **live preview** Markdown editor. Start typing to see your changes instantly!
+
+## Features
+
+- **Bold** and *italic* text
+- ~~Strikethrough~~ text
+- \`Inline code\` formatting
+- [Links](https://simpledevtools.tech)
+
+### Code Blocks
+
+\`\`\`javascript
+const greeting = "Hello, World!";
+console.log(greeting);
+\`\`\`
+
+### Task Lists
+
+- [x] Learn Markdown basics
+- [x] Try the live preview
+- [ ] Create amazing documentation
+
+### Tables
+
+| Feature | Status |
+|---------|--------|
+| Live Preview | ✅ |
+| GFM Support | ✅ |
+| Auto-save | ✅ |
+
+### Blockquotes
+
+> Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+> — John Gruber
+
+---
+
+Start editing to see more! 🚀`;
+            updatePreview();
+            updateStats();
+            saveContent();
+        }
+
+        function clearAll() {
+            if (confirm('Are you sure you want to clear all content?')) {
+                mdInput.value = '';
+                mdPreview.innerHTML = '';
+                updateStats();
+                localStorage.removeItem('markdown-editor-content');
+                lastSaved.textContent = 'Content cleared';
+            }
+        }
+
+        function copyMarkdown() {
+            navigator.clipboard.writeText(mdInput.value).then(() => {
+                showCopyFeedback('copyMarkdown()', 'Copy MD');
+            });
+        }
+
+        function copyHTML() {
+            navigator.clipboard.writeText(mdPreview.innerHTML).then(() => {
+                showCopyFeedback('copyHTML()', 'Copy HTML');
+            });
+        }
+
+        function showCopyFeedback(onclick, originalText) {
+            const btn = document.querySelector(`[onclick="${onclick}"]`);
+            const icon = originalText === 'Copy MD' ? 'copy' : 'code';
+            btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> Copied!`;
+            lucide.createIcons();
+            setTimeout(() => {
+                btn.innerHTML = `<i data-lucide="${icon}" class="w-3.5 h-3.5"></i> ${originalText}`;
+                lucide.createIcons();
+            }, 2000);
+        }
+
+        function downloadMarkdown() {
+            const blob = new Blob([mdInput.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'document.md';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 'b' || e.key === 'B') {
+                    e.preventDefault();
+                    insertText('**', '**', 'bold');
+                } else if (e.key === 'i' || e.key === 'I') {
+                    e.preventDefault();
+                    insertText('*', '*', 'italic');
+                } else if (e.key === 'k' || e.key === 'K') {
+                    e.preventDefault();
+                    insertLink();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

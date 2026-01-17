@@ -89,13 +89,23 @@ function injectLayout() {
                     <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Tools</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
                         <li><a href="/json-formatter" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter</a></li>
-                        <li><a href="/base64-encode" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
+                        <li><a href="/base64-encoder" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
                         <li><a href="/hash-generator" class="hover:text-black dark:hover:text-white transition-colors">Hash Generator</a></li>
                         <li><a href="/uuid-generator" class="hover:text-black dark:hover:text-white transition-colors">UUID Generator</a></li>
                         <li><a href="/regex-tester" class="hover:text-black dark:hover:text-white transition-colors">Regex Tester</a></li>
                         <li><a href="/jwt-decoder" class="hover:text-black dark:hover:text-white transition-colors">JWT Decoder</a></li>
                         <li><a href="/image-compressor" class="hover:text-black dark:hover:text-white transition-colors">Image Compressor</a></li>
-                        <li><a href="/password-strength-analyzer" class="hover:text-black dark:hover:text-white transition-colors">Password Strength Analyzer</a></li>
+                        <li><a href="/password-strength-analyzer" class="hover:text-black dark:hover:text-white transition-colors">Password Analyzer</a></li>
+                        <li><a href="/javascript-formatter" class="hover:text-black dark:hover:text-white transition-colors">JavaScript Formatter</a></li>
+                        <li><a href="/css-formatter" class="hover:text-black dark:hover:text-white transition-colors">CSS Formatter</a></li>
+                        <li><a href="/html-formatter" class="hover:text-black dark:hover:text-white transition-colors">HTML Formatter</a></li>
+                        <li><a href="/sql-formatter" class="hover:text-black dark:hover:text-white transition-colors">SQL Formatter</a></li>
+                        <li><a href="/markdown-editor" class="hover:text-black dark:hover:text-white transition-colors">Markdown Editor</a></li>
+                        <li><a href="/url-encoder" class="hover:text-black dark:hover:text-white transition-colors">URL Encoder</a></li>
+                        <li><a href="/color-picker" class="hover:text-black dark:hover:text-white transition-colors">Color Picker</a></li>
+                        <li><a href="/timestamp-converter" class="hover:text-black dark:hover:text-white transition-colors">Timestamp Converter</a></li>
+                        <li><a href="/lorem-ipsum" class="hover:text-black dark:hover:text-white transition-colors">Lorem Ipsum Generator</a></li>
+                        <li><a href="/diff-checker" class="hover:text-black dark:hover:text-white transition-colors">Diff Checker</a></li>
                     </ul>
                 </div>
 

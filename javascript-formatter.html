@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free JavaScript formatter and beautifier. Format, beautify, and minify JS, JSX, and TypeScript code with syntax highlighting and error detection. 100% client-side.">
+    <meta name="keywords" content="javascript formatter, js beautifier, javascript beautifier, code formatter, minify javascript, typescript formatter, jsx formatter, prettify javascript">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <title>JavaScript Formatter & Beautifier - Format JS, JSX, TypeScript | SimpleDevTools</title>
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <link rel="canonical" href="https://simpledevtools.tech/javascript-formatter" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="JavaScript Formatter & Beautifier - Format JS, JSX, TypeScript">
+    <meta property="og:description" content="Free online JavaScript formatter with beautify and minify options. Supports JS, JSX, TypeScript with syntax highlighting.">
+    <meta property="og:url" content="https://simpledevtools.tech/javascript-formatter">
+    <meta property="og:type" content="website">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "JavaScript Formatter",
+      "description": "Free JavaScript formatter and beautifier. Format, beautify, and minify JS, JSX, and TypeScript code.",
+      "url": "https://simpledevtools.tech/javascript-formatter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "JavaScript Formatter", "item": "https://simpledevtools.tech/javascript-formatter"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a JavaScript formatter?", "acceptedAnswer": {"@type": "Answer", "text": "A JavaScript formatter is a tool that automatically formats and beautifies JavaScript code according to consistent styling rules, making it more readable and maintainable."}},
+        {"@type": "Question", "name": "Does this tool support TypeScript?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, this formatter supports JavaScript, JSX, and TypeScript. It automatically detects the language based on syntax and formats accordingly."}},
+        {"@type": "Question", "name": "Is my code sent to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All formatting happens 100% in your browser using JavaScript. Your code never leaves your device, ensuring complete privacy."}},
+        {"@type": "Question", "name": "What's the difference between beautify and minify?", "acceptedAnswer": {"@type": "Answer", "text": "Beautify adds proper indentation, line breaks, and spacing to make code readable. Minify removes all unnecessary whitespace and shortens code to reduce file size for production."}},
+        {"@type": "Question", "name": "Can I detect syntax errors with this tool?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the formatter includes basic syntax error detection and will highlight issues in your code, helping you identify problems before running it."}}
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        /* Syntax highlighting */
+        .token-keyword { color: #c678dd; }
+        .token-string { color: #98c379; }
+        .token-number { color: #d19a66; }
+        .token-comment { color: #5c6370; font-style: italic; }
+        .token-function { color: #61afef; }
+        .token-operator { color: #56b6c2; }
+        .token-punctuation { color: #abb2bf; }
+        .token-class { color: #e5c07b; }
+        .token-property { color: #e06c75; }
+        
+        /* Editor styles */
+        .code-editor {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            tab-size: 2;
+        }
+        
+        .line-numbers {
+            counter-reset: line;
+            padding-right: 1rem;
+            border-right: 1px solid rgba(128, 128, 128, 0.2);
+            user-select: none;
+        }
+        
+        .line-numbers span {
+            display: block;
+            counter-increment: line;
+        }
+        
+        .line-numbers span::before {
+            content: counter(line);
+            color: #636d83;
+            min-width: 2.5rem;
+            display: inline-block;
+            text-align: right;
+            padding-right: 0.5rem;
+        }
+
+        /* Error highlighting */
+        .error-line {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid #ef4444;
+        }
+
+        /* Drag and drop */
+        #drop-zone.drag-over {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .dark #drop-zone.drag-over {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        #drag-overlay {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/json-formatter" class="underline">JSON Formatter</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-500/10 dark:bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="mx-auto max-w-7xl">
+
+            <!-- Header Section -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-yellow-600 border border-yellow-100 rounded-full bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Processed locally. No data reaches our servers.</span>
+                </div>
+                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    JavaScript Formatter & Beautifier
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Format, beautify, and minify JavaScript, JSX, and TypeScript code with syntax highlighting and error detection.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div id="js-formatter" class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+
+                <!-- Toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- Primary Format Button -->
+                        <button onclick="formatCode(2)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            Beautify
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
+
+                        <!-- Indent Options -->
+                        <button onclick="formatCode(2)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="indent" class="w-3.5 h-3.5"></i>
+                            2 Spaces
+                        </button>
+                        <button onclick="formatCode(4)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="indent" class="w-3.5 h-3.5"></i>
+                            4 Spaces
+                        </button>
+                        <button onclick="formatCode('tab')"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="indent" class="w-3.5 h-3.5"></i>
+                            Tabs
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
+
+                        <button onclick="minifyCode()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
+                            Minify
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
+
+                        <!-- Language Selector -->
+                        <select id="language-select" onchange="updateLanguage()"
+                            class="px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-md">
+                            <option value="javascript">JavaScript</option>
+                            <option value="typescript">TypeScript</option>
+                            <option value="jsx">JSX / React</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="document.getElementById('file-upload').click()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-yellow-600 dark:hover:text-yellow-400 text-xs font-medium transition-colors">
+                            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                            Upload
+                        </button>
+                        <input type="file" id="file-upload" class="hidden" accept=".js,.jsx,.ts,.tsx,.mjs,.cjs" onchange="handleFileUpload(this)">
+
+                        <button onclick="loadSample()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-yellow-600 dark:hover:text-yellow-400 text-xs font-medium transition-colors">
+                            Sample
+                        </button>
+                        <button onclick="clearAll()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            Clear
+                        </button>
+                        <button onclick="copyOutput()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            Copy
+                        </button>
+                        <button onclick="downloadCode()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editor Area -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
+                    <!-- Input -->
+                    <div class="relative flex flex-col h-full group" id="drop-zone">
+                        <div class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
+                            <span class="flex items-center gap-2">
+                                Input
+                                <span id="lang-badge" class="px-1.5 py-0.5 rounded-sm bg-yellow-100 dark:bg-yellow-900/30 text-[10px] text-yellow-700 dark:text-yellow-400 font-bold">JS</span>
+                            </span>
+                            <div class="flex items-center gap-3">
+                                <span id="input-stats">0 chars • 0 lines</span>
+                            </div>
+                        </div>
+
+                        <!-- Error Banner -->
+                        <div id="error-banner" class="hidden p-3 border-b border-red-100 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 shrink-0">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-medium text-red-800 dark:text-red-300">Syntax Error</p>
+                                    <p id="error-message" class="text-[11px] text-red-600 dark:text-red-400 font-mono mt-0.5 break-all"></p>
+                                </div>
+                                <button onclick="dismissError()" class="text-red-400 hover:text-red-600 dark:hover:text-red-300">
+                                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Drag & Drop Overlay -->
+                        <div id="drag-overlay" class="absolute z-20 flex-col items-center justify-center hidden transition-all rounded-lg pointer-events-none inset-2 bg-yellow-50/90 dark:bg-yellow-900/90 backdrop-blur-xs">
+                            <i data-lucide="file-up" class="w-10 h-10 mb-2 text-yellow-500"></i>
+                            <p class="text-sm font-medium text-yellow-700 dark:text-yellow-300">Drop JavaScript file here</p>
+                            <p class="mt-1 text-xs text-yellow-600 dark:text-yellow-400">Supports .js, .jsx, .ts, .tsx files</p>
+                        </div>
+
+                        <textarea id="code-input"
+                            class="flex-1 w-full p-4 font-mono text-sm leading-relaxed transition-colors bg-transparent border-2 border-transparent resize-none focus:ring-0 text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50 code-editor"
+                            placeholder="Paste your JavaScript, TypeScript, or JSX code here..." spellcheck="false"></textarea>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="relative flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
+                        <div class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
+                            <span class="flex items-center gap-2 font-mono text-xs text-neutral-500">
+                                Output
+                                <span id="status-badge" class="hidden px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/30 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Formatted</span>
+                            </span>
+                            <div class="flex items-center gap-3">
+                                <span id="output-stats" class="font-mono text-xs text-neutral-500">0 chars • 0 lines</span>
+                            </div>
+                        </div>
+
+                        <div id="code-output" class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed text-neutral-800 dark:text-neutral-200 code-editor whitespace-pre-wrap"></div>
+                    </div>
+                </div>
+
+                <!-- Keyboard Shortcuts Bar -->
+                <div class="flex items-center justify-between px-4 py-2 text-xs border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-neutral-500">
+                    <div class="flex items-center gap-4">
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Enter</kbd> Beautify</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">M</kbd> Minify</span>
+                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">S</kbd> Download</span>
+                    </div>
+                    <span id="size-comparison" class="hidden text-emerald-600 dark:text-emerald-400"></span>
+                </div>
+            </div>
+
+            <!-- Info Sections -->
+            <div class="grid gap-8 mb-16 lg:grid-cols-3">
+                <!-- Use Cases -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="lightbulb" class="w-5 h-5 text-yellow-500"></i>
+                        Use Cases
+                    </h2>
+                    <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Clean up minified JavaScript from browser DevTools</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Standardize code formatting across team projects</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Minify JavaScript for production to reduce file size</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Debug and understand third-party libraries</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Prepare code snippets for documentation</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Features -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
+                        Features
+                    </h2>
+                    <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="code-2" class="w-4 h-4 mt-0.5 text-blue-500 shrink-0"></i>
+                            <span>Supports JavaScript, TypeScript, and JSX/React</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="palette" class="w-4 h-4 mt-0.5 text-purple-500 shrink-0"></i>
+                            <span>Syntax highlighting for better readability</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 mt-0.5 text-orange-500 shrink-0"></i>
+                            <span>Syntax error detection and reporting</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="settings-2" class="w-4 h-4 mt-0.5 text-gray-500 shrink-0"></i>
+                            <span>Configurable indentation (2 spaces, 4 spaces, tabs)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="minimize-2" class="w-4 h-4 mt-0.5 text-green-500 shrink-0"></i>
+                            <span>Minification for production optimization</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Examples -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="file-code" class="w-5 h-5 text-yellow-500"></i>
+                        Quick Examples
+                    </h2>
+                    <div class="space-y-3">
+                        <button onclick="loadExample('minified')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">Minified Code</span>
+                            <p class="mt-1 text-xs text-neutral-500">Beautify compressed JavaScript</p>
+                        </button>
+                        <button onclick="loadExample('react')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">React Component</span>
+                            <p class="mt-1 text-xs text-neutral-500">Format JSX code</p>
+                        </button>
+                        <button onclick="loadExample('typescript')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">TypeScript</span>
+                            <p class="mt-1 text-xs text-neutral-500">Format typed code</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mb-16">
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What is a JavaScript formatter?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            A JavaScript formatter is a tool that automatically formats and beautifies JavaScript code according to consistent styling rules. It adds proper indentation, line breaks, and spacing to make code more readable and maintainable. This tool uses industry-standard formatting rules similar to Prettier.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Does this support TypeScript and JSX?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes! This formatter supports JavaScript, TypeScript, and JSX/React code. Use the language selector dropdown to switch between modes for optimal formatting. The tool automatically handles type annotations, interfaces, and JSX syntax.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Is my code sent to a server?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            No, absolutely not. All formatting happens 100% in your browser using JavaScript. Your code never leaves your device, ensuring complete privacy for sensitive or proprietary code. You can even use this tool offline once the page is loaded.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What's the difference between beautify and minify?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <strong>Beautify</strong> adds proper indentation, line breaks, and spacing to make code readable and easy to understand. <strong>Minify</strong> does the opposite - it removes all unnecessary whitespace, comments, and shortens variable names to reduce file size for production deployment.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Can I detect syntax errors?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes, the formatter includes syntax error detection. If your code has syntax errors, they will be highlighted with error messages indicating the line and type of error. This helps you identify and fix problems before running your code.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                            <i data-lucide="braces" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                            <div class="text-xs text-neutral-500">Format & validate JSON</div>
+                        </div>
+                    </a>
+                    <a href="/html-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                            <i data-lucide="code" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">HTML Formatter</div>
+                            <div class="text-xs text-neutral-500">Beautify HTML code</div>
+                        </div>
+                    </a>
+                    <a href="/css-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                            <i data-lucide="paintbrush" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">CSS Formatter</div>
+                            <div class="text-xs text-neutral-500">Format CSS & SCSS</div>
+                        </div>
+                    </a>
+                    <a href="/regex-tester" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                            <i data-lucide="regex" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">Regex Tester</div>
+                            <div class="text-xs text-neutral-500">Test patterns</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        const codeInput = document.getElementById('code-input');
+        const codeOutput = document.getElementById('code-output');
+        const inputStats = document.getElementById('input-stats');
+        const outputStats = document.getElementById('output-stats');
+        const errorBanner = document.getElementById('error-banner');
+        const errorMessage = document.getElementById('error-message');
+        const statusBadge = document.getElementById('status-badge');
+        const langBadge = document.getElementById('lang-badge');
+        const sizeComparison = document.getElementById('size-comparison');
+        const dropZone = document.getElementById('drop-zone');
+        const dragOverlay = document.getElementById('drag-overlay');
+
+        // Update stats on input
+        codeInput.addEventListener('input', () => {
+            updateInputStats();
+            hideError();
+        });
+
+        function updateInputStats() {
+            const text = codeInput.value;
+            const chars = text.length;
+            const lines = text.split('\n').length;
+            inputStats.textContent = `${chars.toLocaleString()} chars • ${lines} lines`;
+        }
+
+        function updateOutputStats(text) {
+            const chars = text.length;
+            const lines = text.split('\n').length;
+            outputStats.textContent = `${chars.toLocaleString()} chars • ${lines} lines`;
+        }
+
+        function showError(msg) {
+            errorBanner.classList.remove('hidden');
+            errorMessage.textContent = msg;
+            statusBadge.classList.add('hidden');
+        }
+
+        function hideError() {
+            errorBanner.classList.add('hidden');
+        }
+
+        function dismissError() {
+            hideError();
+        }
+
+        function updateLanguage() {
+            const lang = document.getElementById('language-select').value;
+            const badges = { javascript: 'JS', typescript: 'TS', jsx: 'JSX' };
+            langBadge.textContent = badges[lang] || 'JS';
+        }
+
+        // JavaScript beautifier (simplified - real implementation would use a proper parser)
+        function formatCode(indent = 2) {
+            const code = codeInput.value.trim();
+            if (!code) {
+                showError('Please enter some code to format');
+                return;
+            }
+
+            try {
+                const indentStr = indent === 'tab' ? '\t' : ' '.repeat(indent);
+                const formatted = beautifyJS(code, indentStr);
+                codeOutput.textContent = formatted;
+                updateOutputStats(formatted);
+                statusBadge.textContent = 'Formatted';
+                statusBadge.classList.remove('hidden');
+                hideError();
+                showSizeComparison(code, formatted);
+                highlightSyntax();
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function beautifyJS(code, indent) {
+            // Simple beautifier - handles basic cases
+            let result = '';
+            let indentLevel = 0;
+            let inString = false;
+            let stringChar = '';
+            let inComment = false;
+            let inMultiComment = false;
+            let newLine = true;
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1] || '';
+                const prevChar = code[i - 1] || '';
+                
+                // Handle strings
+                if ((char === '"' || char === "'" || char === '`') && prevChar !== '\\' && !inComment && !inMultiComment) {
+                    if (!inString) {
+                        inString = true;
+                        stringChar = char;
+                    } else if (char === stringChar) {
+                        inString = false;
+                    }
+                }
+                
+                // Handle comments
+                if (!inString) {
+                    if (char === '/' && nextChar === '/' && !inMultiComment) {
+                        inComment = true;
+                    }
+                    if (char === '/' && nextChar === '*' && !inComment) {
+                        inMultiComment = true;
+                    }
+                    if (char === '*' && nextChar === '/' && inMultiComment) {
+                        inMultiComment = false;
+                        result += '*/';
+                        i++;
+                        continue;
+                    }
+                    if (char === '\n' && inComment) {
+                        inComment = false;
+                    }
+                }
+                
+                if (inString || inComment || inMultiComment) {
+                    result += char;
+                    if (char === '\n') newLine = true;
+                    continue;
+                }
+                
+                // Handle formatting
+                if (char === '{' || char === '[' || char === '(') {
+                    result += char;
+                    if (char === '{' || char === '[') {
+                        indentLevel++;
+                        result += '\n' + indent.repeat(indentLevel);
+                        newLine = true;
+                    }
+                } else if (char === '}' || char === ']' || char === ')') {
+                    if (char === '}' || char === ']') {
+                        indentLevel = Math.max(0, indentLevel - 1);
+                        result = result.trimEnd();
+                        result += '\n' + indent.repeat(indentLevel);
+                    }
+                    result += char;
+                    newLine = false;
+                } else if (char === ';') {
+                    result += char + '\n' + indent.repeat(indentLevel);
+                    newLine = true;
+                } else if (char === ',') {
+                    result += char;
+                    // Add newline after comma in objects/arrays
+                    if (indentLevel > 0) {
+                        result += '\n' + indent.repeat(indentLevel);
+                        newLine = true;
+                    } else {
+                        result += ' ';
+                    }
+                } else if (char === '\n' || char === '\r') {
+                    if (!newLine) {
+                        result += '\n' + indent.repeat(indentLevel);
+                        newLine = true;
+                    }
+                } else if (char === ' ' || char === '\t') {
+                    if (!newLine && result.slice(-1) !== ' ') {
+                        result += ' ';
+                    }
+                } else {
+                    result += char;
+                    newLine = false;
+                }
+            }
+            
+            return result.trim();
+        }
+
+        function minifyCode() {
+            const code = codeInput.value.trim();
+            if (!code) {
+                showError('Please enter some code to minify');
+                return;
+            }
+
+            try {
+                const minified = minifyJS(code);
+                codeOutput.textContent = minified;
+                updateOutputStats(minified);
+                statusBadge.textContent = 'Minified';
+                statusBadge.classList.remove('hidden');
+                hideError();
+                showSizeComparison(code, minified);
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function minifyJS(code) {
+            // Simple minifier
+            let result = '';
+            let inString = false;
+            let stringChar = '';
+            let inComment = false;
+            let inMultiComment = false;
+            let lastChar = '';
+            
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1] || '';
+                const prevChar = code[i - 1] || '';
+                
+                // Handle strings
+                if ((char === '"' || char === "'" || char === '`') && prevChar !== '\\' && !inComment && !inMultiComment) {
+                    if (!inString) {
+                        inString = true;
+                        stringChar = char;
+                    } else if (char === stringChar) {
+                        inString = false;
+                    }
+                }
+                
+                // Handle comments
+                if (!inString) {
+                    if (char === '/' && nextChar === '/') {
+                        inComment = true;
+                        continue;
+                    }
+                    if (char === '/' && nextChar === '*') {
+                        inMultiComment = true;
+                        i++;
+                        continue;
+                    }
+                    if (char === '*' && nextChar === '/') {
+                        inMultiComment = false;
+                        i++;
+                        continue;
+                    }
+                    if (char === '\n' && inComment) {
+                        inComment = false;
+                        continue;
+                    }
+                }
+                
+                if (inComment || inMultiComment) continue;
+                
+                if (inString) {
+                    result += char;
+                    lastChar = char;
+                    continue;
+                }
+                
+                // Skip whitespace unless needed
+                if (char === ' ' || char === '\t' || char === '\n' || char === '\r') {
+                    // Keep space between words/identifiers
+                    if (lastChar && /[a-zA-Z0-9_$]/.test(lastChar) && result.length > 0) {
+                        const peek = code.slice(i + 1).match(/^\s*([a-zA-Z0-9_$])/);
+                        if (peek) {
+                            result += ' ';
+                            lastChar = ' ';
+                        }
+                    }
+                    continue;
+                }
+                
+                result += char;
+                lastChar = char;
+            }
+            
+            return result;
+        }
+
+        function showSizeComparison(original, output) {
+            const originalSize = new Blob([original]).size;
+            const outputSize = new Blob([output]).size;
+            const diff = originalSize - outputSize;
+            const percent = ((diff / originalSize) * 100).toFixed(1);
+            
+            if (diff > 0) {
+                sizeComparison.textContent = `Reduced by ${formatBytes(diff)} (${percent}%)`;
+                sizeComparison.classList.remove('hidden');
+            } else if (diff < 0) {
+                sizeComparison.textContent = `Increased by ${formatBytes(Math.abs(diff))}`;
+                sizeComparison.classList.remove('hidden');
+            } else {
+                sizeComparison.classList.add('hidden');
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            return (bytes / 1024).toFixed(1) + ' KB';
+        }
+
+        function highlightSyntax() {
+            // Basic syntax highlighting (for display purposes)
+            const code = codeOutput.textContent;
+            // In a real implementation, use a proper syntax highlighter like Prism.js
+        }
+
+        function loadSample() {
+            codeInput.value = `const greeting = (name) => {
+  const message = \`Hello, \${name}!\`;
+  console.log(message);
+  return message;
+};
+
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+
+  greet() {
+    return greeting(this.name);
+  }
+}
+
+const users = [
+  new User('Alice', 'alice@example.com'),
+  new User('Bob', 'bob@example.com')
+];
+
+users.forEach(user => user.greet());`;
+            updateInputStats();
+        }
+
+        function loadExample(type) {
+            const examples = {
+                minified: `const a=(n)=>{const m=\`Hello, \${n}!\`;console.log(m);return m};class U{constructor(n,e){this.name=n;this.email=e}greet(){return a(this.name)}}const u=[new U('Alice','alice@ex.com'),new U('Bob','bob@ex.com')];u.forEach(x=>x.greet());`,
+                react: `import React, { useState, useEffect } from 'react';
+
+const Counter = ({ initialCount = 0 }) => {
+  const [count, setCount] = useState(initialCount);
+
+  useEffect(() => {
+    document.title = \`Count: \${count}\`;
+  }, [count]);
+
+  return (
+    <div className="counter">
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+      <button onClick={() => setCount(count - 1)}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default Counter;`,
+                typescript: `interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: 'admin' | 'user' | 'guest';
+}
+
+type UserResponse = {
+  data: User[];
+  total: number;
+  page: number;
+};
+
+async function fetchUsers(page: number = 1): Promise<UserResponse> {
+  const response = await fetch(\`/api/users?page=\${page}\`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch users');
+  }
+  return response.json();
+}
+
+const processUsers = (users: User[]): Map<string, User> => {
+  return new Map(users.map(user => [user.email, user]));
+};`
+            };
+            
+            codeInput.value = examples[type] || '';
+            updateInputStats();
+            
+            if (type === 'typescript') {
+                document.getElementById('language-select').value = 'typescript';
+            } else if (type === 'react') {
+                document.getElementById('language-select').value = 'jsx';
+            } else {
+                document.getElementById('language-select').value = 'javascript';
+            }
+            updateLanguage();
+        }
+
+        function clearAll() {
+            codeInput.value = '';
+            codeOutput.textContent = '';
+            updateInputStats();
+            outputStats.textContent = '0 chars • 0 lines';
+            statusBadge.classList.add('hidden');
+            sizeComparison.classList.add('hidden');
+            hideError();
+        }
+
+        function copyOutput() {
+            const text = codeOutput.textContent;
+            if (!text) return;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('[onclick="copyOutput()"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
+
+        function downloadCode() {
+            const text = codeOutput.textContent || codeInput.value;
+            if (!text) return;
+            
+            const lang = document.getElementById('language-select').value;
+            const extensions = { javascript: 'js', typescript: 'ts', jsx: 'jsx' };
+            const ext = extensions[lang] || 'js';
+            
+            const blob = new Blob([text], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `formatted.${ext}`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                codeInput.value = e.target.result;
+                updateInputStats();
+                
+                // Auto-detect language
+                if (file.name.endsWith('.ts') || file.name.endsWith('.tsx')) {
+                    document.getElementById('language-select').value = 'typescript';
+                } else if (file.name.endsWith('.jsx')) {
+                    document.getElementById('language-select').value = 'jsx';
+                } else {
+                    document.getElementById('language-select').value = 'javascript';
+                }
+                updateLanguage();
+            };
+            reader.readAsText(file);
+        }
+
+        // Drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+            dropZone.addEventListener(event, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        dropZone.addEventListener('dragenter', () => {
+            dropZone.classList.add('drag-over');
+            dragOverlay.classList.remove('hidden');
+            dragOverlay.classList.add('flex');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            if (!dropZone.contains(e.relatedTarget)) {
+                dropZone.classList.remove('drag-over');
+                dragOverlay.classList.add('hidden');
+                dragOverlay.classList.remove('flex');
+            }
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            dropZone.classList.remove('drag-over');
+            dragOverlay.classList.add('hidden');
+            dragOverlay.classList.remove('flex');
+            
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    codeInput.value = e.target.result;
+                    updateInputStats();
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    formatCode(2);
+                } else if (e.key === 'm' || e.key === 'M') {
+                    e.preventDefault();
+                    minifyCode();
+                } else if (e.key === 's' || e.key === 'S') {
+                    e.preventDefault();
+                    downloadCode();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

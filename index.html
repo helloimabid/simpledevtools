@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Fast, private web developer tools running in your browser. Base64 encoder/decoder, JWT decoder, JSON formatter & more. No uploads, 100% free, works offline.">
+        content="Fast, private web developer tools running in your browser. JSON formatter, Base64 encoder, JWT decoder, code formatters (JS, CSS, HTML, SQL), color picker, diff checker & more. No uploads, 100% free, works offline.">
 
     <meta name="google-adsense-account" content="ca-pub-9710571190649081">
     <title>Free Web Developer Tools - Base64, JWT Decoder, JSON Formatter | SimpleDevTools</title>
@@ -231,24 +231,84 @@
             {
               "@type": "ListItem",
               "position": 10,
-              "name": "How It Works",
-              "item": "https://simpledevtools.tech/how-it-works"
-            },
-            {
-              "@type": "ListItem",
-              "position": 11,
               "name": "Password Strength Analyzer",
               "item": "https://simpledevtools.tech/password-strength-analyzer"
             },
             {
               "@type": "ListItem",
+              "position": 11,
+              "name": "JavaScript Formatter",
+              "item": "https://simpledevtools.tech/javascript-formatter"
+            },
+            {
+              "@type": "ListItem",
               "position": 12,
+              "name": "CSS Formatter",
+              "item": "https://simpledevtools.tech/css-formatter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 13,
+              "name": "HTML Formatter",
+              "item": "https://simpledevtools.tech/html-formatter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 14,
+              "name": "SQL Formatter",
+              "item": "https://simpledevtools.tech/sql-formatter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 15,
+              "name": "Markdown Editor",
+              "item": "https://simpledevtools.tech/markdown-editor"
+            },
+            {
+              "@type": "ListItem",
+              "position": 16,
+              "name": "URL Encoder",
+              "item": "https://simpledevtools.tech/url-encoder"
+            },
+            {
+              "@type": "ListItem",
+              "position": 17,
+              "name": "Color Picker",
+              "item": "https://simpledevtools.tech/color-picker"
+            },
+            {
+              "@type": "ListItem",
+              "position": 18,
+              "name": "Timestamp Converter",
+              "item": "https://simpledevtools.tech/timestamp-converter"
+            },
+            {
+              "@type": "ListItem",
+              "position": 19,
+              "name": "Lorem Ipsum Generator",
+              "item": "https://simpledevtools.tech/lorem-ipsum"
+            },
+            {
+              "@type": "ListItem",
+              "position": 20,
+              "name": "Diff Checker",
+              "item": "https://simpledevtools.tech/diff-checker"
+            },
+            {
+              "@type": "ListItem",
+              "position": 21,
+              "name": "How It Works",
+              "item": "https://simpledevtools.tech/how-it-works"
+            },
+            {
+              "@type": "ListItem",
+              "position": 22,
               "name": "Terms",
               "item": "https://simpledevtools.tech/terms"
             },
             {
               "@type": "ListItem",
-              "position": 13,
+              "position": 23,
               "name": "Privacy Policy",
               "item": "https://simpledevtools.tech/privacy-policy"
             }
@@ -344,8 +404,8 @@
                 strength. With tools like the <span class="font-semibold text-neutral-700 dark:text-neutral-200">JSON
                     Formatter,
                     Base64 Encoder, UUID Generator, Hash Generator, Image Compressor, JWT Decoder, Password Strength
-                    Analyzer,</span> and <span class="font-semibold text-neutral-700 dark:text-neutral-200">Regex
-                    Tester</span>,
+                    Analyzer, Regex Tester, JavaScript Formatter, CSS Formatter, HTML Formatter, SQL Formatter, Markdown Editor,
+                    URL Encoder, Color Picker, Timestamp Converter, Lorem Ipsum Generator,</span> and <span class="font-semibold text-neutral-700 dark:text-neutral-200">Diff Checker</span>,
                 users can efficiently handle their data without compromising on privacy. Whether you're a seasoned
                 developer or
                 just starting out, SimpleDevTools provides the essential utilities you need to enhance your workflow and
@@ -579,6 +639,196 @@
                             </div>
                             <h3 class="mb-1 text-base font-medium">JWT Decoder</h3>
                             <p class="text-xs text-neutral-500 dark:text-neutral-400">Decode JWT tokens locally.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Code Formatters Section -->
+                <section id="formatters" class="mb-24">
+                    <div
+                        class="flex items-end justify-between pb-4 mb-8 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h2 class="text-2xl font-semibold tracking-tight font-display">Code Formatters</h2>
+                            <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Beautify and format your code instantly</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(140px,auto)]">
+
+                        <a href="/javascript-formatter"
+                            class="relative flex flex-col justify-between p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2 lg:row-span-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-yellow-100 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 group-hover:text-yellow-800 dark:group-hover:text-yellow-200">
+                                    <i data-lucide="file-code" class="w-6 h-6"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-medium">JavaScript Formatter</h3>
+                                <p class="text-sm text-neutral-500 dark:text-neutral-400">Beautify & minify JS/ES6 code with custom options.</p>
+                            </div>
+                        </a>
+
+                        <a href="/css-formatter"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 group-hover:text-blue-800 dark:group-hover:text-blue-200">
+                                    <i data-lucide="paintbrush" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">CSS Formatter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Format stylesheets.</p>
+                        </a>
+
+                        <a href="/html-formatter"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-orange-100 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 group-hover:text-orange-800 dark:group-hover:text-orange-200">
+                                    <i data-lucide="file-code-2" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">HTML Formatter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Beautify markup.</p>
+                        </a>
+
+                        <a href="/sql-formatter"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-sky-100 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 group-hover:text-sky-800 dark:group-hover:text-sky-200">
+                                    <i data-lucide="database" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">SQL Formatter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Format and beautify SQL queries with syntax highlighting.</p>
+                        </a>
+
+                        <a href="/markdown-editor"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 group-hover:text-purple-800 dark:group-hover:text-purple-200">
+                                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Markdown Editor</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Write & preview MD.</p>
+                        </a>
+
+                        <a href="/diff-checker"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-violet-100 dark:bg-violet-900/20 text-violet-700 dark:text-violet-300 group-hover:text-violet-800 dark:group-hover:text-violet-200">
+                                    <i data-lucide="git-compare" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Diff Checker</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Compare text.</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- More Tools Section -->
+                <section id="more-tools" class="mb-24">
+                    <div
+                        class="flex items-end justify-between pb-4 mb-8 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h2 class="text-2xl font-semibold tracking-tight font-display">More Utilities</h2>
+                            <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Additional tools for everyday tasks</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(140px,auto)]">
+
+                        <a href="/url-encoder"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-cyan-100 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-300 group-hover:text-cyan-800 dark:group-hover:text-cyan-200">
+                                    <i data-lucide="link" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">URL Encoder/Decoder</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Encode and decode URLs, query parameters, and URI components.</p>
+                        </a>
+
+                        <a href="/color-picker"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-pink-100 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 group-hover:text-pink-800 dark:group-hover:text-pink-200">
+                                    <i data-lucide="palette" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Color Picker</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">HEX/RGB/HSL converter.</p>
+                        </a>
+
+                        <a href="/timestamp-converter"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-teal-100 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300 group-hover:text-teal-800 dark:group-hover:text-teal-200">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Timestamp Converter</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Unix time converter.</p>
+                        </a>
+
+                        <a href="/lorem-ipsum"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 group-hover:text-amber-800 dark:group-hover:text-amber-200">
+                                    <i data-lucide="text" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Lorem Ipsum Generator</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Generate placeholder text for your designs and mockups.</p>
                         </a>
                     </div>
                 </section>

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free CSS formatter and beautifier. Format, beautify, and minify CSS code with syntax highlighting. Supports CSS3, SCSS variables, and custom properties.">
+    <meta name="keywords" content="css formatter, css beautifier, css minifier, format css, prettify css, css compressor, stylesheet formatter, css code formatter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <title>CSS Formatter & Beautifier - Format, Minify CSS Online | SimpleDevTools</title>
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <link rel="canonical" href="https://simpledevtools.tech/css-formatter" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="CSS Formatter & Beautifier - Format, Minify CSS Online">
+    <meta property="og:description" content="Free online CSS formatter with beautify and minify options. Make your stylesheets readable or production-ready.">
+    <meta property="og:url" content="https://simpledevtools.tech/css-formatter">
+    <meta property="og:type" content="website">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CSS Formatter",
+      "description": "Free CSS formatter and beautifier. Format, beautify, and minify CSS code.",
+      "url": "https://simpledevtools.tech/css-formatter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "CSS Formatter", "item": "https://simpledevtools.tech/css-formatter"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a CSS formatter?", "acceptedAnswer": {"@type": "Answer", "text": "A CSS formatter is a tool that automatically formats and beautifies CSS code according to consistent styling rules, adding proper indentation and line breaks for readability."}},
+        {"@type": "Question", "name": "What's the difference between beautify and minify?", "acceptedAnswer": {"@type": "Answer", "text": "Beautify formats CSS with proper indentation and spacing for readability. Minify removes all whitespace and comments to reduce file size for production."}},
+        {"@type": "Question", "name": "Is my CSS sent to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No. All formatting happens 100% in your browser using JavaScript. Your code never leaves your device."}},
+        {"@type": "Question", "name": "Does this support CSS custom properties?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, this formatter supports modern CSS including custom properties (CSS variables), media queries, keyframes, and CSS Grid/Flexbox properties."}}
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        /* Syntax highlighting */
+        .token-selector { color: #e06c75; }
+        .token-property { color: #d19a66; }
+        .token-value { color: #98c379; }
+        .token-comment { color: #5c6370; font-style: italic; }
+        .token-punctuation { color: #abb2bf; }
+        .token-atrule { color: #c678dd; }
+        .token-function { color: #61afef; }
+        .token-string { color: #98c379; }
+        .token-number { color: #d19a66; }
+        .token-unit { color: #56b6c2; }
+        
+        .code-editor {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            tab-size: 2;
+        }
+
+        #drop-zone.drag-over {
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .dark #drop-zone.drag-over {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        #drag-overlay {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 dark:bg-blue-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="mx-auto max-w-7xl">
+
+            <!-- Header Section -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-blue-600 border border-blue-100 rounded-full bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Processed locally. No data reaches our servers.</span>
+                </div>
+                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    CSS Formatter & Beautifier
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Format, beautify, and minify CSS code with proper indentation and syntax highlighting.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div id="css-formatter" class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+
+                <!-- Toolbar -->
+                <div class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- Primary Format Button -->
+                        <button onclick="formatCSS(2)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                            Beautify
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
+
+                        <!-- Indent Options -->
+                        <button onclick="formatCSS(2)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="indent" class="w-3.5 h-3.5"></i>
+                            2 Spaces
+                        </button>
+                        <button onclick="formatCSS(4)"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="indent" class="w-3.5 h-3.5"></i>
+                            4 Spaces
+                        </button>
+
+                        <div class="w-px h-6 mx-1 bg-neutral-200 dark:bg-neutral-800"></div>
+
+                        <button onclick="minifyCSS()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
+                            Minify
+                        </button>
+
+                        <button onclick="sortProperties()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-750 text-xs font-medium rounded-md transition-colors">
+                            <i data-lucide="arrow-up-down" class="w-3.5 h-3.5"></i>
+                            Sort Properties
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="document.getElementById('file-upload').click()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-blue-600 dark:hover:text-blue-400 text-xs font-medium transition-colors">
+                            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                            Upload
+                        </button>
+                        <input type="file" id="file-upload" class="hidden" accept=".css,.scss,.less" onchange="handleFileUpload(this)">
+
+                        <button onclick="loadSample()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-blue-600 dark:hover:text-blue-400 text-xs font-medium transition-colors">
+                            Sample
+                        </button>
+                        <button onclick="clearAll()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            Clear
+                        </button>
+                        <button onclick="copyOutput()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            Copy
+                        </button>
+                        <button onclick="downloadCSS()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-xs font-medium rounded-md transition-colors shadow-xs">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            Save
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editor Area -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
+                    <!-- Input -->
+                    <div class="relative flex flex-col h-full group" id="drop-zone">
+                        <div class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
+                            <span class="flex items-center gap-2">
+                                Input
+                                <span class="px-1.5 py-0.5 rounded-sm bg-blue-100 dark:bg-blue-900/30 text-[10px] text-blue-700 dark:text-blue-400 font-bold">CSS</span>
+                            </span>
+                            <div class="flex items-center gap-3">
+                                <span id="input-stats">0 chars • 0 lines</span>
+                            </div>
+                        </div>
+
+                        <!-- Error Banner -->
+                        <div id="error-banner" class="hidden p-3 border-b border-red-100 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 shrink-0">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-medium text-red-800 dark:text-red-300">Error</p>
+                                    <p id="error-message" class="text-[11px] text-red-600 dark:text-red-400 font-mono mt-0.5 break-all"></p>
+                                </div>
+                                <button onclick="dismissError()" class="text-red-400 hover:text-red-600 dark:hover:text-red-300">
+                                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Drag & Drop Overlay -->
+                        <div id="drag-overlay" class="absolute z-20 flex-col items-center justify-center hidden transition-all rounded-lg pointer-events-none inset-2 bg-blue-50/90 dark:bg-blue-900/90 backdrop-blur-xs">
+                            <i data-lucide="file-up" class="w-10 h-10 mb-2 text-blue-500"></i>
+                            <p class="text-sm font-medium text-blue-700 dark:text-blue-300">Drop CSS file here</p>
+                            <p class="mt-1 text-xs text-blue-600 dark:text-blue-400">Supports .css, .scss, .less files</p>
+                        </div>
+
+                        <textarea id="css-input"
+                            class="flex-1 w-full p-4 font-mono text-sm leading-relaxed transition-colors bg-transparent border-2 border-transparent resize-none focus:ring-0 text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50 code-editor"
+                            placeholder="Paste your CSS code here..." spellcheck="false"></textarea>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="relative flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
+                        <div class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
+                            <span class="flex items-center gap-2 font-mono text-xs text-neutral-500">
+                                Output
+                                <span id="status-badge" class="hidden px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/30 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Formatted</span>
+                            </span>
+                            <div class="flex items-center gap-3">
+                                <span id="output-stats" class="font-mono text-xs text-neutral-500">0 chars • 0 lines</span>
+                            </div>
+                        </div>
+
+                        <div id="css-output" class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed text-neutral-800 dark:text-neutral-200 code-editor whitespace-pre-wrap"></div>
+                    </div>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="flex items-center justify-between px-4 py-2 text-xs border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-neutral-500">
+                    <div class="flex items-center gap-4">
+                        <span id="rule-count">0 rules</span>
+                        <span id="selector-count">0 selectors</span>
+                        <span id="property-count">0 properties</span>
+                    </div>
+                    <span id="size-comparison" class="hidden text-emerald-600 dark:text-emerald-400"></span>
+                </div>
+            </div>
+
+            <!-- Info Sections -->
+            <div class="grid gap-8 mb-16 lg:grid-cols-3">
+                <!-- Use Cases -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="lightbulb" class="w-5 h-5 text-blue-500"></i>
+                        Use Cases
+                    </h2>
+                    <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Clean up minified CSS from production sites</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Standardize CSS formatting across a team</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Minify stylesheets for production deployment</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Debug and analyze CSS from web pages</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-500 shrink-0"></i>
+                            <span>Sort properties alphabetically for consistency</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Features -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="zap" class="w-5 h-5 text-blue-500"></i>
+                        Features
+                    </h2>
+                    <ul class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="palette" class="w-4 h-4 mt-0.5 text-purple-500 shrink-0"></i>
+                            <span>Syntax highlighting for selectors and values</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="settings-2" class="w-4 h-4 mt-0.5 text-gray-500 shrink-0"></i>
+                            <span>Configurable indentation (2 or 4 spaces)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="arrow-up-down" class="w-4 h-4 mt-0.5 text-blue-500 shrink-0"></i>
+                            <span>Alphabetical property sorting</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="minimize-2" class="w-4 h-4 mt-0.5 text-green-500 shrink-0"></i>
+                            <span>Minification with comment removal</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="file-code" class="w-4 h-4 mt-0.5 text-orange-500 shrink-0"></i>
+                            <span>Supports CSS3 and custom properties</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Examples -->
+                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="file-code" class="w-5 h-5 text-blue-500"></i>
+                        Quick Examples
+                    </h2>
+                    <div class="space-y-3">
+                        <button onclick="loadExample('minified')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">Minified CSS</span>
+                            <p class="mt-1 text-xs text-neutral-500">Beautify compressed styles</p>
+                        </button>
+                        <button onclick="loadExample('modern')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">Modern CSS</span>
+                            <p class="mt-1 text-xs text-neutral-500">Grid, Flexbox, Variables</p>
+                        </button>
+                        <button onclick="loadExample('animation')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="font-medium text-neutral-900 dark:text-white">Animations</span>
+                            <p class="mt-1 text-xs text-neutral-500">Keyframes and transitions</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mb-16">
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What is a CSS formatter?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            A CSS formatter is a tool that automatically formats CSS code according to consistent styling rules. It adds proper indentation, organizes selectors and properties, and makes stylesheets more readable and maintainable.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What's the difference between beautify and minify?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <strong>Beautify</strong> expands CSS with proper indentation, line breaks, and spacing to make it readable for developers. <strong>Minify</strong> removes all unnecessary whitespace, comments, and optional semicolons to create the smallest possible file size for production use.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Does this support SCSS or Less?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            This formatter is designed for standard CSS. While it can handle basic SCSS variables and some preprocessor syntax, for full SCSS or Less support, you may want to compile your preprocessor code first and then format the resulting CSS.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Why sort CSS properties alphabetically?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Alphabetically sorted CSS properties make it easier to find and review specific properties in large rule blocks. It creates consistency across your codebase and helps teams maintain uniform styling. However, some developers prefer grouping related properties together instead.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Is my CSS data secure?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes, completely. All formatting happens 100% in your browser using JavaScript. Your CSS never leaves your device and is not sent to any server. This makes it safe to format any CSS, including proprietary or sensitive stylesheets.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="/javascript-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30">
+                            <i data-lucide="file-code" class="w-4 h-4 text-yellow-600 dark:text-yellow-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JS Formatter</div>
+                            <div class="text-xs text-neutral-500">Format JavaScript</div>
+                        </div>
+                    </a>
+                    <a href="/html-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                            <i data-lucide="code" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">HTML Formatter</div>
+                            <div class="text-xs text-neutral-500">Beautify HTML</div>
+                        </div>
+                    </a>
+                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                            <i data-lucide="braces" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                            <div class="text-xs text-neutral-500">Format JSON</div>
+                        </div>
+                    </a>
+                    <a href="/color-picker" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-pink-100 dark:bg-pink-900/30">
+                            <i data-lucide="palette" class="w-4 h-4 text-pink-600 dark:text-pink-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">Color Picker</div>
+                            <div class="text-xs text-neutral-500">Pick & convert colors</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        const cssInput = document.getElementById('css-input');
+        const cssOutput = document.getElementById('css-output');
+        const inputStats = document.getElementById('input-stats');
+        const outputStats = document.getElementById('output-stats');
+        const errorBanner = document.getElementById('error-banner');
+        const errorMessage = document.getElementById('error-message');
+        const statusBadge = document.getElementById('status-badge');
+        const sizeComparison = document.getElementById('size-comparison');
+        const dropZone = document.getElementById('drop-zone');
+        const dragOverlay = document.getElementById('drag-overlay');
+
+        // Update stats on input
+        cssInput.addEventListener('input', () => {
+            updateInputStats();
+            hideError();
+        });
+
+        function updateInputStats() {
+            const text = cssInput.value;
+            const chars = text.length;
+            const lines = text.split('\n').length;
+            inputStats.textContent = `${chars.toLocaleString()} chars • ${lines} lines`;
+        }
+
+        function updateOutputStats(text) {
+            const chars = text.length;
+            const lines = text.split('\n').length;
+            outputStats.textContent = `${chars.toLocaleString()} chars • ${lines} lines`;
+        }
+
+        function updateCSSStats(css) {
+            // Count rules (approximate)
+            const ruleMatches = css.match(/\{[^}]*\}/g) || [];
+            document.getElementById('rule-count').textContent = `${ruleMatches.length} rules`;
+            
+            // Count selectors (approximate)
+            const selectorMatches = css.match(/[^{}]+(?=\s*\{)/g) || [];
+            document.getElementById('selector-count').textContent = `${selectorMatches.length} selectors`;
+            
+            // Count properties (approximate)
+            const propertyMatches = css.match(/[\w-]+\s*:/g) || [];
+            document.getElementById('property-count').textContent = `${propertyMatches.length} properties`;
+        }
+
+        function showError(msg) {
+            errorBanner.classList.remove('hidden');
+            errorMessage.textContent = msg;
+            statusBadge.classList.add('hidden');
+        }
+
+        function hideError() {
+            errorBanner.classList.add('hidden');
+        }
+
+        function dismissError() {
+            hideError();
+        }
+
+        function formatCSS(indent = 2) {
+            const css = cssInput.value.trim();
+            if (!css) {
+                showError('Please enter some CSS to format');
+                return;
+            }
+
+            try {
+                const indentStr = ' '.repeat(indent);
+                const formatted = beautifyCSS(css, indentStr);
+                cssOutput.textContent = formatted;
+                updateOutputStats(formatted);
+                updateCSSStats(formatted);
+                statusBadge.textContent = 'Formatted';
+                statusBadge.classList.remove('hidden');
+                hideError();
+                showSizeComparison(css, formatted);
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function beautifyCSS(css, indent) {
+            let result = '';
+            let indentLevel = 0;
+            let inString = false;
+            let stringChar = '';
+            let inComment = false;
+            let inMultiComment = false;
+            
+            // Remove existing formatting
+            css = css.replace(/\s+/g, ' ').trim();
+            
+            for (let i = 0; i < css.length; i++) {
+                const char = css[i];
+                const nextChar = css[i + 1] || '';
+                const prevChar = css[i - 1] || '';
+                
+                // Handle strings
+                if ((char === '"' || char === "'") && prevChar !== '\\' && !inComment && !inMultiComment) {
+                    if (!inString) {
+                        inString = true;
+                        stringChar = char;
+                    } else if (char === stringChar) {
+                        inString = false;
+                    }
+                    result += char;
+                    continue;
+                }
+                
+                // Handle comments
+                if (!inString) {
+                    if (char === '/' && nextChar === '*') {
+                        result += '\n' + indent.repeat(indentLevel) + '/*';
+                        inMultiComment = true;
+                        i++;
+                        continue;
+                    }
+                    if (char === '*' && nextChar === '/') {
+                        result += '*/\n' + indent.repeat(indentLevel);
+                        inMultiComment = false;
+                        i++;
+                        continue;
+                    }
+                }
+                
+                if (inString || inMultiComment) {
+                    result += char;
+                    continue;
+                }
+                
+                // Handle formatting
+                if (char === '{') {
+                    result = result.trimEnd() + ' {\n';
+                    indentLevel++;
+                    result += indent.repeat(indentLevel);
+                } else if (char === '}') {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                    result = result.trimEnd() + '\n' + indent.repeat(indentLevel) + '}\n';
+                    if (indentLevel === 0) result += '\n';
+                } else if (char === ';') {
+                    result += ';\n' + indent.repeat(indentLevel);
+                } else if (char === ':' && !inString) {
+                    result += ': ';
+                    // Skip space after colon if exists
+                    if (nextChar === ' ') i++;
+                } else if (char === ',' && indentLevel === 0) {
+                    result += ',\n';
+                } else if (char === ' ') {
+                    // Collapse multiple spaces
+                    if (result.slice(-1) !== ' ' && result.slice(-1) !== '\n') {
+                        result += ' ';
+                    }
+                } else {
+                    result += char;
+                }
+            }
+            
+            // Clean up extra whitespace
+            result = result.replace(/\n\s*\n\s*\n/g, '\n\n');
+            result = result.replace(/\{\s+\}/g, '{ }');
+            result = result.replace(/^\s+/gm, (match, offset, string) => {
+                // Calculate proper indentation
+                const beforeBrace = string.slice(0, offset).split('{').length - 1;
+                const closedBraces = string.slice(0, offset).split('}').length - 1;
+                const level = Math.max(0, beforeBrace - closedBraces);
+                return indent.repeat(level);
+            });
+            
+            return result.trim();
+        }
+
+        function minifyCSS() {
+            const css = cssInput.value.trim();
+            if (!css) {
+                showError('Please enter some CSS to minify');
+                return;
+            }
+
+            try {
+                const minified = minifyCSSCode(css);
+                cssOutput.textContent = minified;
+                updateOutputStats(minified);
+                updateCSSStats(minified);
+                statusBadge.textContent = 'Minified';
+                statusBadge.classList.remove('hidden');
+                hideError();
+                showSizeComparison(css, minified);
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function minifyCSSCode(css) {
+            // Remove comments
+            css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+            // Remove whitespace
+            css = css.replace(/\s+/g, ' ');
+            // Remove space around special characters
+            css = css.replace(/\s*([{}:;,>+~])\s*/g, '$1');
+            // Remove trailing semicolons before closing braces
+            css = css.replace(/;}/g, '}');
+            // Remove leading/trailing whitespace
+            css = css.trim();
+            return css;
+        }
+
+        function sortProperties() {
+            const css = cssInput.value.trim();
+            if (!css) {
+                showError('Please enter some CSS');
+                return;
+            }
+
+            try {
+                const sorted = sortCSSProperties(css);
+                cssOutput.textContent = sorted;
+                updateOutputStats(sorted);
+                updateCSSStats(sorted);
+                statusBadge.textContent = 'Sorted';
+                statusBadge.classList.remove('hidden');
+                hideError();
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function sortCSSProperties(css) {
+            // First format, then sort properties within each rule
+            const formatted = beautifyCSS(css, '  ');
+            
+            return formatted.replace(/\{([^}]+)\}/g, (match, content) => {
+                const properties = content.trim().split(/;\s*/).filter(p => p.trim());
+                properties.sort((a, b) => {
+                    const propA = a.split(':')[0].trim().toLowerCase();
+                    const propB = b.split(':')[0].trim().toLowerCase();
+                    return propA.localeCompare(propB);
+                });
+                return '{\n  ' + properties.join(';\n  ') + ';\n}';
+            });
+        }
+
+        function showSizeComparison(original, output) {
+            const originalSize = new Blob([original]).size;
+            const outputSize = new Blob([output]).size;
+            const diff = originalSize - outputSize;
+            const percent = ((diff / originalSize) * 100).toFixed(1);
+            
+            if (diff > 0) {
+                sizeComparison.textContent = `Reduced by ${formatBytes(diff)} (${percent}%)`;
+                sizeComparison.classList.remove('hidden');
+            } else if (diff < 0) {
+                sizeComparison.textContent = `Increased by ${formatBytes(Math.abs(diff))}`;
+                sizeComparison.classList.remove('hidden');
+            } else {
+                sizeComparison.classList.add('hidden');
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            return (bytes / 1024).toFixed(1) + ' KB';
+        }
+
+        function loadSample() {
+            cssInput.value = `:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+  --font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}`;
+            updateInputStats();
+        }
+
+        function loadExample(type) {
+            const examples = {
+                minified: `.container{max-width:1200px;margin:0 auto;padding:0 1rem}.card{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.1);padding:1.5rem}.card:hover{transform:translateY(-2px)}.btn{display:inline-flex;align-items:center;padding:.5rem 1rem;font-weight:500;border-radius:.375rem;transition:all .2s}.btn-primary{background:#3b82f6;color:#fff}.btn-primary:hover{background:#2563eb}`,
+                modern: `:root {
+  --gap: clamp(1rem, 2vw, 2rem);
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap);
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+}`,
+                animation: `@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}`
+            };
+            
+            cssInput.value = examples[type] || '';
+            updateInputStats();
+        }
+
+        function clearAll() {
+            cssInput.value = '';
+            cssOutput.textContent = '';
+            updateInputStats();
+            outputStats.textContent = '0 chars • 0 lines';
+            document.getElementById('rule-count').textContent = '0 rules';
+            document.getElementById('selector-count').textContent = '0 selectors';
+            document.getElementById('property-count').textContent = '0 properties';
+            statusBadge.classList.add('hidden');
+            sizeComparison.classList.add('hidden');
+            hideError();
+        }
+
+        function copyOutput() {
+            const text = cssOutput.textContent;
+            if (!text) return;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('[onclick="copyOutput()"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
+
+        function downloadCSS() {
+            const text = cssOutput.textContent || cssInput.value;
+            if (!text) return;
+            
+            const blob = new Blob([text], { type: 'text/css' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'formatted.css';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                cssInput.value = e.target.result;
+                updateInputStats();
+            };
+            reader.readAsText(file);
+        }
+
+        // Drag and drop
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(event => {
+            dropZone.addEventListener(event, (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        });
+
+        dropZone.addEventListener('dragenter', () => {
+            dropZone.classList.add('drag-over');
+            dragOverlay.classList.remove('hidden');
+            dragOverlay.classList.add('flex');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            if (!dropZone.contains(e.relatedTarget)) {
+                dropZone.classList.remove('drag-over');
+                dragOverlay.classList.add('hidden');
+                dragOverlay.classList.remove('flex');
+            }
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            dropZone.classList.remove('drag-over');
+            dragOverlay.classList.add('hidden');
+            dragOverlay.classList.remove('flex');
+            
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    cssInput.value = e.target.result;
+                    updateInputStats();
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    formatCSS(2);
+                } else if (e.key === 'm' || e.key === 'M') {
+                    e.preventDefault();
+                    minifyCSS();
+                } else if (e.key === 's' || e.key === 'S') {
+                    e.preventDefault();
+                    downloadCSS();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

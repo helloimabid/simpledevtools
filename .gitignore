@@ -88,3 +88,4 @@ temp/
 
 # Cloudflare Workers
 contact-api-worker
+optimize-images.js

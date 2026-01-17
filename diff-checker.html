@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online diff checker tool. Compare two text files side by side and see the differences highlighted. Find additions, deletions, and changes instantly.">
+    <meta name="keywords" content="diff checker, text comparison, file diff, compare text, diff tool, text diff online, code comparison">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <title>Diff Checker - Compare Text Online | SimpleDevTools</title>
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <link rel="canonical" href="https://simpledevtools.tech/diff-checker" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Diff Checker - Compare Text Online">
+    <meta property="og:description" content="Free online diff tool. Compare two texts side by side and see differences highlighted instantly.">
+    <meta property="og:url" content="https://simpledevtools.tech/diff-checker">
+    <meta property="og:type" content="website">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Diff Checker",
+      "description": "Compare two text files side by side and see the differences highlighted.",
+      "url": "https://simpledevtools.tech/diff-checker",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "Diff Checker", "item": "https://simpledevtools.tech/diff-checker"}
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        .diff-line {
+            display: flex;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .diff-line-number {
+            min-width: 40px;
+            padding: 0 8px;
+            text-align: right;
+            color: #6b7280;
+            user-select: none;
+            border-right: 1px solid #e5e7eb;
+        }
+        .dark .diff-line-number {
+            border-right-color: #374151;
+        }
+        .diff-line-content {
+            flex: 1;
+            padding: 0 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .diff-added {
+            background-color: #dcfce7;
+        }
+        .dark .diff-added {
+            background-color: rgba(34, 197, 94, 0.15);
+        }
+        .diff-removed {
+            background-color: #fee2e2;
+        }
+        .dark .diff-removed {
+            background-color: rgba(239, 68, 68, 0.15);
+        }
+        .diff-modified {
+            background-color: #fef3c7;
+        }
+        .dark .diff-modified {
+            background-color: rgba(245, 158, 11, 0.15);
+        }
+        .diff-unchanged {
+            background-color: transparent;
+        }
+        .inline-added {
+            background-color: #86efac;
+            border-radius: 2px;
+        }
+        .dark .inline-added {
+            background-color: rgba(34, 197, 94, 0.4);
+        }
+        .inline-removed {
+            background-color: #fca5a5;
+            border-radius: 2px;
+            text-decoration: line-through;
+        }
+        .dark .inline-removed {
+            background-color: rgba(239, 68, 68, 0.4);
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-500/10 dark:bg-violet-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <!-- Main Content -->
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="mx-auto max-w-7xl">
+
+            <!-- Header Section -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-violet-600 border border-violet-100 rounded-full bg-violet-50 dark:bg-violet-900/20 dark:text-violet-400 dark:border-violet-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Processed locally. No data reaches our servers.</span>
+                </div>
+                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Diff Checker
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Compare two texts side by side and find the differences instantly.
+                </p>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 p-4 mb-4 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div class="flex flex-wrap items-center gap-4">
+                    <label class="flex items-center gap-2 text-sm cursor-pointer">
+                        <input type="checkbox" id="ignore-whitespace" class="w-4 h-4 border rounded text-violet-600 focus:ring-violet-500 border-neutral-300">
+                        <span>Ignore whitespace</span>
+                    </label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer">
+                        <input type="checkbox" id="ignore-case" class="w-4 h-4 border rounded text-violet-600 focus:ring-violet-500 border-neutral-300">
+                        <span>Ignore case</span>
+                    </label>
+                    <label class="flex items-center gap-2 text-sm cursor-pointer">
+                        <input type="checkbox" id="show-line-numbers" checked class="w-4 h-4 border rounded text-violet-600 focus:ring-violet-500 border-neutral-300">
+                        <span>Line numbers</span>
+                    </label>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="swapTexts()" class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <i data-lucide="arrow-left-right" class="w-3 h-3"></i>
+                        Swap
+                    </button>
+                    <button onclick="clearAll()" class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-red-600 transition-colors border rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 border-neutral-200 dark:border-neutral-700">
+                        <i data-lucide="trash-2" class="w-3 h-3"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Areas -->
+            <div class="grid gap-4 mb-8 lg:grid-cols-2">
+                <!-- Original Text -->
+                <div class="bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
+                        <h2 class="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
+                            <i data-lucide="file-minus" class="w-4 h-4 text-red-500"></i>
+                            Original Text
+                        </h2>
+                        <label class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors border rounded-lg cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <i data-lucide="upload" class="w-3 h-3"></i>
+                            Upload
+                            <input type="file" class="hidden" onchange="loadFile(this, 'original-text')" accept=".txt,.json,.js,.css,.html,.md,.xml,.csv">
+                        </label>
+                    </div>
+                    <textarea id="original-text" 
+                        class="w-full h-64 p-4 font-mono text-sm border-0 resize-none bg-neutral-50 dark:bg-neutral-800 focus:ring-0"
+                        placeholder="Paste or type the original text here..."
+                        oninput="compareDiff()"></textarea>
+                </div>
+
+                <!-- Modified Text -->
+                <div class="bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
+                        <h2 class="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
+                            <i data-lucide="file-plus" class="w-4 h-4 text-green-500"></i>
+                            Modified Text
+                        </h2>
+                        <label class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors border rounded-lg cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <i data-lucide="upload" class="w-3 h-3"></i>
+                            Upload
+                            <input type="file" class="hidden" onchange="loadFile(this, 'modified-text')" accept=".txt,.json,.js,.css,.html,.md,.xml,.csv">
+                        </label>
+                    </div>
+                    <textarea id="modified-text" 
+                        class="w-full h-64 p-4 font-mono text-sm border-0 resize-none bg-neutral-50 dark:bg-neutral-800 focus:ring-0"
+                        placeholder="Paste or type the modified text here..."
+                        oninput="compareDiff()"></textarea>
+                </div>
+            </div>
+
+            <!-- Compare Button -->
+            <div class="flex justify-center mb-8">
+                <button onclick="compareDiff()" class="px-8 py-3 text-sm font-medium text-white transition-colors rounded-lg bg-violet-600 hover:bg-violet-700">
+                    <i data-lucide="git-compare" class="inline w-4 h-4 mr-2"></i>
+                    Compare Texts
+                </button>
+            </div>
+
+            <!-- Statistics -->
+            <div id="stats-panel" class="hidden grid gap-4 mb-8 md:grid-cols-4">
+                <div class="p-4 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="text-2xl font-bold text-green-600" id="stat-added">0</div>
+                    <div class="text-xs text-neutral-500">Lines Added</div>
+                </div>
+                <div class="p-4 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="text-2xl font-bold text-red-600" id="stat-removed">0</div>
+                    <div class="text-xs text-neutral-500">Lines Removed</div>
+                </div>
+                <div class="p-4 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="text-2xl font-bold text-amber-600" id="stat-modified">0</div>
+                    <div class="text-xs text-neutral-500">Lines Modified</div>
+                </div>
+                <div class="p-4 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                    <div class="text-2xl font-bold text-neutral-600 dark:text-neutral-400" id="stat-unchanged">0</div>
+                    <div class="text-xs text-neutral-500">Lines Unchanged</div>
+                </div>
+            </div>
+
+            <!-- Diff Output -->
+            <div id="diff-output-container" class="hidden mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div class="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 text-sm font-medium text-neutral-900 dark:text-white">
+                        <i data-lucide="git-compare" class="w-4 h-4 text-violet-500"></i>
+                        Diff Result
+                    </h2>
+                    <div class="flex gap-2">
+                        <button onclick="copyDiff()" class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <i data-lucide="copy" class="w-3 h-3"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <div id="diff-output" class="min-w-full"></div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex flex-wrap justify-center gap-6 p-4 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div class="flex items-center gap-2 text-sm">
+                    <div class="w-4 h-4 rounded bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-700"></div>
+                    <span>Added</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <div class="w-4 h-4 rounded bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700"></div>
+                    <span>Removed</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <div class="w-4 h-4 rounded bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700"></div>
+                    <span>Modified</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm">
+                    <div class="w-4 h-4 bg-transparent border rounded border-neutral-300 dark:border-neutral-600"></div>
+                    <span>Unchanged</span>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="mb-16">
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What is a diff checker?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            A diff checker (or diff tool) compares two pieces of text and highlights the differences between them. It shows you which lines were added, removed, or modified, making it easy to review changes.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What types of files can I compare?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            You can compare any text-based files including code files (JavaScript, Python, HTML, CSS), configuration files (JSON, YAML, XML), documentation (Markdown, text), and more. Binary files are not supported.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>What does "ignore whitespace" do?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            When enabled, the diff checker ignores differences in spacing, tabs, and blank lines. This is useful when comparing code that may have different indentation styles but is functionally identical.
+                        </p>
+                    </details>
+
+                    <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            <span>Is my data secure?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            Yes! All comparisons happen entirely in your browser. Your text is never sent to any server, making it safe to compare sensitive or confidential content.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
+                            <i data-lucide="braces" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                            <div class="text-xs text-neutral-500">Format JSON data</div>
+                        </div>
+                    </a>
+                    <a href="/javascript-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30">
+                            <i data-lucide="file-code" class="w-4 h-4 text-yellow-600 dark:text-yellow-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">JavaScript Formatter</div>
+                            <div class="text-xs text-neutral-500">Format JS code</div>
+                        </div>
+                    </a>
+                    <a href="/css-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                            <i data-lucide="paintbrush" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">CSS Formatter</div>
+                            <div class="text-xs text-neutral-500">Format CSS code</div>
+                        </div>
+                    </a>
+                    <a href="/html-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                            <i data-lucide="code" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-medium text-neutral-900 dark:text-white">HTML Formatter</div>
+                            <div class="text-xs text-neutral-500">Format HTML code</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Event listeners for options
+        document.getElementById('ignore-whitespace').addEventListener('change', compareDiff);
+        document.getElementById('ignore-case').addEventListener('change', compareDiff);
+        document.getElementById('show-line-numbers').addEventListener('change', compareDiff);
+
+        function loadFile(input, targetId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(targetId).value = e.target.result;
+                    compareDiff();
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function swapTexts() {
+            const original = document.getElementById('original-text');
+            const modified = document.getElementById('modified-text');
+            const temp = original.value;
+            original.value = modified.value;
+            modified.value = temp;
+            compareDiff();
+        }
+
+        function clearAll() {
+            document.getElementById('original-text').value = '';
+            document.getElementById('modified-text').value = '';
+            document.getElementById('diff-output').innerHTML = '';
+            document.getElementById('diff-output-container').classList.add('hidden');
+            document.getElementById('stats-panel').classList.add('hidden');
+        }
+
+        function compareDiff() {
+            const original = document.getElementById('original-text').value;
+            const modified = document.getElementById('modified-text').value;
+            
+            if (!original && !modified) {
+                document.getElementById('diff-output-container').classList.add('hidden');
+                document.getElementById('stats-panel').classList.add('hidden');
+                return;
+            }
+
+            const ignoreWhitespace = document.getElementById('ignore-whitespace').checked;
+            const ignoreCase = document.getElementById('ignore-case').checked;
+            const showLineNumbers = document.getElementById('show-line-numbers').checked;
+
+            const originalLines = original.split('\n');
+            const modifiedLines = modified.split('\n');
+
+            // Preprocess lines based on options
+            const processLine = (line) => {
+                let processed = line;
+                if (ignoreWhitespace) {
+                    processed = processed.trim().replace(/\s+/g, ' ');
+                }
+                if (ignoreCase) {
+                    processed = processed.toLowerCase();
+                }
+                return processed;
+            };
+
+            // Simple diff algorithm using LCS
+            const diff = computeDiff(originalLines, modifiedLines, processLine);
+            
+            // Render diff
+            renderDiff(diff, showLineNumbers);
+            
+            // Update statistics
+            updateStats(diff);
+            
+            document.getElementById('diff-output-container').classList.remove('hidden');
+            document.getElementById('stats-panel').classList.remove('hidden');
+        }
+
+        function computeDiff(original, modified, processLine) {
+            const result = [];
+            const m = original.length;
+            const n = modified.length;
+            
+            // Build LCS table
+            const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+            
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (processLine(original[i - 1]) === processLine(modified[j - 1])) {
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    } else {
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    }
+                }
+            }
+            
+            // Backtrack to find diff
+            let i = m, j = n;
+            const operations = [];
+            
+            while (i > 0 || j > 0) {
+                if (i > 0 && j > 0 && processLine(original[i - 1]) === processLine(modified[j - 1])) {
+                    operations.unshift({ type: 'unchanged', originalLine: i, modifiedLine: j, content: original[i - 1] });
+                    i--; j--;
+                } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                    operations.unshift({ type: 'added', modifiedLine: j, content: modified[j - 1] });
+                    j--;
+                } else {
+                    operations.unshift({ type: 'removed', originalLine: i, content: original[i - 1] });
+                    i--;
+                }
+            }
+            
+            return operations;
+        }
+
+        function renderDiff(diff, showLineNumbers) {
+            const output = document.getElementById('diff-output');
+            let html = '';
+            
+            diff.forEach(op => {
+                const lineClass = op.type === 'added' ? 'diff-added' : 
+                                  op.type === 'removed' ? 'diff-removed' : 'diff-unchanged';
+                const prefix = op.type === 'added' ? '+' : op.type === 'removed' ? '-' : ' ';
+                const lineNum = op.type === 'added' ? op.modifiedLine : 
+                               op.type === 'removed' ? op.originalLine : op.originalLine;
+                
+                html += `<div class="diff-line ${lineClass}">`;
+                if (showLineNumbers) {
+                    html += `<span class="diff-line-number">${lineNum}</span>`;
+                }
+                html += `<span class="diff-line-content"><span class="text-neutral-400 mr-2">${prefix}</span>${escapeHtml(op.content)}</span>`;
+                html += '</div>';
+            });
+            
+            output.innerHTML = html;
+        }
+
+        function updateStats(diff) {
+            let added = 0, removed = 0, modified = 0, unchanged = 0;
+            
+            diff.forEach(op => {
+                if (op.type === 'added') added++;
+                else if (op.type === 'removed') removed++;
+                else unchanged++;
+            });
+            
+            document.getElementById('stat-added').textContent = added;
+            document.getElementById('stat-removed').textContent = removed;
+            document.getElementById('stat-modified').textContent = modified;
+            document.getElementById('stat-unchanged').textContent = unchanged;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function copyDiff() {
+            const original = document.getElementById('original-text').value;
+            const modified = document.getElementById('modified-text').value;
+            const originalLines = original.split('\n');
+            const modifiedLines = modified.split('\n');
+            
+            const processLine = (line) => line;
+            const diff = computeDiff(originalLines, modifiedLines, processLine);
+            
+            let text = '';
+            diff.forEach(op => {
+                const prefix = op.type === 'added' ? '+' : op.type === 'removed' ? '-' : ' ';
+                text += `${prefix} ${op.content}\n`;
+            });
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target.closest('button');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> Copied!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
+
+        // Add sample data for demonstration
+        document.getElementById('original-text').value = `function greet(name) {
+    console.log("Hello, " + name);
+    return true;
+}
+
+const users = ["Alice", "Bob"];
+users.forEach(greet);`;
+
+        document.getElementById('modified-text').value = `function greet(name) {
+    console.log(\`Hello, \${name}!\`);
+    return true;
+}
+
+const users = ["Alice", "Bob", "Charlie"];
+users.forEach(user => greet(user));`;
+
+        // Initial comparison
+        compareDiff();
+    </script>
+</body>
+</html>
