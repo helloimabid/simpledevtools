@@ -207,7 +207,7 @@
         </div>
 
         <!-- Search Bar -->
-        <div class="max-w-xl mb-12 animate-slide-up" style="animation-delay: 0.02s;">
+        <div class="max-w-xl mb-12 animate-slide-up" style="animation-delay: 0.02s; position: relative; z-index: 100;">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                     <i data-lucide="search" class="w-5 h-5 text-neutral-400"></i>
@@ -215,7 +215,8 @@
                 <input type="text" id="tool-search" placeholder="Search tools or press Ctrl+K..." autocomplete="off"
                     class="w-full py-3 pl-12 pr-4 text-base transition-all duration-200 border rounded-xl bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-neutral-400">
                 <div id="search-results"
-                    class="absolute z-50 hidden w-full mt-2 overflow-hidden bg-white border shadow-xl dark:bg-neutral-900 rounded-xl border-neutral-200 dark:border-neutral-700">
+                    class="absolute left-0 right-0 hidden w-full mt-2 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700"
+                    style="z-index: 9999; background-color: white; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
                 </div>
             </div>
             <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
@@ -927,6 +928,7 @@
             ).slice(0, 8);
 
             if (filtered.length === 0) {
+                searchResults.style.backgroundColor = isDark() ? '#171717' : 'white';
                 searchResults.innerHTML = `
                     <div class="p-4 text-center text-neutral-500 dark:text-neutral-400">
                         <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
@@ -938,6 +940,7 @@
                 return;
             }
 
+            searchResults.style.backgroundColor = isDark() ? '#171717' : 'white';
             searchResults.innerHTML = filtered.map((tool, idx) => {
                 const colors = colorStyles[tool.color] || colorStyles.gray;
                 const dark = isDark();
