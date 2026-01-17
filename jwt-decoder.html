@@ -164,19 +164,270 @@
             </div>
 
             <div class="max-w-3xl mx-auto mb-20 space-y-12">
+                <!-- What is JWT Section -->
                 <section>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
                             <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </div>
-                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">What is a JWT?
-                        </h2>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">What is a JWT Token?</h2>
                     </div>
                     <div class="space-y-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        <p>JSON Web Token (JWT) is an open standard for securely transmitting information between
-                            parties as a JSON object. JWTs consist of three parts: Header, Payload, and Signature.</p>
-                        <p><strong>Common uses:</strong> Authentication, authorization, and information exchange in web
-                            applications.</p>
+                        <p>JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as a JSON object. JWTs are digitally signed using a secret (HMAC) or public/private key pair (RSA or ECDSA), making them verifiable and trustworthy.</p>
+                        <p>JWTs are commonly used for <strong>authentication</strong> (verifying user identity), <strong>authorization</strong> (determining access rights), and <strong>information exchange</strong> (securely sharing data between services).</p>
+                    </div>
+                </section>
+
+                <!-- JWT Structure Visual Diagram -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="layers" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">JWT Structure Breakdown</h2>
+                    </div>
+                    <div class="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800">
+                        <div class="mb-4 font-mono text-xs break-all">
+                            <span class="px-2 py-1 text-orange-700 rounded bg-orange-100 dark:bg-orange-900/30 dark:text-orange-400">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span class="text-neutral-400">.</span><span class="px-2 py-1 text-blue-700 rounded bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</span><span class="text-neutral-400">.</span><span class="px-2 py-1 text-purple-700 rounded bg-purple-100 dark:bg-purple-900/30 dark:text-purple-400">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+                        </div>
+                        <div class="grid gap-4 md:grid-cols-3">
+                            <div class="p-3 border rounded-lg border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-900/10">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 text-xs font-semibold text-orange-700 bg-orange-100 rounded dark:bg-orange-900/30 dark:text-orange-400">HEADER</span>
+                                </div>
+                                <p class="mb-2 text-xs text-neutral-600 dark:text-neutral-400">Contains the token type and signing algorithm.</p>
+                                <pre class="p-2 font-mono text-xs rounded bg-white dark:bg-neutral-900">{
+  "alg": "HS256",
+  "typ": "JWT"
+}</pre>
+                            </div>
+                            <div class="p-3 border rounded-lg border-blue-200 dark:border-blue-800 bg-blue-50/50 dark:bg-blue-900/10">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 text-xs font-semibold text-blue-700 bg-blue-100 rounded dark:bg-blue-900/30 dark:text-blue-400">PAYLOAD</span>
+                                </div>
+                                <p class="mb-2 text-xs text-neutral-600 dark:text-neutral-400">Contains claims (user data and metadata).</p>
+                                <pre class="p-2 font-mono text-xs rounded bg-white dark:bg-neutral-900">{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+}</pre>
+                            </div>
+                            <div class="p-3 border rounded-lg border-purple-200 dark:border-purple-800 bg-purple-50/50 dark:bg-purple-900/10">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-0.5 text-xs font-semibold text-purple-700 bg-purple-100 rounded dark:bg-purple-900/30 dark:text-purple-400">SIGNATURE</span>
+                                </div>
+                                <p class="mb-2 text-xs text-neutral-600 dark:text-neutral-400">Verifies the token hasn't been tampered with.</p>
+                                <pre class="p-2 font-mono text-xs rounded bg-white dark:bg-neutral-900">HMACSHA256(
+  base64(header) + "." +
+  base64(payload),
+  secret
+)</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common JWT Algorithms -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="key" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Common JWT Algorithms</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Algorithm</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Type</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Description</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-neutral-600 dark:text-neutral-400">
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-orange-600 dark:text-orange-400">HS256</td>
+                                    <td class="px-4 py-3">Symmetric</td>
+                                    <td class="px-4 py-3">HMAC with SHA-256</td>
+                                    <td class="px-4 py-3">Single server, internal APIs</td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-orange-600 dark:text-orange-400">RS256</td>
+                                    <td class="px-4 py-3">Asymmetric</td>
+                                    <td class="px-4 py-3">RSA with SHA-256</td>
+                                    <td class="px-4 py-3">Microservices, public APIs</td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-orange-600 dark:text-orange-400">ES256</td>
+                                    <td class="px-4 py-3">Asymmetric</td>
+                                    <td class="px-4 py-3">ECDSA with P-256 curve</td>
+                                    <td class="px-4 py-3">Mobile apps, IoT devices</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-orange-600 dark:text-orange-400">PS256</td>
+                                    <td class="px-4 py-3">Asymmetric</td>
+                                    <td class="px-4 py-3">RSA-PSS with SHA-256</td>
+                                    <td class="px-4 py-3">High-security environments</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Example JWTs -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="code" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Example JWTs to Try</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-semibold text-neutral-900 dark:text-white">Basic Authentication Token</span>
+                                <button onclick="loadExample(1)" class="px-3 py-1 text-xs font-medium text-orange-600 transition-colors border border-orange-200 rounded-md dark:text-orange-400 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-900/20">Try It</button>
+                            </div>
+                            <p class="mb-2 text-xs text-neutral-500 dark:text-neutral-400">A simple user authentication token with user ID, name, and admin role.</p>
+                            <code class="block p-2 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoiYWRtaW4ifQ.4v7x8Jq5VZ8KQ3KLZ9NxzS8HdG4Mh2qOr6vYzBJJmKw</code>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-semibold text-neutral-900 dark:text-white">Token with Expiration</span>
+                                <button onclick="loadExample(2)" class="px-3 py-1 text-xs font-medium text-orange-600 transition-colors border border-orange-200 rounded-md dark:text-orange-400 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-900/20">Try It</button>
+                            </div>
+                            <p class="mb-2 text-xs text-neutral-500 dark:text-neutral-400">Token with standard claims: exp (expiration), iat (issued at), iss (issuer).</p>
+                            <code class="block p-2 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaW1wbGVkZXZ0b29scy50ZWNoIiwic3ViIjoiYXV0aCIsImF1ZCI6InVzZXJzIiwiZXhwIjoxNzA1MDAwMDAwLCJpYXQiOjE3MDQ5MTM2MDAsIm5hbWUiOiJKYW5lIFNtaXRoIn0.7X9KjW8mA3vLq0Rz8B5tP2sY4hN6cF1wE0jU3iK9oLm</code>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-semibold text-neutral-900 dark:text-white">API Access Token</span>
+                                <button onclick="loadExample(3)" class="px-3 py-1 text-xs font-medium text-orange-600 transition-colors border border-orange-200 rounded-md dark:text-orange-400 dark:border-orange-800 hover:bg-orange-50 dark:hover:bg-orange-900/20">Try It</button>
+                            </div>
+                            <p class="mb-2 text-xs text-neutral-500 dark:text-neutral-400">OAuth-style token with scopes defining API access permissions.</p>
+                            <code class="block p-2 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhcGktY2xpZW50LTEyMyIsInNjb3BlIjpbInJlYWQ6dXNlcnMiLCJ3cml0ZTpwb3N0cyJdLCJjbGllbnRfaWQiOiJteS1hcHAiLCJpYXQiOjE3MDQ5MTM2MDB9.Qp8R5sL2mN7vK3wX9yT0uA4zB1cD6eF8gH0jI2kM3nO</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I decode a JWT token?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Simply paste your JWT token into the input field above. Our decoder automatically splits the token into its three parts (header, payload, signature) and displays the decoded JSON. The header and payload are Base64URL encoded, which this tool decodes instantly. Note: The signature cannot be decoded—it's a cryptographic hash used for verification.</p>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is JWT decoding secure?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Decoding a JWT doesn't require any secret key—the header and payload are simply Base64 encoded, not encrypted. This means <strong>anyone can read the contents of a JWT</strong>. Never put sensitive data like passwords in a JWT payload. The signature ensures the token hasn't been tampered with, but it doesn't hide the data. Our tool processes everything locally in your browser, so your tokens never leave your device.</p>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>JWT vs Session Tokens: What's the difference?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <table class="w-full mt-2">
+                                    <thead>
+                                        <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                            <th class="py-2 pr-4 font-medium text-left">Aspect</th>
+                                            <th class="py-2 pr-4 font-medium text-left">JWT</th>
+                                            <th class="py-2 font-medium text-left">Session Token</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">Storage</td>
+                                            <td class="py-2 pr-4">Client-side (stateless)</td>
+                                            <td class="py-2">Server-side (stateful)</td>
+                                        </tr>
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">Scalability</td>
+                                            <td class="py-2 pr-4">Highly scalable</td>
+                                            <td class="py-2">Requires session store</td>
+                                        </tr>
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">Revocation</td>
+                                            <td class="py-2 pr-4">Difficult (until expiry)</td>
+                                            <td class="py-2">Easy (delete from store)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 pr-4">Size</td>
+                                            <td class="py-2 pr-4">Larger (contains data)</td>
+                                            <td class="py-2">Smaller (just an ID)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What are common JWT claims?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <p class="mb-2">Standard (registered) claims defined in RFC 7519:</p>
+                                <ul class="space-y-1 list-disc list-inside">
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">iss</code> (Issuer) - Who created the token</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">sub</code> (Subject) - Who the token is about</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">aud</code> (Audience) - Intended recipients</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">exp</code> (Expiration) - When the token expires (Unix timestamp)</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">iat</code> (Issued At) - When the token was created</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">nbf</code> (Not Before) - Token not valid before this time</li>
+                                    <li><code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">jti</code> (JWT ID) - Unique identifier for the token</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I verify a JWT signature?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Signature verification requires the secret key (for symmetric algorithms like HS256) or the public key (for asymmetric algorithms like RS256). Our decoder <strong>displays but doesn't verify</strong> the signature since verification requires the secret. To verify: decode the header to get the algorithm, concatenate the encoded header and payload with a period, then use your secret/key to compute the expected signature and compare it with the token's signature.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="link" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Related Tools</h2>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/base64-encode" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Base64 Encoder</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Encode text to Base64 format</div>
+                            </div>
+                        </a>
+                        <a href="/hash-generator" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                                <i data-lucide="hash" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Hash Generator</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Generate MD5, SHA-256 hashes</div>
+                            </div>
+                        </a>
                     </div>
                 </section>
             </div>
@@ -190,6 +441,18 @@
 
         const jwtInput = document.getElementById('jwt-input');
         const themeToggleBtn = document.getElementById('theme-toggle');
+
+        const exampleJWTs = {
+            1: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJyb2xlIjoiYWRtaW4ifQ.4v7x8Jq5VZ8KQ3KLZ9NxzS8HdG4Mh2qOr6vYzBJJmKw',
+            2: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzaW1wbGVkZXZ0b29scy50ZWNoIiwic3ViIjoiYXV0aCIsImF1ZCI6InVzZXJzIiwiZXhwIjoxNzA1MDAwMDAwLCJpYXQiOjE3MDQ5MTM2MDAsIm5hbWUiOiJKYW5lIFNtaXRoIn0.7X9KjW8mA3vLq0Rz8B5tP2sY4hN6cF1wE0jU3iK9oLm',
+            3: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhcGktY2xpZW50LTEyMyIsInNjb3BlIjpbInJlYWQ6dXNlcnMiLCJ3cml0ZTpwb3N0cyJdLCJjbGllbnRfaWQiOiJteS1hcHAiLCJpYXQiOjE3MDQ5MTM2MDB9.Qp8R5sL2mN7vK3wX9yT0uA4zB1cD6eF8gH0jI2kM3nO'
+        };
+
+        function loadExample(num) {
+            jwtInput.value = exampleJWTs[num];
+            decodeJWT();
+            jwtInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
         function decodeJWT() {
             const token = jwtInput.value.trim();

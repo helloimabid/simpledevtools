@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online code formatter and beautifier. Format JavaScript, JSON, HTML, CSS, Python, SQL and more. Instant beautification with customizable indentation. 100% client-side processing.">
+    <meta name="keywords"
+        content="code formatter, code beautifier, format code online, javascript formatter, html formatter, css formatter, python formatter, sql formatter, json beautifier">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="SimpleDevTools">
+    <meta property="og:title" content="Code Formatter - Free Online Code Beautifier Tool">
+    <meta property="og:description"
+        content="Format and beautify code in multiple languages instantly. JavaScript, JSON, HTML, CSS, Python, SQL and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpledevtools.tech/code-formatter">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <title>Code Formatter - Free Online Code Beautifier | JavaScript, JSON, HTML, CSS | SimpleDevTools</title>
+    <link rel="canonical" href="https://simpledevtools.tech/code-formatter" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Code Formatter",
+      "description": "Free online code formatter and beautifier. Format JavaScript, JSON, HTML, CSS, Python, SQL and more instantly.",
+      "url": "https://simpledevtools.tech/code-formatter",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "Code Formatter", "item": "https://simpledevtools.tech/code-formatter"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What programming languages does this formatter support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This code formatter supports JavaScript, JSON, HTML, CSS, XML, SQL, Python, Java, C/C++, PHP, YAML, and Markdown. Each language has specific formatting rules to ensure proper indentation and structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my code safe when using this formatter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, absolutely! All code formatting happens directly in your browser. Your code is never sent to any server, ensuring complete privacy and security. You can even use this tool offline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize the formatting options?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can customize indentation (2 spaces, 4 spaces, or tabs), choose between single or double quotes for JavaScript, and toggle various language-specific options like semicolons for JavaScript."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a formatter and a linter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A formatter automatically fixes the style and layout of your code (indentation, spacing, line breaks), while a linter finds potential errors and code quality issues. This tool is a formatter that beautifies your code's appearance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I format minified code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! This formatter excels at beautifying minified code. Paste your minified JavaScript, CSS, HTML, or JSON and get perfectly formatted, readable code with proper indentation instantly."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./dist/js/lucide.min.js"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/json-formatter" class="underline">JSON Formatter</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-purple-600 border border-purple-100 rounded-full bg-purple-50 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>100% Client-Side Processing</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Code Formatter
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Format and beautify code in multiple languages instantly. Support for JavaScript, JSON, HTML, CSS,
+                    Python, SQL, and more with customizable indentation.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div
+                class="mb-12 overflow-hidden bg-white border shadow-sm dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-3">
+                        <select id="language-select"
+                            class="px-3 py-1.5 text-sm bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="javascript">JavaScript</option>
+                            <option value="json">JSON</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="xml">XML</option>
+                            <option value="sql">SQL</option>
+                            <option value="python">Python</option>
+                            <option value="yaml">YAML</option>
+                        </select>
+                        <select id="indent-select"
+                            class="px-3 py-1.5 text-sm bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="2">2 Spaces</option>
+                            <option value="4" selected>4 Spaces</option>
+                            <option value="tab">Tab</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="clearAll()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <!-- Input -->
+                    <div class="p-4 border-b lg:border-b-0 lg:border-r border-neutral-200 dark:border-neutral-800">
+                        <label class="block mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">INPUT
+                            CODE</label>
+                        <textarea id="code-input"
+                            class="w-full h-72 p-3 font-mono text-sm bg-white border rounded-lg resize-none dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 outline-none focus:ring-2 focus:ring-purple-500"
+                            placeholder="Paste your unformatted code here..."></textarea>
+                        <div class="flex items-center justify-between mt-2">
+                            <span id="input-length" class="text-xs text-neutral-400">0 characters</span>
+                            <button onclick="pasteFromClipboard()"
+                                class="text-xs text-purple-600 hover:text-purple-700">
+                                <i data-lucide="clipboard" class="inline w-3 h-3 mr-1"></i>Paste
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="p-4">
+                        <label class="block mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">FORMATTED
+                            OUTPUT</label>
+                        <textarea id="code-output"
+                            class="w-full h-72 p-3 font-mono text-sm bg-neutral-50 border rounded-lg resize-none dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 outline-none"
+                            readonly placeholder="Formatted code will appear here..."></textarea>
+                        <div class="flex items-center justify-between mt-2">
+                            <span id="output-length" class="text-xs text-neutral-400">0 characters</span>
+                            <button onclick="copyOutput()" class="text-xs text-purple-600 hover:text-purple-700">
+                                <i data-lucide="copy" class="inline w-3 h-3 mr-1"></i>Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center justify-center gap-4 p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <button onclick="formatCode()"
+                        class="flex items-center gap-2 px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors">
+                        <i data-lucide="wand-2" class="w-4 h-4"></i>
+                        Format Code
+                    </button>
+                    <button onclick="minifyCode()"
+                        class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 font-medium rounded-lg transition-colors">
+                        <i data-lucide="minimize-2" class="w-4 h-4"></i>
+                        Minify
+                    </button>
+                </div>
+
+                <!-- Status Message -->
+                <div id="status-message" class="hidden p-4 text-sm border-t border-neutral-200 dark:border-neutral-800">
+                </div>
+            </div>
+
+            <!-- How to Use Section -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">How
+                    to Use the Code Formatter</h2>
+                <div
+                    class="p-6 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <ol class="space-y-4 text-neutral-600 dark:text-neutral-400">
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full shrink-0">1</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Select the language</strong> - Choose
+                                the programming language from the dropdown (JavaScript, JSON, HTML, CSS, etc.).</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full shrink-0">2</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Paste your code</strong> - Paste
+                                unformatted, minified, or messy code into the input field.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full shrink-0">3</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Choose indentation</strong> - Select
+                                2 spaces, 4 spaces, or tabs based on your preference.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full shrink-0">4</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Click "Format Code"</strong> - Your
+                                beautifully formatted code appears instantly in the output.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Supported Languages -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Supported Languages</h2>
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-yellow-600">JS</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">JavaScript</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-orange-600">{}</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">JSON</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-red-600">&lt;/&gt;</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">HTML</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-blue-600">#</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">CSS</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-green-600">XML</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">XML</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-cyan-600">SQL</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">SQL</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-indigo-600">PY</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">Python</span>
+                    </div>
+                    <div
+                        class="p-4 text-center bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div
+                            class="w-10 h-10 mx-auto mb-2 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
+                            <span class="text-lg font-bold text-pink-600">YML</span>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300">YAML</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Use Cases -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Common Use Cases</h2>
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                                <i data-lucide="minimize-2" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Beautify Minified Code</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Transform compressed, unreadable
+                            minified JavaScript or CSS into properly formatted, human-readable code.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                                <i data-lucide="git-pull-request" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Code Review Preparation</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Format code consistently before
+                            submitting pull requests or sharing with teammates for review.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                                <i data-lucide="bug" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Debug API Responses</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Format JSON responses from APIs to
+                            easily inspect data structure and identify issues.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Documentation Examples</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Prepare clean, consistently formatted
+                            code snippets for documentation and tutorials.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Code Formatting Examples</h2>
+                <div class="space-y-4">
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 1: Minified JavaScript
+                        </h3>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-neutral-500">Before:</span>
+                            <code
+                                class="block p-2 mt-1 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800">function greet(n){if(n){console.log("Hello, "+n)}else{console.log("Hello!")}}</code>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-neutral-500">After:</span>
+                            <pre
+                                class="p-2 mt-1 font-mono text-xs rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 overflow-x-auto">function greet(n) {
+    if (n) {
+        console.log("Hello, " + n)
+    } else {
+        console.log("Hello!")
+    }
+}</pre>
+                        </div>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 2: Minified JSON</h3>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-neutral-500">Before:</span>
+                            <code
+                                class="block p-2 mt-1 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800">{"users":[{"name":"John","age":30},{"name":"Jane","age":25}],"total":2}</code>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-neutral-500">After:</span>
+                            <pre
+                                class="p-2 mt-1 font-mono text-xs rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 overflow-x-auto">{
+    "users": [
+        {
+            "name": "John",
+            "age": 30
+        },
+        {
+            "name": "Jane",
+            "age": 25
+        }
+    ],
+    "total": 2
+}</pre>
+                        </div>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 3: Inline CSS</h3>
+                        <div class="mb-3">
+                            <span class="text-xs font-semibold text-neutral-500">Before:</span>
+                            <code
+                                class="block p-2 mt-1 font-mono text-xs break-all rounded bg-neutral-100 dark:bg-neutral-800">.container{display:flex;flex-direction:column;padding:20px;}.item{margin:10px;background:#fff;}</code>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-neutral-500">After:</span>
+                            <pre
+                                class="p-2 mt-1 font-mono text-xs rounded bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 overflow-x-auto">.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.item {
+    margin: 10px;
+    background: #fff;
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            What programming languages does this formatter support?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">This code formatter supports JavaScript,
+                            JSON, HTML, CSS, XML, SQL, Python, and YAML. Each language has specific formatting rules to
+                            ensure proper indentation and structure.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Is my code safe when using this formatter?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">Yes, absolutely! All code formatting
+                            happens directly in your browser. Your code is never sent to any server, ensuring complete
+                            privacy and security. You can even use this tool offline.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            What's the difference between formatting and minifying?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">Formatting adds proper indentation and
+                            line breaks for readability, while minifying removes all unnecessary whitespace and comments
+                            to reduce file size. Use formatting for development and minifying for production.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Can I customize the indentation style?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">Yes! You can choose between 2 spaces, 4
+                            spaces, or tabs for indentation. Select your preference from the dropdown before formatting
+                            your code.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Does the formatter validate my code?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">For JSON, the formatter will detect and
+                            report syntax errors. For other languages, it will attempt to format but may produce
+                            unexpected results if the code has syntax errors. Use a dedicated validator for thorough
+                            syntax checking.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Related Tools</h2>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <a href="/json-formatter"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-orange-300 dark:hover:border-orange-700">
+                        <div
+                            class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                            <i data-lucide="braces" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">JSON Formatter</h3>
+                            <p class="text-xs text-neutral-500">Validate & format JSON</p>
+                        </div>
+                    </a>
+                    <a href="/regex-tester"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-green-300 dark:hover:border-green-700">
+                        <div
+                            class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                            <i data-lucide="regex" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Regex Tester</h3>
+                            <p class="text-xs text-neutral-500">Test regular expressions</p>
+                        </div>
+                    </a>
+                    <a href="/base64-encoder"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-blue-300 dark:hover:border-blue-700">
+                        <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                            <i data-lucide="file-code" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Base64 Encoder</h3>
+                            <p class="text-xs text-neutral-500">Encode text to Base64</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // DOM Elements
+        const codeInput = document.getElementById('code-input');
+        const codeOutput = document.getElementById('code-output');
+        const languageSelect = document.getElementById('language-select');
+        const indentSelect = document.getElementById('indent-select');
+        const statusMessage = document.getElementById('status-message');
+        const inputLength = document.getElementById('input-length');
+        const outputLength = document.getElementById('output-length');
+
+        // Update character counts
+        codeInput.addEventListener('input', () => {
+            inputLength.textContent = `${codeInput.value.length} characters`;
+        });
+
+        // Get indent string
+        function getIndent() {
+            const value = indentSelect.value;
+            return value === 'tab' ? '\t' : ' '.repeat(parseInt(value));
+        }
+
+        // Format code based on language
+        function formatCode() {
+            const input = codeInput.value.trim();
+            if (!input) {
+                showStatus('Please enter code to format.', 'warning');
+                return;
+            }
+
+            const language = languageSelect.value;
+            const indent = getIndent();
+            let formatted = '';
+
+            try {
+                switch (language) {
+                    case 'json':
+                        formatted = JSON.stringify(JSON.parse(input), null, indent);
+                        break;
+                    case 'javascript':
+                        formatted = formatJavaScript(input, indent);
+                        break;
+                    case 'html':
+                    case 'xml':
+                        formatted = formatHTML(input, indent);
+                        break;
+                    case 'css':
+                        formatted = formatCSS(input, indent);
+                        break;
+                    case 'sql':
+                        formatted = formatSQL(input, indent);
+                        break;
+                    case 'python':
+                        formatted = formatPython(input, indent);
+                        break;
+                    case 'yaml':
+                        formatted = formatYAML(input, indent);
+                        break;
+                    default:
+                        formatted = input;
+                }
+
+                codeOutput.value = formatted;
+                outputLength.textContent = `${formatted.length} characters`;
+                showStatus('Code formatted successfully!', 'success');
+            } catch (e) {
+                showStatus(`Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Basic JavaScript formatter
+        function formatJavaScript(code, indent) {
+            let result = '';
+            let indentLevel = 0;
+            let inString = false;
+            let stringChar = '';
+
+            for (let i = 0; i < code.length; i++) {
+                const char = code[i];
+                const nextChar = code[i + 1];
+
+                // Handle strings
+                if ((char === '"' || char === "'" || char === '`') && code[i - 1] !== '\\') {
+                    if (!inString) {
+                        inString = true;
+                        stringChar = char;
+                    } else if (char === stringChar) {
+                        inString = false;
+                    }
+                    result += char;
+                    continue;
+                }
+
+                if (inString) {
+                    result += char;
+                    continue;
+                }
+
+                // Handle brackets
+                if (char === '{' || char === '[') {
+                    result += char + '\n' + indent.repeat(++indentLevel);
+                } else if (char === '}' || char === ']') {
+                    result = result.trimEnd() + '\n' + indent.repeat(--indentLevel) + char;
+                } else if (char === ';') {
+                    result += char + '\n' + indent.repeat(indentLevel);
+                } else if (char === ',') {
+                    result += char + '\n' + indent.repeat(indentLevel);
+                } else if (char === ' ' || char === '\n' || char === '\t') {
+                    if (result.slice(-1) !== ' ' && result.slice(-1) !== '\n') {
+                        result += ' ';
+                    }
+                } else {
+                    result += char;
+                }
+            }
+
+            return result.trim();
+        }
+
+        // Basic HTML/XML formatter
+        function formatHTML(code, indent) {
+            const lines = [];
+            let indentLevel = 0;
+            const selfClosingTags = ['br', 'hr', 'img', 'input', 'meta', 'link', 'area', 'base', 'col', 'embed', 'param', 'source', 'track', 'wbr'];
+
+            // Split by tags
+            const parts = code.replace(/>\s*</g, '>\n<').split('\n');
+
+            for (const part of parts) {
+                const trimmed = part.trim();
+                if (!trimmed) continue;
+
+                // Check if closing tag
+                if (trimmed.match(/^<\/\w/)) {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                }
+
+                lines.push(indent.repeat(indentLevel) + trimmed);
+
+                // Check if opening tag (not self-closing)
+                const tagMatch = trimmed.match(/^<(\w+)/);
+                if (tagMatch) {
+                    const tagName = tagMatch[1].toLowerCase();
+                    if (!selfClosingTags.includes(tagName) && !trimmed.match(/\/>$/) && !trimmed.match(/^<\//)) {
+                        indentLevel++;
+                    }
+                }
+            }
+
+            return lines.join('\n');
+        }
+
+        // Basic CSS formatter
+        function formatCSS(code, indent) {
+            return code
+                .replace(/\s*{\s*/g, ' {\n')
+                .replace(/\s*}\s*/g, '\n}\n\n')
+                .replace(/;\s*/g, ';\n')
+                .split('\n')
+                .map((line, i, arr) => {
+                    const trimmed = line.trim();
+                    if (!trimmed) return '';
+                    if (trimmed.endsWith('{')) return trimmed;
+                    if (trimmed === '}') return trimmed;
+                    if (trimmed.includes(':')) return indent + trimmed;
+                    return trimmed;
+                })
+                .filter((line, i, arr) => !(line === '' && arr[i + 1] === ''))
+                .join('\n')
+                .trim();
+        }
+
+        // Basic SQL formatter
+        function formatSQL(code, indent) {
+            const keywords = ['SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'OUTER JOIN', 'ON', 'GROUP BY', 'ORDER BY', 'HAVING', 'LIMIT', 'INSERT INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE FROM', 'CREATE TABLE', 'ALTER TABLE', 'DROP TABLE'];
+
+            let formatted = code.toUpperCase();
+            keywords.forEach(kw => {
+                formatted = formatted.replace(new RegExp(`\\b${kw}\\b`, 'gi'), '\n' + kw);
+            });
+
+            return formatted.trim().split('\n').map(l => l.trim()).filter(l => l).join('\n');
+        }
+
+        // Basic Python formatter (just fixes indentation)
+        function formatPython(code, indent) {
+            return code; // Python is whitespace-sensitive, return as-is
+        }
+
+        // Basic YAML formatter
+        function formatYAML(code, indent) {
+            return code; // YAML is whitespace-sensitive, return as-is
+        }
+
+        // Minify code
+        function minifyCode() {
+            const input = codeInput.value.trim();
+            if (!input) {
+                showStatus('Please enter code to minify.', 'warning');
+                return;
+            }
+
+            const language = languageSelect.value;
+            let minified = '';
+
+            try {
+                switch (language) {
+                    case 'json':
+                        minified = JSON.stringify(JSON.parse(input));
+                        break;
+                    case 'html':
+                    case 'xml':
+                        minified = input.replace(/>\s+</g, '><').replace(/\s+/g, ' ').trim();
+                        break;
+                    case 'css':
+                        minified = input.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{}:;,])\s*/g, '$1').trim();
+                        break;
+                    default:
+                        minified = input.replace(/\s+/g, ' ').trim();
+                }
+
+                codeOutput.value = minified;
+                outputLength.textContent = `${minified.length} characters`;
+                showStatus('Code minified successfully!', 'success');
+            } catch (e) {
+                showStatus(`Error: ${e.message}`, 'error');
+            }
+        }
+
+        // Clear all fields
+        function clearAll() {
+            codeInput.value = '';
+            codeOutput.value = '';
+            inputLength.textContent = '0 characters';
+            outputLength.textContent = '0 characters';
+            hideStatus();
+        }
+
+        // Copy output to clipboard
+        async function copyOutput() {
+            if (codeOutput.value) {
+                await navigator.clipboard.writeText(codeOutput.value);
+                showStatus('Copied to clipboard!', 'success');
+            }
+        }
+
+        // Paste from clipboard
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                codeInput.value = text;
+                inputLength.textContent = `${text.length} characters`;
+            } catch (e) {
+                showStatus('Unable to paste from clipboard.', 'error');
+            }
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            statusMessage.classList.remove('hidden', 'bg-green-50', 'bg-red-50', 'bg-yellow-50');
+
+            if (type === 'success') {
+                statusMessage.classList.add('bg-green-50', 'text-green-700', 'dark:bg-green-900/20', 'dark:text-green-400');
+            } else if (type === 'error') {
+                statusMessage.classList.add('bg-red-50', 'text-red-700', 'dark:bg-red-900/20', 'dark:text-red-400');
+            } else {
+                statusMessage.classList.add('bg-yellow-50', 'text-yellow-700', 'dark:bg-yellow-900/20', 'dark:text-yellow-400');
+            }
+
+            statusMessage.textContent = message;
+            statusMessage.classList.remove('hidden');
+
+            setTimeout(hideStatus, 3000);
+        }
+
+        function hideStatus() {
+            statusMessage.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

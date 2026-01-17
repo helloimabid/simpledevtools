@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online hash encoder and generator. Create MD5, SHA-1, SHA-256, SHA-512 hashes instantly in your browser. No data upload, 100% private client-side processing.">
+    <meta name="keywords"
+        content="hash encoder, hash generator, md5 generator, sha256 generator, sha1 hash, sha512 hash, online hash, password hash, checksum generator">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="SimpleDevTools">
+    <meta property="og:title" content="Hash Encoder - Free MD5, SHA-256, SHA-512 Hash Generator">
+    <meta property="og:description"
+        content="Generate secure hashes with MD5, SHA-1, SHA-256, and SHA-512 algorithms. 100% client-side, your data never leaves your browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpledevtools.tech/hash-encoder">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <title>Hash Encoder - Free MD5, SHA-256, SHA-512 Hash Generator Online | SimpleDevTools</title>
+    <link rel="canonical" href="https://simpledevtools.tech/hash-encoder" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Hash Encoder",
+      "description": "Free online hash encoder and generator. Create MD5, SHA-1, SHA-256, SHA-512 hashes instantly in your browser.",
+      "url": "https://simpledevtools.tech/hash-encoder",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "Hash Encoder", "item": "https://simpledevtools.tech/hash-encoder"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a hash function?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A hash function is a mathematical algorithm that converts input data of any size into a fixed-size string of characters. The output (hash) is deterministic, meaning the same input always produces the same hash. Hash functions are one-way - you cannot reverse a hash to get the original input."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which hash algorithm should I use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For security-sensitive applications, use SHA-256 or SHA-512. MD5 and SHA-1 are considered cryptographically broken for security purposes but are still useful for checksums and data integrity verification. For password hashing, consider specialized algorithms like bcrypt or Argon2 instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is MD5 still safe to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MD5 is not recommended for security purposes as collision attacks have been demonstrated. However, it's still widely used for checksums, data integrity verification, and non-security applications where collision resistance isn't critical."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I decode/reverse a hash?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, hash functions are designed to be one-way. You cannot mathematically reverse a hash to get the original input. Rainbow tables and dictionary attacks can sometimes find matches for weak passwords, but proper hashes of complex data cannot be reversed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between encoding and hashing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Encoding (like Base64) is reversible and transforms data into another format for transmission or storage. Hashing is one-way and creates a fixed-size fingerprint of data. Encoding preserves data; hashing creates a unique identifier that cannot retrieve the original data."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./dist/js/lucide.min.js"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/tools" class="underline">Tools</a> |
+            <a href="/hash-generator" class="underline">Hash Generator</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="max-w-2xl mx-auto mb-12 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-cyan-600 border border-cyan-100 rounded-full bg-cyan-50 dark:bg-cyan-900/20 dark:text-cyan-400 dark:border-cyan-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>100% Client-Side Processing</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Hash Encoder
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Generate MD5, SHA-1, SHA-256, and SHA-512 hashes instantly in your browser. Secure, private, and
+                    completely free hash generation for developers.
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div
+                class="mb-12 overflow-hidden bg-white border shadow-sm dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold tracking-wider uppercase text-neutral-400">Hash Encoder</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="clearAll()"
+                            class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-red-600 text-xs font-medium transition-colors">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-4">
+                    <label class="block mb-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400">TEXT
+                        INPUT</label>
+                    <textarea id="text-input"
+                        class="w-full h-32 p-3 font-mono text-sm bg-white border rounded-lg resize-none dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 outline-none focus:ring-2 focus:ring-cyan-500"
+                        placeholder="Enter text to generate hash..."></textarea>
+                    <div class="flex items-center justify-between mt-2">
+                        <span id="input-length" class="text-xs text-neutral-400">0 characters</span>
+                        <button onclick="pasteFromClipboard()" class="text-xs text-cyan-600 hover:text-cyan-700">
+                            <i data-lucide="clipboard" class="inline w-3 h-3 mr-1"></i>Paste
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center justify-center gap-4 p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                    <button onclick="generateHashes()"
+                        class="flex items-center gap-2 px-6 py-2.5 bg-cyan-600 hover:bg-cyan-700 text-white font-medium rounded-lg transition-colors">
+                        <i data-lucide="hash" class="w-4 h-4"></i>
+                        Generate Hashes
+                    </button>
+                </div>
+
+                <!-- Hash Results -->
+                <div class="p-4 space-y-4 border-t border-neutral-200 dark:border-neutral-800">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">MD5
+                                (128-bit)</label>
+                            <button onclick="copyHash('md5')" class="text-xs text-cyan-600 hover:text-cyan-700">
+                                <i data-lucide="copy" class="inline w-3 h-3 mr-1"></i>Copy
+                            </button>
+                        </div>
+                        <input id="hash-md5" type="text" readonly
+                            class="w-full p-3 font-mono text-sm bg-neutral-50 border rounded-lg dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200"
+                            placeholder="MD5 hash will appear here...">
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-1
+                                (160-bit)</label>
+                            <button onclick="copyHash('sha1')" class="text-xs text-cyan-600 hover:text-cyan-700">
+                                <i data-lucide="copy" class="inline w-3 h-3 mr-1"></i>Copy
+                            </button>
+                        </div>
+                        <input id="hash-sha1" type="text" readonly
+                            class="w-full p-3 font-mono text-sm bg-neutral-50 border rounded-lg dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200"
+                            placeholder="SHA-1 hash will appear here...">
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-256
+                                (256-bit) <span class="text-cyan-600">Recommended</span></label>
+                            <button onclick="copyHash('sha256')" class="text-xs text-cyan-600 hover:text-cyan-700">
+                                <i data-lucide="copy" class="inline w-3 h-3 mr-1"></i>Copy
+                            </button>
+                        </div>
+                        <input id="hash-sha256" type="text" readonly
+                            class="w-full p-3 font-mono text-sm bg-cyan-50 border-2 border-cyan-200 rounded-lg dark:bg-cyan-900/20 dark:border-cyan-800 text-neutral-800 dark:text-neutral-200"
+                            placeholder="SHA-256 hash will appear here...">
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">SHA-512
+                                (512-bit)</label>
+                            <button onclick="copyHash('sha512')" class="text-xs text-cyan-600 hover:text-cyan-700">
+                                <i data-lucide="copy" class="inline w-3 h-3 mr-1"></i>Copy
+                            </button>
+                        </div>
+                        <input id="hash-sha512" type="text" readonly
+                            class="w-full p-3 font-mono text-xs bg-neutral-50 border rounded-lg dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200"
+                            placeholder="SHA-512 hash will appear here...">
+                    </div>
+                </div>
+
+                <!-- Status Message -->
+                <div id="status-message" class="hidden p-4 text-sm border-t border-neutral-200 dark:border-neutral-800">
+                </div>
+            </div>
+
+            <!-- How to Use Section -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">How
+                    to Use the Hash Encoder</h2>
+                <div
+                    class="p-6 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <ol class="space-y-4 text-neutral-600 dark:text-neutral-400">
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-cyan-600 rounded-full shrink-0">1</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Enter your text</strong> - Type or
+                                paste the text, password, or data you want to hash.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-cyan-600 rounded-full shrink-0">2</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Click "Generate Hashes"</strong> -
+                                All hash algorithms run simultaneously.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-cyan-600 rounded-full shrink-0">3</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Copy the hash you need</strong> -
+                                Choose MD5, SHA-1, SHA-256, or SHA-512 based on your requirements.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span
+                                class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-cyan-600 rounded-full shrink-0">4</span>
+                            <span><strong class="text-neutral-900 dark:text-white">Use SHA-256 for security</strong> -
+                                It's highlighted as the recommended choice for most applications.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Algorithm Comparison -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Hash Algorithm Comparison</h2>
+                <div
+                    class="overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead class="bg-neutral-50 dark:bg-neutral-800">
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 font-semibold text-left text-neutral-700 dark:text-neutral-300">
+                                        Algorithm</th>
+                                    <th
+                                        class="px-4 py-3 font-semibold text-left text-neutral-700 dark:text-neutral-300">
+                                        Bit Length</th>
+                                    <th
+                                        class="px-4 py-3 font-semibold text-left text-neutral-700 dark:text-neutral-300">
+                                        Hex Length</th>
+                                    <th
+                                        class="px-4 py-3 font-semibold text-left text-neutral-700 dark:text-neutral-300">
+                                        Security</th>
+                                    <th
+                                        class="px-4 py-3 font-semibold text-left text-neutral-700 dark:text-neutral-300">
+                                        Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-800">
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-neutral-900 dark:text-white">MD5</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">128</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">32</td>
+                                    <td class="px-4 py-3"><span
+                                            class="px-2 py-0.5 text-xs font-medium text-red-700 bg-red-100 rounded dark:bg-red-900/30 dark:text-red-400">Broken</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">Checksums, non-security
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-neutral-900 dark:text-white">SHA-1</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">160</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">40</td>
+                                    <td class="px-4 py-3"><span
+                                            class="px-2 py-0.5 text-xs font-medium text-orange-700 bg-orange-100 rounded dark:bg-orange-900/30 dark:text-orange-400">Weak</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">Git, legacy systems
+                                    </td>
+                                </tr>
+                                <tr class="bg-cyan-50/50 dark:bg-cyan-900/10">
+                                    <td class="px-4 py-3 font-mono text-neutral-900 dark:text-white">SHA-256</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">256</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">64</td>
+                                    <td class="px-4 py-3"><span
+                                            class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Strong</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">General security,
+                                        crypto</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-neutral-900 dark:text-white">SHA-512</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">512</td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">128</td>
+                                    <td class="px-4 py-3"><span
+                                            class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Strong</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-neutral-600 dark:text-neutral-400">High security needs
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Use Cases -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Common Use Cases</h2>
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400">
+                                <i data-lucide="file-check" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">File Integrity Verification</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Generate checksums to verify files
+                            haven't been corrupted or modified during download or transfer.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                                <i data-lucide="key" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Password Storage</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Store password hashes instead of plain
+                            text. Note: Use bcrypt or Argon2 for production systems.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                                <i data-lucide="git-branch" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Version Control</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Git uses SHA-1 to identify commits,
+                            trees, and blobs. Understand how version control works internally.</p>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div
+                                class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                                <i data-lucide="fingerprint" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Digital Signatures</h3>
+                        </div>
+                        <p class="text-sm text-neutral-600 dark:text-neutral-400">Create unique identifiers for
+                            documents and data to ensure authenticity and detect tampering.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Hash Examples</h2>
+                <div class="space-y-4">
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 1: Simple Text</h3>
+                        <div class="mb-2">
+                            <span class="text-xs font-semibold text-neutral-500">Input: </span>
+                            <code class="font-mono text-sm">hello</code>
+                        </div>
+                        <div class="space-y-1 text-xs">
+                            <div><span class="font-semibold text-neutral-500">MD5:</span> <code
+                                    class="font-mono text-cyan-700 dark:text-cyan-400">5d41402abc4b2a76b9719d911017c592</code>
+                            </div>
+                            <div><span class="font-semibold text-neutral-500">SHA-256:</span> <code
+                                    class="font-mono text-cyan-700 dark:text-cyan-400">2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 2: Same Input = Same Hash
+                            (Deterministic)</h3>
+                        <p class="mb-2 text-sm text-neutral-600 dark:text-neutral-400">No matter how many times you hash
+                            "hello", you'll always get the same result:</p>
+                        <code
+                            class="block p-2 font-mono text-xs break-all rounded bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-400">5d41402abc4b2a76b9719d911017c592</code>
+                    </div>
+                    <div
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                        <h3 class="mb-3 font-medium text-neutral-900 dark:text-white">Example 3: Avalanche Effect (Small
+                            Change = Huge Difference)</h3>
+                        <div class="space-y-2">
+                            <div>
+                                <span class="text-xs font-semibold text-neutral-500">Input: "hello"</span>
+                                <code
+                                    class="block mt-1 font-mono text-xs text-neutral-700 dark:text-neutral-300">5d41402abc4b2a76b9719d911017c592</code>
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-neutral-500">Input: "hellp" (one letter
+                                    different)</span>
+                                <code
+                                    class="block mt-1 font-mono text-xs text-cyan-700 dark:text-cyan-400">e91e6348157868de9dd8b25c81aebfb9</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            What is a hash function?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">A hash function converts input data of
+                            any size into a fixed-size string. The output (hash) is deterministic—the same input always
+                            produces the same hash. Hash functions are one-way; you cannot reverse a hash to get the
+                            original input.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Which hash algorithm should I use?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">For security applications, use SHA-256 or
+                            SHA-512. MD5 and SHA-1 are considered broken for security but work for checksums. For
+                            passwords in production, use specialized algorithms like bcrypt or Argon2.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Can I reverse a hash to get the original text?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">No, hash functions are designed to be
+                            one-way. You cannot mathematically reverse a hash. While rainbow tables can match weak
+                            passwords, properly hashed complex data cannot be reversed.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            Is my data safe using this tool?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">Yes! All hashing happens locally in your
+                            browser using the Web Crypto API. Your data never leaves your device or gets sent to any
+                            server. You can even use this tool offline.</p>
+                    </details>
+                    <details
+                        class="p-5 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl group">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                            What's the difference between encoding and hashing?
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-neutral-600 dark:text-neutral-400">Encoding (like Base64) is reversible and
+                            transforms data for transmission. Hashing is one-way and creates a fixed-size fingerprint.
+                            Encoding preserves data; hashing creates a unique identifier that cannot retrieve the
+                            original.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Related Tools</h2>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <a href="/hash-generator"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-purple-300 dark:hover:border-purple-700">
+                        <div
+                            class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400">
+                            <i data-lucide="hash" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Hash Generator</h3>
+                            <p class="text-xs text-neutral-500">Full-featured hash tool</p>
+                        </div>
+                    </a>
+                    <a href="/base64-encode"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-green-300 dark:hover:border-green-700">
+                        <div
+                            class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                            <i data-lucide="file-code" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Base64 Encode</h3>
+                            <p class="text-xs text-neutral-500">Encode text to Base64</p>
+                        </div>
+                    </a>
+                    <a href="/password-strength-analyzer"
+                        class="flex items-center gap-4 p-4 transition-colors bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl hover:border-orange-300 dark:hover:border-orange-700">
+                        <div
+                            class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-neutral-900 dark:text-white">Password Strength</h3>
+                            <p class="text-xs text-neutral-500">Analyze password security</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Technical Details -->
+            <section class="mb-12">
+                <h2 class="mb-6 text-2xl font-semibold tracking-tight font-display text-neutral-900 dark:text-white">
+                    Technical Details</h2>
+                <div
+                    class="p-6 bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div class="prose dark:prose-invert max-w-none text-neutral-600 dark:text-neutral-400">
+                        <p>This tool uses the <strong>Web Crypto API</strong> built into modern browsers, providing
+                            native, hardware-accelerated cryptographic operations:</p>
+                        <ul class="mt-4 space-y-2">
+                            <li><strong>MD5:</strong> Implemented via a pure JavaScript fallback (not in Web Crypto API)
+                            </li>
+                            <li><strong>SHA-1, SHA-256, SHA-512:</strong> Use <code>crypto.subtle.digest()</code> for
+                                maximum performance and security</li>
+                            <li><strong>Output format:</strong> Hexadecimal string (lowercase)</li>
+                            <li><strong>Character encoding:</strong> UTF-8 for proper international character support
+                            </li>
+                        </ul>
+                        <p class="mt-4">All operations are performed synchronously in your browser. No data is
+                            transmitted over the network.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // DOM Elements
+        const textInput = document.getElementById('text-input');
+        const inputLength = document.getElementById('input-length');
+        const statusMessage = document.getElementById('status-message');
+
+        // Update character counts
+        textInput.addEventListener('input', () => {
+            inputLength.textContent = `${textInput.value.length} characters`;
+        });
+
+        // Generate all hashes
+        async function generateHashes() {
+            const input = textInput.value;
+
+            if (!input) {
+                showStatus('Please enter text to hash.', 'warning');
+                return;
+            }
+
+            try {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(input);
+
+                // Generate all hashes
+                const [md5Hash, sha1Hash, sha256Hash, sha512Hash] = await Promise.all([
+                    md5(input),
+                    sha('SHA-1', data),
+                    sha('SHA-256', data),
+                    sha('SHA-512', data)
+                ]);
+
+                document.getElementById('hash-md5').value = md5Hash;
+                document.getElementById('hash-sha1').value = sha1Hash;
+                document.getElementById('hash-sha256').value = sha256Hash;
+                document.getElementById('hash-sha512').value = sha512Hash;
+
+                showStatus('All hashes generated successfully!', 'success');
+            } catch (e) {
+                showStatus('Error generating hashes.', 'error');
+            }
+        }
+
+        // SHA family using Web Crypto API
+        async function sha(algorithm, data) {
+            const hashBuffer = await crypto.subtle.digest(algorithm, data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // MD5 implementation (not in Web Crypto API)
+        function md5(string) {
+            function rotateLeft(val, shift) {
+                return (val << shift) | (val >>> (32 - shift));
+            }
+
+            function addUnsigned(x, y) {
+                const x8 = x & 0x80000000;
+                const y8 = y & 0x80000000;
+                const x4 = x & 0x40000000;
+                const y4 = y & 0x40000000;
+                const result = (x & 0x3FFFFFFF) + (y & 0x3FFFFFFF);
+                if (x4 & y4) return result ^ 0x80000000 ^ x8 ^ y8;
+                if (x4 | y4) {
+                    if (result & 0x40000000) return result ^ 0xC0000000 ^ x8 ^ y8;
+                    else return result ^ 0x40000000 ^ x8 ^ y8;
+                } else return result ^ x8 ^ y8;
+            }
+
+            function F(x, y, z) { return (x & y) | ((~x) & z); }
+            function G(x, y, z) { return (x & z) | (y & (~z)); }
+            function H(x, y, z) { return x ^ y ^ z; }
+            function I(x, y, z) { return y ^ (x | (~z)); }
+
+            function FF(a, b, c, d, x, s, ac) {
+                a = addUnsigned(a, addUnsigned(addUnsigned(F(b, c, d), x), ac));
+                return addUnsigned(rotateLeft(a, s), b);
+            }
+            function GG(a, b, c, d, x, s, ac) {
+                a = addUnsigned(a, addUnsigned(addUnsigned(G(b, c, d), x), ac));
+                return addUnsigned(rotateLeft(a, s), b);
+            }
+            function HH(a, b, c, d, x, s, ac) {
+                a = addUnsigned(a, addUnsigned(addUnsigned(H(b, c, d), x), ac));
+                return addUnsigned(rotateLeft(a, s), b);
+            }
+            function II(a, b, c, d, x, s, ac) {
+                a = addUnsigned(a, addUnsigned(addUnsigned(I(b, c, d), x), ac));
+                return addUnsigned(rotateLeft(a, s), b);
+            }
+
+            function convertToWordArray(str) {
+                let wordCount;
+                const messageLength = str.length;
+                const temp1 = messageLength + 8;
+                const temp2 = (temp1 - (temp1 % 64)) / 64;
+                const wordArrayLength = (temp2 + 1) * 16;
+                const wordArray = Array(wordArrayLength - 1);
+                let bytePosition = 0;
+                let byteCount = 0;
+                while (byteCount < messageLength) {
+                    wordCount = (byteCount - (byteCount % 4)) / 4;
+                    bytePosition = (byteCount % 4) * 8;
+                    wordArray[wordCount] = (wordArray[wordCount] | (str.charCodeAt(byteCount) << bytePosition));
+                    byteCount++;
+                }
+                wordCount = (byteCount - (byteCount % 4)) / 4;
+                bytePosition = (byteCount % 4) * 8;
+                wordArray[wordCount] = wordArray[wordCount] | (0x80 << bytePosition);
+                wordArray[wordArrayLength - 2] = messageLength << 3;
+                wordArray[wordArrayLength - 1] = messageLength >>> 29;
+                return wordArray;
+            }
+
+            function wordToHex(value) {
+                let hex = '', temp, byte;
+                for (let count = 0; count <= 3; count++) {
+                    byte = (value >>> (count * 8)) & 255;
+                    temp = '0' + byte.toString(16);
+                    hex = hex + temp.substr(temp.length - 2, 2);
+                }
+                return hex;
+            }
+
+            function utf8Encode(str) {
+                str = str.replace(/\r\n/g, '\n');
+                let result = '';
+                for (let i = 0; i < str.length; i++) {
+                    const c = str.charCodeAt(i);
+                    if (c < 128) result += String.fromCharCode(c);
+                    else if ((c > 127) && (c < 2048)) {
+                        result += String.fromCharCode((c >> 6) | 192);
+                        result += String.fromCharCode((c & 63) | 128);
+                    } else {
+                        result += String.fromCharCode((c >> 12) | 224);
+                        result += String.fromCharCode(((c >> 6) & 63) | 128);
+                        result += String.fromCharCode((c & 63) | 128);
+                    }
+                }
+                return result;
+            }
+
+            const S11 = 7, S12 = 12, S13 = 17, S14 = 22;
+            const S21 = 5, S22 = 9, S23 = 14, S24 = 20;
+            const S31 = 4, S32 = 11, S33 = 16, S34 = 23;
+            const S41 = 6, S42 = 10, S43 = 15, S44 = 21;
+
+            string = utf8Encode(string);
+            const x = convertToWordArray(string);
+            let a = 0x67452301, b = 0xEFCDAB89, c = 0x98BADCFE, d = 0x10325476;
+
+            for (let k = 0; k < x.length; k += 16) {
+                const AA = a, BB = b, CC = c, DD = d;
+                a = FF(a, b, c, d, x[k], S11, 0xD76AA478);
+                d = FF(d, a, b, c, x[k + 1], S12, 0xE8C7B756);
+                c = FF(c, d, a, b, x[k + 2], S13, 0x242070DB);
+                b = FF(b, c, d, a, x[k + 3], S14, 0xC1BDCEEE);
+                a = FF(a, b, c, d, x[k + 4], S11, 0xF57C0FAF);
+                d = FF(d, a, b, c, x[k + 5], S12, 0x4787C62A);
+                c = FF(c, d, a, b, x[k + 6], S13, 0xA8304613);
+                b = FF(b, c, d, a, x[k + 7], S14, 0xFD469501);
+                a = FF(a, b, c, d, x[k + 8], S11, 0x698098D8);
+                d = FF(d, a, b, c, x[k + 9], S12, 0x8B44F7AF);
+                c = FF(c, d, a, b, x[k + 10], S13, 0xFFFF5BB1);
+                b = FF(b, c, d, a, x[k + 11], S14, 0x895CD7BE);
+                a = FF(a, b, c, d, x[k + 12], S11, 0x6B901122);
+                d = FF(d, a, b, c, x[k + 13], S12, 0xFD987193);
+                c = FF(c, d, a, b, x[k + 14], S13, 0xA679438E);
+                b = FF(b, c, d, a, x[k + 15], S14, 0x49B40821);
+                a = GG(a, b, c, d, x[k + 1], S21, 0xF61E2562);
+                d = GG(d, a, b, c, x[k + 6], S22, 0xC040B340);
+                c = GG(c, d, a, b, x[k + 11], S23, 0x265E5A51);
+                b = GG(b, c, d, a, x[k], S24, 0xE9B6C7AA);
+                a = GG(a, b, c, d, x[k + 5], S21, 0xD62F105D);
+                d = GG(d, a, b, c, x[k + 10], S22, 0x2441453);
+                c = GG(c, d, a, b, x[k + 15], S23, 0xD8A1E681);
+                b = GG(b, c, d, a, x[k + 4], S24, 0xE7D3FBC8);
+                a = GG(a, b, c, d, x[k + 9], S21, 0x21E1CDE6);
+                d = GG(d, a, b, c, x[k + 14], S22, 0xC33707D6);
+                c = GG(c, d, a, b, x[k + 3], S23, 0xF4D50D87);
+                b = GG(b, c, d, a, x[k + 8], S24, 0x455A14ED);
+                a = GG(a, b, c, d, x[k + 13], S21, 0xA9E3E905);
+                d = GG(d, a, b, c, x[k + 2], S22, 0xFCEFA3F8);
+                c = GG(c, d, a, b, x[k + 7], S23, 0x676F02D9);
+                b = GG(b, c, d, a, x[k + 12], S24, 0x8D2A4C8A);
+                a = HH(a, b, c, d, x[k + 5], S31, 0xFFFA3942);
+                d = HH(d, a, b, c, x[k + 8], S32, 0x8771F681);
+                c = HH(c, d, a, b, x[k + 11], S33, 0x6D9D6122);
+                b = HH(b, c, d, a, x[k + 14], S34, 0xFDE5380C);
+                a = HH(a, b, c, d, x[k + 1], S31, 0xA4BEEA44);
+                d = HH(d, a, b, c, x[k + 4], S32, 0x4BDECFA9);
+                c = HH(c, d, a, b, x[k + 7], S33, 0xF6BB4B60);
+                b = HH(b, c, d, a, x[k + 10], S34, 0xBEBFBC70);
+                a = HH(a, b, c, d, x[k + 13], S31, 0x289B7EC6);
+                d = HH(d, a, b, c, x[k], S32, 0xEAA127FA);
+                c = HH(c, d, a, b, x[k + 3], S33, 0xD4EF3085);
+                b = HH(b, c, d, a, x[k + 6], S34, 0x4881D05);
+                a = HH(a, b, c, d, x[k + 9], S31, 0xD9D4D039);
+                d = HH(d, a, b, c, x[k + 12], S32, 0xE6DB99E5);
+                c = HH(c, d, a, b, x[k + 15], S33, 0x1FA27CF8);
+                b = HH(b, c, d, a, x[k + 2], S34, 0xC4AC5665);
+                a = II(a, b, c, d, x[k], S41, 0xF4292244);
+                d = II(d, a, b, c, x[k + 7], S42, 0x432AFF97);
+                c = II(c, d, a, b, x[k + 14], S43, 0xAB9423A7);
+                b = II(b, c, d, a, x[k + 5], S44, 0xFC93A039);
+                a = II(a, b, c, d, x[k + 12], S41, 0x655B59C3);
+                d = II(d, a, b, c, x[k + 3], S42, 0x8F0CCC92);
+                c = II(c, d, a, b, x[k + 10], S43, 0xFFEFF47D);
+                b = II(b, c, d, a, x[k + 1], S44, 0x85845DD1);
+                a = II(a, b, c, d, x[k + 8], S41, 0x6FA87E4F);
+                d = II(d, a, b, c, x[k + 15], S42, 0xFE2CE6E0);
+                c = II(c, d, a, b, x[k + 6], S43, 0xA3014314);
+                b = II(b, c, d, a, x[k + 13], S44, 0x4E0811A1);
+                a = II(a, b, c, d, x[k + 4], S41, 0xF7537E82);
+                d = II(d, a, b, c, x[k + 11], S42, 0xBD3AF235);
+                c = II(c, d, a, b, x[k + 2], S43, 0x2AD7D2BB);
+                b = II(b, c, d, a, x[k + 9], S44, 0xEB86D391);
+                a = addUnsigned(a, AA);
+                b = addUnsigned(b, BB);
+                c = addUnsigned(c, CC);
+                d = addUnsigned(d, DD);
+            }
+
+            return (wordToHex(a) + wordToHex(b) + wordToHex(c) + wordToHex(d)).toLowerCase();
+        }
+
+        // Copy specific hash
+        async function copyHash(type) {
+            const hash = document.getElementById(`hash-${type}`).value;
+            if (hash) {
+                await navigator.clipboard.writeText(hash);
+                showStatus(`${type.toUpperCase()} hash copied!`, 'success');
+            }
+        }
+
+        // Clear all fields
+        function clearAll() {
+            textInput.value = '';
+            document.getElementById('hash-md5').value = '';
+            document.getElementById('hash-sha1').value = '';
+            document.getElementById('hash-sha256').value = '';
+            document.getElementById('hash-sha512').value = '';
+            inputLength.textContent = '0 characters';
+            hideStatus();
+        }
+
+        // Paste from clipboard
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                textInput.value = text;
+                inputLength.textContent = `${text.length} characters`;
+            } catch (e) {
+                showStatus('Unable to paste from clipboard.', 'error');
+            }
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            statusMessage.classList.remove('hidden', 'bg-green-50', 'bg-red-50', 'bg-yellow-50');
+
+            if (type === 'success') {
+                statusMessage.classList.add('bg-green-50', 'text-green-700', 'dark:bg-green-900/20', 'dark:text-green-400');
+            } else if (type === 'error') {
+                statusMessage.classList.add('bg-red-50', 'text-red-700', 'dark:bg-red-900/20', 'dark:text-red-400');
+            } else {
+                statusMessage.classList.add('bg-yellow-50', 'text-yellow-700', 'dark:bg-yellow-900/20', 'dark:text-yellow-400');
+            }
+
+            statusMessage.textContent = message;
+            statusMessage.classList.remove('hidden');
+
+            setTimeout(hideStatus, 3000);
+        }
+
+        function hideStatus() {
+            statusMessage.classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

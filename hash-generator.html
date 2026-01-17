@@ -166,19 +166,265 @@
             </div>
 
             <div class="max-w-3xl mx-auto mb-20 space-y-12">
+                <!-- What are Hash Functions Section -->
                 <section>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
                             <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </div>
-                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">About Hash
-                            Functions</h2>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">What are Hash Functions?</h2>
                     </div>
                     <div class="space-y-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        <p>Hash functions convert input data into a fixed-size string of characters. They're one-way
-                            functions—you can't reverse them to get the original input.</p>
-                        <p><strong>Common uses:</strong> password storage, data integrity verification, digital
-                            signatures, and checksum validation.</p>
+                        <p>A hash function is a mathematical algorithm that converts input data of any size into a fixed-length string of characters (the "hash" or "digest"). Hash functions are <strong>one-way functions</strong>—you can easily compute a hash from input, but it's computationally infeasible to reverse the process and retrieve the original data.</p>
+                        <p>Key properties of cryptographic hash functions:</p>
+                        <ul class="ml-4 space-y-1 list-disc list-inside">
+                            <li><strong>Deterministic:</strong> Same input always produces the same hash</li>
+                            <li><strong>Fast computation:</strong> Quick to calculate for any input size</li>
+                            <li><strong>Avalanche effect:</strong> Small input changes cause drastically different hashes</li>
+                            <li><strong>Collision resistant:</strong> Extremely hard to find two inputs with the same hash</li>
+                            <li><strong>Pre-image resistant:</strong> Cannot derive input from hash output</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Hash Algorithm Comparison -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="git-compare" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">MD5 vs SHA-256 vs SHA-512</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Algorithm</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Output Size</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Security</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Speed</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-neutral-600 dark:text-neutral-400">
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-purple-600 dark:text-purple-400">MD5</td>
+                                    <td class="px-4 py-3">128 bits (32 hex)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-red-700 bg-red-100 rounded dark:bg-red-900/30 dark:text-red-400">Broken</span></td>
+                                    <td class="px-4 py-3">Very Fast</td>
+                                    <td class="px-4 py-3">Checksums only (non-security)</td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-purple-600 dark:text-purple-400">SHA-1</td>
+                                    <td class="px-4 py-3">160 bits (40 hex)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-orange-700 bg-orange-100 rounded dark:bg-orange-900/30 dark:text-orange-400">Weak</span></td>
+                                    <td class="px-4 py-3">Fast</td>
+                                    <td class="px-4 py-3">Legacy systems (avoid for new)</td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-purple-600 dark:text-purple-400">SHA-256</td>
+                                    <td class="px-4 py-3">256 bits (64 hex)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Strong</span></td>
+                                    <td class="px-4 py-3">Fast</td>
+                                    <td class="px-4 py-3">General purpose, Bitcoin</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-purple-600 dark:text-purple-400">SHA-512</td>
+                                    <td class="px-4 py-3">512 bits (128 hex)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Strongest</span></td>
+                                    <td class="px-4 py-3">Fast on 64-bit</td>
+                                    <td class="px-4 py-3">High-security applications</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="target" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Common Use Cases</h2>
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="lock" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">Password Hashing</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Store password hashes instead of plaintext. Use bcrypt, scrypt, or Argon2 (with salt) for passwords—not plain SHA-256.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="file-check" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">File Integrity</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Verify file downloads haven't been corrupted or tampered with by comparing checksums.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="fingerprint" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">Digital Signatures</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Hash data before signing to create efficient, fixed-size signatures for documents and code.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="database" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">Data Deduplication</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Identify duplicate files or data blocks by comparing their hash values.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Example Hashes -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="code" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Example Hashes</h2>
+                    </div>
+                    <p class="mb-4 text-sm text-neutral-600 dark:text-neutral-400">Common strings and their hash values for testing:</p>
+                    <div class="space-y-4">
+                        <div class="p-4 overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <div class="mb-2 text-sm font-semibold text-neutral-900 dark:text-white">Input: "hello"</div>
+                            <div class="space-y-1 font-mono text-xs">
+                                <div><span class="text-purple-600 dark:text-purple-400">MD5:</span> <span class="text-neutral-600 dark:text-neutral-400">5d41402abc4b2a76b9719d911017c592</span></div>
+                                <div><span class="text-purple-600 dark:text-purple-400">SHA-1:</span> <span class="text-neutral-600 dark:text-neutral-400">aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d</span></div>
+                                <div><span class="text-purple-600 dark:text-purple-400">SHA-256:</span> <span class="text-neutral-600 dark:text-neutral-400">2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824</span></div>
+                            </div>
+                        </div>
+                        <div class="p-4 overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <div class="mb-2 text-sm font-semibold text-neutral-900 dark:text-white">Input: "password"</div>
+                            <div class="space-y-1 font-mono text-xs">
+                                <div><span class="text-purple-600 dark:text-purple-400">MD5:</span> <span class="text-neutral-600 dark:text-neutral-400">5f4dcc3b5aa765d61d8327deb882cf99</span></div>
+                                <div><span class="text-purple-600 dark:text-purple-400">SHA-1:</span> <span class="text-neutral-600 dark:text-neutral-400">5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8</span></div>
+                                <div><span class="text-purple-600 dark:text-purple-400">SHA-256:</span> <span class="text-neutral-600 dark:text-neutral-400">5e884898da28047d9191e47c21e6f10eb49dc7b8e8b9c9e4c3c7c6ef</span></div>
+                            </div>
+                        </div>
+                        <div class="p-4 overflow-x-auto border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <div class="mb-2 text-sm font-semibold text-neutral-900 dark:text-white">Input: "Hello" vs "hello" (case sensitivity demo)</div>
+                            <div class="space-y-1 font-mono text-xs">
+                                <div><span class="text-purple-600 dark:text-purple-400">"Hello" SHA-256:</span> <span class="text-neutral-600 dark:text-neutral-400">185f8db32271fe25f561a6fc938b2e26...4774f4f9</span></div>
+                                <div><span class="text-purple-600 dark:text-purple-400">"hello" SHA-256:</span> <span class="text-neutral-600 dark:text-neutral-400">2cf24dba5fb0a30e26e83b2ac5b9e29e...38b9824</span></div>
+                                <p class="mt-2 text-xs text-neutral-500">Notice how a single character change creates a completely different hash!</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Which hash algorithm should I use?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <ul class="space-y-2">
+                                    <li><strong>For passwords:</strong> Use bcrypt, scrypt, or Argon2—never plain MD5/SHA</li>
+                                    <li><strong>For file checksums:</strong> SHA-256 is the modern standard</li>
+                                    <li><strong>For quick non-security checks:</strong> MD5 is fast but avoid for security</li>
+                                    <li><strong>For maximum security:</strong> SHA-512 or SHA-3</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is MD5 secure?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400"><strong>No, MD5 is cryptographically broken.</strong> Collision attacks have been demonstrated since 2004. MD5 should never be used for security purposes (passwords, certificates, signatures). It's only acceptable for non-security checksums like verifying file transfers where tampering isn't a concern.</p>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What's the difference between hashing and encryption?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <table class="w-full mt-2">
+                                    <thead>
+                                        <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                            <th class="py-2 pr-4 font-medium text-left">Hashing</th>
+                                            <th class="py-2 font-medium text-left">Encryption</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-xs">
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">One-way (irreversible)</td>
+                                            <td class="py-2">Two-way (reversible with key)</td>
+                                        </tr>
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">Fixed output size</td>
+                                            <td class="py-2">Output size varies with input</td>
+                                        </tr>
+                                        <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                            <td class="py-2 pr-4">No key required</td>
+                                            <td class="py-2">Requires encryption key</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 pr-4">For verification</td>
+                                            <td class="py-2">For confidentiality</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can two different inputs have the same hash?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Theoretically yes—this is called a "collision." Since hash outputs are fixed-length but inputs can be infinite, collisions must exist mathematically. However, for strong algorithms like SHA-256, finding a collision would take longer than the age of the universe with current technology. MD5 and SHA-1 have known practical collision attacks, which is why they're deprecated.</p>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is a "salt" in password hashing?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">A salt is random data added to a password before hashing. It ensures that identical passwords produce different hashes, preventing rainbow table attacks. Each user should have a unique salt stored alongside their hash. Modern password hashing algorithms like bcrypt automatically handle salting.</p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="link" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Related Tools</h2>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/password-strength-analyzer" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                                <i data-lucide="shield" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Password Analyzer</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Check password strength</div>
+                            </div>
+                        </a>
+                        <a href="/base64-encode" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Base64 Encoder</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Encode & decode Base64</div>
+                            </div>
+                        </a>
                     </div>
                 </section>
             </div>

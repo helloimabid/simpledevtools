@@ -150,21 +150,264 @@
             </div>
 
             <div class="max-w-3xl mx-auto mb-20 space-y-12">
+                <!-- What is UUID Section -->
                 <section>
                     <div class="flex items-center gap-3 mb-4">
                         <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
                             <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
                         </div>
-                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">What is a UUID?
-                        </h2>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">What is a UUID?</h2>
                     </div>
                     <div class="space-y-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        <p>A UUID (Universally Unique Identifier) is a 128-bit value used to uniquely identify
-                            information. Version 4 UUIDs are randomly generated.</p>
-                        <p><strong>Format:</strong> xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx (where x is any hexadecimal
-                            digit and y is one of 8, 9, A, or B)</p>
-                        <p><strong>Use cases:</strong> Database primary keys, session identifiers, file names, API
-                            request IDs.</p>
+                        <p>A UUID (Universally Unique Identifier), also known as GUID (Globally Unique Identifier), is a 128-bit identifier that is unique across space and time. UUIDs are used to identify information in computer systems without requiring a central registration authority.</p>
+                        <p>With 2<sup>122</sup> possible UUID v4 values, the probability of generating duplicate UUIDs is astronomically low—you'd need to generate 1 billion UUIDs per second for 85 years to have a 50% chance of a collision.</p>
+                    </div>
+                </section>
+
+                <!-- UUID Format Breakdown -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="layers" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">UUID Format Breakdown</h2>
+                    </div>
+                    <div class="p-4 overflow-x-auto rounded-lg bg-neutral-50 dark:bg-neutral-800">
+                        <div class="mb-4 font-mono text-sm text-center">
+                            <span class="px-2 py-1 text-blue-700 bg-blue-100 rounded dark:bg-blue-900/30 dark:text-blue-400">550e8400</span>-<span class="px-2 py-1 text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">e29b</span>-<span class="px-2 py-1 text-orange-700 bg-orange-100 rounded dark:bg-orange-900/30 dark:text-orange-400">41d4</span>-<span class="px-2 py-1 text-purple-700 bg-purple-100 rounded dark:bg-purple-900/30 dark:text-purple-400">a716</span>-<span class="px-2 py-1 text-red-700 bg-red-100 rounded dark:bg-red-900/30 dark:text-red-400">446655440000</span>
+                        </div>
+                        <div class="grid gap-3 text-xs md:grid-cols-5">
+                            <div class="p-2 text-center border rounded border-blue-200 dark:border-blue-800">
+                                <div class="font-semibold text-blue-700 dark:text-blue-400">time-low</div>
+                                <div class="text-neutral-500">8 hex digits</div>
+                            </div>
+                            <div class="p-2 text-center border rounded border-green-200 dark:border-green-800">
+                                <div class="font-semibold text-green-700 dark:text-green-400">time-mid</div>
+                                <div class="text-neutral-500">4 hex digits</div>
+                            </div>
+                            <div class="p-2 text-center border rounded border-orange-200 dark:border-orange-800">
+                                <div class="font-semibold text-orange-700 dark:text-orange-400">time-hi + version</div>
+                                <div class="text-neutral-500">4 hex (v=4)</div>
+                            </div>
+                            <div class="p-2 text-center border rounded border-purple-200 dark:border-purple-800">
+                                <div class="font-semibold text-purple-700 dark:text-purple-400">clock-seq</div>
+                                <div class="text-neutral-500">4 hex digits</div>
+                            </div>
+                            <div class="p-2 text-center border rounded border-red-200 dark:border-red-800">
+                                <div class="font-semibold text-red-700 dark:text-red-400">node</div>
+                                <div class="text-neutral-500">12 hex digits</div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xs text-neutral-500 dark:text-neutral-400">Total: 32 hexadecimal digits (128 bits) separated by 4 hyphens = 36 characters</p>
+                    </div>
+                </section>
+
+                <!-- UUID Versions -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="git-branch" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">UUID Versions Explained</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Version</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Generation Method</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Use Case</th>
+                                    <th class="px-4 py-3 font-semibold text-left text-neutral-900 dark:text-white">Privacy</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-neutral-600 dark:text-neutral-400">
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-green-600 dark:text-green-400">v1</td>
+                                    <td class="px-4 py-3">Timestamp + MAC address</td>
+                                    <td class="px-4 py-3">Time-ordered IDs, logs</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-red-700 bg-red-100 rounded dark:bg-red-900/30 dark:text-red-400">Leaks info</span></td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-green-600 dark:text-green-400">v3</td>
+                                    <td class="px-4 py-3">MD5 hash of namespace + name</td>
+                                    <td class="px-4 py-3">Reproducible IDs from names</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-yellow-700 bg-yellow-100 rounded dark:bg-yellow-900/30 dark:text-yellow-400">Deterministic</span></td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-green-600 dark:text-green-400">v4</td>
+                                    <td class="px-4 py-3">Cryptographically random</td>
+                                    <td class="px-4 py-3">General purpose (most common)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Private</span></td>
+                                </tr>
+                                <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                    <td class="px-4 py-3 font-mono text-green-600 dark:text-green-400">v5</td>
+                                    <td class="px-4 py-3">SHA-1 hash of namespace + name</td>
+                                    <td class="px-4 py-3">Reproducible IDs (more secure than v3)</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-yellow-700 bg-yellow-100 rounded dark:bg-yellow-900/30 dark:text-yellow-400">Deterministic</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-mono text-green-600 dark:text-green-400">v7</td>
+                                    <td class="px-4 py-3">Unix timestamp + random</td>
+                                    <td class="px-4 py-3">Sortable IDs for databases</td>
+                                    <td class="px-4 py-3"><span class="px-2 py-0.5 text-xs font-medium text-green-700 bg-green-100 rounded dark:bg-green-900/30 dark:text-green-400">Private</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-400"><strong>Recommendation:</strong> Use UUID v4 for most applications. Use v7 if you need time-sortable IDs for database performance.</p>
+                </section>
+
+                <!-- Use Cases -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="target" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Common Use Cases</h2>
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="database" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">Database Primary Keys</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Replace auto-increment IDs with UUIDs for better security (no enumeration), distributed database compatibility, and easier data merging.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="cloud" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">Distributed Systems</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Generate unique IDs across multiple servers/services without coordination. Perfect for microservices and serverless architectures.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="file" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">File Names</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Generate unique file names for uploads to prevent collisions and avoid exposing sequential patterns.</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i data-lucide="link" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
+                                <span class="font-semibold text-neutral-900 dark:text-white">API Request Tracking</span>
+                            </div>
+                            <p class="text-sm text-neutral-600 dark:text-neutral-400">Assign unique request IDs for tracing requests across services, debugging, and log correlation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>UUID v1 vs v4: Which should I use?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <p class="mb-2"><strong>Use UUID v4</strong> in most cases. It's completely random and doesn't expose any information about when or where it was created.</p>
+                                <p><strong>Avoid UUID v1</strong> unless you specifically need time-ordering. V1 UUIDs expose your MAC address and creation timestamp, which can be privacy/security concerns.</p>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Are UUIDs truly unique?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">UUIDs are <strong>practically unique</strong>, not mathematically guaranteed unique. UUID v4 has 122 random bits, giving 5.3 × 10<sup>36</sup> possible values. The probability of collision is so astronomically small (1 in 2.7 quintillion for any two random UUIDs) that for all practical purposes, they can be treated as unique. You'd need to generate 103 trillion UUIDs to have a one-in-a-billion chance of a duplicate.</p>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What does the UUID format mean?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <p class="mb-2">A UUID like <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">550e8400-e29b-41d4-a716-446655440000</code> follows RFC 4122:</p>
+                                <ul class="space-y-1 list-disc list-inside">
+                                    <li>36 characters total (32 hex + 4 hyphens)</li>
+                                    <li>The <strong>13th character</strong> indicates version (4 = random)</li>
+                                    <li>The <strong>17th character</strong> (first after 3rd hyphen) is 8, 9, a, or b (variant indicator)</li>
+                                    <li>Case-insensitive (though lowercase is conventional)</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I generate UUIDs in code?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <pre class="p-2 mb-2 overflow-x-auto font-mono text-xs rounded bg-neutral-100 dark:bg-neutral-800">// JavaScript (modern browsers & Node.js)
+crypto.randomUUID()
+
+// Python
+import uuid
+str(uuid.uuid4())
+
+// Java
+java.util.UUID.randomUUID()
+
+// C# / .NET
+Guid.NewGuid().ToString()</pre>
+                            </div>
+                        </details>
+                        <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Should I use UUIDs or auto-increment IDs?</span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <p class="mb-2"><strong>Use UUIDs when:</strong></p>
+                                <ul class="mb-2 space-y-1 list-disc list-inside">
+                                    <li>Building distributed systems or microservices</li>
+                                    <li>IDs are exposed in URLs (prevents enumeration attacks)</li>
+                                    <li>Merging data from multiple sources</li>
+                                </ul>
+                                <p class="mb-2"><strong>Use auto-increment when:</strong></p>
+                                <ul class="space-y-1 list-disc list-inside">
+                                    <li>Single database with no distribution needs</li>
+                                    <li>Storage space is critical (UUID = 16 bytes vs 4-8 bytes)</li>
+                                    <li>Need natural ordering by creation time</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="link" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Related Tools</h2>
+                    </div>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/hash-generator" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                                <i data-lucide="hash" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Hash Generator</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">MD5, SHA-256 hash functions</div>
+                            </div>
+                        </a>
+                        <a href="/password-strength-analyzer" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                                <i data-lucide="shield" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Password Analyzer</div>
+                                <div class="text-xs text-neutral-500 dark:text-neutral-400">Check password strength</div>
+                            </div>
+                        </a>
                     </div>
                 </section>
             </div>

@@ -787,6 +787,285 @@
                     </p>
                 </article>
             </section>
+
+            <!-- JSON Examples Section -->
+            <section class="max-w-3xl mx-auto mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                        <i data-lucide="code" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                    </div>
+                    <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">5 JSON Examples</h2>
+                </div>
+                <div class="space-y-4">
+                    <!-- Example 1: API Response -->
+                    <div class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-700">
+                        <div class="px-4 py-2 border-b bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-white">1. REST API Response</span>
+                        </div>
+                        <pre class="p-4 overflow-x-auto font-mono text-xs bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">{
+  "status": "success",
+  "data": {
+    "user": {
+      "id": 12345,
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  },
+  "meta": {
+    "requestId": "abc-123",
+    "timestamp": "2025-01-17T10:30:00Z"
+  }
+}</pre>
+                    </div>
+                    
+                    <!-- Example 2: package.json -->
+                    <div class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-700">
+                        <div class="px-4 py-2 border-b bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-white">2. package.json (Node.js)</span>
+                        </div>
+                        <pre class="p-4 overflow-x-auto font-mono text-xs bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">{
+  "name": "my-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js",
+    "build": "npm run compile"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}</pre>
+                    </div>
+                    
+                    <!-- Example 3: Config file -->
+                    <div class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-700">
+                        <div class="px-4 py-2 border-b bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-white">3. Application Config</span>
+                        </div>
+                        <pre class="p-4 overflow-x-auto font-mono text-xs bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">{
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "ssl": true
+  },
+  "logging": {
+    "level": "info",
+    "format": "json"
+  },
+  "features": {
+    "darkMode": true,
+    "notifications": false
+  }
+}</pre>
+                    </div>
+                    
+                    <!-- Example 4: E-commerce product -->
+                    <div class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-700">
+                        <div class="px-4 py-2 border-b bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-white">4. E-commerce Product</span>
+                        </div>
+                        <pre class="p-4 overflow-x-auto font-mono text-xs bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">{
+  "product": {
+    "id": "SKU-001",
+    "name": "Wireless Headphones",
+    "price": 79.99,
+    "currency": "USD",
+    "inStock": true,
+    "tags": ["electronics", "audio", "wireless"],
+    "variants": [
+      {"color": "black", "stock": 50},
+      {"color": "white", "stock": 30}
+    ]
+  }
+}</pre>
+                    </div>
+                    
+                    <!-- Example 5: Error response -->
+                    <div class="overflow-hidden border rounded-lg border-neutral-200 dark:border-neutral-700">
+                        <div class="px-4 py-2 border-b bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-white">5. API Error Response</span>
+                        </div>
+                        <pre class="p-4 overflow-x-auto font-mono text-xs bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300">{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid input data",
+    "details": [
+      {"field": "email", "error": "Invalid email format"},
+      {"field": "age", "error": "Must be a positive number"}
+    ]
+  }
+}</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common JSON Errors Section -->
+            <section class="max-w-3xl mx-auto mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                    </div>
+                    <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Common JSON Errors & How to Fix Them</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 border border-red-200 rounded-lg bg-red-50 dark:bg-red-900/10 dark:border-red-900/30">
+                        <div class="flex items-start gap-3">
+                            <code class="px-2 py-1 font-mono text-xs text-red-700 rounded bg-red-100 dark:bg-red-900/30 dark:text-red-400">SyntaxError: Unexpected token</code>
+                        </div>
+                        <p class="mt-2 text-sm text-red-800 dark:text-red-200"><strong>Cause:</strong> Missing comma between elements, trailing comma, or invalid character.</p>
+                        <p class="mt-1 text-sm text-red-800 dark:text-red-200"><strong>Fix:</strong> Check for missing/extra commas, ensure strings use double quotes.</p>
+                    </div>
+                    <div class="p-4 border border-red-200 rounded-lg bg-red-50 dark:bg-red-900/10 dark:border-red-900/30">
+                        <div class="flex items-start gap-3">
+                            <code class="px-2 py-1 font-mono text-xs text-red-700 rounded bg-red-100 dark:bg-red-900/30 dark:text-red-400">SyntaxError: Unexpected end of JSON</code>
+                        </div>
+                        <p class="mt-2 text-sm text-red-800 dark:text-red-200"><strong>Cause:</strong> JSON string is incomplete or truncated.</p>
+                        <p class="mt-1 text-sm text-red-800 dark:text-red-200"><strong>Fix:</strong> Ensure all brackets {} and [] are properly closed.</p>
+                    </div>
+                    <div class="p-4 border border-red-200 rounded-lg bg-red-50 dark:bg-red-900/10 dark:border-red-900/30">
+                        <div class="flex items-start gap-3">
+                            <code class="px-2 py-1 font-mono text-xs text-red-700 rounded bg-red-100 dark:bg-red-900/30 dark:text-red-400">SyntaxError: Bad control character</code>
+                        </div>
+                        <p class="mt-2 text-sm text-red-800 dark:text-red-200"><strong>Cause:</strong> Unescaped special characters like newlines or tabs in strings.</p>
+                        <p class="mt-1 text-sm text-red-800 dark:text-red-200"><strong>Fix:</strong> Escape special characters: use <code class="px-1 rounded bg-white dark:bg-neutral-800">\n</code> for newline, <code class="px-1 rounded bg-white dark:bg-neutral-800">\t</code> for tab.</p>
+                    </div>
+                    <div class="p-4 border border-red-200 rounded-lg bg-red-50 dark:bg-red-900/10 dark:border-red-900/30">
+                        <div class="flex items-start gap-3">
+                            <code class="px-2 py-1 font-mono text-xs text-red-700 rounded bg-red-100 dark:bg-red-900/30 dark:text-red-400">Single quotes instead of double</code>
+                        </div>
+                        <p class="mt-2 text-sm text-red-800 dark:text-red-200"><strong>Cause:</strong> JSON requires double quotes for strings and keys, not single quotes.</p>
+                        <p class="mt-1 text-sm text-red-800 dark:text-red-200"><strong>Fix:</strong> Replace all single quotes with double quotes: <code class="px-1 rounded bg-white dark:bg-neutral-800">'value'</code> → <code class="px-1 rounded bg-white dark:bg-neutral-800">"value"</code></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="max-w-3xl mx-auto mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                    </div>
+                    <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                            <span>How do I format JSON in my code?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <p class="mb-2">In JavaScript, use <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">JSON.stringify()</code> with indentation:</p>
+                            <pre class="p-2 mb-2 font-mono text-xs rounded bg-neutral-100 dark:bg-neutral-800">JSON.stringify(obj, null, 2)  // 2 spaces
+JSON.stringify(obj, null, 4)  // 4 spaces
+JSON.stringify(obj, null, '\t')  // tabs</pre>
+                            <p>In Python: <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">json.dumps(obj, indent=2)</code></p>
+                        </div>
+                    </details>
+                    <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                            <span>What are JSON syntax rules?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <ul class="space-y-1 list-disc list-inside">
+                                <li>Data is in key/value pairs</li>
+                                <li>Keys must be strings in <strong>double quotes</strong></li>
+                                <li>Values can be: string, number, boolean, null, array, or object</li>
+                                <li>Data is separated by commas</li>
+                                <li>Curly braces {} hold objects</li>
+                                <li>Square brackets [] hold arrays</li>
+                                <li>No trailing commas allowed</li>
+                                <li>No comments allowed in strict JSON</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                            <span>What's the difference between JSON and JavaScript objects?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <table class="w-full mt-2">
+                                <thead>
+                                    <tr class="border-b border-neutral-200 dark:border-neutral-700">
+                                        <th class="py-2 pr-4 font-medium text-left">JSON</th>
+                                        <th class="py-2 font-medium text-left">JavaScript Object</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-xs">
+                                    <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                        <td class="py-2 pr-4">Keys must be double-quoted strings</td>
+                                        <td class="py-2">Keys can be unquoted identifiers</td>
+                                    </tr>
+                                    <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                        <td class="py-2 pr-4">Only double quotes for strings</td>
+                                        <td class="py-2">Single or double quotes</td>
+                                    </tr>
+                                    <tr class="border-b border-neutral-100 dark:border-neutral-800">
+                                        <td class="py-2 pr-4">No functions or undefined</td>
+                                        <td class="py-2">Can contain functions, undefined</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-2 pr-4">No trailing commas</td>
+                                        <td class="py-2">Trailing commas allowed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </details>
+                    <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                            <span>How do I validate JSON?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                            <p class="mb-2">Use our JSON formatter above for instant validation. Programmatically:</p>
+                            <pre class="p-2 font-mono text-xs rounded bg-neutral-100 dark:bg-neutral-800">try {
+  JSON.parse(jsonString);
+  console.log('Valid JSON');
+} catch (e) {
+  console.log('Invalid:', e.message);
+}</pre>
+                        </div>
+                    </details>
+                    <details class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                        <summary class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                            <span>Can JSON have comments?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                        </summary>
+                        <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">No, strict JSON does not support comments. However, some parsers (like <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">JSON5</code> or <code class="px-1 rounded bg-neutral-100 dark:bg-neutral-800">JSONC</code> used by VS Code) allow comments. For configuration files that need comments, consider using YAML or JSON5 instead.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related Tools -->
+            <section class="max-w-3xl mx-auto mb-12">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                        <i data-lucide="link" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                    </div>
+                    <h2 class="text-xl font-medium font-display text-neutral-900 dark:text-white">Related Tools</h2>
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <a href="/jwt-decoder" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                            <i data-lucide="key" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-neutral-900 dark:text-white">JWT Decoder</div>
+                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Decode JSON Web Tokens</div>
+                        </div>
+                    </a>
+                    <a href="/code-formatter" class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                            <i data-lucide="code" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-neutral-900 dark:text-white">Code Formatter</div>
+                            <div class="text-xs text-neutral-500 dark:text-neutral-400">Format multiple languages</div>
+                        </div>
+                    </a>
+                </div>
+            </section>
         </div>
 
     </main>

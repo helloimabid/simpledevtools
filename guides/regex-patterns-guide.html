@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Regex Patterns Cheat Sheet - Complete Regular Expressions Guide</title>
+    <meta name="description"
+        content="Master regular expressions with our comprehensive regex patterns guide. Learn email validation, URL matching, phone numbers, and 50+ ready-to-use patterns.">
+    <meta name="keywords"
+        content="regex patterns, regular expressions guide, email regex, url regex, phone number regex, regex cheat sheet, regex tutorial">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://simpledevtools.tech/guides/regex-patterns-guide" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Custom Styles for Guide -->
+    <style>
+        .prose { color: rgb(115 115 120); max-width: none; }
+        .prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 1rem; color: rgb(24 24 27); border-bottom: 1px solid rgb(229 229 229); padding-bottom: 0.5rem; }
+        .dark .prose h2 { color: rgb(250 250 250); border-bottom-color: rgb(38 38 38); }
+        .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; color: rgb(24 24 27); }
+        .dark .prose h3 { color: rgb(250 250 250); }
+        .prose p { margin-bottom: 1rem; line-height: 1.75; }
+        .prose ul, .prose ol { margin-bottom: 1rem; }
+        .prose li { margin-bottom: 0.5rem; }
+        .prose code { background-color: rgb(243 244 246); color: rgb(239 68 68); padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .dark .prose code { background-color: rgb(31 41 55); color: rgb(248 113 113); }
+        .prose strong { color: rgb(24 24 27); font-weight: 600; }
+        .dark .prose strong { color: rgb(250 250 250); }
+        .scroll-mt-24 { scroll-margin-top: 6rem; }
+    </style>
+
+    <script src="../dist/js/lucide.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use Regular Expressions - Complete Regex Guide",
+      "description": "A comprehensive guide to regular expressions with 50+ patterns for email, URL, phone, and more.",
+      "totalTime": "PT15M",
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "Regex Tester"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Learn Basic Syntax",
+          "text": "Understand character classes, quantifiers, and anchors."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Copy Patterns",
+          "text": "Use ready-made patterns for common validation tasks."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Test Your Regex",
+          "text": "Use the Regex Tester tool to validate your patterns."
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://simpledevtools.tech/guides"},
+        {"@type": "ListItem", "position": 3, "name": "Regex Patterns Guide", "item": "https://simpledevtools.tech/guides/regex-patterns-guide"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the regex pattern for email validation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A common email regex pattern is: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$ This validates standard email formats like user@example.com."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I match a URL with regex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the pattern: ^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$ This matches both HTTP and HTTPS URLs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between * and + in regex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The * quantifier matches zero or more occurrences (the preceding element is optional), while + matches one or more occurrences (at least one is required)."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/guides" class="underline">Guides</a> |
+            <a href="/regex-tester" class="underline">Regex Tester</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-500/10 dark:bg-red-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-neutral-900 dark:hover:text-white">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <a href="/guides" class="hover:text-neutral-900 dark:hover:text-white">Guides</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-neutral-900 dark:text-white">Regex Patterns</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-red-600 border border-red-100 rounded-full bg-red-50 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/30">
+                    <i data-lucide="regex" class="w-3 h-3"></i>
+                    <span>Developer Guide</span>
+                </div>
+                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Regular Expressions<br>Cheat Sheet & Guide
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Master regex with 50+ ready-to-use patterns for email, URL, phone validation, and more.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="/regex-tester" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        Open Regex Tester
+                    </a>
+                    <a href="#patterns" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <i data-lucide="list" class="w-4 h-4"></i>
+                        Jump to Patterns
+                    </a>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div class="p-6 mb-12 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#basics" class="text-red-600 dark:text-red-400 hover:underline">1. Regex Basics</a></li>
+                    <li><a href="#character-classes" class="text-red-600 dark:text-red-400 hover:underline">2. Character Classes</a></li>
+                    <li><a href="#quantifiers" class="text-red-600 dark:text-red-400 hover:underline">3. Quantifiers</a></li>
+                    <li><a href="#anchors" class="text-red-600 dark:text-red-400 hover:underline">4. Anchors & Boundaries</a></li>
+                    <li><a href="#groups" class="text-red-600 dark:text-red-400 hover:underline">5. Groups & Lookaround</a></li>
+                    <li><a href="#patterns" class="text-red-600 dark:text-red-400 hover:underline">6. Ready-to-Use Patterns</a></li>
+                    <li><a href="#javascript" class="text-red-600 dark:text-red-400 hover:underline">7. Regex in JavaScript</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <article class="prose dark:prose-invert">
+                <section id="basics" class="scroll-mt-24">
+                    <h2>1. Regex Basics</h2>
+                    <p>Regular expressions (regex) are patterns used to match character combinations in strings. They're used for validation, search/replace, and text extraction.</p>
+                    
+                    <div class="p-4 my-6 border rounded-lg bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                        <p class="mb-2 font-semibold text-blue-900 dark:text-blue-300">Key Concepts:</p>
+                        <ul class="text-sm text-blue-800 dark:text-blue-200">
+                            <li><strong>Literal characters</strong> match themselves: <code>cat</code> matches "cat"</li>
+                            <li><strong>Special characters</strong> have special meaning: <code>. * + ? ^ $ [ ] { } ( ) | \</code></li>
+                            <li><strong>Escape special chars</strong> with backslash: <code>\.</code> matches a literal period</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="character-classes" class="scroll-mt-24">
+                    <h2>2. Character Classes</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Pattern</th>
+                                    <th class="p-3 text-left">Description</th>
+                                    <th class="p-3 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr><td class="p-3"><code>.</code></td><td class="p-3">Any character (except newline)</td><td class="p-3">a.c → abc, a1c, a@c</td></tr>
+                                <tr><td class="p-3"><code>\d</code></td><td class="p-3">Digit [0-9]</td><td class="p-3">\d{3} → 123, 456</td></tr>
+                                <tr><td class="p-3"><code>\D</code></td><td class="p-3">Non-digit</td><td class="p-3">\D+ → abc, @#$</td></tr>
+                                <tr><td class="p-3"><code>\w</code></td><td class="p-3">Word character [a-zA-Z0-9_]</td><td class="p-3">\w+ → hello_123</td></tr>
+                                <tr><td class="p-3"><code>\W</code></td><td class="p-3">Non-word character</td><td class="p-3">\W → @, #, space</td></tr>
+                                <tr><td class="p-3"><code>\s</code></td><td class="p-3">Whitespace (space, tab, newline)</td><td class="p-3">a\sb → a b</td></tr>
+                                <tr><td class="p-3"><code>\S</code></td><td class="p-3">Non-whitespace</td><td class="p-3">\S+ → hello</td></tr>
+                                <tr><td class="p-3"><code>[abc]</code></td><td class="p-3">Any of a, b, or c</td><td class="p-3">[aeiou] → vowels</td></tr>
+                                <tr><td class="p-3"><code>[^abc]</code></td><td class="p-3">Not a, b, or c</td><td class="p-3">[^0-9] → non-digits</td></tr>
+                                <tr><td class="p-3"><code>[a-z]</code></td><td class="p-3">Range a to z</td><td class="p-3">[A-Za-z] → letters</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="quantifiers" class="scroll-mt-24">
+                    <h2>3. Quantifiers</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Pattern</th>
+                                    <th class="p-3 text-left">Description</th>
+                                    <th class="p-3 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr><td class="p-3"><code>*</code></td><td class="p-3">0 or more</td><td class="p-3">a* → "", a, aa, aaa</td></tr>
+                                <tr><td class="p-3"><code>+</code></td><td class="p-3">1 or more</td><td class="p-3">a+ → a, aa, aaa (not "")</td></tr>
+                                <tr><td class="p-3"><code>?</code></td><td class="p-3">0 or 1 (optional)</td><td class="p-3">colou?r → color, colour</td></tr>
+                                <tr><td class="p-3"><code>{n}</code></td><td class="p-3">Exactly n times</td><td class="p-3">\d{4} → 2024</td></tr>
+                                <tr><td class="p-3"><code>{n,}</code></td><td class="p-3">n or more times</td><td class="p-3">\d{2,} → 12, 123, 1234</td></tr>
+                                <tr><td class="p-3"><code>{n,m}</code></td><td class="p-3">Between n and m times</td><td class="p-3">\d{2,4} → 12, 123, 1234</td></tr>
+                                <tr><td class="p-3"><code>*?</code></td><td class="p-3">Non-greedy * (match minimum)</td><td class="p-3">&lt;.*?&gt; → first tag only</td></tr>
+                                <tr><td class="p-3"><code>+?</code></td><td class="p-3">Non-greedy +</td><td class="p-3">\d+? → single digit</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="anchors" class="scroll-mt-24">
+                    <h2>4. Anchors & Boundaries</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Pattern</th>
+                                    <th class="p-3 text-left">Description</th>
+                                    <th class="p-3 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr><td class="p-3"><code>^</code></td><td class="p-3">Start of string/line</td><td class="p-3">^Hello → starts with Hello</td></tr>
+                                <tr><td class="p-3"><code>$</code></td><td class="p-3">End of string/line</td><td class="p-3">world$ → ends with world</td></tr>
+                                <tr><td class="p-3"><code>\b</code></td><td class="p-3">Word boundary</td><td class="p-3">\bcat\b → "cat" not "cats"</td></tr>
+                                <tr><td class="p-3"><code>\B</code></td><td class="p-3">Non-word boundary</td><td class="p-3">\Bcat → "scat" not "cat"</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="groups" class="scroll-mt-24">
+                    <h2>5. Groups & Lookaround</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Pattern</th>
+                                    <th class="p-3 text-left">Description</th>
+                                    <th class="p-3 text-left">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr><td class="p-3"><code>(abc)</code></td><td class="p-3">Capture group</td><td class="p-3">(ha)+ → haha</td></tr>
+                                <tr><td class="p-3"><code>(?:abc)</code></td><td class="p-3">Non-capture group</td><td class="p-3">(?:ha)+ → match but don't capture</td></tr>
+                                <tr><td class="p-3"><code>(?=abc)</code></td><td class="p-3">Positive lookahead</td><td class="p-3">\d(?=px) → digit before px</td></tr>
+                                <tr><td class="p-3"><code>(?!abc)</code></td><td class="p-3">Negative lookahead</td><td class="p-3">\d(?!px) → digit not before px</td></tr>
+                                <tr><td class="p-3"><code>(?&lt;=abc)</code></td><td class="p-3">Positive lookbehind</td><td class="p-3">(?&lt;=\$)\d+ → digits after $</td></tr>
+                                <tr><td class="p-3"><code>(?&lt;!abc)</code></td><td class="p-3">Negative lookbehind</td><td class="p-3">(?&lt;!\$)\d+ → digits not after $</td></tr>
+                                <tr><td class="p-3"><code>a|b</code></td><td class="p-3">Alternation (or)</td><td class="p-3">cat|dog → cat or dog</td></tr>
+                                <tr><td class="p-3"><code>\1</code></td><td class="p-3">Backreference</td><td class="p-3">(.)\1 → repeated char (aa, bb)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="patterns" class="scroll-mt-24">
+                    <h2>6. Ready-to-Use Patterns</h2>
+                    <p>Copy these patterns directly into your code. Click "Test" to try them in our Regex Tester.</p>
+
+                    <h3>📧 Email & Contact</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Email Address</span>
+                                <a href="/regex-tester" class="text-xs text-red-600 hover:underline">Test →</a>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Matches: user@example.com, name.surname@company.co.uk</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Phone Number (International)</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^\+?[1-9]\d{1,14}$</code>
+                            <p class="mt-2 text-xs text-neutral-500">E.164 format: +14155551234, +442071234567</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">US Phone Number</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^\(?([0-9]{3})\)?[-.\s]?([0-9]{3})[-.\s]?([0-9]{4})$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Matches: (555) 123-4567, 555-123-4567, 555.123.4567</p>
+                        </div>
+                    </div>
+
+                    <h3>🌐 URLs & Web</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">URL (HTTP/HTTPS)</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$</code>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">IPv4 Address</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Matches: 192.168.1.1, 10.0.0.255 (validates 0-255 range)</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Hex Color Code</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Matches: #ff5733, #FFF, abc123</p>
+                        </div>
+                    </div>
+
+                    <h3>🔐 Security & Passwords</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Strong Password</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Min 8 chars with uppercase, lowercase, number, special char</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">UUID</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$</code>
+                        </div>
+                    </div>
+
+                    <h3>📅 Dates & Numbers</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Date (YYYY-MM-DD)</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$</code>
+                            <p class="mt-2 text-xs text-neutral-500">ISO 8601 format: 2024-01-17</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">Credit Card Number</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13})$</code>
+                            <p class="mt-2 text-xs text-neutral-500">Visa, Mastercard, Amex (basic validation only)</p>
+                        </div>
+                        <div class="p-4 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-semibold text-neutral-900 dark:text-white">US ZIP Code</span>
+                            </div>
+                            <code class="block p-2 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-800">^\d{5}(-\d{4})?$</code>
+                            <p class="mt-2 text-xs text-neutral-500">5-digit or ZIP+4: 12345, 12345-6789</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="javascript" class="scroll-mt-24">
+                    <h2>7. Regex in JavaScript</h2>
+                    <div class="p-4 overflow-x-auto font-mono text-sm border rounded-lg bg-neutral-900 text-neutral-100 border-neutral-700">
+<pre>// Create regex
+const regex = /pattern/flags;
+const regex2 = new RegExp('pattern', 'flags');
+
+// Flags
+// g = global (find all matches)
+// i = case-insensitive
+// m = multiline (^ and $ match line start/end)
+
+// Test if matches
+regex.test('string');  // returns true/false
+
+// Find matches
+'string'.match(/pattern/g);  // returns array or null
+[...'string'.matchAll(/pattern/g)];  // all matches with groups
+
+// Replace
+'hello world'.replace(/world/, 'regex');  // 'hello regex'
+'hello world'.replace(/o/g, '0');  // 'hell0 w0rld'
+
+// Split
+'a,b;c'.split(/[,;]/);  // ['a', 'b', 'c']
+
+// Extract groups
+const match = 'John Doe'.match(/(\w+) (\w+)/);
+// match[0] = 'John Doe' (full match)
+// match[1] = 'John' (first group)
+// match[2] = 'Doe' (second group)</pre>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div class="p-6 my-12 text-center border rounded-lg bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800">
+                    <h3 class="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">Ready to test your regex?</h3>
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">Try these patterns in our interactive Regex Tester.</p>
+                    <a href="/regex-tester" class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-red-600 rounded-lg hover:bg-red-700">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        Open Regex Tester
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <script src="layout-guides.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+</body>
+</html>
