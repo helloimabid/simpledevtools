@@ -305,6 +305,7 @@ function initializeMobileMenu() {
     /**
      * Create mobile menu HTML structure
      */
+    
     const createMobileMenu = () => {
       const menu = document.createElement("div");
       menu.id = "mobile-menu";
