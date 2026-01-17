@@ -14,19 +14,23 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
     <title>How to Use the JSON Formatter & Converter - Complete Guide</title>
-    <meta name="description" content="Master the JSON Formatter tool. Learn how to validate, beautify, minify, and convert JSON to TypeScript, YAML, and CSV with our step-by-step guide.">
-    <meta name="keywords" content="json formatter guide, how to format json, convert json to typescript, json validation tutorial, fix invalid json">
+    <meta name="description"
+        content="Master the JSON Formatter tool. Learn how to validate, beautify, minify, and convert JSON to TypeScript, YAML, and CSV with our step-by-step guide.">
+    <meta name="keywords"
+        content="json formatter guide, how to format json, convert json to typescript, json validation tutorial, fix invalid json">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://simpledevtools.tech/guides/json-formatter-guide" />
 
     <!-- Google Fonts (Matches Tool) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
 
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
@@ -38,7 +42,7 @@
             color: rgb(115 115 120);
             max-width: none;
         }
-        
+
         .prose h2 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -48,12 +52,12 @@
             border-bottom: 1px solid rgb(229 229 229);
             padding-bottom: 0.5rem;
         }
-        
+
         .dark .prose h2 {
             color: rgb(250 250 250);
             border-bottom-color: rgb(38 38 38);
         }
-        
+
         .prose h3 {
             font-size: 1.25rem;
             font-weight: 600;
@@ -61,24 +65,25 @@
             margin-bottom: 0.75rem;
             color: rgb(24 24 27);
         }
-        
+
         .dark .prose h3 {
             color: rgb(250 250 250);
         }
-        
+
         .prose p {
             margin-bottom: 1rem;
             line-height: 1.75;
         }
-        
-        .prose ul, .prose ol {
+
+        .prose ul,
+        .prose ol {
             margin-bottom: 1rem;
         }
-        
+
         .prose li {
             margin-bottom: 0.5rem;
         }
-        
+
         .prose code {
             background-color: rgb(243 244 246);
             color: rgb(239 68 68);
@@ -86,21 +91,21 @@
             border-radius: 0.25rem;
             font-size: 0.875em;
         }
-        
+
         .dark .prose code {
             background-color: rgb(31 41 55);
             color: rgb(248 113 113);
         }
-        
+
         .prose strong {
             color: rgb(24 24 27);
             font-weight: 600;
         }
-        
+
         .dark .prose strong {
             color: rgb(250 250 250);
         }
-        
+
         /* Fix figure captions */
         .prose figcaption {
             font-size: 0.875rem;
@@ -108,24 +113,24 @@
             text-align: center;
             margin-top: 0.5rem;
         }
-        
+
         .dark .prose figcaption {
             color: rgb(156 163 175);
         }
-        
+
         /* Custom list styles */
         .list-decimal {
             list-style-type: decimal;
         }
-        
+
         .marker\:text-indigo-500 li::marker {
             color: rgb(99 102 241);
         }
-        
+
         .dark .marker\:text-indigo-500 li::marker {
             color: rgb(129 140 248);
         }
-        
+
         /* Scroll margin for anchors */
         .scroll-mt-24 {
             scroll-margin-top: 6rem;
@@ -133,7 +138,7 @@
     </style>
 
     <!-- Iconify/Lucide Icons -->
-<script src="../dist/js/lucide.min.js"></script>
+    <script src="../dist/js/lucide.min.js"></script>
     <!-- Structured Data (HowTo Schema) -->
     <script type="application/ld+json">
     {
@@ -172,36 +177,43 @@
     </script>
 </head>
 
-<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
-    
+
 
     <!-- Background Effects -->
     <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
 
     <main class="relative z-10 px-4 pt-32 pb-20 grow sm:px-6">
         <div class="max-w-4xl mx-auto">
-            
+
             <!-- Hero Section -->
             <div class="mb-16 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-indigo-600 border border-indigo-100 rounded-full bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-900/30">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-indigo-600 border border-indigo-100 rounded-full bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-900/30">
                     <i data-lucide="book-open" class="w-3 h-3"></i>
                     <span>Official User Guide</span>
                 </div>
-                <h1 class="mb-6 text-4xl font-bold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                <h1
+                    class="mb-6 text-4xl font-bold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     Mastering the JSON Formatter
                 </h1>
                 <p class="max-w-2xl mx-auto text-xl leading-relaxed text-neutral-500 dark:text-neutral-400">
                     A complete guide to formatting, verifying, fixing, and converting your data efficiently.
                 </p>
-                
+
                 <!-- Tool Link -->
                 <div class="flex justify-center mt-8">
-                    <a href="/json-formatter" class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white transition-colors bg-indigo-600 rounded-lg shadow-xs hover:bg-indigo-700">
+                    <a href="/json-formatter"
+                        class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white transition-colors bg-indigo-600 rounded-lg shadow-xs hover:bg-indigo-700">
                         <i data-lucide="play" class="w-4 h-4"></i>
                         Try JSON Formatter
                     </a>
@@ -209,47 +221,61 @@
             </div>
 
             <!-- Table of Contents -->
-            <div class="p-6 mb-12 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+            <div
+                class="p-6 mb-12 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
                 <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold font-display">
                     <i data-lucide="list" class="w-4 h-4 text-indigo-500"></i>
                     Quick Navigation
                 </h2>
                 <div class="grid grid-cols-1 gap-3 text-sm md:grid-cols-2">
-                    <a href="#getting-started" class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href="#getting-started"
+                        class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
                         <i data-lucide="arrow-right" class="w-3 h-3"></i> Getting Started
                     </a>
-                    <a href="#formatting" class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href="#formatting"
+                        class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
                         <i data-lucide="arrow-right" class="w-3 h-3"></i> Formatting & Minifying
                     </a>
-                    <a href="#magic-fix" class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href="#magic-fix"
+                        class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
                         <i data-lucide="arrow-right" class="w-3 h-3"></i> Fixing Errors (Magic Fix)
                     </a>
-                    <a href="#converters" class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href="#converters"
+                        class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
                         <i data-lucide="arrow-right" class="w-3 h-3"></i> Converters (TS, YAML, CSV)
                     </a>
-                    <a href="#tree-view" class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <a href="#tree-view"
+                        class="flex items-center gap-2 transition-colors text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400">
                         <i data-lucide="arrow-right" class="w-3 h-3"></i> Using Tree View
                     </a>
                 </div>
             </div>
 
             <!-- Main Content Area -->
-            <article class="prose prose-neutral dark:prose-invert prose-headings:font-display prose-headings:font-semibold prose-img:rounded-xl max-w-none">
-                
+            <article
+                class="prose prose-neutral dark:prose-invert prose-headings:font-display prose-headings:font-semibold prose-img:rounded-xl max-w-none">
+
                 <!-- Section 1: Getting Started -->
                 <section id="getting-started" class="mb-16 scroll-mt-24">
                     <h2>1. Getting Started</h2>
                     <p>There are three ways to get your data into the formatter:</p>
                     <ol class="pl-5 space-y-2 list-decimal marker:text-indigo-500 marker:font-bold">
                         <li><strong>Paste Directly:</strong> Simply paste your code into the left-hand input panel.</li>
-                        <li><strong>File Upload:</strong> Click the <span class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded-sm text-xs font-mono">Upload</span> button to select a <code>.json</code> or <code>.txt</code> file from your computer.</li>
-                        <li><strong>Drag & Drop:</strong> Drag a file from your desktop directly onto the editor area.</li>
+                        <li><strong>File Upload:</strong> Click the <span
+                                class="bg-neutral-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded-sm text-xs font-mono">Upload</span>
+                            button to select a <code>.json</code> or <code>.txt</code> file from your computer.</li>
+                        <li><strong>Drag & Drop:</strong> Drag a file from your desktop directly onto the editor area.
+                        </li>
                     </ol>
 
                     <!-- PLACEHOLDER 1: INPUT METHODS -->
-                    <figure class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
-                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b114002948fcf34d/view?project=sadmanabid&mode=admin" alt="Input methods showing paste and upload options" class="object-cover w-full h-full" loading="lazy">
-                        <figcaption class="p-3 text-sm text-center bg-white border-t text-neutral-500 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800">
+                    <figure
+                        class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
+                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b114002948fcf34d/view?project=sadmanabid&mode=admin"
+                            alt="Input methods showing paste and upload options" class="object-cover w-full h-full"
+                            loading="lazy">
+                        <figcaption
+                            class="p-3 text-sm text-center bg-white border-t text-neutral-500 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800">
                             Figure 1: The input interface supports pasting, uploading, and drag-and-drop.
                         </figcaption>
                     </figure>
@@ -261,29 +287,38 @@
                     <p>Once your data is loaded, you can transform it using the toolbar buttons:</p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
-                            <div class="mt-1 p-1.5 rounded-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                            <div
+                                class="mt-1 p-1.5 rounded-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
                                 <i data-lucide="align-left" class="w-4 h-4"></i>
                             </div>
                             <div>
                                 <strong class="text-neutral-900 dark:text-white">Beautify (2 or 4 Spaces)</strong>
-                                <p class="m-0 text-sm text-neutral-500">Expands the code into a readable structure with proper indentation. 2 spaces is standard for JavaScript/JSON; 4 spaces provides more visual separation.</p>
+                                <p class="m-0 text-sm text-neutral-500">Expands the code into a readable structure with
+                                    proper indentation. 2 spaces is standard for JavaScript/JSON; 4 spaces provides more
+                                    visual separation.</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <div class="mt-1 p-1.5 rounded-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                            <div
+                                class="mt-1 p-1.5 rounded-sm bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
                                 <i data-lucide="minimize-2" class="w-4 h-4"></i>
                             </div>
                             <div>
                                 <strong class="text-neutral-900 dark:text-white">Minify</strong>
-                                <p class="m-0 text-sm text-neutral-500">Removes all whitespace and newlines to compress the data. Ideal for production environments to save bandwidth.</p>
+                                <p class="m-0 text-sm text-neutral-500">Removes all whitespace and newlines to compress
+                                    the data. Ideal for production environments to save bandwidth.</p>
                             </div>
                         </li>
                     </ul>
 
                     <!-- PLACEHOLDER 2: FORMATTED VS MINIFIED -->
-                    <figure class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
-                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966afbc0020237c7fb6/view?project=sadmanabid&mode=admin" alt="Comparison of minified vs beautified JSON" class="object-cover w-full h-full" loading="lazy">
-                        <figcaption class="p-3 text-sm text-center bg-white border-t text-neutral-500 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800">
+                    <figure
+                        class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
+                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966afbc0020237c7fb6/view?project=sadmanabid&mode=admin"
+                            alt="Comparison of minified vs beautified JSON" class="object-cover w-full h-full"
+                            loading="lazy">
+                        <figcaption
+                            class="p-3 text-sm text-center bg-white border-t text-neutral-500 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800">
                             Figure 2: Transforming raw data into readable format instantly.
                         </figcaption>
                     </figure>
@@ -293,7 +328,8 @@
                 <section id="magic-fix" class="mb-16 scroll-mt-24">
                     <h2>3. Repairing Invalid JSON</h2>
                     <p>
-                        It's common to copy object data from JavaScript files that isn't technically valid JSON. Our <strong>Magic Fix</strong> feature solves this automatically.
+                        It's common to copy object data from JavaScript files that isn't technically valid JSON. Our
+                        <strong>Magic Fix</strong> feature solves this automatically.
                     </p>
                     <div class="p-4 my-4 border-l-4 rounded-r-lg bg-amber-50 dark:bg-amber-900/10 border-amber-500">
                         <h4 class="flex items-center gap-2 m-0 mb-2 font-bold text-amber-800 dark:text-amber-200">
@@ -305,90 +341,120 @@
                             <li><strong>Unquoted Keys:</strong> <code>{id: 1}</code> → <code>{"id": 1}</code></li>
                         </ul>
                     </div>
-                    <p>Simply click the <span class="font-medium text-amber-600 dark:text-amber-400">Fix</span> button in the toolbar if you see a red error banner.</p>
+                    <p>Simply click the <span class="font-medium text-amber-600 dark:text-amber-400">Fix</span> button
+                        in the toolbar if you see a red error banner.</p>
 
                     <!-- PLACEHOLDER 3: ERROR FIXING -->
-                    <figure class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
-                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b17d002b3d4382f1/view?project=sadmanabid&mode=admin" alt="The Magic Fix feature repairing invalid JSON" class="object-cover w-full h-full" loading="lazy">
+                    <figure
+                        class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
+                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b17d002b3d4382f1/view?project=sadmanabid&mode=admin"
+                            alt="The Magic Fix feature repairing invalid JSON" class="object-cover w-full h-full"
+                            loading="lazy">
                     </figure>
                 </section>
 
                 <!-- Section 4: Converters -->
                 <section id="converters" class="mb-16 scroll-mt-24">
                     <h2>4. Converting to Other Formats</h2>
-                    <p>Developers often need to translate JSON into other formats for config files or data analysis. Use the <strong>Convert To...</strong> dropdown to switch modes:</p>
-                    
+                    <p>Developers often need to translate JSON into other formats for config files or data analysis. Use
+                        the <strong>Convert To...</strong> dropdown to switch modes:</p>
+
                     <div class="grid grid-cols-1 gap-4 mb-6 md:grid-cols-3 not-prose">
-                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+                        <div
+                            class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
                             <div class="flex items-center gap-2 mb-2 font-semibold text-blue-600 dark:text-blue-400">
                                 <i data-lucide="code-2" class="w-4 h-4"></i> TypeScript
                             </div>
-                            <p class="text-xs text-neutral-500">Generates TypeScript interfaces/types automatically. Great for API response typing.</p>
+                            <p class="text-xs text-neutral-500">Generates TypeScript interfaces/types automatically.
+                                Great for API response typing.</p>
                         </div>
-                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
-                            <div class="flex items-center gap-2 mb-2 font-semibold text-purple-600 dark:text-purple-400">
+                        <div
+                            class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+                            <div
+                                class="flex items-center gap-2 mb-2 font-semibold text-purple-600 dark:text-purple-400">
                                 <i data-lucide="file-code" class="w-4 h-4"></i> YAML
                             </div>
-                            <p class="text-xs text-neutral-500">Converts to YAML. Essential for DevOps, Kubernetes, and configuration files.</p>
+                            <p class="text-xs text-neutral-500">Converts to YAML. Essential for DevOps, Kubernetes, and
+                                configuration files.</p>
                         </div>
-                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
-                            <div class="flex items-center gap-2 mb-2 font-semibold text-emerald-600 dark:text-emerald-400">
+                        <div
+                            class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
+                            <div
+                                class="flex items-center gap-2 mb-2 font-semibold text-emerald-600 dark:text-emerald-400">
                                 <i data-lucide="table" class="w-4 h-4"></i> CSV
                             </div>
-                            <p class="text-xs text-neutral-500">Flattens nested JSON into rows and columns. Perfect for Excel or Google Sheets analysis.</p>
+                            <p class="text-xs text-neutral-500">Flattens nested JSON into rows and columns. Perfect for
+                                Excel or Google Sheets analysis.</p>
                         </div>
                     </div>
 
                     <!-- PLACEHOLDER 4: CONVERSION -->
-                    <figure class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
-                            <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b20a002434abe711/view?project=sadmanabid&mode=admin" alt="Converting JSON to TypeScript interfaces" class="object-cover w-full h-full" loading="lazy">
+                    <figure
+                        class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
+                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b20a002434abe711/view?project=sadmanabid&mode=admin"
+                            alt="Converting JSON to TypeScript interfaces" class="object-cover w-full h-full"
+                            loading="lazy">
                     </figure>
                 </section>
 
                 <!-- Section 5: Tree View -->
                 <section id="tree-view" class="mb-16 scroll-mt-24">
                     <h2>5. Exploring with Tree View</h2>
-                    <p>For large, deeply nested files, the standard text view can be overwhelming. Switch to the <strong>Tree</strong> tab to browse your data interactively.</p>
+                    <p>For large, deeply nested files, the standard text view can be overwhelming. Switch to the
+                        <strong>Tree</strong> tab to browse your data interactively.</p>
                     <ul class="pl-5 mb-4 space-y-2 list-disc">
                         <li><strong>Expand/Collapse:</strong> Click arrows to open or close objects.</li>
-                        <li><strong>Deep Search:</strong> Use the filter input to find specific keys or values. The tree will automatically expand to show matches.</li>
-                        <li><strong>Visual Types:</strong> Strings, numbers, and booleans are color-coded for easier scanning.</li>
+                        <li><strong>Deep Search:</strong> Use the filter input to find specific keys or values. The tree
+                            will automatically expand to show matches.</li>
+                        <li><strong>Visual Types:</strong> Strings, numbers, and booleans are color-coded for easier
+                            scanning.</li>
                     </ul>
 
                     <!-- PLACEHOLDER 5: TREE VIEW -->
-                    <figure class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
-                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b44400375d9ca188/view?project=sadmanabid&mode=admin" alt="Using the Tree View to search and filter data" class="object-cover w-full h-full" loading="lazy">
+                    <figure
+                        class="my-8 overflow-hidden bg-white border rounded-lg shadow-xs border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
+                        <img src="https://sgp.cloud.appwrite.io/v1/storage/buckets/6966af53000847a921ed/files/6966b44400375d9ca188/view?project=sadmanabid&mode=admin"
+                            alt="Using the Tree View to search and filter data" class="object-cover w-full h-full"
+                            loading="lazy">
                     </figure>
                 </section>
             </article>
 
             <!-- FAQ Section -->
-            <section class="p-8 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
-                <h2 class="mb-8 text-2xl font-semibold font-display text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
-                
+            <section
+                class="p-8 bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                <h2 class="mb-8 text-2xl font-semibold font-display text-neutral-900 dark:text-white">Frequently Asked
+                    Questions</h2>
+
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div>
                         <h3 class="mb-2 font-semibold text-neutral-900 dark:text-white">Is my data secure?</h3>
                         <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                            Yes. This tool processes all data <strong>locally in your browser</strong>. Your JSON is never sent to any server, ensuring complete privacy for sensitive information.
+                            Yes. This tool processes all data <strong>locally in your browser</strong>. Your JSON is
+                            never sent to any server, ensuring complete privacy for sensitive information.
                         </p>
                     </div>
                     <div>
                         <h3 class="mb-2 font-semibold text-neutral-900 dark:text-white">Does it work offline?</h3>
                         <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                            Since the processing is client-side, the tool continues to work even if you lose internet connection after the page loads.
+                            Since the processing is client-side, the tool continues to work even if you lose internet
+                            connection after the page loads.
                         </p>
                     </div>
                     <div>
                         <h3 class="mb-2 font-semibold text-neutral-900 dark:text-white">Can I format huge files?</h3>
                         <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                            Yes, but performance depends on your computer's memory. We handle files up to several MBs easily. Extremely large files (100MB+) might slow down the browser.
+                            Yes, but performance depends on your computer's memory. We handle files up to several MBs
+                            easily. Extremely large files (100MB+) might slow down the browser.
                         </p>
                     </div>
                     <div>
-                        <h3 class="mb-2 font-semibold text-neutral-900 dark:text-white">Why does CSV conversion fail?</h3>
+                        <h3 class="mb-2 font-semibold text-neutral-900 dark:text-white">Why does CSV conversion fail?
+                        </h3>
                         <p class="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                            CSV conversion works best with <strong>arrays of objects</strong>. If your root JSON is a single object, the converter will try to flatten it, but complex nested arrays may not map perfectly to columns.
+                            CSV conversion works best with <strong>arrays of objects</strong>. If your root JSON is a
+                            single object, the converter will try to flatten it, but complex nested arrays may not map
+                            perfectly to columns.
                         </p>
                     </div>
                 </div>
@@ -397,10 +463,11 @@
         </div>
     </main>
 
-   
+
     <script src="layout-guides.js"></script>
     <script>
         lucide.createIcons();
     </script>
 </body>
+
 </html>
