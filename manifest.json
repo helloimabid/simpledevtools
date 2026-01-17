@@ -1,0 +1,60 @@
+{
+  "name": "SimpleDevTools - Free Developer Utilities",
+  "short_name": "DevTools",
+  "description": "Fast, privacy-first developer tools running in your browser. JSON formatter, Base64 encoder, JWT decoder, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#10b981",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["developer", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/logo-small.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "JSON Formatter",
+      "short_name": "JSON",
+      "description": "Format and validate JSON data",
+      "url": "/json-formatter",
+      "icons": [{ "src": "/logo-small.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Base64 Encoder",
+      "short_name": "Base64",
+      "description": "Encode and decode Base64 data",
+      "url": "/base64-encoder",
+      "icons": [{ "src": "/logo-small.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "UUID Generator",
+      "short_name": "UUID",
+      "description": "Generate unique UUIDs",
+      "url": "/uuid-generator",
+      "icons": [{ "src": "/logo-small.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Regex Tester",
+      "short_name": "Regex",
+      "description": "Test regular expressions",
+      "url": "/regex-tester",
+      "icons": [{ "src": "/logo-small.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

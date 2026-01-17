@@ -203,7 +203,7 @@
                 <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                     <i data-lucide="search" class="w-5 h-5 text-neutral-400"></i>
                 </div>
-                <input type="text" id="tool-search" placeholder="Search tools (e.g., json, base64, regex...)"
+                <input type="text" id="tool-search" placeholder="Search tools or press Ctrl+K..."
                     autocomplete="off"
                     class="w-full py-3 pl-12 pr-4 text-base transition-all duration-200 border rounded-xl bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-neutral-400">
                 <div id="search-results"
@@ -211,11 +211,26 @@
                 </div>
             </div>
             <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-                <span id="tool-count">18</span> tools available · Type to search or press <kbd
-                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">/</kbd>
-                to focus
+                <span id="tool-count">18</span> tools available · 
+                <kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">Ctrl+K</kbd> Quick switch · 
+                <kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">?</kbd> Shortcuts
             </p>
         </div>
+
+        <!-- Recently Used Tools (dynamically populated) -->
+        <section id="recently-used-section" class="hidden mb-12 animate-slide-up" style="animation-delay: 0.03s;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold font-display text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                    <i data-lucide="clock" class="w-5 h-5 text-neutral-400"></i>
+                    Recently Used
+                </h2>
+                <button onclick="clearRecentTools()" class="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                    Clear history
+                </button>
+            </div>
+            <div id="recently-used-tools" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            </div>
+        </section>
 
         <section class="mb-16 animate-slide-up" style="animation-delay: 0.05s;">
             <h2 class="mb-8 text-3xl font-bold font-display text-neutral-900 dark:text-neutral-100">Tools by Category
@@ -944,6 +959,85 @@
                 searchInput.dispatchEvent(new Event('input'));
             }
         });
+
+        // Recently Used Tools
+        function renderRecentlyUsed() {
+            const recentSection = document.getElementById('recently-used-section');
+            const recentContainer = document.getElementById('recently-used-tools');
+            
+            try {
+                const recent = JSON.parse(localStorage.getItem('sdt_recent_tools')) || [];
+                if (recent.length === 0) {
+                    recentSection.classList.add('hidden');
+                    return;
+                }
+
+                recentSection.classList.remove('hidden');
+                
+                const toolIcons = {
+                    '/json-formatter': 'braces',
+                    '/base64-encoder': 'file-key',
+                    '/uuid-generator': 'fingerprint',
+                    '/jwt-decoder': 'key',
+                    '/regex-tester': 'regex',
+                    '/hash-generator': 'hash',
+                    '/image-compressor': 'image',
+                    '/password-strength-analyzer': 'shield-check',
+                    '/javascript-formatter': 'code-2',
+                    '/css-formatter': 'palette',
+                    '/html-formatter': 'code',
+                    '/sql-formatter': 'database',
+                    '/markdown-editor': 'file-text',
+                    '/url-encoder': 'link',
+                    '/color-picker': 'pipette',
+                    '/timestamp-converter': 'clock',
+                    '/lorem-ipsum': 'text',
+                    '/diff-checker': 'git-compare'
+                };
+
+                const toolNames = {
+                    '/json-formatter': 'JSON Formatter',
+                    '/base64-encoder': 'Base64 Encoder',
+                    '/uuid-generator': 'UUID Generator',
+                    '/jwt-decoder': 'JWT Decoder',
+                    '/regex-tester': 'Regex Tester',
+                    '/hash-generator': 'Hash Generator',
+                    '/image-compressor': 'Image Compressor',
+                    '/password-strength-analyzer': 'Password Analyzer',
+                    '/javascript-formatter': 'JS Formatter',
+                    '/css-formatter': 'CSS Formatter',
+                    '/html-formatter': 'HTML Formatter',
+                    '/sql-formatter': 'SQL Formatter',
+                    '/markdown-editor': 'Markdown Editor',
+                    '/url-encoder': 'URL Encoder',
+                    '/color-picker': 'Color Picker',
+                    '/timestamp-converter': 'Timestamp',
+                    '/lorem-ipsum': 'Lorem Ipsum',
+                    '/diff-checker': 'Diff Checker'
+                };
+
+                recentContainer.innerHTML = recent.map(url => `
+                    <a href="${url}" class="flex items-center gap-3 p-3 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-emerald-500 dark:hover:border-emerald-500 transition-colors group">
+                        <div class="w-8 h-8 rounded-lg bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 transition-colors">
+                            <i data-lucide="${toolIcons[url] || 'tool'}" class="w-4 h-4 text-neutral-600 dark:text-neutral-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400"></i>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 truncate">${toolNames[url] || url}</span>
+                    </a>
+                `).join('');
+
+                lucide.createIcons();
+            } catch (e) {
+                recentSection.classList.add('hidden');
+            }
+        }
+
+        function clearRecentTools() {
+            localStorage.removeItem('sdt_recent_tools');
+            document.getElementById('recently-used-section').classList.add('hidden');
+        }
+
+        // Render on page load
+        renderRecentlyUsed();
 
 
     </script>

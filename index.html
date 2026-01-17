@@ -59,6 +59,11 @@
     </noscript>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DevTools">
 
     <!-- Preload critical resources -->
     <link rel="preload" href="logo.webp" as="image" type="image/webp">
@@ -394,8 +399,7 @@
 
 
                 <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight mb-6 leading-[1.1]">
-                    <span class="sr-only">Free Web Developer Tools - Privacy-First Online Utilities</span>
-                    <span class="text-gradient">Free Developer Tools –</span><br>
+                    <span class="text-gradient">Free Web Developer Tools –</span><br>
                     <span class="text-neutral-400">Privacy-First Online Utilities</span>
                 </h1>
 
@@ -414,6 +418,21 @@
                         class="flex items-center justify-center w-full gap-2 px-8 py-3 font-medium transition-all bg-white border rounded-lg sm:w-auto dark:bg-white/5 border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800">
                         Documentation
                     </a>
+                </div>
+
+                <!-- Keyboard Shortcuts Hint -->
+                <div class="mt-8 flex items-center justify-center gap-3 text-xs text-neutral-400 dark:text-neutral-500">
+                    <span class="flex items-center gap-1.5">
+                        <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded text-[10px] font-mono">Ctrl</kbd>
+                        <span>+</span>
+                        <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded text-[10px] font-mono">K</kbd>
+                        <span class="ml-1">Quick search</span>
+                    </span>
+                    <span class="w-px h-3 bg-neutral-300 dark:bg-neutral-700"></span>
+                    <span class="flex items-center gap-1.5">
+                        <kbd class="px-1.5 py-0.5 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded text-[10px] font-mono">?</kbd>
+                        <span class="ml-1">All shortcuts</span>
+                    </span>
                 </div>
             </div>
         </section>
@@ -494,7 +513,7 @@
                 <div class="flex-1">
                     <h3 class="mb-2 text-2xl font-medium tracking-tight font-display">Developer Experience</h3>
                     <p class="leading-relaxed text-neutral-500 dark:text-neutral-400">
-                        Designed to be the tool you wish you had. Clean UI, keyboard shortcuts (coming soon), and
+                        Designed to be the tool you wish you had. Clean UI, keyboard shortcuts (<kbd class="px-1 py-0.5 text-xs bg-neutral-100 dark:bg-neutral-800 rounded">Ctrl+K</kbd> to search), and
                         instant feedback.
                     </p>
                 </div>
@@ -518,6 +537,25 @@
 
             <!-- Content Column -->
             <div class="lg:col-span-8">
+
+                <!-- Favorite Tools Section (Dynamic) -->
+                <section id="favorite-tools-section" class="hidden mb-12">
+                    <div class="flex items-end justify-between pb-4 mb-6 border-b border-neutral-200 dark:border-neutral-800">
+                        <div>
+                            <h2 class="flex items-center gap-2 text-xl font-semibold tracking-tight font-display">
+                                <i data-lucide="star" class="w-5 h-5 text-yellow-500"></i>
+                                Your Favorites
+                            </h2>
+                            <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Quick access to your starred tools</p>
+                        </div>
+                        <button onclick="clearFavorites()" class="text-xs text-neutral-400 hover:text-red-500 transition-colors">
+                            Clear all
+                        </button>
+                    </div>
+                    <div id="favorite-tools-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-8">
+                        <!-- Favorites rendered by JS -->
+                    </div>
+                </section>
 
                 <!-- Tools Grid -->
                 <section id="tools" class="mb-24">
@@ -1232,6 +1270,63 @@
                 });
             });
         }
+
+        // Render favorite tools on homepage
+        function renderFavoriteTools() {
+            const section = document.getElementById('favorite-tools-section');
+            const container = document.getElementById('favorite-tools-container');
+            if (!section || !container) return;
+
+            const favorites = JSON.parse(localStorage.getItem('sdt_favorite_tools')) || [];
+            if (favorites.length === 0) {
+                section.classList.add('hidden');
+                return;
+            }
+
+            const toolInfo = {
+                '/json-formatter': { name: 'JSON Formatter', icon: 'file-json' },
+                '/base64-encoder': { name: 'Base64 Encoder', icon: 'file-key' },
+                '/uuid-generator': { name: 'UUID Generator', icon: 'fingerprint' },
+                '/jwt-decoder': { name: 'JWT Decoder', icon: 'key' },
+                '/regex-tester': { name: 'Regex Tester', icon: 'regex' },
+                '/hash-generator': { name: 'Hash Generator', icon: 'hash' },
+                '/image-compressor': { name: 'Image Compressor', icon: 'image' },
+                '/password-strength-analyzer': { name: 'Password Analyzer', icon: 'shield-check' },
+                '/javascript-formatter': { name: 'JS Formatter', icon: 'file-code' },
+                '/css-formatter': { name: 'CSS Formatter', icon: 'palette' },
+                '/html-formatter': { name: 'HTML Formatter', icon: 'code' },
+                '/sql-formatter': { name: 'SQL Formatter', icon: 'database' },
+                '/markdown-editor': { name: 'Markdown Editor', icon: 'file-text' },
+                '/url-encoder': { name: 'URL Encoder', icon: 'link' },
+                '/color-picker': { name: 'Color Picker', icon: 'pipette' },
+                '/timestamp-converter': { name: 'Timestamp', icon: 'clock' },
+                '/lorem-ipsum': { name: 'Lorem Ipsum', icon: 'text' },
+                '/diff-checker': { name: 'Diff Checker', icon: 'git-compare' }
+            };
+
+            section.classList.remove('hidden');
+            container.innerHTML = favorites.map(url => {
+                const tool = toolInfo[url] || { name: url, icon: 'tool' };
+                return `
+                    <a href="${url}" class="flex items-center gap-3 p-3 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-yellow-400 dark:hover:border-yellow-500 transition-all group hover:-translate-y-0.5">
+                        <div class="w-9 h-9 rounded-lg bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center group-hover:bg-yellow-100 dark:group-hover:bg-yellow-900/30 transition-colors">
+                            <i data-lucide="${tool.icon}" class="w-4 h-4 text-neutral-600 dark:text-neutral-400 group-hover:text-yellow-600 dark:group-hover:text-yellow-400"></i>
+                        </div>
+                        <span class="text-sm font-medium text-neutral-700 dark:text-neutral-300 truncate">${tool.name}</span>
+                    </a>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        function clearFavorites() {
+            localStorage.removeItem('sdt_favorite_tools');
+            document.getElementById('favorite-tools-section').classList.add('hidden');
+        }
+
+        // Render favorites on load
+        renderFavoriteTools();
     </script>
 
 

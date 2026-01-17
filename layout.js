@@ -3,11 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   injectLayout();
   initializeTheme();
   initializeMobileMenu();
+  loadUXEnhancements();
   // Re-initialize icons since we just added new DOM elements
   if (typeof lucide !== "undefined") {
     lucide.createIcons();
   }
 });
+
+function loadUXEnhancements() {
+  // Load UX enhancements script if not already loaded
+  if (!document.querySelector('script[src*="ux-enhancements.js"]')) {
+    const script = document.createElement("script");
+    script.src = "/ux-enhancements.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }
+}
 
 function ensureAdSense() {
   const ADSENSE_CLIENT = "ca-pub-9710571190649081";
@@ -32,6 +43,21 @@ function ensureAdSense() {
   script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`;
   script.crossOrigin = "anonymous";
   document.head.appendChild(script);
+
+  // Inject PWA manifest and meta tags
+  if (!document.querySelector('link[rel="manifest"]')) {
+    const manifest = document.createElement("link");
+    manifest.rel = "manifest";
+    manifest.href = "/manifest.json";
+    document.head.appendChild(manifest);
+  }
+
+  if (!document.querySelector('meta[name="theme-color"]')) {
+    const themeColor = document.createElement("meta");
+    themeColor.name = "theme-color";
+    themeColor.content = "#10b981";
+    document.head.appendChild(themeColor);
+  }
 }
 
 function injectLayout() {
