@@ -89,7 +89,7 @@ function injectLayout() {
                     <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Tools</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
                         <li><a href="/json-formatter" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter</a></li>
-                        <li><a href="/base64-encoder" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
+                        <li><a href="/base64-encode" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
                         <li><a href="/hash-generator" class="hover:text-black dark:hover:text-white transition-colors">Hash Generator</a></li>
                         <li><a href="/uuid-generator" class="hover:text-black dark:hover:text-white transition-colors">UUID Generator</a></li>
                         <li><a href="/regex-tester" class="hover:text-black dark:hover:text-white transition-colors">Regex Tester</a></li>
@@ -116,6 +116,8 @@ function injectLayout() {
                     <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Guides</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
                         <li><a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">All Guides</a></li>
+                        <li><a href="/guides/json-formatter-guide" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter Guide</a></li>
+                        <li><a href="/guides/regex-patterns-guide" class="hover:text-black dark:hover:text-white transition-colors">Regex Cheat Sheet</a></li>
                     </ul>
                 </div>
 
