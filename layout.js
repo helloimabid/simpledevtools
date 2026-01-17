@@ -77,50 +77,50 @@ function injectLayout() {
                 
                 <!-- Tools Dropdown -->
                 <div class="relative group">
-                    <button class="flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors">
+                    <a href="/tools" class="flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors">
                         Tools
                         <i data-lucide="chevron-down" class="w-3 h-3 transition-transform group-hover:rotate-180"></i>
-                    </button>
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                    </a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                         <div class="w-[500px] p-6 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="space-y-2">
-                                    <a href="/formatters" class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group/item">
-                                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex-shrink-0">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <a href="/formatters" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
                                             <i data-lucide="code-2" class="w-4 h-4"></i>
                                         </div>
-                                        <div class="min-w-0">
-                                            <div class="font-medium text-neutral-900 dark:text-white text-sm">Formatters</div>
-                                            <div class="text-xs text-neutral-500 truncate">JSON, JS, CSS, HTML, SQL</div>
+                                        <div>
+                                            <div class="font-medium text-neutral-900 dark:text-white">Formatters</div>
+                                            <div class="text-xs text-neutral-500">JSON, JS, CSS, HTML, SQL</div>
                                         </div>
                                     </a>
-                                    <a href="/encoders" class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group/item">
-                                        <div class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 flex-shrink-0">
+                                    <a href="/encoders" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors mt-2">
+                                        <div class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400">
                                             <i data-lucide="binary" class="w-4 h-4"></i>
                                         </div>
-                                        <div class="min-w-0">
-                                            <div class="font-medium text-neutral-900 dark:text-white text-sm">Encoders</div>
-                                            <div class="text-xs text-neutral-500 truncate">Base64, URL, Hash</div>
+                                        <div>
+                                            <div class="font-medium text-neutral-900 dark:text-white">Encoders</div>
+                                            <div class="text-xs text-neutral-500">Base64, URL, Hash</div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="space-y-2">
-                                    <a href="/generators" class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group/item">
-                                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex-shrink-0">
+                                <div>
+                                    <a href="/generators" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
+                                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
                                             <i data-lucide="sparkles" class="w-4 h-4"></i>
                                         </div>
-                                        <div class="min-w-0">
-                                            <div class="font-medium text-neutral-900 dark:text-white text-sm">Generators</div>
-                                            <div class="text-xs text-neutral-500 truncate">UUID, Lorem, Colors</div>
+                                        <div>
+                                            <div class="font-medium text-neutral-900 dark:text-white">Generators</div>
+                                            <div class="text-xs text-neutral-500">UUID, Lorem, Colors</div>
                                         </div>
                                     </a>
-                                    <a href="/validators" class="flex items-center gap-3 p-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors group/item">
-                                        <div class="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 flex-shrink-0">
+                                    <a href="/validators" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors mt-2">
+                                        <div class="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
                                             <i data-lucide="check-circle" class="w-4 h-4"></i>
                                         </div>
-                                        <div class="min-w-0">
-                                            <div class="font-medium text-neutral-900 dark:text-white text-sm">Validators</div>
-                                            <div class="text-xs text-neutral-500 truncate">Regex, JWT, Diff</div>
+                                        <div>
+                                            <div class="font-medium text-neutral-900 dark:text-white">Validators</div>
+                                            <div class="text-xs text-neutral-500">Regex, JWT, Diff</div>
                                         </div>
                                     </a>
                                 </div>
@@ -149,6 +149,8 @@ function injectLayout() {
                     <i data-lucide="moon" class="w-4 h-4 hidden dark:block"></i>
                 </button>
             </div>
+
+            
         </div>
     </nav>
     `;
@@ -275,10 +277,15 @@ function initializeMobileMenu() {
     let mobileMenu = null;
     let overlay = null;
 
+    /**
+     * Create mobile menu button if it doesn't exist
+     */
     const createMenuButton = () => {
+      // Check if button already exists
       const existingBtn = document.querySelector(".md\\:hidden button");
       if (existingBtn) return existingBtn;
 
+      // Create new button
       const nav = document.querySelector("nav .max-w-7xl");
       if (!nav) return null;
 
@@ -295,6 +302,10 @@ function initializeMobileMenu() {
       return button;
     };
 
+    /**
+     * Create mobile menu HTML structure
+     */
+    
     const createMobileMenu = () => {
       const menu = document.createElement("div");
       menu.id = "mobile-menu";
@@ -302,6 +313,7 @@ function initializeMobileMenu() {
         "fixed inset-y-0 right-0 w-full max-w-sm bg-white dark:bg-black border-l border-neutral-200 dark:border-neutral-800 transform translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-2xl";
       menu.innerHTML = `
             <div class="flex flex-col h-full">
+                <!-- Header -->
                 <div class="flex items-center justify-between p-6 border-b border-neutral-200 dark:border-neutral-800">
                     <div class="flex items-center gap-2">
                         <picture>
@@ -315,6 +327,7 @@ function initializeMobileMenu() {
                     </button>
                 </div>
 
+                <!-- Navigation Links -->
                 <nav class="flex-1 overflow-y-auto p-6">
                     <ul class="space-y-2">
                         <li>
@@ -343,6 +356,7 @@ function initializeMobileMenu() {
                         </li>
                     </ul>
 
+                    <!-- Theme Toggle in Menu -->
                     <div class="mt-8 p-4 bg-neutral-100 dark:bg-neutral-900 rounded-lg">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-sm font-medium">Theme</span>
@@ -361,6 +375,7 @@ function initializeMobileMenu() {
                     </div>
                 </nav>
 
+                <!-- Footer -->
                 <div class="p-6 border-t border-neutral-200 dark:border-neutral-800">
                     <p class="text-xs text-neutral-500 dark:text-neutral-400 text-center">
                         © SimpleDevTools.tech
@@ -372,6 +387,9 @@ function initializeMobileMenu() {
       return menu;
     };
 
+    /**
+     * Create overlay element
+     */
     const createOverlay = () => {
       const overlayEl = document.createElement("div");
       overlayEl.id = "mobile-menu-overlay";
@@ -381,19 +399,25 @@ function initializeMobileMenu() {
       return overlayEl;
     };
 
+    /**
+     * Open mobile menu
+     */
     const openMenu = () => {
       isOpen = true;
       document.body.style.overflow = "hidden";
 
+      // Show overlay
       overlay.classList.remove("pointer-events-none");
       setTimeout(() => {
         overlay.classList.remove("opacity-0");
       }, 10);
 
+      // Slide in menu
       setTimeout(() => {
         mobileMenu.classList.remove("translate-x-full");
       }, 10);
 
+      // Update button icon
       const icon = menuButton.querySelector("i");
       if (icon) {
         icon.setAttribute("data-lucide", "x");
@@ -401,17 +425,23 @@ function initializeMobileMenu() {
       }
     };
 
+    /**
+     * Close mobile menu
+     */
     const closeMenu = () => {
       isOpen = false;
       document.body.style.overflow = "";
 
+      // Hide menu
       mobileMenu.classList.add("translate-x-full");
 
+      // Hide overlay
       overlay.classList.add("opacity-0");
       setTimeout(() => {
         overlay.classList.add("pointer-events-none");
       }, 300);
 
+      // Update button icon
       const icon = menuButton.querySelector("i");
       if (icon) {
         icon.setAttribute("data-lucide", "menu");
@@ -419,6 +449,9 @@ function initializeMobileMenu() {
       }
     };
 
+    /**
+     * Toggle menu state
+     */
     const toggleMenu = () => {
       if (isOpen) {
         closeMenu();
@@ -427,6 +460,9 @@ function initializeMobileMenu() {
       }
     };
 
+    /**
+     * Handle theme toggle in mobile menu
+     */
     const handleMobileThemeToggle = () => {
       document.documentElement.classList.toggle("dark");
 
@@ -436,9 +472,13 @@ function initializeMobileMenu() {
         localStorage.theme = "light";
       }
 
+      // Reinitialize icons to update theme icons
       lucide.createIcons();
     };
 
+    /**
+     * Handle anchor link clicks (close menu on navigation)
+     */
     const handleAnchorClick = (e) => {
       const href = e.currentTarget.getAttribute("href");
       if (href && href.startsWith("#")) {
@@ -446,7 +486,11 @@ function initializeMobileMenu() {
       }
     };
 
+    /**
+     * Initialize mobile menu
+     */
     const init = () => {
+      // Create or get hamburger button
       menuButton = createMenuButton();
 
       if (!menuButton) {
@@ -454,13 +498,22 @@ function initializeMobileMenu() {
         return;
       }
 
+      // console.log('Mobile menu button created/found:', menuButton);
+
+      // Create menu and overlay
       mobileMenu = createMobileMenu();
       overlay = createOverlay();
 
+      // console.log('Mobile menu created:', mobileMenu);
+      // console.log('Overlay created:', overlay);
+
+      // Initialize Lucide icons for the new menu
       lucide.createIcons();
 
+      // Event listeners
       menuButton.addEventListener("click", (e) => {
         e.preventDefault();
+        // console.log('Menu button clicked');
         toggleMenu();
       });
 
@@ -469,27 +522,34 @@ function initializeMobileMenu() {
 
       overlay.addEventListener("click", closeMenu);
 
+      // Mobile theme toggle
       const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
       mobileThemeToggle.addEventListener("click", handleMobileThemeToggle);
 
+      // Close menu when clicking anchor links
       const anchorLinks = mobileMenu.querySelectorAll(".mobile-menu-link");
       anchorLinks.forEach((link) => {
         link.addEventListener("click", handleAnchorClick);
       });
 
+      // Close menu on escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && isOpen) {
           closeMenu();
         }
       });
 
+      // Close menu on window resize to desktop size
       window.addEventListener("resize", () => {
         if (window.innerWidth >= 768 && isOpen) {
           closeMenu();
         }
       });
+
+      // console.log('Mobile menu initialized successfully');
     };
 
+    // Public API
     return {
       init,
       open: openMenu,
