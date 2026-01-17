@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Free URL encoder and decoder tool. Encode special characters for URLs or decode percent-encoded strings. Supports full URLs, query parameters, and individual components.">
-    <meta name="keywords" content="url encoder, url decoder, percent encoding, encode url, decode url, urlencode, urldecode, query string encoder">
+    <meta name="keywords"
+        content="url encoder, url decoder, percent encoding, encode url, decode url, urlencode, urldecode, query string encoder">
     <meta name="robots" content="index, follow">
     <meta name="author" content="SimpleDevTools">
     <title>URL Encoder & Decoder - Encode/Decode URLs Online | SimpleDevTools</title>
@@ -25,7 +26,8 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="URL Encoder & Decoder - Encode/Decode URLs Online">
-    <meta property="og:description" content="Free online tool to encode and decode URLs. Convert special characters to percent-encoding and vice versa.">
+    <meta property="og:description"
+        content="Free online tool to encode and decode URLs. Convert special characters to percent-encoding and vice versa.">
     <meta property="og:url" content="https://simpledevtools.tech/url-encoder">
     <meta property="og:type" content="website">
 
@@ -80,7 +82,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./dist/output.css">
     <script src="./dist/js/lucide.min.js"></script>
@@ -92,18 +96,22 @@
             border-radius: 2px;
             padding: 0 2px;
         }
+
         .dark .highlight-encoded {
             background: rgba(99, 102, 241, 0.2);
             color: #818cf8;
         }
     </style>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
 </head>
 
-<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
@@ -113,7 +121,9 @@
     </noscript>
 
     <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
 
     <!-- Main Content -->
     <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
@@ -121,23 +131,28 @@
 
             <!-- Header Section -->
             <div class="max-w-2xl mx-auto mb-12 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-cyan-600 border border-cyan-100 rounded-full bg-cyan-50 dark:bg-cyan-900/20 dark:text-cyan-400 dark:border-cyan-900/30">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-cyan-600 border border-cyan-100 rounded-full bg-cyan-50 dark:bg-cyan-900/20 dark:text-cyan-400 dark:border-cyan-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Processed locally. No data reaches our servers.</span>
                 </div>
-                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     URL Encoder & Decoder
                 </h1>
                 <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
-                    Encode special characters for safe URL transmission or decode percent-encoded strings back to readable text.
+                    Encode special characters for safe URL transmission or decode percent-encoded strings back to
+                    readable text.
                 </p>
             </div>
 
             <!-- Tool Interface -->
-            <div class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+            <div
+                class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
 
                 <!-- Mode Selector -->
-                <div class="flex items-center justify-center gap-4 p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <div
+                    class="flex items-center justify-center gap-4 p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div class="inline-flex p-1 rounded-lg bg-neutral-100 dark:bg-neutral-800">
                         <button onclick="setMode('encode')" id="btn-encode"
                             class="px-4 py-2 text-sm font-medium transition-all rounded-md bg-white dark:bg-neutral-700 text-neutral-900 dark:text-white shadow-xs">
@@ -153,7 +168,8 @@
                 </div>
 
                 <!-- Options Bar -->
-                <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-neutral-200 dark:border-neutral-800">
                     <div class="flex flex-wrap items-center gap-3">
                         <label class="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
                             <span>Method:</span>
@@ -164,7 +180,8 @@
                                 <option value="form">Form Data (+ for spaces)</option>
                             </select>
                         </label>
-                        <label class="flex items-center gap-2 text-sm cursor-pointer text-neutral-600 dark:text-neutral-400">
+                        <label
+                            class="flex items-center gap-2 text-sm cursor-pointer text-neutral-600 dark:text-neutral-400">
                             <input type="checkbox" id="auto-process" checked class="w-4 h-4 rounded accent-cyan-500">
                             <span>Auto-process</span>
                         </label>
@@ -184,21 +201,25 @@
                 </div>
 
                 <!-- Editor Area -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800">
                     <!-- Input -->
                     <div class="relative flex flex-col h-[400px]">
-                        <div class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
+                        <div
+                            class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
                             <span id="input-label">Input (Plain Text)</span>
                             <span id="input-stats">0 chars</span>
                         </div>
                         <textarea id="text-input"
                             class="flex-1 w-full p-4 font-mono text-sm leading-relaxed bg-transparent resize-none focus:ring-0 text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50"
-                            placeholder="Enter text to encode or encoded URL to decode..." spellcheck="false" oninput="handleInput()"></textarea>
+                            placeholder="Enter text to encode or encoded URL to decode..." spellcheck="false"
+                            oninput="handleInput()"></textarea>
                     </div>
 
                     <!-- Output -->
                     <div class="relative flex flex-col h-[400px] bg-neutral-50/20 dark:bg-black/20">
-                        <div class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
+                        <div
+                            class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
                             <span id="output-label" class="font-mono text-xs text-neutral-500">Output (Encoded)</span>
                             <div class="flex items-center gap-2">
                                 <span id="output-stats" class="font-mono text-xs text-neutral-500">0 chars</span>
@@ -209,31 +230,44 @@
                                 </button>
                             </div>
                         </div>
-                        <div id="text-output" class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed break-all text-neutral-800 dark:text-neutral-200"></div>
+                        <div id="text-output"
+                            class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed break-all text-neutral-800 dark:text-neutral-200">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Quick Examples -->
-                <div class="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <div
+                    class="p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div class="flex flex-wrap items-center gap-2 text-xs">
                         <span class="text-neutral-500">Quick Examples:</span>
-                        <button onclick="loadExample('url')" class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Full URL</button>
-                        <button onclick="loadExample('query')" class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Query String</button>
-                        <button onclick="loadExample('special')" class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Special Chars</button>
-                        <button onclick="loadExample('unicode')" class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Unicode</button>
-                        <button onclick="loadExample('encoded')" class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Encoded URL</button>
+                        <button onclick="loadExample('url')"
+                            class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Full
+                            URL</button>
+                        <button onclick="loadExample('query')"
+                            class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Query
+                            String</button>
+                        <button onclick="loadExample('special')"
+                            class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Special
+                            Chars</button>
+                        <button onclick="loadExample('unicode')"
+                            class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Unicode</button>
+                        <button onclick="loadExample('encoded')"
+                            class="px-2 py-1 transition-colors rounded bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600">Encoded
+                            URL</button>
                     </div>
                 </div>
             </div>
 
             <!-- URL Components Parser -->
-            <div class="p-6 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <div
+                class="p-6 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                     <i data-lucide="split" class="w-5 h-5 text-cyan-500"></i>
                     URL Components Parser
                 </h2>
                 <div class="mb-4">
-                    <input type="text" id="url-parser-input" 
+                    <input type="text" id="url-parser-input"
                         class="w-full p-3 font-mono text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200"
                         placeholder="Enter a URL to parse (e.g., https://example.com/path?query=value#hash)"
                         oninput="parseURL()">
@@ -266,7 +300,8 @@
                         </div>
                     </div>
                     <div id="query-params" class="hidden mt-4">
-                        <h3 class="mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">Query Parameters</h3>
+                        <h3 class="mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">Query Parameters
+                        </h3>
                         <div id="query-params-list" class="space-y-2"></div>
                     </div>
                 </div>
@@ -275,7 +310,8 @@
             <!-- Info Sections -->
             <div class="grid gap-8 mb-16 lg:grid-cols-3">
                 <!-- Use Cases -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="lightbulb" class="w-5 h-5 text-cyan-500"></i>
                         Use Cases
@@ -305,25 +341,35 @@
                 </div>
 
                 <!-- Encoding Reference -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="book-open" class="w-5 h-5 text-cyan-500"></i>
                         Common Encodings
                     </h2>
                     <div class="font-mono text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
-                        <div class="flex justify-between"><span>Space</span><span class="text-cyan-600 dark:text-cyan-400">%20 or +</span></div>
-                        <div class="flex justify-between"><span>&</span><span class="text-cyan-600 dark:text-cyan-400">%26</span></div>
-                        <div class="flex justify-between"><span>=</span><span class="text-cyan-600 dark:text-cyan-400">%3D</span></div>
-                        <div class="flex justify-between"><span>?</span><span class="text-cyan-600 dark:text-cyan-400">%3F</span></div>
-                        <div class="flex justify-between"><span>/</span><span class="text-cyan-600 dark:text-cyan-400">%2F</span></div>
-                        <div class="flex justify-between"><span>#</span><span class="text-cyan-600 dark:text-cyan-400">%23</span></div>
-                        <div class="flex justify-between"><span>@</span><span class="text-cyan-600 dark:text-cyan-400">%40</span></div>
-                        <div class="flex justify-between"><span>:</span><span class="text-cyan-600 dark:text-cyan-400">%3A</span></div>
+                        <div class="flex justify-between"><span>Space</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%20 or +</span></div>
+                        <div class="flex justify-between"><span>&</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%26</span></div>
+                        <div class="flex justify-between"><span>=</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%3D</span></div>
+                        <div class="flex justify-between"><span>?</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%3F</span></div>
+                        <div class="flex justify-between"><span>/</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%2F</span></div>
+                        <div class="flex justify-between"><span>#</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%23</span></div>
+                        <div class="flex justify-between"><span>@</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%40</span></div>
+                        <div class="flex justify-between"><span>:</span><span
+                                class="text-cyan-600 dark:text-cyan-400">%3A</span></div>
                     </div>
                 </div>
 
                 <!-- Method Comparison -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="git-compare" class="w-5 h-5 text-cyan-500"></i>
                         Encoding Methods
@@ -347,65 +393,93 @@
 
             <!-- FAQ Section -->
             <section class="mb-16">
-                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked
+                    Questions</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What is URL encoding?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            URL encoding, also called percent-encoding, converts characters that aren't allowed in URLs or have special meaning into a format that can be safely transmitted. Each unsafe character is replaced with a % followed by two hexadecimal digits representing its ASCII value. For example, a space becomes %20.
+                            URL encoding, also called percent-encoding, converts characters that aren't allowed in URLs
+                            or have special meaning into a format that can be safely transmitted. Each unsafe character
+                            is replaced with a % followed by two hexadecimal digits representing its ASCII value. For
+                            example, a space becomes %20.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>When should I use encodeURI vs encodeURIComponent?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">encodeURI</code> when encoding a complete URL - it preserves characters like : / ? # that are valid URL delimiters. Use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">encodeURIComponent</code> when encoding individual components like query parameter values, as it encodes all special characters including URL delimiters.
+                            Use <code class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">encodeURI</code> when
+                            encoding a complete URL - it preserves characters like : / ? # that are valid URL
+                            delimiters. Use <code
+                                class="px-1 bg-neutral-100 dark:bg-neutral-800 rounded">encodeURIComponent</code> when
+                            encoding individual components like query parameter values, as it encodes all special
+                            characters including URL delimiters.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Why do spaces become + or %20?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Both are valid representations of a space in URLs. The %20 encoding is the standard percent-encoding. The + symbol is used in the application/x-www-form-urlencoded format, which is what HTML forms use when submitting data. Most servers accept both, but %20 is more universally compatible.
+                            Both are valid representations of a space in URLs. The %20 encoding is the standard
+                            percent-encoding. The + symbol is used in the application/x-www-form-urlencoded format,
+                            which is what HTML forms use when submitting data. Most servers accept both, but %20 is more
+                            universally compatible.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>How do I encode Unicode characters?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Unicode characters are first converted to UTF-8 bytes, then each byte is percent-encoded. For example, the emoji 🚀 becomes %F0%9F%9A%80. JavaScript's encodeURIComponent handles this automatically, making it safe to include any Unicode text in URLs.
+                            Unicode characters are first converted to UTF-8 bytes, then each byte is percent-encoded.
+                            For example, the emoji 🚀 becomes %F0%9F%9A%80. JavaScript's encodeURIComponent handles this
+                            automatically, making it safe to include any Unicode text in URLs.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Is my data secure?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Yes, completely. All encoding and decoding happens entirely in your browser using JavaScript. Your data never leaves your device and is not sent to any server. You can verify this by checking the Network tab in your browser's developer tools.
+                            Yes, completely. All encoding and decoding happens entirely in your browser using
+                            JavaScript. Your data never leaves your device and is not sent to any server. You can verify
+                            this by checking the Network tab in your browser's developer tools.
                         </p>
                     </details>
                 </div>
             </section>
 
             <!-- Related Tools -->
-            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <section
+                class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <a href="/base64-encoder" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/base64-encoder"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
                             <i data-lucide="binary" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
                         </div>
@@ -414,7 +488,8 @@
                             <div class="text-xs text-neutral-500">Encode/decode Base64</div>
                         </div>
                     </a>
-                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/json-formatter"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
                             <i data-lucide="braces" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
                         </div>
@@ -423,7 +498,8 @@
                             <div class="text-xs text-neutral-500">Format & validate JSON</div>
                         </div>
                     </a>
-                    <a href="/jwt-decoder" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/jwt-decoder"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
                             <i data-lucide="key" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
                         </div>
@@ -432,7 +508,8 @@
                             <div class="text-xs text-neutral-500">Decode JWT tokens</div>
                         </div>
                     </a>
-                    <a href="/hash-generator" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/hash-generator"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
                             <i data-lucide="hash" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -493,7 +570,7 @@
         function processInput() {
             const input = textInput.value;
             const method = document.getElementById('encode-method').value;
-            
+
             if (!input) {
                 textOutput.innerHTML = '';
                 updateOutputStats('');
@@ -590,16 +667,16 @@
                 unicode: 'Unicode: 你好世界 🚀 Привет مرحبا שלום',
                 encoded: 'https%3A%2F%2Fexample.com%2Fsearch%3Fq%3Dhello%2520world%26category%3Dbooks'
             };
-            
+
             textInput.value = examples[type] || '';
-            
+
             // Auto-switch mode for encoded example
             if (type === 'encoded') {
                 setMode('decode');
             } else {
                 setMode('encode');
             }
-            
+
             handleInput();
         }
 
@@ -607,7 +684,7 @@
         function parseURL() {
             const input = document.getElementById('url-parser-input').value.trim();
             const components = document.getElementById('url-components');
-            
+
             if (!input) {
                 components.classList.add('hidden');
                 return;
@@ -616,7 +693,7 @@
             try {
                 const url = new URL(input);
                 components.classList.remove('hidden');
-                
+
                 document.getElementById('url-protocol').textContent = url.protocol || '-';
                 document.getElementById('url-host').textContent = url.hostname || '-';
                 document.getElementById('url-port').textContent = url.port || '(default)';
@@ -627,11 +704,11 @@
                 // Parse query parameters
                 const queryParams = document.getElementById('query-params');
                 const queryParamsList = document.getElementById('query-params-list');
-                
+
                 if (url.searchParams.toString()) {
                     queryParams.classList.remove('hidden');
                     queryParamsList.innerHTML = '';
-                    
+
                     for (const [key, value] of url.searchParams) {
                         const div = document.createElement('div');
                         div.className = 'flex items-center gap-2 p-2 rounded bg-neutral-50 dark:bg-neutral-800 font-mono text-xs';
@@ -667,4 +744,5 @@
         });
     </script>
 </body>
+
 </html>

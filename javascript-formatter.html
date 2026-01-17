@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Free JavaScript formatter and beautifier. Format, beautify, and minify JS, JSX, and TypeScript code with syntax highlighting and error detection. 100% client-side.">
-    <meta name="keywords" content="javascript formatter, js beautifier, javascript beautifier, code formatter, minify javascript, typescript formatter, jsx formatter, prettify javascript">
+    <meta name="keywords"
+        content="javascript formatter, js beautifier, javascript beautifier, code formatter, minify javascript, typescript formatter, jsx formatter, prettify javascript">
     <meta name="robots" content="index, follow">
     <meta name="author" content="SimpleDevTools">
     <title>JavaScript Formatter & Beautifier - Format JS, JSX, TypeScript | SimpleDevTools</title>
@@ -25,7 +26,8 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="JavaScript Formatter & Beautifier - Format JS, JSX, TypeScript">
-    <meta property="og:description" content="Free online JavaScript formatter with beautify and minify options. Supports JS, JSX, TypeScript with syntax highlighting.">
+    <meta property="og:description"
+        content="Free online JavaScript formatter with beautify and minify options. Supports JS, JSX, TypeScript with syntax highlighting.">
     <meta property="og:url" content="https://simpledevtools.tech/javascript-formatter">
     <meta property="og:type" content="website">
 
@@ -81,23 +83,52 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./dist/output.css">
     <script src="./dist/js/lucide.min.js"></script>
 
     <style>
         /* Syntax highlighting */
-        .token-keyword { color: #c678dd; }
-        .token-string { color: #98c379; }
-        .token-number { color: #d19a66; }
-        .token-comment { color: #5c6370; font-style: italic; }
-        .token-function { color: #61afef; }
-        .token-operator { color: #56b6c2; }
-        .token-punctuation { color: #abb2bf; }
-        .token-class { color: #e5c07b; }
-        .token-property { color: #e06c75; }
-        
+        .token-keyword {
+            color: #c678dd;
+        }
+
+        .token-string {
+            color: #98c379;
+        }
+
+        .token-number {
+            color: #d19a66;
+        }
+
+        .token-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        .token-function {
+            color: #61afef;
+        }
+
+        .token-operator {
+            color: #56b6c2;
+        }
+
+        .token-punctuation {
+            color: #abb2bf;
+        }
+
+        .token-class {
+            color: #e5c07b;
+        }
+
+        .token-property {
+            color: #e06c75;
+        }
+
         /* Editor styles */
         .code-editor {
             font-family: 'JetBrains Mono', monospace;
@@ -105,19 +136,19 @@
             line-height: 1.6;
             tab-size: 2;
         }
-        
+
         .line-numbers {
             counter-reset: line;
             padding-right: 1rem;
             border-right: 1px solid rgba(128, 128, 128, 0.2);
             user-select: none;
         }
-        
+
         .line-numbers span {
             display: block;
             counter-increment: line;
         }
-        
+
         .line-numbers span::before {
             content: counter(line);
             color: #636d83;
@@ -149,17 +180,27 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
 </head>
 
-<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
@@ -170,7 +211,9 @@
     </noscript>
 
     <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-500/10 dark:bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-yellow-500/10 dark:bg-yellow-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
 
     <!-- Main Content -->
     <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
@@ -178,23 +221,28 @@
 
             <!-- Header Section -->
             <div class="max-w-2xl mx-auto mb-12 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-yellow-600 border border-yellow-100 rounded-full bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-900/30">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-yellow-600 border border-yellow-100 rounded-full bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400 dark:border-yellow-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Processed locally. No data reaches our servers.</span>
                 </div>
-                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     JavaScript Formatter & Beautifier
                 </h1>
                 <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
-                    Format, beautify, and minify JavaScript, JSX, and TypeScript code with syntax highlighting and error detection.
+                    Format, beautify, and minify JavaScript, JSX, and TypeScript code with syntax highlighting and error
+                    detection.
                 </p>
             </div>
 
             <!-- Tool Interface -->
-            <div id="js-formatter" class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+            <div id="js-formatter"
+                class="relative mb-16 overflow-hidden bg-white border shadow-xs dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
 
                 <!-- Toolbar -->
-                <div class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                     <div class="flex flex-wrap items-center gap-2">
                         <!-- Primary Format Button -->
                         <button onclick="formatCode(2)"
@@ -247,7 +295,8 @@
                             <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                             Upload
                         </button>
-                        <input type="file" id="file-upload" class="hidden" accept=".js,.jsx,.ts,.tsx,.mjs,.cjs" onchange="handleFileUpload(this)">
+                        <input type="file" id="file-upload" class="hidden" accept=".js,.jsx,.ts,.tsx,.mjs,.cjs"
+                            onchange="handleFileUpload(this)">
 
                         <button onclick="loadSample()"
                             class="flex items-center gap-1.5 px-3 py-1.5 text-neutral-500 hover:text-yellow-600 dark:hover:text-yellow-400 text-xs font-medium transition-colors">
@@ -272,13 +321,16 @@
                 </div>
 
                 <!-- Editor Area -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200 dark:divide-neutral-800 h-[600px]">
                     <!-- Input -->
                     <div class="relative flex flex-col h-full group" id="drop-zone">
-                        <div class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
+                        <div
+                            class="flex items-center justify-between px-4 py-2 font-mono text-xs border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800 text-neutral-500 shrink-0">
                             <span class="flex items-center gap-2">
                                 Input
-                                <span id="lang-badge" class="px-1.5 py-0.5 rounded-sm bg-yellow-100 dark:bg-yellow-900/30 text-[10px] text-yellow-700 dark:text-yellow-400 font-bold">JS</span>
+                                <span id="lang-badge"
+                                    class="px-1.5 py-0.5 rounded-sm bg-yellow-100 dark:bg-yellow-900/30 text-[10px] text-yellow-700 dark:text-yellow-400 font-bold">JS</span>
                             </span>
                             <div class="flex items-center gap-3">
                                 <span id="input-stats">0 chars • 0 lines</span>
@@ -286,53 +338,78 @@
                         </div>
 
                         <!-- Error Banner -->
-                        <div id="error-banner" class="hidden p-3 border-b border-red-100 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 shrink-0">
+                        <div id="error-banner"
+                            class="hidden p-3 border-b border-red-100 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50 shrink-0">
                             <div class="flex items-start gap-2">
-                                <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
+                                <i data-lucide="alert-circle"
+                                    class="w-4 h-4 text-red-600 dark:text-red-400 mt-0.5 shrink-0"></i>
                                 <div class="flex-1 min-w-0">
                                     <p class="text-xs font-medium text-red-800 dark:text-red-300">Syntax Error</p>
-                                    <p id="error-message" class="text-[11px] text-red-600 dark:text-red-400 font-mono mt-0.5 break-all"></p>
+                                    <p id="error-message"
+                                        class="text-[11px] text-red-600 dark:text-red-400 font-mono mt-0.5 break-all">
+                                    </p>
                                 </div>
-                                <button onclick="dismissError()" class="text-red-400 hover:text-red-600 dark:hover:text-red-300">
+                                <button onclick="dismissError()"
+                                    class="text-red-400 hover:text-red-600 dark:hover:text-red-300">
                                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Drag & Drop Overlay -->
-                        <div id="drag-overlay" class="absolute z-20 flex-col items-center justify-center hidden transition-all rounded-lg pointer-events-none inset-2 bg-yellow-50/90 dark:bg-yellow-900/90 backdrop-blur-xs">
+                        <div id="drag-overlay"
+                            class="absolute z-20 flex-col items-center justify-center hidden transition-all rounded-lg pointer-events-none inset-2 bg-yellow-50/90 dark:bg-yellow-900/90 backdrop-blur-xs">
                             <i data-lucide="file-up" class="w-10 h-10 mb-2 text-yellow-500"></i>
-                            <p class="text-sm font-medium text-yellow-700 dark:text-yellow-300">Drop JavaScript file here</p>
-                            <p class="mt-1 text-xs text-yellow-600 dark:text-yellow-400">Supports .js, .jsx, .ts, .tsx files</p>
+                            <p class="text-sm font-medium text-yellow-700 dark:text-yellow-300">Drop JavaScript file
+                                here</p>
+                            <p class="mt-1 text-xs text-yellow-600 dark:text-yellow-400">Supports .js, .jsx, .ts, .tsx
+                                files</p>
                         </div>
 
                         <textarea id="code-input"
                             class="flex-1 w-full p-4 font-mono text-sm leading-relaxed transition-colors bg-transparent border-2 border-transparent resize-none focus:ring-0 text-neutral-800 dark:text-neutral-200 outline-hidden placeholder:text-neutral-400/50 code-editor"
-                            placeholder="Paste your JavaScript, TypeScript, or JSX code here..." spellcheck="false"></textarea>
+                            placeholder="Paste your JavaScript, TypeScript, or JSX code here..."
+                            spellcheck="false"></textarea>
                     </div>
 
                     <!-- Output -->
                     <div class="relative flex flex-col h-full bg-neutral-50/20 dark:bg-black/20">
-                        <div class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
+                        <div
+                            class="flex items-center justify-between px-4 py-2 border-b bg-neutral-50/30 dark:bg-neutral-900/30 border-neutral-100 dark:border-neutral-800">
                             <span class="flex items-center gap-2 font-mono text-xs text-neutral-500">
                                 Output
-                                <span id="status-badge" class="hidden px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/30 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Formatted</span>
+                                <span id="status-badge"
+                                    class="hidden px-1.5 py-0.5 rounded-sm bg-emerald-100 dark:bg-emerald-900/30 text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">Formatted</span>
                             </span>
                             <div class="flex items-center gap-3">
-                                <span id="output-stats" class="font-mono text-xs text-neutral-500">0 chars • 0 lines</span>
+                                <span id="output-stats" class="font-mono text-xs text-neutral-500">0 chars • 0
+                                    lines</span>
                             </div>
                         </div>
 
-                        <div id="code-output" class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed text-neutral-800 dark:text-neutral-200 code-editor whitespace-pre-wrap"></div>
+                        <div id="code-output"
+                            class="flex-1 w-full p-4 overflow-auto font-mono text-sm leading-relaxed text-neutral-800 dark:text-neutral-200 code-editor whitespace-pre-wrap">
+                        </div>
                     </div>
                 </div>
 
                 <!-- Keyboard Shortcuts Bar -->
-                <div class="flex items-center justify-between px-4 py-2 text-xs border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-neutral-500">
+                <div
+                    class="flex items-center justify-between px-4 py-2 text-xs border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 text-neutral-500">
                     <div class="flex items-center gap-4">
-                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Enter</kbd> Beautify</span>
-                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">M</kbd> Minify</span>
-                        <span><kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd> + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">S</kbd> Download</span>
+                        <span><kbd
+                                class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>
+                            + <kbd
+                                class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Enter</kbd>
+                            Beautify</span>
+                        <span><kbd
+                                class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>
+                            + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">M</kbd>
+                            Minify</span>
+                        <span><kbd
+                                class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">Ctrl</kbd>
+                            + <kbd class="px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-700 rounded text-[10px]">S</kbd>
+                            Download</span>
                     </div>
                     <span id="size-comparison" class="hidden text-emerald-600 dark:text-emerald-400"></span>
                 </div>
@@ -341,7 +418,8 @@
             <!-- Info Sections -->
             <div class="grid gap-8 mb-16 lg:grid-cols-3">
                 <!-- Use Cases -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="lightbulb" class="w-5 h-5 text-yellow-500"></i>
                         Use Cases
@@ -371,7 +449,8 @@
                 </div>
 
                 <!-- Features -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
                         Features
@@ -401,21 +480,25 @@
                 </div>
 
                 <!-- Examples -->
-                <div class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-4 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="file-code" class="w-5 h-5 text-yellow-500"></i>
                         Quick Examples
                     </h2>
                     <div class="space-y-3">
-                        <button onclick="loadExample('minified')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <button onclick="loadExample('minified')"
+                            class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                             <span class="font-medium text-neutral-900 dark:text-white">Minified Code</span>
                             <p class="mt-1 text-xs text-neutral-500">Beautify compressed JavaScript</p>
                         </button>
-                        <button onclick="loadExample('react')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <button onclick="loadExample('react')"
+                            class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                             <span class="font-medium text-neutral-900 dark:text-white">React Component</span>
                             <p class="mt-1 text-xs text-neutral-500">Format JSX code</p>
                         </button>
-                        <button onclick="loadExample('typescript')" class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <button onclick="loadExample('typescript')"
+                            class="w-full p-3 text-sm text-left transition-colors border rounded-lg hover:bg-white dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                             <span class="font-medium text-neutral-900 dark:text-white">TypeScript</span>
                             <p class="mt-1 text-xs text-neutral-500">Format typed code</p>
                         </button>
@@ -425,65 +508,90 @@
 
             <!-- FAQ Section -->
             <section class="mb-16">
-                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked
+                    Questions</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What is a JavaScript formatter?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            A JavaScript formatter is a tool that automatically formats and beautifies JavaScript code according to consistent styling rules. It adds proper indentation, line breaks, and spacing to make code more readable and maintainable. This tool uses industry-standard formatting rules similar to Prettier.
+                            A JavaScript formatter is a tool that automatically formats and beautifies JavaScript code
+                            according to consistent styling rules. It adds proper indentation, line breaks, and spacing
+                            to make code more readable and maintainable. This tool uses industry-standard formatting
+                            rules similar to Prettier.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Does this support TypeScript and JSX?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Yes! This formatter supports JavaScript, TypeScript, and JSX/React code. Use the language selector dropdown to switch between modes for optimal formatting. The tool automatically handles type annotations, interfaces, and JSX syntax.
+                            Yes! This formatter supports JavaScript, TypeScript, and JSX/React code. Use the language
+                            selector dropdown to switch between modes for optimal formatting. The tool automatically
+                            handles type annotations, interfaces, and JSX syntax.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Is my code sent to a server?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            No, absolutely not. All formatting happens 100% in your browser using JavaScript. Your code never leaves your device, ensuring complete privacy for sensitive or proprietary code. You can even use this tool offline once the page is loaded.
+                            No, absolutely not. All formatting happens 100% in your browser using JavaScript. Your code
+                            never leaves your device, ensuring complete privacy for sensitive or proprietary code. You
+                            can even use this tool offline once the page is loaded.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What's the difference between beautify and minify?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            <strong>Beautify</strong> adds proper indentation, line breaks, and spacing to make code readable and easy to understand. <strong>Minify</strong> does the opposite - it removes all unnecessary whitespace, comments, and shortens variable names to reduce file size for production deployment.
+                            <strong>Beautify</strong> adds proper indentation, line breaks, and spacing to make code
+                            readable and easy to understand. <strong>Minify</strong> does the opposite - it removes all
+                            unnecessary whitespace, comments, and shortens variable names to reduce file size for
+                            production deployment.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Can I detect syntax errors?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Yes, the formatter includes syntax error detection. If your code has syntax errors, they will be highlighted with error messages indicating the line and type of error. This helps you identify and fix problems before running your code.
+                            Yes, the formatter includes syntax error detection. If your code has syntax errors, they
+                            will be highlighted with error messages indicating the line and type of error. This helps
+                            you identify and fix problems before running your code.
                         </p>
                     </details>
                 </div>
             </section>
 
             <!-- Related Tools -->
-            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <section
+                class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/json-formatter"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
                             <i data-lucide="braces" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
                         </div>
@@ -492,7 +600,8 @@
                             <div class="text-xs text-neutral-500">Format & validate JSON</div>
                         </div>
                     </a>
-                    <a href="/html-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/html-formatter"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
                             <i data-lucide="code" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
                         </div>
@@ -501,7 +610,8 @@
                             <div class="text-xs text-neutral-500">Beautify HTML code</div>
                         </div>
                     </a>
-                    <a href="/css-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/css-formatter"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
                             <i data-lucide="paintbrush" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
                         </div>
@@ -510,7 +620,8 @@
                             <div class="text-xs text-neutral-500">Format CSS & SCSS</div>
                         </div>
                     </a>
-                    <a href="/regex-tester" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/regex-tester"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
                             <i data-lucide="regex" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
                         </div>
@@ -612,12 +723,12 @@
             let inComment = false;
             let inMultiComment = false;
             let newLine = true;
-            
+
             for (let i = 0; i < code.length; i++) {
                 const char = code[i];
                 const nextChar = code[i + 1] || '';
                 const prevChar = code[i - 1] || '';
-                
+
                 // Handle strings
                 if ((char === '"' || char === "'" || char === '`') && prevChar !== '\\' && !inComment && !inMultiComment) {
                     if (!inString) {
@@ -627,7 +738,7 @@
                         inString = false;
                     }
                 }
-                
+
                 // Handle comments
                 if (!inString) {
                     if (char === '/' && nextChar === '/' && !inMultiComment) {
@@ -646,13 +757,13 @@
                         inComment = false;
                     }
                 }
-                
+
                 if (inString || inComment || inMultiComment) {
                     result += char;
                     if (char === '\n') newLine = true;
                     continue;
                 }
-                
+
                 // Handle formatting
                 if (char === '{' || char === '[' || char === '(') {
                     result += char;
@@ -695,7 +806,7 @@
                     newLine = false;
                 }
             }
-            
+
             return result.trim();
         }
 
@@ -727,12 +838,12 @@
             let inComment = false;
             let inMultiComment = false;
             let lastChar = '';
-            
+
             for (let i = 0; i < code.length; i++) {
                 const char = code[i];
                 const nextChar = code[i + 1] || '';
                 const prevChar = code[i - 1] || '';
-                
+
                 // Handle strings
                 if ((char === '"' || char === "'" || char === '`') && prevChar !== '\\' && !inComment && !inMultiComment) {
                     if (!inString) {
@@ -742,7 +853,7 @@
                         inString = false;
                     }
                 }
-                
+
                 // Handle comments
                 if (!inString) {
                     if (char === '/' && nextChar === '/') {
@@ -764,15 +875,15 @@
                         continue;
                     }
                 }
-                
+
                 if (inComment || inMultiComment) continue;
-                
+
                 if (inString) {
                     result += char;
                     lastChar = char;
                     continue;
                 }
-                
+
                 // Skip whitespace unless needed
                 if (char === ' ' || char === '\t' || char === '\n' || char === '\r') {
                     // Keep space between words/identifiers
@@ -785,11 +896,11 @@
                     }
                     continue;
                 }
-                
+
                 result += char;
                 lastChar = char;
             }
-            
+
             return result;
         }
 
@@ -798,7 +909,7 @@
             const outputSize = new Blob([output]).size;
             const diff = originalSize - outputSize;
             const percent = ((diff / originalSize) * 100).toFixed(1);
-            
+
             if (diff > 0) {
                 sizeComparison.textContent = `Reduced by ${formatBytes(diff)} (${percent}%)`;
                 sizeComparison.classList.remove('hidden');
@@ -899,10 +1010,10 @@ const processUsers = (users: User[]): Map<string, User> => {
   return new Map(users.map(user => [user.email, user]));
 };`
             };
-            
+
             codeInput.value = examples[type] || '';
             updateInputStats();
-            
+
             if (type === 'typescript') {
                 document.getElementById('language-select').value = 'typescript';
             } else if (type === 'react') {
@@ -941,11 +1052,11 @@ const processUsers = (users: User[]): Map<string, User> => {
         function downloadCode() {
             const text = codeOutput.textContent || codeInput.value;
             if (!text) return;
-            
+
             const lang = document.getElementById('language-select').value;
             const extensions = { javascript: 'js', typescript: 'ts', jsx: 'jsx' };
             const ext = extensions[lang] || 'js';
-            
+
             const blob = new Blob([text], { type: 'text/javascript' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -958,12 +1069,12 @@ const processUsers = (users: User[]): Map<string, User> => {
         function handleFileUpload(input) {
             const file = input.files[0];
             if (!file) return;
-            
+
             const reader = new FileReader();
             reader.onload = (e) => {
                 codeInput.value = e.target.result;
                 updateInputStats();
-                
+
                 // Auto-detect language
                 if (file.name.endsWith('.ts') || file.name.endsWith('.tsx')) {
                     document.getElementById('language-select').value = 'typescript';
@@ -1003,7 +1114,7 @@ const processUsers = (users: User[]): Map<string, User> => {
             dropZone.classList.remove('drag-over');
             dragOverlay.classList.add('hidden');
             dragOverlay.classList.remove('flex');
-            
+
             const file = e.dataTransfer.files[0];
             if (file) {
                 const reader = new FileReader();
@@ -1032,4 +1143,5 @@ const processUsers = (users: User[]): Map<string, User> => {
         });
     </script>
 </body>
+
 </html>

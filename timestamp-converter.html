@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Free online timestamp converter. Convert Unix timestamps to human-readable dates and dates to timestamps. Support for multiple formats and timezones.">
-    <meta name="keywords" content="timestamp converter, unix timestamp, epoch converter, date to timestamp, timestamp to date, timezone converter, epoch time">
+    <meta name="keywords"
+        content="timestamp converter, unix timestamp, epoch converter, date to timestamp, timestamp to date, timezone converter, epoch time">
     <meta name="robots" content="index, follow">
     <meta name="author" content="SimpleDevTools">
     <title>Timestamp Converter - Unix Epoch to Date | SimpleDevTools</title>
@@ -25,7 +26,8 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Timestamp Converter - Unix Epoch to Date">
-    <meta property="og:description" content="Convert between Unix timestamps and human-readable dates. Free online epoch converter with timezone support.">
+    <meta property="og:description"
+        content="Convert between Unix timestamps and human-readable dates. Free online epoch converter with timezone support.">
     <meta property="og:url" content="https://simpledevtools.tech/timestamp-converter">
     <meta property="og:type" content="website">
 
@@ -92,17 +94,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./dist/output.css">
     <script src="./dist/js/lucide.min.js"></script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
 </head>
 
-<body class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
 
     <noscript>
         <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
@@ -112,7 +119,9 @@
     </noscript>
 
     <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-teal-500/10 dark:bg-teal-500/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-teal-500/10 dark:bg-teal-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
 
     <!-- Main Content -->
     <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
@@ -120,11 +129,13 @@
 
             <!-- Header Section -->
             <div class="max-w-2xl mx-auto mb-12 text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-teal-600 border border-teal-100 rounded-full bg-teal-50 dark:bg-teal-900/20 dark:text-teal-400 dark:border-teal-900/30">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-teal-600 border border-teal-100 rounded-full bg-teal-50 dark:bg-teal-900/20 dark:text-teal-400 dark:border-teal-900/30">
                     <i data-lucide="shield-check" class="w-3 h-3"></i>
                     <span>Processed locally. No data reaches our servers.</span>
                 </div>
-                <h1 class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
                     Timestamp Converter
                 </h1>
                 <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
@@ -133,11 +144,15 @@
             </div>
 
             <!-- Current Time Display -->
-            <div class="p-6 mb-8 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <div
+                class="p-6 mb-8 text-center bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <p class="mb-2 text-sm font-medium text-neutral-500 dark:text-neutral-400">Current Unix Timestamp</p>
                 <div class="flex items-center justify-center gap-4">
-                    <span id="current-timestamp" class="font-mono text-4xl font-bold text-teal-600 dark:text-teal-400">1700000000</span>
-                    <button onclick="copyCurrentTimestamp()" class="p-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700" title="Copy">
+                    <span id="current-timestamp"
+                        class="font-mono text-4xl font-bold text-teal-600 dark:text-teal-400">1700000000</span>
+                    <button onclick="copyCurrentTimestamp()"
+                        class="p-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                        title="Copy">
                         <i data-lucide="copy" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -147,7 +162,8 @@
             <!-- Main Tool -->
             <div class="grid gap-8 mb-16 lg:grid-cols-2">
                 <!-- Timestamp to Date -->
-                <div class="p-6 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-6 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="clock" class="w-5 h-5 text-teal-500"></i>
                         Timestamp → Date
@@ -157,10 +173,12 @@
                         <div>
                             <label class="block mb-2 text-sm font-medium">Unix Timestamp</label>
                             <div class="flex gap-2">
-                                <input type="text" id="timestamp-input" placeholder="e.g., 1700000000" 
+                                <input type="text" id="timestamp-input" placeholder="e.g., 1700000000"
                                     class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                                     oninput="convertTimestampToDate()">
-                                <button onclick="useCurrentTimestamp()" class="px-3 py-2 text-sm font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700" title="Use current time">
+                                <button onclick="useCurrentTimestamp()"
+                                    class="px-3 py-2 text-sm font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                                    title="Use current time">
                                     <i data-lucide="clock" class="w-4 h-4"></i>
                                 </button>
                             </div>
@@ -168,7 +186,9 @@
 
                         <div>
                             <label class="block mb-2 text-sm font-medium">Timestamp Unit</label>
-                            <select id="timestamp-unit" class="w-full p-3 text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700" onchange="convertTimestampToDate()">
+                            <select id="timestamp-unit"
+                                class="w-full p-3 text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                                onchange="convertTimestampToDate()">
                                 <option value="seconds">Seconds (Unix)</option>
                                 <option value="milliseconds">Milliseconds (JavaScript)</option>
                             </select>
@@ -178,9 +198,10 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">Local Time</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="ts-local-output" readonly 
+                                    <input type="text" id="ts-local-output" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('ts-local-output')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('ts-local-output')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -188,9 +209,10 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">UTC</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="ts-utc-output" readonly 
+                                    <input type="text" id="ts-utc-output" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('ts-utc-output')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('ts-utc-output')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -198,16 +220,17 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">ISO 8601</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="ts-iso-output" readonly 
+                                    <input type="text" id="ts-iso-output" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('ts-iso-output')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('ts-iso-output')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
                             </div>
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">Relative Time</label>
-                                <input type="text" id="ts-relative-output" readonly 
+                                <input type="text" id="ts-relative-output" readonly
                                     class="w-full p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                             </div>
                         </div>
@@ -215,7 +238,8 @@
                 </div>
 
                 <!-- Date to Timestamp -->
-                <div class="p-6 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <div
+                    class="p-6 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <h2 class="flex items-center gap-2 mb-6 text-lg font-semibold text-neutral-900 dark:text-white">
                         <i data-lucide="calendar" class="w-5 h-5 text-teal-500"></i>
                         Date → Timestamp
@@ -225,7 +249,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block mb-2 text-sm font-medium">Date</label>
-                                <input type="date" id="date-input" 
+                                <input type="date" id="date-input"
                                     class="w-full p-3 text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                                     onchange="convertDateToTimestamp()">
                             </div>
@@ -239,14 +263,17 @@
 
                         <div>
                             <label class="block mb-2 text-sm font-medium">Timezone</label>
-                            <select id="timezone-select" class="w-full p-3 text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700" onchange="convertDateToTimestamp()">
+                            <select id="timezone-select"
+                                class="w-full p-3 text-sm border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                                onchange="convertDateToTimestamp()">
                                 <option value="local">Local Time</option>
                                 <option value="UTC">UTC</option>
                             </select>
                         </div>
 
                         <div>
-                            <button onclick="useCurrentDateTime()" class="w-full px-4 py-2 text-sm font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                            <button onclick="useCurrentDateTime()"
+                                class="w-full px-4 py-2 text-sm font-medium transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                 <i data-lucide="refresh-cw" class="inline w-4 h-4 mr-2"></i>
                                 Use Current Date & Time
                             </button>
@@ -256,9 +283,10 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">Unix Timestamp (seconds)</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="date-ts-seconds" readonly 
+                                    <input type="text" id="date-ts-seconds" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('date-ts-seconds')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('date-ts-seconds')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -266,9 +294,10 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">Milliseconds (JavaScript)</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="date-ts-millis" readonly 
+                                    <input type="text" id="date-ts-millis" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('date-ts-millis')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('date-ts-millis')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -276,9 +305,10 @@
                             <div>
                                 <label class="block mb-1 text-xs text-neutral-500">ISO 8601</label>
                                 <div class="flex gap-2">
-                                    <input type="text" id="date-iso" readonly 
+                                    <input type="text" id="date-iso" readonly
                                         class="flex-1 p-3 font-mono text-sm border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-                                    <button onclick="copyValue('date-iso')" class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                                    <button onclick="copyValue('date-iso')"
+                                        class="px-3 py-2 transition-colors border rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
                                         <i data-lucide="copy" class="w-4 h-4"></i>
                                     </button>
                                 </div>
@@ -289,7 +319,8 @@
             </div>
 
             <!-- Common Timestamps Reference -->
-            <div class="p-6 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <div
+                class="p-6 mb-16 bg-white border rounded-xl dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <h2 class="flex items-center gap-2 mb-6 text-lg font-semibold text-neutral-900 dark:text-white">
                     <i data-lucide="bookmark" class="w-5 h-5 text-teal-500"></i>
                     Common Reference Points
@@ -308,33 +339,43 @@
                         <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
                             <tr>
                                 <td class="py-3">Unix Epoch</td>
-                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 1, 1970 00:00:00 UTC</td>
+                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 1, 1970 00:00:00
+                                    UTC</td>
                                 <td class="py-3 font-mono">0</td>
-                                <td class="py-3"><button onclick="setTimestamp(0)" class="text-teal-600 hover:underline">Use</button></td>
+                                <td class="py-3"><button onclick="setTimestamp(0)"
+                                        class="text-teal-600 hover:underline">Use</button></td>
                             </tr>
                             <tr>
                                 <td class="py-3">Y2K</td>
-                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 1, 2000 00:00:00 UTC</td>
+                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 1, 2000 00:00:00
+                                    UTC</td>
                                 <td class="py-3 font-mono">946684800</td>
-                                <td class="py-3"><button onclick="setTimestamp(946684800)" class="text-teal-600 hover:underline">Use</button></td>
+                                <td class="py-3"><button onclick="setTimestamp(946684800)"
+                                        class="text-teal-600 hover:underline">Use</button></td>
                             </tr>
                             <tr>
                                 <td class="py-3">32-bit Overflow</td>
-                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 19, 2038 03:14:07 UTC</td>
+                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Jan 19, 2038 03:14:07
+                                    UTC</td>
                                 <td class="py-3 font-mono">2147483647</td>
-                                <td class="py-3"><button onclick="setTimestamp(2147483647)" class="text-teal-600 hover:underline">Use</button></td>
+                                <td class="py-3"><button onclick="setTimestamp(2147483647)"
+                                        class="text-teal-600 hover:underline">Use</button></td>
                             </tr>
                             <tr>
                                 <td class="py-3">Billion Seconds</td>
-                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Sep 9, 2001 01:46:40 UTC</td>
+                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">Sep 9, 2001 01:46:40
+                                    UTC</td>
                                 <td class="py-3 font-mono">1000000000</td>
-                                <td class="py-3"><button onclick="setTimestamp(1000000000)" class="text-teal-600 hover:underline">Use</button></td>
+                                <td class="py-3"><button onclick="setTimestamp(1000000000)"
+                                        class="text-teal-600 hover:underline">Use</button></td>
                             </tr>
                             <tr>
                                 <td class="py-3">2 Billion Seconds</td>
-                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">May 18, 2033 03:33:20 UTC</td>
+                                <td class="py-3 font-mono text-neutral-600 dark:text-neutral-400">May 18, 2033 03:33:20
+                                    UTC</td>
                                 <td class="py-3 font-mono">2000000000</td>
-                                <td class="py-3"><button onclick="setTimestamp(2000000000)" class="text-teal-600 hover:underline">Use</button></td>
+                                <td class="py-3"><button onclick="setTimestamp(2000000000)"
+                                        class="text-teal-600 hover:underline">Use</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -343,65 +384,89 @@
 
             <!-- FAQ Section -->
             <section class="mb-16">
-                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked Questions</h2>
+                <h2 class="mb-6 text-2xl font-semibold text-center text-neutral-900 dark:text-white">Frequently Asked
+                    Questions</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What is a Unix timestamp?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            A Unix timestamp (or epoch time) is the number of seconds that have elapsed since January 1, 1970 at 00:00:00 UTC (Coordinated Universal Time). It's a standard way to represent time in computing systems, making it easy to store, compare, and calculate dates.
+                            A Unix timestamp (or epoch time) is the number of seconds that have elapsed since January 1,
+                            1970 at 00:00:00 UTC (Coordinated Universal Time). It's a standard way to represent time in
+                            computing systems, making it easy to store, compare, and calculate dates.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What's the difference between seconds and milliseconds?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Unix timestamps are traditionally measured in seconds, while JavaScript's <code>Date.now()</code> returns milliseconds. A millisecond timestamp has 13 digits, while a seconds timestamp has 10 digits. To convert: milliseconds = seconds × 1000.
+                            Unix timestamps are traditionally measured in seconds, while JavaScript's
+                            <code>Date.now()</code> returns milliseconds. A millisecond timestamp has 13 digits, while a
+                            seconds timestamp has 10 digits. To convert: milliseconds = seconds × 1000.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What is the Year 2038 problem?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            32-bit systems store timestamps as signed integers, which can only represent values up to 2,147,483,647. This timestamp corresponds to January 19, 2038 at 03:14:07 UTC. After this point, the value overflows to negative, causing date errors. Modern 64-bit systems don't have this limitation.
+                            32-bit systems store timestamps as signed integers, which can only represent values up to
+                            2,147,483,647. This timestamp corresponds to January 19, 2038 at 03:14:07 UTC. After this
+                            point, the value overflows to negative, causing date errors. Modern 64-bit systems don't
+                            have this limitation.
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>Why use timestamps instead of dates?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            Timestamps are timezone-independent, making them ideal for storing and comparing dates across different regions. They're also easier to sort, calculate differences between dates, and don't have formatting ambiguity issues like "DD/MM/YYYY" vs "MM/DD/YYYY".
+                            Timestamps are timezone-independent, making them ideal for storing and comparing dates
+                            across different regions. They're also easier to sort, calculate differences between dates,
+                            and don't have formatting ambiguity issues like "DD/MM/YYYY" vs "MM/DD/YYYY".
                         </p>
                     </details>
 
                     <details class="p-4 border rounded-lg group border-neutral-200 dark:border-neutral-800">
-                        <summary class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
+                        <summary
+                            class="flex items-center justify-between font-medium cursor-pointer text-neutral-900 dark:text-white">
                             <span>What is ISO 8601 format?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            <i data-lucide="chevron-down"
+                                class="w-4 h-4 transition transform group-open:rotate-180"></i>
                         </summary>
                         <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
-                            ISO 8601 is an international standard for date and time representation. The format is: <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>. For example, "2024-01-15T14:30:00.000Z". The "T" separates date and time, and "Z" indicates UTC timezone.
+                            ISO 8601 is an international standard for date and time representation. The format is:
+                            <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>. For example, "2024-01-15T14:30:00.000Z". The "T"
+                            separates date and time, and "Z" indicates UTC timezone.
                         </p>
                     </details>
                 </div>
             </section>
 
             <!-- Related Tools -->
-            <section class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+            <section
+                class="p-6 border rounded-xl bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                 <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Related Tools</h2>
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <a href="/uuid-generator" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/uuid-generator"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
                             <i data-lucide="fingerprint" class="w-4 h-4 text-green-600 dark:text-green-400"></i>
                         </div>
@@ -410,7 +475,8 @@
                             <div class="text-xs text-neutral-500">Generate unique IDs</div>
                         </div>
                     </a>
-                    <a href="/json-formatter" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/json-formatter"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
                             <i data-lucide="braces" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
                         </div>
@@ -419,7 +485,8 @@
                             <div class="text-xs text-neutral-500">Format JSON data</div>
                         </div>
                     </a>
-                    <a href="/base64-encoder" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/base64-encoder"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
                             <i data-lucide="binary" class="w-4 h-4 text-purple-600 dark:text-purple-400"></i>
                         </div>
@@ -428,7 +495,8 @@
                             <div class="text-xs text-neutral-500">Encode/decode data</div>
                         </div>
                     </a>
-                    <a href="/hash-generator" class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
+                    <a href="/hash-generator"
+                        class="flex items-center gap-3 p-3 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-white dark:hover:bg-neutral-800">
                         <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
                             <i data-lucide="hash" class="w-4 h-4 text-orange-600 dark:text-orange-400"></i>
                         </div>
@@ -480,7 +548,7 @@
         function convertTimestampToDate() {
             const input = document.getElementById('timestamp-input').value.trim();
             const unit = document.getElementById('timestamp-unit').value;
-            
+
             if (!input || isNaN(input)) {
                 clearTimestampOutputs();
                 return;
@@ -492,7 +560,7 @@
             }
 
             const date = new Date(timestamp);
-            
+
             if (isNaN(date.getTime())) {
                 clearTimestampOutputs();
                 return;
@@ -515,7 +583,7 @@
             const now = new Date();
             const dateStr = now.toISOString().split('T')[0];
             const timeStr = now.toTimeString().split(' ')[0];
-            
+
             document.getElementById('date-input').value = dateStr;
             document.getElementById('time-input').value = timeStr;
             convertDateToTimestamp();
@@ -533,7 +601,7 @@
 
             let date;
             const dateTimeStr = `${dateVal}T${timeVal}`;
-            
+
             if (timezone === 'UTC') {
                 date = new Date(dateTimeStr + 'Z');
             } else {
@@ -608,4 +676,5 @@
         }
     </script>
 </body>
+
 </html>
