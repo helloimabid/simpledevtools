@@ -48,7 +48,63 @@ function injectLayout() {
 
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-500 dark:text-neutral-400">
                 <a href="/" class="hover:text-black dark:hover:text-white transition-colors">Home</a>
-                <a href="/tools" class="hover:text-black dark:hover:text-white transition-colors">Tools</a>
+                
+                <!-- Tools Dropdown -->
+                <div class="relative group">
+                    <a href="/tools" class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
+                        Tools
+                        <i data-lucide="chevron-down" class="w-3 h-3 transition-transform group-hover:rotate-180"></i>
+                    </a>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div class="bg-white dark:bg-neutral-900 rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-800 p-4 min-w-[500px]">
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="/formatters" class="flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+                                    <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-neutral-900 dark:text-white text-sm">Formatters</div>
+                                        <div class="text-xs text-neutral-500 dark:text-neutral-400">JSON, JS, CSS, HTML, SQL</div>
+                                    </div>
+                                </a>
+                                <a href="/encoders" class="flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+                                    <div class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
+                                        <i data-lucide="lock" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-neutral-900 dark:text-white text-sm">Encoders</div>
+                                        <div class="text-xs text-neutral-500 dark:text-neutral-400">Base64, URL, Hash</div>
+                                    </div>
+                                </a>
+                                <a href="/generators" class="flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-neutral-900 dark:text-white text-sm">Generators</div>
+                                        <div class="text-xs text-neutral-500 dark:text-neutral-400">UUID, Lorem, Colors</div>
+                                    </div>
+                                </a>
+                                <a href="/validators" class="flex items-start gap-3 p-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors">
+                                    <div class="w-10 h-10 rounded-lg bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400">
+                                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-neutral-900 dark:text-white text-sm">Validators</div>
+                                        <div class="text-xs text-neutral-500 dark:text-neutral-400">Regex, JWT, Diff</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mt-3 pt-3 border-t border-neutral-200 dark:border-neutral-800">
+                                <a href="/tools" class="text-xs text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 font-medium flex items-center gap-1">
+                                    View all tools <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">Guides</a>
                 <a href="/how-it-works" class="hover:text-black dark:hover:text-white transition-colors">How It Works</a>
 
                 <div class="h-4 w-px bg-neutral-200 dark:bg-neutral-800"></div>
@@ -71,8 +127,8 @@ function injectLayout() {
   const footerHTML = `
     <footer class="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black pt-12 pb-8 text-sm relative z-10 mt-auto">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-8 mb-12">
-                <div class="col-span-1 md:col-span-2">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
+                <div class="col-span-2">
                     <div class="flex items-center gap-2 mb-4">
                        <picture>
                            <source srcset="../logo.webp" type="image/webp">
@@ -80,32 +136,44 @@ function injectLayout() {
                        </picture>
                         <span class="font-display font-semibold tracking-tight text-neutral-900 dark:text-white">SimpleDevTools</span>
                     </div>
-                    <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed">
+                    <p class="text-neutral-500 dark:text-neutral-400 max-w-xs leading-relaxed mb-4">
                         Privacy-first utilities for the modern web. Built for developers, by developers.
                     </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://github.com/helloimabid/simpledevtools" target="_blank" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Tools</h4>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Categories</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="/formatters" class="hover:text-black dark:hover:text-white transition-colors">Formatters</a></li>
+                        <li><a href="/encoders" class="hover:text-black dark:hover:text-white transition-colors">Encoders</a></li>
+                        <li><a href="/generators" class="hover:text-black dark:hover:text-white transition-colors">Generators</a></li>
+                        <li><a href="/validators" class="hover:text-black dark:hover:text-white transition-colors">Validators</a></li>
+                        <li><a href="/tools" class="hover:text-black dark:hover:text-white transition-colors">All Tools</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Popular Tools</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
                         <li><a href="/json-formatter" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter</a></li>
                         <li><a href="/base64-encoder" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoder</a></li>
-                        <li><a href="/hash-generator" class="hover:text-black dark:hover:text-white transition-colors">Hash Generator</a></li>
                         <li><a href="/uuid-generator" class="hover:text-black dark:hover:text-white transition-colors">UUID Generator</a></li>
                         <li><a href="/regex-tester" class="hover:text-black dark:hover:text-white transition-colors">Regex Tester</a></li>
                         <li><a href="/jwt-decoder" class="hover:text-black dark:hover:text-white transition-colors">JWT Decoder</a></li>
-                        <li><a href="/image-compressor" class="hover:text-black dark:hover:text-white transition-colors">Image Compressor</a></li>
-                        <li><a href="/password-strength-analyzer" class="hover:text-black dark:hover:text-white transition-colors">Password Analyzer</a></li>
-                        <li><a href="/javascript-formatter" class="hover:text-black dark:hover:text-white transition-colors">JavaScript Formatter</a></li>
-                        <li><a href="/css-formatter" class="hover:text-black dark:hover:text-white transition-colors">CSS Formatter</a></li>
-                        <li><a href="/html-formatter" class="hover:text-black dark:hover:text-white transition-colors">HTML Formatter</a></li>
-                        <li><a href="/sql-formatter" class="hover:text-black dark:hover:text-white transition-colors">SQL Formatter</a></li>
-                        <li><a href="/markdown-editor" class="hover:text-black dark:hover:text-white transition-colors">Markdown Editor</a></li>
-                        <li><a href="/url-encoder" class="hover:text-black dark:hover:text-white transition-colors">URL Encoder</a></li>
-                        <li><a href="/color-picker" class="hover:text-black dark:hover:text-white transition-colors">Color Picker</a></li>
-                        <li><a href="/timestamp-converter" class="hover:text-black dark:hover:text-white transition-colors">Timestamp Converter</a></li>
-                        <li><a href="/lorem-ipsum" class="hover:text-black dark:hover:text-white transition-colors">Lorem Ipsum Generator</a></li>
-                        <li><a href="/diff-checker" class="hover:text-black dark:hover:text-white transition-colors">Diff Checker</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Resources</h4>
+                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
+                        <li><a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">Guides</a></li>
+                        <li><a href="/how-it-works" class="hover:text-black dark:hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="/contact" class="hover:text-black dark:hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
@@ -116,27 +184,6 @@ function injectLayout() {
                         <li><a href="/terms" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Contact</h4>
-                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="/contact" class="hover:text-black dark:hover:text-white transition-colors">Contact Me</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Guides</h4>
-                    <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
-                        <li><a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">All Guides</a></li>
-                        <li><a href="/guides/web-developer-tools-guide" class="hover:text-black dark:hover:text-white transition-colors">Web Dev Tools Overview</a></li>
-                        <li><a href="/guides/json-formatter-guide" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter Guide</a></li>
-                        <li><a href="/guides/jwt-guide" class="hover:text-black dark:hover:text-white transition-colors">JWT Authentication</a></li>
-                        <li><a href="/guides/base64-encoding-guide" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoding</a></li>
-                        <li><a href="/guides/regex-patterns-guide" class="hover:text-black dark:hover:text-white transition-colors">Regex Cheat Sheet</a></li>
-                        <li><a href="/guides/uuid-guide" class="hover:text-black dark:hover:text-white transition-colors">UUID Guide</a></li>
-                        <li><a href="/guides/hash-guide" class="hover:text-black dark:hover:text-white transition-colors">Hash Functions</a></li>
-                        <li><a href="/guides/password-security-guide" class="hover:text-black dark:hover:text-white transition-colors">Password Security</a></li>
-                    </ul>
-                </div>
-
             </div>
 
             <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-200 dark:border-neutral-800">

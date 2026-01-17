@@ -196,6 +196,27 @@
                 Fast, privacy-first tools that run entirely in your browser.
             </p>
         </div>
+
+        <!-- Search Bar -->
+        <div class="max-w-xl mb-12 animate-slide-up" style="animation-delay: 0.02s;">
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                    <i data-lucide="search" class="w-5 h-5 text-neutral-400"></i>
+                </div>
+                <input type="text" id="tool-search" placeholder="Search tools (e.g., json, base64, regex...)"
+                    autocomplete="off"
+                    class="w-full py-3 pl-12 pr-4 text-base transition-all duration-200 border rounded-xl bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-neutral-400">
+                <div id="search-results"
+                    class="absolute z-50 hidden w-full mt-2 overflow-hidden bg-white border shadow-xl dark:bg-neutral-900 rounded-xl border-neutral-200 dark:border-neutral-700">
+                </div>
+            </div>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+                <span id="tool-count">18</span> tools available · Type to search or press <kbd
+                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">/</kbd>
+                to focus
+            </p>
+        </div>
+
         <section class="mb-16 animate-slide-up" style="animation-delay: 0.05s;">
             <h2 class="mb-8 text-3xl font-bold font-display text-neutral-900 dark:text-neutral-100">Tools by Category
             </h2>
@@ -801,6 +822,128 @@
     <script>
         // Initialize Icons
         lucide.createIcons();
+
+        // Tool Search Functionality
+        const tools = [
+            { name: 'JSON Formatter', url: '/json-formatter', icon: 'braces', color: 'emerald', keywords: ['json', 'format', 'beautify', 'validate', 'minify', 'data'] },
+            { name: 'Base64 Encoder', url: '/base64-encoder', icon: 'file-key', color: 'blue', keywords: ['base64', 'encode', 'decode', 'convert', 'binary'] },
+            { name: 'UUID Generator', url: '/uuid-generator', icon: 'fingerprint', color: 'violet', keywords: ['uuid', 'guid', 'generate', 'unique', 'id'] },
+            { name: 'JWT Decoder', url: '/jwt-decoder', icon: 'key', color: 'orange', keywords: ['jwt', 'token', 'decode', 'auth', 'json web token'] },
+            { name: 'Regex Tester', url: '/regex-tester', icon: 'regex', color: 'rose', keywords: ['regex', 'regular expression', 'pattern', 'match', 'test'] },
+            { name: 'Hash Generator', url: '/hash-generator', icon: 'hash', color: 'purple', keywords: ['hash', 'md5', 'sha256', 'sha512', 'checksum', 'crypto'] },
+            { name: 'Image Compressor', url: '/image-compressor', icon: 'image', color: 'pink', keywords: ['image', 'compress', 'optimize', 'resize', 'jpg', 'png', 'webp'] },
+            { name: 'Password Analyzer', url: '/password-strength-analyzer', icon: 'shield-check', color: 'cyan', keywords: ['password', 'strength', 'security', 'analyze'] },
+            { name: 'JavaScript Formatter', url: '/javascript-formatter', icon: 'code-2', color: 'yellow', keywords: ['javascript', 'js', 'format', 'beautify', 'minify'] },
+            { name: 'CSS Formatter', url: '/css-formatter', icon: 'palette', color: 'blue', keywords: ['css', 'format', 'beautify', 'minify', 'style'] },
+            { name: 'HTML Formatter', url: '/html-formatter', icon: 'code', color: 'orange', keywords: ['html', 'format', 'beautify', 'minify', 'markup'] },
+            { name: 'SQL Formatter', url: '/sql-formatter', icon: 'database', color: 'indigo', keywords: ['sql', 'format', 'query', 'database', 'mysql', 'postgresql'] },
+            { name: 'Markdown Editor', url: '/markdown-editor', icon: 'file-text', color: 'gray', keywords: ['markdown', 'md', 'editor', 'preview', 'documentation'] },
+            { name: 'URL Encoder', url: '/url-encoder', icon: 'link', color: 'cyan', keywords: ['url', 'encode', 'decode', 'percent', 'uri'] },
+            { name: 'Color Picker', url: '/color-picker', icon: 'pipette', color: 'pink', keywords: ['color', 'picker', 'hex', 'rgb', 'hsl', 'palette'] },
+            { name: 'Timestamp Converter', url: '/timestamp-converter', icon: 'clock', color: 'amber', keywords: ['timestamp', 'unix', 'epoch', 'date', 'time', 'convert'] },
+            { name: 'Lorem Ipsum Generator', url: '/lorem-ipsum', icon: 'text', color: 'teal', keywords: ['lorem', 'ipsum', 'placeholder', 'text', 'dummy'] },
+            { name: 'Diff Checker', url: '/diff-checker', icon: 'git-compare', color: 'red', keywords: ['diff', 'compare', 'difference', 'text', 'code'] }
+        ];
+
+        document.getElementById('tool-count').textContent = tools.length;
+
+        const searchInput = document.getElementById('tool-search');
+        const searchResults = document.getElementById('search-results');
+        let selectedIndex = -1;
+
+        // Keyboard shortcut to focus search
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Escape') {
+                searchResults.classList.add('hidden');
+                searchInput.blur();
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            selectedIndex = -1;
+
+            if (!query) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const filtered = tools.filter(tool =>
+                tool.name.toLowerCase().includes(query) ||
+                tool.keywords.some(k => k.includes(query))
+            ).slice(0, 8);
+
+            if (filtered.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="p-4 text-center text-neutral-500 dark:text-neutral-400">
+                        <i data-lucide="search-x" class="w-8 h-8 mx-auto mb-2 opacity-50"></i>
+                        <p class="text-sm">No tools found for "${query}"</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                searchResults.classList.remove('hidden');
+                return;
+            }
+
+            searchResults.innerHTML = filtered.map((tool, idx) => `
+                <a href="${tool.url}" 
+                   class="search-result flex items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 ${idx === 0 ? '' : 'border-t border-neutral-100 dark:border-neutral-800'}"
+                   data-index="${idx}">
+                    <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-${tool.color}-100 dark:bg-${tool.color}-900/30 text-${tool.color}-600 dark:text-${tool.color}-400">
+                        <i data-lucide="${tool.icon}" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <div class="font-medium text-neutral-900 dark:text-white text-sm">${tool.name}</div>
+                        <div class="text-xs text-neutral-500">${tool.keywords.slice(0, 3).join(' · ')}</div>
+                    </div>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-auto text-neutral-400"></i>
+                </a>
+            `).join('');
+
+            lucide.createIcons();
+            searchResults.classList.remove('hidden');
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            const results = searchResults.querySelectorAll('.search-result');
+            if (results.length === 0) return;
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIndex = Math.min(selectedIndex + 1, results.length - 1);
+                updateSelection(results);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIndex = Math.max(selectedIndex - 1, 0);
+                updateSelection(results);
+            } else if (e.key === 'Enter' && selectedIndex >= 0) {
+                e.preventDefault();
+                results[selectedIndex].click();
+            }
+        });
+
+        function updateSelection(results) {
+            results.forEach((r, i) => {
+                r.classList.toggle('bg-neutral-50', i === selectedIndex);
+                r.classList.toggle('dark:bg-neutral-800', i === selectedIndex);
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.trim()) {
+                searchInput.dispatchEvent(new Event('input'));
+            }
+        });
 
 
     </script>
