@@ -13,7 +13,7 @@ function ensureAdSense() {
   const ADSENSE_CLIENT = "ca-pub-9710571190649081";
 
   const existingMeta = document.querySelector(
-    'meta[name="google-adsense-account"]'
+    'meta[name="google-adsense-account"]',
   );
   if (!existingMeta) {
     const meta = document.createElement("meta");
@@ -23,7 +23,7 @@ function ensureAdSense() {
   }
 
   const existingScript = document.querySelector(
-    'script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+    'script[src^="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]',
   );
   if (existingScript) return;
 

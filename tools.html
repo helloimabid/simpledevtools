@@ -199,28 +199,33 @@
                 <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
                     <i data-lucide="search" class="w-5 h-5 text-neutral-400"></i>
                 </div>
-                <input type="text" id="tool-search" placeholder="Search tools or press Ctrl+K..."
-                    autocomplete="off"
+                <input type="text" id="tool-search" placeholder="Search tools or press Ctrl+K..." autocomplete="off"
                     class="w-full py-3 pl-12 pr-4 text-base transition-all duration-200 border rounded-xl bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-neutral-400">
                 <div id="search-results"
                     class="absolute z-50 hidden w-full mt-2 overflow-hidden bg-white border shadow-xl dark:bg-neutral-900 rounded-xl border-neutral-200 dark:border-neutral-700">
                 </div>
             </div>
             <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-                <span id="tool-count">18</span> tools available · 
-                <kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">Ctrl+K</kbd> Quick switch · 
-                <kbd class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">?</kbd> Shortcuts
+                <span id="tool-count">18</span> tools available ·
+                <kbd
+                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">Ctrl+K</kbd>
+                Quick switch ·
+                <kbd
+                    class="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 font-mono text-xs">?</kbd>
+                Shortcuts
             </p>
         </div>
 
         <!-- Recently Used Tools (dynamically populated) -->
         <section id="recently-used-section" class="hidden mb-12 animate-slide-up" style="animation-delay: 0.03s;">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-semibold font-display text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
+                <h2
+                    class="text-lg font-semibold font-display text-neutral-900 dark:text-neutral-100 flex items-center gap-2">
                     <i data-lucide="clock" class="w-5 h-5 text-neutral-400"></i>
                     Recently Used
                 </h2>
-                <button onclick="clearRecentTools()" class="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
+                <button onclick="clearRecentTools()"
+                    class="text-xs text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
                     Clear history
                 </button>
             </div>
@@ -983,7 +988,7 @@
         function renderRecentlyUsed() {
             const recentSection = document.getElementById('recently-used-section');
             const recentContainer = document.getElementById('recently-used-tools');
-            
+
             try {
                 const recent = JSON.parse(localStorage.getItem('sdt_recent_tools')) || [];
                 if (recent.length === 0) {
@@ -992,7 +997,7 @@
                 }
 
                 recentSection.classList.remove('hidden');
-                
+
                 const toolIcons = {
                     '/json-formatter': 'braces',
                     '/base64-encoder': 'file-key',
