@@ -82,23 +82,23 @@ function injectLayout() {
                         <i data-lucide="chevron-down" class="w-3 h-3 transition-transform group-hover:rotate-180"></i>
                     </a>
                     <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                        <div class="w-[500px] p-6 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl">
-                            <div class="grid grid-cols-2 gap-6">
+                        <div style="width: 500px;" class="p-6 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-xl">
+                            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem;">
                                 <div>
                                     <a href="/formatters" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
-                                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">
+                                        <div class="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400" style="flex-shrink: 0;">
                                             <i data-lucide="code-2" class="w-4 h-4"></i>
                                         </div>
-                                        <div>
+                                        <div style="min-width: 0;">
                                             <div class="font-medium text-neutral-900 dark:text-white">Formatters</div>
                                             <div class="text-xs text-neutral-500">JSON, JS, CSS, HTML, SQL</div>
                                         </div>
                                     </a>
                                     <a href="/encoders" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors mt-2">
-                                        <div class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400">
+                                        <div class="p-2 rounded-lg bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400" style="flex-shrink: 0;">
                                             <i data-lucide="binary" class="w-4 h-4"></i>
                                         </div>
-                                        <div>
+                                        <div style="min-width: 0;">
                                             <div class="font-medium text-neutral-900 dark:text-white">Encoders</div>
                                             <div class="text-xs text-neutral-500">Base64, URL, Hash</div>
                                         </div>
@@ -106,19 +106,19 @@ function injectLayout() {
                                 </div>
                                 <div>
                                     <a href="/generators" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
-                                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+                                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400" style="flex-shrink: 0;">
                                             <i data-lucide="sparkles" class="w-4 h-4"></i>
                                         </div>
-                                        <div>
+                                        <div style="min-width: 0;">
                                             <div class="font-medium text-neutral-900 dark:text-white">Generators</div>
                                             <div class="text-xs text-neutral-500">UUID, Lorem, Colors</div>
                                         </div>
                                     </a>
                                     <a href="/validators" class="flex items-center gap-3 p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors mt-2">
-                                        <div class="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400">
+                                        <div class="p-2 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400" style="flex-shrink: 0;">
                                             <i data-lucide="check-circle" class="w-4 h-4"></i>
                                         </div>
-                                        <div>
+                                        <div style="min-width: 0;">
                                             <div class="font-medium text-neutral-900 dark:text-white">Validators</div>
                                             <div class="text-xs text-neutral-500">Regex, JWT, Diff</div>
                                         </div>

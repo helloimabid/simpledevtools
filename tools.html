@@ -834,6 +834,26 @@
         // Initialize Icons
         lucide.createIcons();
 
+        // Color mappings for search results (using inline styles to avoid Tailwind purging)
+        const colorStyles = {
+            emerald: { bg: 'rgba(16, 185, 129, 0.1)', bgDark: 'rgba(16, 185, 129, 0.2)', text: '#059669', textDark: '#34d399' },
+            blue: { bg: 'rgba(59, 130, 246, 0.1)', bgDark: 'rgba(59, 130, 246, 0.2)', text: '#2563eb', textDark: '#60a5fa' },
+            violet: { bg: 'rgba(139, 92, 246, 0.1)', bgDark: 'rgba(139, 92, 246, 0.2)', text: '#7c3aed', textDark: '#a78bfa' },
+            orange: { bg: 'rgba(249, 115, 22, 0.1)', bgDark: 'rgba(249, 115, 22, 0.2)', text: '#ea580c', textDark: '#fb923c' },
+            rose: { bg: 'rgba(244, 63, 94, 0.1)', bgDark: 'rgba(244, 63, 94, 0.2)', text: '#e11d48', textDark: '#fb7185' },
+            purple: { bg: 'rgba(168, 85, 247, 0.1)', bgDark: 'rgba(168, 85, 247, 0.2)', text: '#9333ea', textDark: '#c084fc' },
+            pink: { bg: 'rgba(236, 72, 153, 0.1)', bgDark: 'rgba(236, 72, 153, 0.2)', text: '#db2777', textDark: '#f472b6' },
+            cyan: { bg: 'rgba(6, 182, 212, 0.1)', bgDark: 'rgba(6, 182, 212, 0.2)', text: '#0891b2', textDark: '#22d3ee' },
+            yellow: { bg: 'rgba(234, 179, 8, 0.1)', bgDark: 'rgba(234, 179, 8, 0.2)', text: '#ca8a04', textDark: '#facc15' },
+            indigo: { bg: 'rgba(99, 102, 241, 0.1)', bgDark: 'rgba(99, 102, 241, 0.2)', text: '#4f46e5', textDark: '#818cf8' },
+            gray: { bg: 'rgba(107, 114, 128, 0.1)', bgDark: 'rgba(107, 114, 128, 0.2)', text: '#4b5563', textDark: '#9ca3af' },
+            amber: { bg: 'rgba(245, 158, 11, 0.1)', bgDark: 'rgba(245, 158, 11, 0.2)', text: '#d97706', textDark: '#fbbf24' },
+            teal: { bg: 'rgba(20, 184, 166, 0.1)', bgDark: 'rgba(20, 184, 166, 0.2)', text: '#0d9488', textDark: '#2dd4bf' },
+            red: { bg: 'rgba(239, 68, 68, 0.1)', bgDark: 'rgba(239, 68, 68, 0.2)', text: '#dc2626', textDark: '#f87171' }
+        };
+
+        const isDark = () => document.documentElement.classList.contains('dark');
+
         // Tool Search Functionality
         const tools = [
             { name: 'JSON Formatter', url: '/json-formatter', icon: 'braces', color: 'emerald', keywords: ['json', 'format', 'beautify', 'validate', 'minify', 'data'] },
@@ -900,20 +920,23 @@
                 return;
             }
 
-            searchResults.innerHTML = filtered.map((tool, idx) => `
+            searchResults.innerHTML = filtered.map((tool, idx) => {
+                const colors = colorStyles[tool.color] || colorStyles.gray;
+                const dark = isDark();
+                return `
                 <a href="${tool.url}" 
                    class="search-result flex items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800 ${idx === 0 ? '' : 'border-t border-neutral-100 dark:border-neutral-800'}"
                    data-index="${idx}">
-                    <div class="flex items-center justify-center w-9 h-9 rounded-lg bg-${tool.color}-100 dark:bg-${tool.color}-900/30 text-${tool.color}-600 dark:text-${tool.color}-400">
+                    <div class="flex items-center justify-center rounded-lg" style="width: 2.25rem; height: 2.25rem; flex-shrink: 0; background: ${dark ? colors.bgDark : colors.bg}; color: ${dark ? colors.textDark : colors.text};">
                         <i data-lucide="${tool.icon}" class="w-4 h-4"></i>
                     </div>
-                    <div>
+                    <div style="min-width: 0;">
                         <div class="font-medium text-neutral-900 dark:text-white text-sm">${tool.name}</div>
                         <div class="text-xs text-neutral-500">${tool.keywords.slice(0, 3).join(' · ')}</div>
                     </div>
                     <i data-lucide="arrow-right" class="w-4 h-4 ml-auto text-neutral-400"></i>
                 </a>
-            `).join('');
+            `}).join('');
 
             lucide.createIcons();
             searchResults.classList.remove('hidden');
