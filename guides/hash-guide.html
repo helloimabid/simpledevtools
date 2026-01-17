@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Hash Functions Explained: MD5, SHA-256 & Cryptographic Hashing Guide | SimpleDevTools</title>
+    <meta name="description"
+        content="Complete guide to hash functions. Learn MD5, SHA-1, SHA-256, SHA-512 differences, password hashing with bcrypt/Argon2, file integrity verification, and cryptographic security best practices.">
+    <meta name="keywords"
+        content="hash function, MD5, SHA-256, SHA-1, SHA-512, cryptographic hash, password hashing, bcrypt, Argon2, file checksum, hash collision">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <link rel="canonical" href="https://simpledevtools.tech/guides/hash-guide" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hash Functions Explained: MD5, SHA-256 & Cryptographic Hashing Guide">
+    <meta property="og:description"
+        content="Master cryptographic hash functions. Compare MD5, SHA-1, SHA-256, learn password hashing, file integrity, and security best practices.">
+    <meta property="og:url" content="https://simpledevtools.tech/guides/hash-guide">
+    <meta property="og:type" content="article">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <style>
+        .prose {
+            color: rgb(115 115 120);
+            max-width: none;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgb(24 24 27);
+            border-bottom: 1px solid rgb(229 229 229);
+            padding-bottom: 0.5rem;
+        }
+
+        .dark .prose h2 {
+            color: rgb(250 250 250);
+            border-bottom-color: rgb(38 38 38);
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: rgb(24 24 27);
+        }
+
+        .dark .prose h3 {
+            color: rgb(250 250 250);
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose code {
+            background-color: rgb(243 244 246);
+            color: rgb(239 68 68);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .dark .prose code {
+            background-color: rgb(31 41 55);
+            color: rgb(248 113 113);
+        }
+
+        .prose pre {
+            background-color: rgb(24 24 27);
+            color: rgb(228 228 231);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .prose pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .prose strong {
+            color: rgb(24 24 27);
+            font-weight: 600;
+        }
+
+        .dark .prose strong {
+            color: rgb(250 250 250);
+        }
+
+        .prose a {
+            color: rgb(59 130 246);
+            text-decoration: underline;
+        }
+
+        .prose a:hover {
+            color: rgb(37 99 235);
+        }
+
+        .scroll-mt-24 {
+            scroll-margin-top: 6rem;
+        }
+    </style>
+
+    <script src="../dist/js/lucide.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Hash Functions Explained: MD5, SHA-256 & Cryptographic Hashing Guide",
+      "description": "Master cryptographic hash functions. Compare MD5, SHA-1, SHA-256, learn password hashing, file integrity, and security best practices.",
+      "author": {"@type": "Organization", "name": "SimpleDevTools"},
+      "publisher": {"@type": "Organization", "name": "SimpleDevTools", "url": "https://simpledevtools.tech"},
+      "datePublished": "2026-01-17",
+      "dateModified": "2026-01-17",
+      "mainEntityOfPage": "https://simpledevtools.tech/guides/hash-guide"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://simpledevtools.tech/guides"},
+        {"@type": "ListItem", "position": 3, "name": "Hash Guide", "item": "https://simpledevtools.tech/guides/hash-guide"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a hash function?", "acceptedAnswer": {"@type": "Answer", "text": "A hash function is a mathematical algorithm that converts input data of any size into a fixed-size output (hash/digest). Key properties: deterministic (same input = same output), fast computation, infeasible to reverse, and small input changes cause large output changes (avalanche effect)."}},
+        {"@type": "Question", "name": "What is the difference between MD5 and SHA-256?", "acceptedAnswer": {"@type": "Answer", "text": "MD5 produces 128-bit (32 hex character) hashes and is cryptographically broken - collisions can be generated. SHA-256 produces 256-bit (64 hex character) hashes and remains secure. Use SHA-256 for security; MD5 only for non-security checksums."}},
+        {"@type": "Question", "name": "Is MD5 still safe to use?", "acceptedAnswer": {"@type": "Answer", "text": "MD5 is NOT safe for security purposes. Collision attacks are practical, and chosen-prefix attacks exist. It's acceptable only for non-security checksums (file deduplication, cache keys) where attackers can't exploit collisions. Never use MD5 for passwords or digital signatures."}},
+        {"@type": "Question", "name": "How should I hash passwords?", "acceptedAnswer": {"@type": "Answer", "text": "Never use MD5, SHA-1, or SHA-256 directly for passwords. Use dedicated password hashing algorithms: Argon2 (winner of Password Hashing Competition), bcrypt (well-tested, widely available), or scrypt. These are intentionally slow and include salting to prevent rainbow table attacks."}},
+        {"@type": "Question", "name": "What is salting and peppering?", "acceptedAnswer": {"@type": "Answer", "text": "Salt is a random value unique to each user, stored alongside the hash. It prevents rainbow table attacks and makes identical passwords produce different hashes. Pepper is a secret value applied to all passwords, stored separately (e.g., environment variable). Both add layers of protection."}}
+      ]
+    }
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/guides" class="underline">Guides</a> |
+            <a href="/hash-generator" class="underline">Hash Generator</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-neutral-900 dark:hover:text-white">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <a href="/guides" class="hover:text-neutral-900 dark:hover:text-white">Guides</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-neutral-900 dark:text-white">Hash Functions</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-purple-600 border border-purple-100 rounded-full bg-purple-50 dark:bg-purple-900/20 dark:text-purple-400 dark:border-purple-900/30">
+                    <i data-lucide="shield" class="w-3 h-3"></i>
+                    <span>Cryptography Guide</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Hash Functions Explained:<br>MD5, SHA-256 & Cryptographic Hashing
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Complete guide to cryptographic hash functions. Compare algorithms, learn password hashing best
+                    practices, and understand when to use each hash type.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-neutral-500 dark:text-neutral-400">
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 16 min read</span>
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Updated Jan
+                        2026</span>
+                </div>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="/hash-generator"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        Try Hash Generator
+                    </a>
+                    <a href="#comparison"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <i data-lucide="table" class="w-4 h-4"></i>
+                        Algorithm Comparison
+                    </a>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div
+                class="p-6 mb-12 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#what-is-hash" class="text-purple-600 dark:text-purple-400 hover:underline">1. What is
+                            a Hash Function?</a></li>
+                    <li><a href="#properties" class="text-purple-600 dark:text-purple-400 hover:underline">2. Properties
+                            of Cryptographic Hashes</a></li>
+                    <li><a href="#comparison" class="text-purple-600 dark:text-purple-400 hover:underline">3. Algorithm
+                            Comparison (MD5, SHA Family)</a></li>
+                    <li><a href="#use-cases" class="text-purple-600 dark:text-purple-400 hover:underline">4. Hash
+                            Function Use Cases</a></li>
+                    <li><a href="#password-hashing" class="text-purple-600 dark:text-purple-400 hover:underline">5.
+                            Password Hashing (bcrypt, Argon2)</a></li>
+                    <li><a href="#file-integrity" class="text-purple-600 dark:text-purple-400 hover:underline">6. File
+                            Integrity Verification</a></li>
+                    <li><a href="#salting" class="text-purple-600 dark:text-purple-400 hover:underline">7. Salting and
+                            Peppering</a></li>
+                    <li><a href="#implementation" class="text-purple-600 dark:text-purple-400 hover:underline">8.
+                            Implementation Examples</a></li>
+                    <li><a href="#security" class="text-purple-600 dark:text-purple-400 hover:underline">9. Security
+                            Considerations</a></li>
+                    <li><a href="#faq" class="text-purple-600 dark:text-purple-400 hover:underline">10. FAQ (10
+                            Questions)</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <article class="prose dark:prose-invert">
+
+                <!-- Section 1: What is a Hash -->
+                <section id="what-is-hash" class="scroll-mt-24">
+                    <h2>1. What is a Hash Function?</h2>
+                    <p>A <strong>hash function</strong> is a mathematical algorithm that converts input data of any size
+                        into a fixed-size output called a <strong>hash</strong>, <strong>digest</strong>, or
+                        <strong>checksum</strong>. Think of it as a fingerprint for data.</p>
+
+                    <div
+                        class="p-4 my-6 border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <p class="mb-2 font-semibold text-neutral-900 dark:text-white">Example: SHA-256 Hash</p>
+                        <div class="space-y-2 text-sm">
+                            <div>
+                                <span class="text-neutral-500">Input:</span>
+                                <code class="ml-2">Hello, World!</code>
+                            </div>
+                            <div>
+                                <span class="text-neutral-500">SHA-256:</span>
+                                <code
+                                    class="block mt-1 text-xs break-all">dffd6021bb2bd5b0af676290809ec3a53191dd81c7f70a4b28688a362182986f</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>No matter how large the input (a single character or a 10GB file), the output is always the same
+                        size. SHA-256 always produces 256 bits (64 hexadecimal characters).</p>
+
+                    <h3>Key Concepts:</h3>
+                    <ul>
+                        <li><strong>Hash/Digest:</strong> The fixed-size output of a hash function</li>
+                        <li><strong>Collision:</strong> When two different inputs produce the same hash</li>
+                        <li><strong>One-way function:</strong> Cannot compute input from output</li>
+                        <li><strong>Deterministic:</strong> Same input always produces same output</li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: Properties -->
+                <section id="properties" class="scroll-mt-24">
+                    <h2>2. Properties of Cryptographic Hash Functions</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">1.
+                                Deterministic</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">The same input always produces
+                                the exact same output. Hash "Hello" 1000 times → same result every time.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">2. Quick
+                                Computation</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">Hash functions compute quickly.
+                                SHA-256 can process gigabytes per second on modern hardware.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">3.
+                                Pre-image Resistance (One-way)</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">Given a hash, it's
+                                computationally infeasible to find the original input. You cannot "reverse" a hash.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">4.
+                                Collision Resistance</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">It should be extremely
+                                difficult to find two different inputs that produce the same hash output.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">5.
+                                Avalanche Effect</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">A tiny change in input causes a
+                                completely different output. "Hello" vs "hello" → entirely different hashes.</p>
+                        </div>
+                    </div>
+
+                    <h3>Avalanche Effect Demonstration:</h3>
+                    <pre><code>Input: "Hello"
+SHA-256: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+
+Input: "hello" (just lowercase 'h')
+SHA-256: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+
+// Completely different outputs from a single character change!</code></pre>
+                </section>
+
+                <!-- Section 3: Algorithm Comparison -->
+                <section id="comparison" class="scroll-mt-24">
+                    <h2>3. Algorithm Comparison Table</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Algorithm</th>
+                                    <th class="p-3 text-left">Output Size</th>
+                                    <th class="p-3 text-left">Security Status</th>
+                                    <th class="p-3 text-left">Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">MD5</td>
+                                    <td class="p-3">128 bits (32 hex)</td>
+                                    <td class="p-3 text-red-600 dark:text-red-400">❌ Broken</td>
+                                    <td class="p-3">Non-security checksums only</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">SHA-1</td>
+                                    <td class="p-3">160 bits (40 hex)</td>
+                                    <td class="p-3 text-red-600 dark:text-red-400">❌ Broken</td>
+                                    <td class="p-3">Legacy systems only</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">SHA-256</td>
+                                    <td class="p-3">256 bits (64 hex)</td>
+                                    <td class="p-3 text-green-600 dark:text-green-400">✅ Secure</td>
+                                    <td class="p-3">General purpose, blockchain</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">SHA-384</td>
+                                    <td class="p-3">384 bits (96 hex)</td>
+                                    <td class="p-3 text-green-600 dark:text-green-400">✅ Secure</td>
+                                    <td class="p-3">Higher security needs</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">SHA-512</td>
+                                    <td class="p-3">512 bits (128 hex)</td>
+                                    <td class="p-3 text-green-600 dark:text-green-400">✅ Secure</td>
+                                    <td class="p-3">Maximum security, 64-bit systems</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">SHA-3-256</td>
+                                    <td class="p-3">256 bits (64 hex)</td>
+                                    <td class="p-3 text-green-600 dark:text-green-400">✅ Secure</td>
+                                    <td class="p-3">Alternative to SHA-2 family</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">BLAKE2</td>
+                                    <td class="p-3">Variable</td>
+                                    <td class="p-3 text-green-600 dark:text-green-400">✅ Secure</td>
+                                    <td class="p-3">Fast, modern alternative</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="p-4 my-6 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                        <p class="font-semibold text-red-800 dark:text-red-200">⚠️ Warning: MD5 and SHA-1 are Broken</p>
+                        <p class="mb-0 text-red-700 dark:text-red-300">Practical collision attacks exist for both MD5
+                            and SHA-1. In 2017, Google demonstrated SHAttered - two different PDFs with the same SHA-1
+                            hash. Never use these for security purposes.</p>
+                    </div>
+
+                    <h3>Quick Recommendation:</h3>
+                    <ul>
+                        <li><strong>General security:</strong> SHA-256</li>
+                        <li><strong>Passwords:</strong> bcrypt, Argon2 (NOT SHA-256 directly)</li>
+                        <li><strong>Performance-critical:</strong> BLAKE2</li>
+                        <li><strong>Non-security checksums:</strong> MD5 is acceptable</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Use Cases -->
+                <section id="use-cases" class="scroll-mt-24">
+                    <h2>4. Hash Function Use Cases</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">1</span>
+                                Password Storage</h3>
+                            <p class="mb-0 text-sm">Never store plaintext passwords. Hash them (with proper algorithms
+                                like bcrypt) so even if the database is breached, passwords aren't exposed.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">2</span>
+                                File Integrity Verification</h3>
+                            <p class="mb-0 text-sm">Verify downloaded files haven't been tampered with. Compare the hash
+                                of your download against the published hash.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">3</span>
+                                Digital Signatures</h3>
+                            <p class="mb-0 text-sm">Hash the document, then sign the hash. Efficient because you're
+                                signing a small fixed-size hash instead of a large document.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">4</span>
+                                Data Deduplication</h3>
+                            <p class="mb-0 text-sm">Use hashes to identify duplicate files. Same hash = same content
+                                (with extremely high probability).</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">5</span>
+                                Blockchain & Proof of Work</h3>
+                            <p class="mb-0 text-sm">Bitcoin uses SHA-256 for block hashing and mining. The chain's
+                                security depends on hash properties.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">6</span>
+                                HMAC (Message Authentication)</h3>
+                            <p class="mb-0 text-sm">Hash-based Message Authentication Code combines a secret key with a
+                                hash to verify message integrity and authenticity.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">7</span>
+                                Cache Keys & ETags</h3>
+                            <p class="mb-0 text-sm">Generate cache keys from content hashes. If content changes, the
+                                hash changes, invalidating the cache.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-purple-600 rounded-full">8</span>
+                                Git Version Control</h3>
+                            <p class="mb-0 text-sm">Git uses SHA-1 (migrating to SHA-256) to identify commits, files,
+                                and trees. Each object is addressed by its hash.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Password Hashing -->
+                <section id="password-hashing" class="scroll-mt-24">
+                    <h2>5. Password Hashing (bcrypt, Argon2, scrypt)</h2>
+
+                    <div class="p-4 my-6 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                        <p class="font-semibold text-red-800 dark:text-red-200">🔴 Never Use General Hash Functions for
+                            Passwords</p>
+                        <p class="mb-0 text-red-700 dark:text-red-300">MD5, SHA-1, SHA-256 are TOO FAST for password
+                            hashing. Attackers can try billions of guesses per second. Use dedicated password hashing
+                            algorithms that are intentionally slow.</p>
+                    </div>
+
+                    <h3>Password Hashing Algorithm Comparison:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Algorithm</th>
+                                    <th class="p-3 text-left">Status</th>
+                                    <th class="p-3 text-left">Memory-Hard</th>
+                                    <th class="p-3 text-left">Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">Argon2id</td>
+                                    <td class="p-3 text-green-600">✅ Recommended</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3">New applications</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">bcrypt</td>
+                                    <td class="p-3 text-green-600">✅ Good</td>
+                                    <td class="p-3">Limited</td>
+                                    <td class="p-3">Widely supported</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">scrypt</td>
+                                    <td class="p-3 text-green-600">✅ Good</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3">GPU resistance needed</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">PBKDF2</td>
+                                    <td class="p-3 text-yellow-600">⚠️ Acceptable</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3">Legacy/compliance</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>bcrypt Example:</h3>
+                    <pre><code>// Node.js with bcrypt
+const bcrypt = require('bcrypt');
+
+// Hash a password (cost factor 12 = 2^12 iterations)
+async function hashPassword(password) {
+    const saltRounds = 12;
+    return await bcrypt.hash(password, saltRounds);
+}
+// Output: $2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4.FSdcqC.xTTBm/G
+
+// Verify a password
+async function verifyPassword(password, hash) {
+    return await bcrypt.compare(password, hash);
+}</code></pre>
+
+                    <h3>Argon2 Example (Python):</h3>
+                    <pre><code>from argon2 import PasswordHasher
+
+ph = PasswordHasher(
+    time_cost=3,        # Number of iterations
+    memory_cost=65536,  # 64MB of memory
+    parallelism=4       # 4 parallel threads
+)
+
+# Hash a password
+hash = ph.hash("my_password")
+# $argon2id$v=19$m=65536,t=3,p=4$...
+
+# Verify a password
+try:
+    ph.verify(hash, "my_password")
+    print("Password is correct!")
+except:
+    print("Invalid password")</code></pre>
+                </section>
+
+                <!-- Section 6: File Integrity -->
+                <section id="file-integrity" class="scroll-mt-24">
+                    <h2>6. File Integrity Verification</h2>
+                    <p>Hash functions let you verify that files haven't been modified or corrupted during download or
+                        transfer.</p>
+
+                    <h3>How It Works:</h3>
+                    <ol>
+                        <li>Developer calculates hash of original file</li>
+                        <li>Hash is published alongside the download</li>
+                        <li>User downloads file and calculates its hash</li>
+                        <li>User compares calculated hash with published hash</li>
+                        <li>Match = file is authentic and unmodified</li>
+                    </ol>
+
+                    <h3>Command Line Examples:</h3>
+                    <pre><code># Windows (PowerShell)
+Get-FileHash -Algorithm SHA256 file.zip
+
+# Linux/Mac
+sha256sum file.zip
+
+# Output: 
+# e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  file.zip</code></pre>
+
+                    <h3>Code Examples:</h3>
+                    <pre><code>// Node.js - Hash a file
+const crypto = require('crypto');
+const fs = require('fs');
+
+function hashFile(filePath, algorithm = 'sha256') {
+    return new Promise((resolve, reject) => {
+        const hash = crypto.createHash(algorithm);
+        const stream = fs.createReadStream(filePath);
+        
+        stream.on('data', data => hash.update(data));
+        stream.on('end', () => resolve(hash.digest('hex')));
+        stream.on('error', reject);
+    });
+}
+
+// Python
+import hashlib
+
+def hash_file(filepath, algorithm='sha256'):
+    hash_obj = hashlib.new(algorithm)
+    with open(filepath, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
+            hash_obj.update(chunk)
+    return hash_obj.hexdigest()</code></pre>
+                </section>
+
+                <!-- Section 7: Salting and Peppering -->
+                <section id="salting" class="scroll-mt-24">
+                    <h2>7. Salting and Peppering</h2>
+
+                    <div class="grid gap-4 my-6 md:grid-cols-2">
+                        <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20">
+                            <h3 class="mt-0 mb-2 text-lg font-semibold text-blue-800 dark:text-blue-200">Salt 🧂</h3>
+                            <p class="mb-2 text-sm text-blue-700 dark:text-blue-300">A random value unique to each user,
+                                stored alongside the password hash in the database.</p>
+                            <ul class="mb-0 text-xs text-blue-700 dark:text-blue-300">
+                                <li>Prevents rainbow table attacks</li>
+                                <li>Same password → different hashes</li>
+                                <li>Stored with the hash</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20">
+                            <h3 class="mt-0 mb-2 text-lg font-semibold text-orange-800 dark:text-orange-200">Pepper 🌶️
+                            </h3>
+                            <p class="mb-2 text-sm text-orange-700 dark:text-orange-300">A secret value applied to all
+                                passwords, stored separately (e.g., environment variable, HSM).</p>
+                            <ul class="mb-0 text-xs text-orange-700 dark:text-orange-300">
+                                <li>Adds extra security layer</li>
+                                <li>Protects if DB is breached</li>
+                                <li>Never stored in database</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Why Salting Matters:</h3>
+                    <pre><code>// Without salt - identical passwords have identical hashes
+hash("password123") → 5f4dcc3b5aa765d61d8327deb882cf99
+hash("password123") → 5f4dcc3b5aa765d61d8327deb882cf99  // Same!
+
+// With salt - identical passwords have different hashes
+hash("password123" + "randomsalt1") → a1b2c3d4e5f6...
+hash("password123" + "randomsalt2") → x7y8z9w0v1u2...  // Different!</code></pre>
+
+                    <h3>Rainbow Table Attack Prevention:</h3>
+                    <p>A rainbow table is a precomputed database of hash → password mappings. Without salt, attackers
+                        can look up hashes instantly. With unique salts, attackers would need a separate rainbow table
+                        for every possible salt – computationally infeasible.</p>
+                </section>
+
+                <!-- Section 8: Implementation -->
+                <section id="implementation" class="scroll-mt-24">
+                    <h2>8. Implementation Examples</h2>
+
+                    <h3>JavaScript (Browser & Node.js)</h3>
+                    <pre><code>// Browser - using Web Crypto API
+async function sha256(message) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(message);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hash))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
+
+// Node.js
+const crypto = require('crypto');
+
+function hash(algorithm, data) {
+    return crypto.createHash(algorithm).update(data).digest('hex');
+}
+
+console.log(hash('md5', 'Hello'));     // 8b1a9953c4611296a827abf8c47804d7
+console.log(hash('sha256', 'Hello'));  // 185f8db32271fe25f561a6fc938b2e264...
+
+// HMAC (for message authentication)
+function hmac(algorithm, key, data) {
+    return crypto.createHmac(algorithm, key).update(data).digest('hex');
+}</code></pre>
+
+                    <h3>Python</h3>
+                    <pre><code>import hashlib
+
+# Basic hashing
+def hash_string(algorithm: str, data: str) -> str:
+    return hashlib.new(algorithm, data.encode()).hexdigest()
+
+print(hash_string('md5', 'Hello'))     # 8b1a9953c4611296a827abf8c47804d7
+print(hash_string('sha256', 'Hello'))  # 185f8db32271fe25f561a6fc938b2e264...
+
+# HMAC
+import hmac
+
+def create_hmac(key: str, message: str, algorithm='sha256') -> str:
+    return hmac.new(
+        key.encode(),
+        message.encode(),
+        algorithm
+    ).hexdigest()
+
+# Hash file
+def hash_file(filepath: str, algorithm='sha256') -> str:
+    h = hashlib.new(algorithm)
+    with open(filepath, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
+            h.update(chunk)
+    return h.hexdigest()</code></pre>
+
+                    <h3>Java</h3>
+                    <pre><code>import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+
+public class HashExample {
+    public static String hash(String algorithm, String data) throws Exception {
+        MessageDigest digest = MessageDigest.getInstance(algorithm);
+        byte[] hashBytes = digest.digest(data.getBytes(StandardCharsets.UTF_8));
+        
+        StringBuilder hex = new StringBuilder();
+        for (byte b : hashBytes) {
+            hex.append(String.format("%02x", b));
+        }
+        return hex.toString();
+    }
+    
+    public static void main(String[] args) throws Exception {
+        System.out.println(hash("MD5", "Hello"));
+        System.out.println(hash("SHA-256", "Hello"));
+    }
+}</code></pre>
+
+                    <h3>PHP</h3>
+                    <pre><code>&lt;?php
+// Basic hashing
+echo hash('md5', 'Hello');     // 8b1a9953c4611296a827abf8c47804d7
+echo hash('sha256', 'Hello');  // 185f8db32271fe25f561a6fc938b2e264...
+
+// Password hashing (use this for passwords!)
+$hash = password_hash('my_password', PASSWORD_BCRYPT, ['cost' => 12]);
+// Or better:
+$hash = password_hash('my_password', PASSWORD_ARGON2ID);
+
+// Verify password
+if (password_verify('my_password', $hash)) {
+    echo "Password is correct!";
+}
+
+// Hash file
+echo hash_file('sha256', 'path/to/file.zip');
+?&gt;</code></pre>
+                </section>
+
+                <!-- Section 9: Security -->
+                <section id="security" class="scroll-mt-24">
+                    <h2>9. Security Considerations</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use SHA-256 or
+                                better for security</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">SHA-256, SHA-384, SHA-512, SHA-3,
+                                and BLAKE2 are all secure choices for general hashing.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use bcrypt/Argon2
+                                for passwords</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">These are specifically designed
+                                for password hashing with built-in salting and configurable work factors.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use HMAC for
+                                message authentication</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">HMAC combines a secret key with
+                                hashing to verify both integrity and authenticity.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Use MD5 or SHA-1 for
+                                security</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Both have practical collision
+                                attacks. Only use for non-security checksums where collision exploitation isn't
+                                possible.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Hash passwords with
+                                SHA-256 directly</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">SHA-256 is too fast. Attackers can
+                                try billions of guesses per second. Use bcrypt/Argon2.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Create your own
+                                hashing scheme</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Hash(hash(password + salt) + pepper)
+                                - inventing schemes is dangerous. Use established libraries.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 10: FAQ -->
+                <section id="faq" class="scroll-mt-24">
+                    <h2>10. Frequently Asked Questions</h2>
+
+                    <div class="space-y-4">
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is the difference between hashing and encryption?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Hashing</strong> is one-way: you cannot recover the original data from a hash.
+                                It produces fixed-size output regardless of input size. Used for integrity verification
+                                and password storage.<br><br>
+                                <strong>Encryption</strong> is two-way: encrypted data can be decrypted back to the
+                                original using a key. Output size varies with input. Used when you need to recover the
+                                original data.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is MD5 completely useless now?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Not completely. MD5 is still acceptable for <strong>non-security purposes</strong> where
+                                an attacker cannot exploit collisions: file deduplication in trusted environments, cache
+                                keys, non-cryptographic checksums. However, never use MD5 for password hashing, digital
+                                signatures, or any security-critical application.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can two different files have the same hash?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Yes, this is called a <strong>collision</strong>. Since hashes have fixed output size
+                                but infinite possible inputs, collisions must mathematically exist (pigeonhole
+                                principle). However, for secure algorithms like SHA-256, finding a collision
+                                deliberately is computationally infeasible - it would take longer than the age of the
+                                universe with current technology.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Why can't I reverse a hash to get the original data?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Hash functions are designed as one-way functions. They involve operations that lose
+                                information (like modulo division) making reversal mathematically impossible.
+                                Additionally, infinite inputs map to finite outputs, so a hash doesn't contain enough
+                                information to uniquely identify its input. You can only "crack" hashes by guessing
+                                inputs and comparing.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is a rainbow table attack?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                A rainbow table is a precomputed database mapping hashes to their plaintext inputs.
+                                Attackers compute hashes for millions of common passwords and store them. When they get
+                                a hash, they just look it up. <strong>Salting defeats this</strong> because each unique
+                                salt would require a completely new rainbow table.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How long should a salt be?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                At least 16 bytes (128 bits) of cryptographically random data. This provides enough
+                                uniqueness that even with billions of users, salt collisions are extremely unlikely.
+                                Libraries like bcrypt and Argon2 handle salt generation automatically.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is the bcrypt cost factor?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                The cost factor (work factor) determines how many iterations bcrypt performs internally.
+                                Cost 10 = 2^10 = 1024 iterations. Cost 12 = 2^12 = 4096 iterations. Higher cost = slower
+                                hashing = more secure against brute force, but also slower for legitimate users. Aim for
+                                ~100ms-500ms per hash. Increase cost as hardware gets faster.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Should I use SHA-256 or SHA-512?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Both are secure. SHA-256 is sufficient for most purposes. SHA-512 is actually faster on
+                                64-bit systems because it operates on 64-bit words natively. Choose SHA-512 if you have
+                                64-bit systems and want slightly better performance or need the larger hash size for
+                                future-proofing.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is HMAC and when should I use it?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                HMAC (Hash-based Message Authentication Code) combines a secret key with a hash function
+                                to verify both integrity AND authenticity. Use HMAC when you need to verify that a
+                                message came from someone with the secret key and wasn't modified. Examples: API
+                                authentication, JWT signatures, webhook verification. Plain hashes only verify
+                                integrity, not authenticity.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I verify a downloaded file's hash?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                1. Download the file and its published hash (usually SHA-256).<br>
+                                2. Calculate the hash of your download:<br>
+                                &nbsp;&nbsp;• Windows: <code>Get-FileHash file.zip -Algorithm SHA256</code><br>
+                                &nbsp;&nbsp;• Mac/Linux: <code>sha256sum file.zip</code><br>
+                                3. Compare your calculated hash with the published hash.<br>
+                                4. If they match exactly, the file is authentic and unmodified.
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div
+                    class="p-6 my-12 text-center border rounded-lg bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800">
+                    <h3 class="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">Need to generate a hash?
+                    </h3>
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">Try our free hash generator. Create MD5,
+                        SHA-1, SHA-256, SHA-512 hashes instantly - all client-side, nothing sent to servers.</p>
+                    <a href="/hash-generator"
+                        class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700">
+                        <i data-lucide="hash" class="w-4 h-4"></i>
+                        Open Hash Generator
+                    </a>
+                </div>
+
+                <!-- Related Guides -->
+                <section>
+                    <h2>Related Guides</h2>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <a href="/guides/jwt-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                                <i data-lucide="key" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JWT Token Guide</div>
+                                <div class="text-xs text-neutral-500">HMAC signatures in authentication</div>
+                            </div>
+                        </a>
+                        <a href="/guides/password-security-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Password Security Guide</div>
+                                <div class="text-xs text-neutral-500">Creating and storing secure passwords</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <script src="layout-guides.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+</body>
+
+</html>

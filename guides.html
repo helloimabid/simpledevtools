@@ -194,30 +194,84 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(140px,auto)]">
 
-                        <a href="/guides/json-formatter-guide"
+                        <!-- Featured: Web Dev Tools Overview -->
+                        <a href="/guides/web-developer-tools-guide"
                             class="relative flex flex-col justify-between p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg sm:col-span-2 lg:col-span-2 lg:row-span-2">
                             <div class="flex items-start justify-between mb-3">
                                 <div
-                                    class="p-2 transition-colors rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white">
-                                    <i data-lucide="file-json" class="w-6 h-6"></i>
+                                    class="p-2 transition-colors rounded-md bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-900 dark:group-hover:text-indigo-100">
+                                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                                </div>
+                                <span
+                                    class="px-2 py-0.5 text-xs font-medium text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/30 rounded-full">Featured</span>
+                            </div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-medium">Web Developer Tools Guide</h3>
+                                <p class="text-sm text-neutral-500 dark:text-neutral-400">Complete overview of all
+                                    SimpleDevTools with use cases and workflows.</p>
+                            </div>
+                        </a>
+
+                        <!-- JSON Formatter -->
+                        <a href="/guides/json-formatter-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 group-hover:text-blue-900 dark:group-hover:text-blue-100">
+                                    <i data-lucide="braces" class="w-5 h-5"></i>
                                 </div>
                                 <div
                                     class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
                                     <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
                                 </div>
                             </div>
-                            <div>
-                                <h3 class="mb-1 text-lg font-medium">JSON Formatting Guide</h3>
-                                <p class="text-sm text-neutral-500 dark:text-neutral-400">Master JSON validation and
-                                    beautification techniques.</p>
-                            </div>
+                            <h3 class="mb-1 text-base font-medium">JSON Formatting</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Master JSON validation and
+                                beautification.</p>
                         </a>
 
+                        <!-- JWT Guide -->
+                        <a href="/guides/jwt-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 group-hover:text-orange-900 dark:group-hover:text-orange-100">
+                                    <i data-lucide="key" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">JWT Authentication</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Token structure, security & best
+                                practices.</p>
+                        </a>
+
+                        <!-- Base64 Guide -->
+                        <a href="/guides/base64-encoding-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 group-hover:text-purple-900 dark:group-hover:text-purple-100">
+                                    <i data-lucide="binary" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Base64 Encoding</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Complete guide to encoding &
+                                decoding.</p>
+                        </a>
+
+                        <!-- Regex Guide -->
                         <a href="/guides/regex-patterns-guide"
                             class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
                             <div class="flex items-start justify-between mb-3">
                                 <div
-                                    class="p-2 transition-colors rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white">
+                                    class="p-2 transition-colors rounded-md bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 group-hover:text-green-900 dark:group-hover:text-green-100">
                                     <i data-lucide="regex" class="w-5 h-5"></i>
                                 </div>
                                 <div
@@ -226,8 +280,62 @@
                                 </div>
                             </div>
                             <h3 class="mb-1 text-base font-medium">Regex Cheat Sheet</h3>
-                            <p class="text-xs text-neutral-500 dark:text-neutral-400">50+ patterns for email, URL, phone
-                                & more.</p>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">50+ patterns for validation &
+                                parsing.</p>
+                        </a>
+
+                        <!-- UUID Guide -->
+                        <a href="/guides/uuid-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 group-hover:text-cyan-900 dark:group-hover:text-cyan-100">
+                                    <i data-lucide="fingerprint" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">UUID Guide</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Versions, formats & database
+                                usage.</p>
+                        </a>
+
+                        <!-- Hash Guide -->
+                        <a href="/guides/hash-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 group-hover:text-pink-900 dark:group-hover:text-pink-100">
+                                    <i data-lucide="hash" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Hash Functions</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">MD5, SHA, bcrypt & password
+                                hashing.</p>
+                        </a>
+
+                        <!-- Password Security Guide -->
+                        <a href="/guides/password-security-guide"
+                            class="relative p-5 overflow-hidden transition-all duration-300 rounded-lg glass-card group hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:-translate-y-1 hover:shadow-lg">
+                            <div class="flex items-start justify-between mb-3">
+                                <div
+                                    class="p-2 transition-colors rounded-md bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-900 dark:group-hover:text-emerald-100">
+                                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                </div>
+                                <div
+                                    class="transition-opacity duration-300 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0">
+                                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-base font-medium">Password Security</h3>
+                            <p class="text-xs text-neutral-500 dark:text-neutral-400">Entropy, 2FA & password managers.
+                            </p>
                         </a>
 
                         <!-- <a href="/guides/encoding-basics"
@@ -343,19 +451,38 @@
                             Quick Links
                         </h4>
                         <nav class="space-y-2 text-sm">
-                            <a href="/guides/json-formatting"
+                            <a href="/guides/web-developer-tools-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                → Web Dev Tools Overview
+                            </a>
+                            <a href="/guides/json-formatter-guide"
                                 class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
                                 → JSON Formatting
                             </a>
-                            <!-- <a href="/guides/encoding-basics" class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                            <a href="/guides/jwt-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                → JWT Authentication
+                            </a>
+                            <a href="/guides/base64-encoding-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
                                 → Base64 Encoding
                             </a>
-                            <a href="/guides/regex-patterns" class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                            <a href="/guides/regex-patterns-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
                                 → Regex Patterns
                             </a>
-                            <a href="/guides/image-optimization" class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
-                                → Image Optimization
-                            </a> -->
+                            <a href="/guides/uuid-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                → UUID Guide
+                            </a>
+                            <a href="/guides/hash-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                → Hash Functions
+                            </a>
+                            <a href="/guides/password-security-guide"
+                                class="block transition-colors text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">
+                                → Password Security
+                            </a>
                         </nav>
                     </div>
 

@@ -87,6 +87,36 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://simpledevtools.tech/guides/web-developer-tools-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://simpledevtools.tech/guides/jwt-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://simpledevtools.tech/guides/base64-encoding-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://simpledevtools.tech/guides/uuid-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://simpledevtools.tech/guides/hash-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://simpledevtools.tech/guides/password-security-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://simpledevtools.tech/how-it-works</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

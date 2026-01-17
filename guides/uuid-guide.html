@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>UUID Guide: Understanding UUID Versions, Formats & Best Practices | SimpleDevTools</title>
+    <meta name="description"
+        content="Complete guide to UUIDs. Learn UUID versions (v1-v7), formats, database usage, collision probability, and implementation in JavaScript, Python, Java, and more.">
+    <meta name="keywords"
+        content="UUID, GUID, UUID v4, UUID v7, unique identifier, UUID generator, UUID format, UUID database, UUID collision">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <link rel="canonical" href="https://simpledevtools.tech/guides/uuid-guide" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="UUID Guide: Understanding UUID Versions, Formats & Best Practices">
+    <meta property="og:description"
+        content="Master UUIDs with our complete guide. Learn UUID versions, database usage, collision probability, and implementation patterns.">
+    <meta property:="og:url" content="https://simpledevtools.tech/guides/uuid-guide">
+    <meta property="og:type" content="article">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <style>
+        .prose {
+            color: rgb(115 115 120);
+            max-width: none;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgb(24 24 27);
+            border-bottom: 1px solid rgb(229 229 229);
+            padding-bottom: 0.5rem;
+        }
+
+        .dark .prose h2 {
+            color: rgb(250 250 250);
+            border-bottom-color: rgb(38 38 38);
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: rgb(24 24 27);
+        }
+
+        .dark .prose h3 {
+            color: rgb(250 250 250);
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose code {
+            background-color: rgb(243 244 246);
+            color: rgb(239 68 68);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .dark .prose code {
+            background-color: rgb(31 41 55);
+            color: rgb(248 113 113);
+        }
+
+        .prose pre {
+            background-color: rgb(24 24 27);
+            color: rgb(228 228 231);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .prose pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .prose strong {
+            color: rgb(24 24 27);
+            font-weight: 600;
+        }
+
+        .dark .prose strong {
+            color: rgb(250 250 250);
+        }
+
+        .prose a {
+            color: rgb(59 130 246);
+            text-decoration: underline;
+        }
+
+        .prose a:hover {
+            color: rgb(37 99 235);
+        }
+
+        .scroll-mt-24 {
+            scroll-margin-top: 6rem;
+        }
+    </style>
+
+    <script src="../dist/js/lucide.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "UUID Guide: Understanding UUID Versions, Formats & Best Practices",
+      "description": "Master UUIDs with our complete guide. Learn UUID versions, database usage, collision probability, and implementation patterns.",
+      "author": {"@type": "Organization", "name": "SimpleDevTools"},
+      "publisher": {"@type": "Organization", "name": "SimpleDevTools", "url": "https://simpledevtools.tech"},
+      "datePublished": "2026-01-17",
+      "dateModified": "2026-01-17",
+      "mainEntityOfPage": "https://simpledevtools.tech/guides/uuid-guide"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://simpledevtools.tech/guides"},
+        {"@type": "ListItem", "position": 3, "name": "UUID Guide", "item": "https://simpledevtools.tech/guides/uuid-guide"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a UUID?", "acceptedAnswer": {"@type": "Answer", "text": "UUID (Universally Unique Identifier) is a 128-bit identifier designed to be unique across space and time without central coordination. The standard format is 8-4-4-4-12 hexadecimal characters: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. Also called GUID in Microsoft ecosystems."}},
+        {"@type": "Question", "name": "What UUID version should I use?", "acceptedAnswer": {"@type": "Answer", "text": "For most applications, use UUID v4 (random) for simplicity, or UUID v7 (time-ordered random) if you need sortable IDs for database performance. UUID v1 exposes MAC addresses (privacy concern). UUID v7 is the modern recommended choice for new projects."}},
+        {"@type": "Question", "name": "Can UUIDs collide?", "acceptedAnswer": {"@type": "Answer", "text": "Theoretically yes, but practically no. UUID v4 has 122 random bits, giving 5.3×10^36 possible values. You'd need to generate 2.71 quintillion UUIDs to have a 50% chance of one collision. For perspective, that's generating 1 billion UUIDs per second for 86 years."}},
+        {"@type": "Question", "name": "Are UUIDs good for database primary keys?", "acceptedAnswer": {"@type": "Answer", "text": "UUIDs work well as primary keys but have trade-offs. Pros: no central coordination, merge-friendly, hide row count. Cons: larger than integers (16 bytes vs 4-8), random UUIDs cause index fragmentation. Use UUID v7 (time-ordered) to minimize fragmentation."}},
+        {"@type": "Question", "name": "What is the difference between UUID and GUID?", "acceptedAnswer": {"@type": "Answer", "text": "UUID and GUID are essentially the same thing. UUID (Universally Unique Identifier) is the standard term used in RFC 4122. GUID (Globally Unique Identifier) is Microsoft's term for the same concept. They follow the same format and specification."}}
+      ]
+    }
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/guides" class="underline">Guides</a> |
+            <a href="/uuid-generator" class="underline">UUID Generator</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 dark:bg-cyan-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-neutral-900 dark:hover:text-white">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <a href="/guides" class="hover:text-neutral-900 dark:hover:text-white">Guides</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-neutral-900 dark:text-white">UUID Guide</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-cyan-600 border border-cyan-100 rounded-full bg-cyan-50 dark:bg-cyan-900/20 dark:text-cyan-400 dark:border-cyan-900/30">
+                    <i data-lucide="fingerprint" class="w-3 h-3"></i>
+                    <span>Developer Guide</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    UUID Guide: Understanding<br>Versions, Formats & Best Practices
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Everything you need to know about UUIDs. Learn the differences between versions, when to use each
+                    type, and how to implement them correctly.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-neutral-500 dark:text-neutral-400">
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 14 min read</span>
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Updated Jan
+                        2026</span>
+                </div>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="/uuid-generator"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-700">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        Generate UUIDs
+                    </a>
+                    <a href="#versions"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        Version Comparison
+                    </a>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div
+                class="p-6 mb-12 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#what-is-uuid" class="text-cyan-600 dark:text-cyan-400 hover:underline">1. What is a
+                            UUID?</a></li>
+                    <li><a href="#format" class="text-cyan-600 dark:text-cyan-400 hover:underline">2. UUID Format and
+                            Structure</a></li>
+                    <li><a href="#versions" class="text-cyan-600 dark:text-cyan-400 hover:underline">3. UUID Versions
+                            Explained (v1-v7)</a></li>
+                    <li><a href="#which-version" class="text-cyan-600 dark:text-cyan-400 hover:underline">4. Which UUID
+                            Version Should I Use?</a></li>
+                    <li><a href="#collision" class="text-cyan-600 dark:text-cyan-400 hover:underline">5. Collision
+                            Probability</a></li>
+                    <li><a href="#database" class="text-cyan-600 dark:text-cyan-400 hover:underline">6. UUIDs in
+                            Databases</a></li>
+                    <li><a href="#implementation" class="text-cyan-600 dark:text-cyan-400 hover:underline">7.
+                            Implementation Examples</a></li>
+                    <li><a href="#alternatives" class="text-cyan-600 dark:text-cyan-400 hover:underline">8. UUID
+                            Alternatives (ULID, nanoid, etc.)</a></li>
+                    <li><a href="#best-practices" class="text-cyan-600 dark:text-cyan-400 hover:underline">9. Best
+                            Practices</a></li>
+                    <li><a href="#faq" class="text-cyan-600 dark:text-cyan-400 hover:underline">10. FAQ (10
+                            Questions)</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <article class="prose dark:prose-invert">
+
+                <!-- Section 1: What is UUID -->
+                <section id="what-is-uuid" class="scroll-mt-24">
+                    <h2>1. What is a UUID?</h2>
+                    <p><strong>UUID (Universally Unique Identifier)</strong> is a 128-bit identifier designed to be
+                        unique across all computers, all time, without requiring a central authority. Also known as
+                        <strong>GUID</strong> (Globally Unique Identifier) in Microsoft ecosystems.</p>
+
+                    <div
+                        class="p-4 my-6 border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <p class="mb-2 font-semibold text-neutral-900 dark:text-white">Example UUIDs:</p>
+                        <code class="block p-3 space-y-1 text-sm rounded bg-neutral-200 dark:bg-neutral-900">
+                            <span class="block">550e8400-e29b-41d4-a716-446655440000 <span class="text-neutral-500">(v1)</span></span>
+                            <span class="block">f47ac10b-58cc-4372-a567-0e02b2c3d479 <span class="text-neutral-500">(v4)</span></span>
+                            <span class="block">01932c08-e844-7d3f-8d5e-9c1b5d62a3e8 <span class="text-neutral-500">(v7)</span></span>
+                        </code>
+                    </div>
+
+                    <h3>Key Characteristics:</h3>
+                    <ul>
+                        <li><strong>128 bits:</strong> Represented as 32 hexadecimal characters</li>
+                        <li><strong>Globally unique:</strong> No central coordination needed</li>
+                        <li><strong>Standardized:</strong> Defined in RFC 4122 (and RFC 9562 for v7)</li>
+                        <li><strong>Platform-independent:</strong> Works across all systems</li>
+                    </ul>
+
+                    <h3>Common Use Cases:</h3>
+                    <ul>
+                        <li>Database primary keys</li>
+                        <li>Distributed system identifiers</li>
+                        <li>Session tokens and correlation IDs</li>
+                        <li>File and resource naming</li>
+                        <li>API request tracking</li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: Format -->
+                <section id="format" class="scroll-mt-24">
+                    <h2>2. UUID Format and Structure</h2>
+                    <p>UUIDs follow a standard format: 32 hexadecimal digits displayed as 8-4-4-4-12 groups separated by
+                        hyphens.</p>
+
+                    <div class="p-4 my-6 border rounded-lg bg-neutral-900 text-neutral-100">
+                        <p class="mb-2 text-xs font-semibold tracking-wide text-neutral-400">UUID Structure</p>
+                        <code class="block text-lg">
+                            <span class="text-red-400">xxxxxxxx</span>-<span class="text-orange-400">xxxx</span>-<span class="text-yellow-400">Mxxx</span>-<span class="text-green-400">Nxxx</span>-<span class="text-blue-400">xxxxxxxxxxxx</span>
+                        </code>
+                        <div class="grid gap-2 mt-4 text-xs md:grid-cols-2">
+                            <div><span class="text-red-400">■</span> time_low (32 bits)</div>
+                            <div><span class="text-orange-400">■</span> time_mid (16 bits)</div>
+                            <div><span class="text-yellow-400">■</span> time_hi_and_version (16 bits) - M = version
+                            </div>
+                            <div><span class="text-green-400">■</span> clock_seq_hi_and_res (16 bits) - N = variant
+                            </div>
+                            <div><span class="text-blue-400">■</span> node (48 bits)</div>
+                        </div>
+                    </div>
+
+                    <h3>Version and Variant Indicators:</h3>
+                    <p>Look at the 13th character (M) to identify the version:</p>
+                    <ul>
+                        <li><code>xxxxxxxx-xxxx-<strong>1</strong>xxx-xxxx-xxxxxxxxxxxx</code> → Version 1</li>
+                        <li><code>xxxxxxxx-xxxx-<strong>4</strong>xxx-xxxx-xxxxxxxxxxxx</code> → Version 4</li>
+                        <li><code>xxxxxxxx-xxxx-<strong>7</strong>xxx-xxxx-xxxxxxxxxxxx</code> → Version 7</li>
+                    </ul>
+
+                    <p>The variant (N) indicates the UUID variant. For standard UUIDs, it starts with <code>8</code>,
+                        <code>9</code>, <code>a</code>, or <code>b</code>.</p>
+                </section>
+
+                <!-- Section 3: Versions -->
+                <section id="versions" class="scroll-mt-24">
+                    <h2>3. UUID Versions Explained</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Version</th>
+                                    <th class="p-3 text-left">Based On</th>
+                                    <th class="p-3 text-left">Sortable</th>
+                                    <th class="p-3 text-left">Recommended</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v1</td>
+                                    <td class="p-3">Timestamp + MAC address</td>
+                                    <td class="p-3">Partially</td>
+                                    <td class="p-3 text-yellow-600">⚠️ Privacy concern</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v2</td>
+                                    <td class="p-3">DCE Security</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3 text-red-600">❌ Rarely used</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v3</td>
+                                    <td class="p-3">MD5 hash of namespace + name</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3 text-yellow-600">⚠️ Use v5 instead</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v4</td>
+                                    <td class="p-3">Random</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3 text-green-600">✅ Good default</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v5</td>
+                                    <td class="p-3">SHA-1 hash of namespace + name</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3 text-green-600">✅ Deterministic</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v6</td>
+                                    <td class="p-3">Reordered v1 (time-sortable)</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3 text-green-600">✅ When v1 sorting needed</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">v7</td>
+                                    <td class="p-3">Unix timestamp + random</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3 text-green-600">✅ Modern choice</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Version 1: Timestamp + MAC Address</h3>
+                    <p>Combines 60-bit timestamp (100-nanosecond intervals since Oct 15, 1582) with MAC address.
+                        <strong>Privacy concern:</strong> Exposes when and where the UUID was created.</p>
+                    <pre><code>// v1 structure reveals information
+f81d4fae-7dec-11d0-a765-00a0c91e6bf6
+           ↑          ↑
+     timestamp    MAC address</code></pre>
+
+                    <h3>Version 4: Random</h3>
+                    <p>122 bits of randomness (6 bits reserved for version/variant). Most commonly used. Simple, no
+                        information leakage, but not sortable.</p>
+                    <pre><code>// v4 - pure randomness
+f47ac10b-58cc-4372-a567-0e02b2c3d479
+              ↑    ↑
+           version variant (4 and 8/9/a/b)</code></pre>
+
+                    <h3>Version 5: Name-Based (SHA-1)</h3>
+                    <p>Deterministic: same namespace + name always produces the same UUID. Useful for generating
+                        consistent IDs from known data.</p>
+                    <pre><code>// Same input = same UUID
+uuid_v5(DNS_NAMESPACE, "example.com") → always same result
+uuid_v5(URL_NAMESPACE, "https://example.com/page") → always same result</code></pre>
+
+                    <h3>Version 7: Time-Ordered Random (Recommended)</h3>
+                    <p>48-bit Unix timestamp (milliseconds) + 74 bits of randomness. <strong>Best of both
+                            worlds:</strong> sortable by creation time while being mostly random. Ideal for database
+                        primary keys.</p>
+                    <pre><code>// v7 - sortable by time, generated at the same millisecond
+01932c08-e844-7d3f-8d5e-9c1b5d62a3e8 (earlier)
+01932c08-e845-7a2b-9f3c-8d4e7a6b5c9d (later within same ms)
+         ↑
+    timestamp (ms since Unix epoch)</code></pre>
+                </section>
+
+                <!-- Section 4: Which Version -->
+                <section id="which-version" class="scroll-mt-24">
+                    <h2>4. Which UUID Version Should I Use?</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-green-800 dark:text-green-200">🏆 UUID v7
+                                - Modern Applications</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Best choice for new projects.
+                                Time-sortable for database efficiency, random enough for security, and chronologically
+                                meaningful. Use this if your language/library supports it.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-blue-800 dark:text-blue-200">✅ UUID v4 -
+                                Simple & Secure</h3>
+                            <p class="mb-0 text-sm text-blue-700 dark:text-blue-300">Great default choice. Maximum
+                                randomness, no information leakage, widely supported. Choose v4 if you don't need
+                                sorting or if v7 isn't available.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">🔗 UUID
+                                v5 - Deterministic IDs</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">When you need the same ID for
+                                the same input (idempotency). Great for creating IDs from URLs, emails, or other unique
+                                strings.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-yellow-800 dark:text-yellow-200">⚠️ UUID
+                                v1 - Legacy Only</h3>
+                            <p class="mb-0 text-sm text-yellow-700 dark:text-yellow-300">Avoid for new projects. Exposes
+                                MAC address (privacy) and creation time. Only use for compatibility with existing v1
+                                systems.</p>
+                        </div>
+                    </div>
+
+                    <h3>Decision Flowchart:</h3>
+                    <pre><code>Need deterministic IDs? → UUID v5
+Need time-sortable IDs? → UUID v7
+Need maximum randomness? → UUID v4
+Legacy system compatibility? → Match existing version
+Default for new projects → UUID v7 (or v4 if unsupported)</code></pre>
+                </section>
+
+                <!-- Section 5: Collision -->
+                <section id="collision" class="scroll-mt-24">
+                    <h2>5. Collision Probability</h2>
+                    <p>The question everyone asks: <em>Can two UUIDs ever be the same?</em></p>
+
+                    <div class="p-4 my-6 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                        <h3 class="mt-0 mb-2 text-lg font-semibold text-green-800 dark:text-green-200">TL;DR:
+                            Practically Impossible</h3>
+                        <p class="mb-0 text-green-700 dark:text-green-300">UUID v4 has 122 random bits = 5.3 ×
+                            10<sup>36</sup> possible values. You'd need to generate 2.71 quintillion (2.71 ×
+                            10<sup>18</sup>) UUIDs for a 50% collision chance.</p>
+                    </div>
+
+                    <h3>The Math:</h3>
+                    <div class="p-4 my-4 border rounded-lg bg-neutral-100 dark:bg-neutral-800">
+                        <p class="mb-2 font-mono text-sm">Possible UUIDs = 2<sup>122</sup> ≈
+                            5,316,911,983,139,663,491,615,228,241,121,378,304</p>
+                        <p class="mb-0 text-xs text-neutral-500">That's over 5 undecillion unique values</p>
+                    </div>
+
+                    <h3>Perspective:</h3>
+                    <ul>
+                        <li>Generating <strong>1 billion UUIDs per second</strong> for <strong>86 years</strong> gives
+                            ~50% collision chance</li>
+                        <li>Generating <strong>1 trillion UUIDs</strong> = 0.00000000006% collision chance</li>
+                        <li>You're more likely to be struck by lightning while winning the lottery</li>
+                    </ul>
+
+                    <div class="p-4 my-6 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20">
+                        <p class="font-semibold text-yellow-800 dark:text-yellow-200">⚠️ The Real Risk</p>
+                        <p class="mb-0 text-yellow-700 dark:text-yellow-300">Collisions almost always come from
+                            <strong>bad random number generators</strong>, not mathematical probability. Always use
+                            cryptographically secure randomness (CSPRNG) for UUID generation.</p>
+                    </div>
+                </section>
+
+                <!-- Section 6: Database -->
+                <section id="database" class="scroll-mt-24">
+                    <h2>6. UUIDs in Databases</h2>
+
+                    <h3>Pros of UUID Primary Keys:</h3>
+                    <ul>
+                        <li>✅ Generate IDs client-side (no round-trip to database)</li>
+                        <li>✅ Easy database merging and sharding</li>
+                        <li>✅ No enumeration attacks (can't guess next ID)</li>
+                        <li>✅ Hide row count from API consumers</li>
+                    </ul>
+
+                    <h3>Cons of UUID Primary Keys:</h3>
+                    <ul>
+                        <li>❌ Larger than integers (16 bytes vs 4-8 bytes)</li>
+                        <li>❌ Random UUIDs cause index fragmentation (B-tree)</li>
+                        <li>❌ Less human-readable for debugging</li>
+                        <li>❌ Slightly slower joins and lookups</li>
+                    </ul>
+
+                    <h3>Database-Specific Storage:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Database</th>
+                                    <th class="p-3 text-left">Native Type</th>
+                                    <th class="p-3 text-left">Storage</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-semibold">PostgreSQL</td>
+                                    <td class="p-3"><code>UUID</code></td>
+                                    <td class="p-3">16 bytes (native)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">MySQL 8.0+</td>
+                                    <td class="p-3"><code>BINARY(16)</code></td>
+                                    <td class="p-3">16 bytes</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">SQL Server</td>
+                                    <td class="p-3"><code>UNIQUEIDENTIFIER</code></td>
+                                    <td class="p-3">16 bytes (native)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">SQLite</td>
+                                    <td class="p-3"><code>TEXT</code> or <code>BLOB</code></td>
+                                    <td class="p-3">36 or 16 bytes</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">MongoDB</td>
+                                    <td class="p-3"><code>BinData</code> subtype 4</td>
+                                    <td class="p-3">16 bytes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>PostgreSQL Example:</h3>
+                    <pre><code>-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Create table with UUID primary key
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    -- or for v7: gen_random_uuid() in PG 13+
+    email VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Insert with auto-generated UUID
+INSERT INTO users (email) VALUES ('user@example.com');
+
+-- Or specify UUID
+INSERT INTO users (id, email) 
+VALUES ('550e8400-e29b-41d4-a716-446655440000', 'user2@example.com');</code></pre>
+
+                    <div class="p-4 my-6 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20">
+                        <h3 class="mt-0 mb-2 text-base text-blue-800 dark:text-blue-200">💡 Pro Tip: Use UUID v7 for
+                            Database Keys</h3>
+                        <p class="mb-0 text-sm text-blue-700 dark:text-blue-300">UUID v7 is time-ordered, which means
+                            new records are always inserted at the end of the B-tree index. This eliminates the
+                            fragmentation problem of random UUIDs while keeping all the benefits.</p>
+                    </div>
+                </section>
+
+                <!-- Section 7: Implementation -->
+                <section id="implementation" class="scroll-mt-24">
+                    <h2>7. Implementation Examples</h2>
+
+                    <h3>JavaScript / Node.js</h3>
+                    <pre><code>// Node.js (built-in since v14.17.0)
+import { randomUUID } from 'crypto';
+const uuid = randomUUID(); // v4
+
+// Browser (modern browsers)
+const uuid = crypto.randomUUID(); // v4
+
+// Using uuid library (supports all versions)
+import { v4 as uuidv4, v5 as uuidv5, v7 as uuidv7 } from 'uuid';
+
+const id = uuidv4();  // Random
+const id7 = uuidv7(); // Time-ordered (v7)
+
+// v5 - deterministic from namespace + name
+const DNS_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+const id5 = uuidv5('example.com', DNS_NAMESPACE);
+
+// Validate UUID
+function isValidUUID(str) {
+    const regex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-7][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    return regex.test(str);
+}</code></pre>
+
+                    <h3>Python</h3>
+                    <pre><code>import uuid
+
+# UUID v4 - Random
+id_v4 = uuid.uuid4()
+print(id_v4)  # e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479
+
+# UUID v1 - Timestamp + MAC (avoid for privacy)
+id_v1 = uuid.uuid1()
+
+# UUID v5 - Name-based (SHA-1)
+id_v5 = uuid.uuid5(uuid.NAMESPACE_DNS, 'example.com')
+# Always produces: cfbff0d1-9375-5685-968c-48ce8b15ae17
+
+# UUID v7 (Python 3.12+)
+# id_v7 = uuid.uuid7()
+
+# Convert to/from string
+str_uuid = str(id_v4)
+parsed = uuid.UUID(str_uuid)
+
+# Get bytes (for database storage)
+uuid_bytes = id_v4.bytes  # 16 bytes</code></pre>
+
+                    <h3>Java</h3>
+                    <pre><code>import java.util.UUID;
+
+public class UuidExample {
+    public static void main(String[] args) {
+        // UUID v4 - Random
+        UUID uuid = UUID.randomUUID();
+        System.out.println(uuid);
+        
+        // UUID v3/v5 - Name-based
+        UUID namespace = UUID.fromString("6ba7b810-9dad-11d1-80b4-00c04fd430c8");
+        UUID nameUuid = UUID.nameUUIDFromBytes("example.com".getBytes());
+        
+        // Parse from string
+        UUID parsed = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
+        
+        // Get version
+        int version = uuid.version(); // 4
+        
+        // Convert to bytes (for database)
+        long msb = uuid.getMostSignificantBits();
+        long lsb = uuid.getLeastSignificantBits();
+    }
+}</code></pre>
+
+                    <h3>Go</h3>
+                    <pre><code>package main
+
+import (
+    "fmt"
+    "github.com/google/uuid"
+)
+
+func main() {
+    // UUID v4
+    id := uuid.New()
+    fmt.Println(id) // e.g., 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+    
+    // UUID v7 (time-ordered)
+    id7, _ := uuid.NewV7()
+    fmt.Println(id7)
+    
+    // Parse from string
+    parsed, _ := uuid.Parse("550e8400-e29b-41d4-a716-446655440000")
+    
+    // Check version
+    fmt.Println(parsed.Version()) // 1, 4, 7, etc.
+}</code></pre>
+
+                    <h3>PHP</h3>
+                    <pre><code>&lt;?php
+// Using ramsey/uuid library
+use Ramsey\Uuid\Uuid;
+
+// UUID v4 - Random
+$uuid = Uuid::uuid4();
+echo $uuid->toString(); // e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479
+
+// UUID v7 - Time-ordered
+$uuid7 = Uuid::uuid7();
+
+// UUID v5 - Name-based
+$uuid5 = Uuid::uuid5(Uuid::NAMESPACE_DNS, 'example.com');
+
+// Parse and validate
+$parsed = Uuid::fromString('550e8400-e29b-41d4-a716-446655440000');
+$isValid = Uuid::isValid($someString);
+
+// Get bytes for database
+$bytes = $uuid->getBytes(); // 16 bytes
+?&gt;</code></pre>
+                </section>
+
+                <!-- Section 8: Alternatives -->
+                <section id="alternatives" class="scroll-mt-24">
+                    <h2>8. UUID Alternatives</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Format</th>
+                                    <th class="p-3 text-left">Length</th>
+                                    <th class="p-3 text-left">Sortable</th>
+                                    <th class="p-3 text-left">Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">UUID v4</td>
+                                    <td class="p-3">36 chars</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3">Standard, widely supported</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">UUID v7</td>
+                                    <td class="p-3">36 chars</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3">Time-sorted, new standard</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">ULID</td>
+                                    <td class="p-3">26 chars</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3">Crockford Base32, URL-safe</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">nanoid</td>
+                                    <td class="p-3">21 chars</td>
+                                    <td class="p-3">No</td>
+                                    <td class="p-3">Compact, URL-safe</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">CUID2</td>
+                                    <td class="p-3">24 chars</td>
+                                    <td class="p-3">Partially</td>
+                                    <td class="p-3">Secure, collision-resistant</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">Snowflake</td>
+                                    <td class="p-3">64-bit int</td>
+                                    <td class="p-3">Yes</td>
+                                    <td class="p-3">Twitter's format, needs coordination</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>ULID Example:</h3>
+                    <pre><code>// ULID format: 01ARZ3NDEKTSV4RRFFQ69G5FAV
+// 48-bit timestamp + 80-bit random
+// Lexicographically sortable, URL-safe
+
+import { ulid } from 'ulid';
+const id = ulid(); // 01ARZ3NDEKTSV4RRFFQ69G5FAV</code></pre>
+
+                    <h3>nanoid Example:</h3>
+                    <pre><code>// nanoid: V1StGXR8_Z5jdHi6B-myT
+// Smaller, faster, URL-safe
+
+import { nanoid } from 'nanoid';
+const id = nanoid(); // V1StGXR8_Z5jdHi6B-myT</code></pre>
+                </section>
+
+                <!-- Section 9: Best Practices -->
+                <section id="best-practices" class="scroll-mt-24">
+                    <h2>9. Best Practices</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use UUID v7 for new
+                                database primary keys</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Time-ordered UUIDs prevent index
+                                fragmentation while maintaining all benefits of UUIDs.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Store as binary
+                                when possible</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">16 bytes binary vs 36 bytes
+                                string saves storage and improves index performance.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use v5 for
+                                deterministic IDs</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">When you need idempotent ID
+                                generation from known data (URLs, emails, etc.).</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Use UUID v1 in new
+                                applications</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Exposes MAC address and exact
+                                creation timestamp. Privacy and security concern.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Rely on UUID
+                                ordering with v4</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Random UUIDs have no guaranteed
+                                order. Use v7 if you need time-based sorting.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Create your own UUID
+                                generation</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Use well-tested libraries. DIY
+                                implementations often have weak randomness.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 10: FAQ -->
+                <section id="faq" class="scroll-mt-24">
+                    <h2>10. Frequently Asked Questions</h2>
+
+                    <div class="space-y-4">
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is the difference between UUID and GUID?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                They're the same thing with different names. <strong>UUID</strong> (Universally Unique
+                                Identifier) is the standard term from RFC 4122. <strong>GUID</strong> (Globally Unique
+                                Identifier) is Microsoft's terminology. Both use the same 128-bit format and are
+                                interchangeable.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Are UUIDs truly unique?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Practically yes. While collisions are theoretically possible, the probability is so low
+                                (1 in 5.3×10<sup>36</sup> for v4) that you're more likely to experience multiple
+                                unrelated impossible events simultaneously. Use proper libraries with cryptographic
+                                randomness, and collisions won't be a concern.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Should I use UUIDs or auto-increment integers for primary keys?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>UUIDs:</strong> Better for distributed systems, no database round-trip for ID
+                                generation, harder to guess/enumerate.<br>
+                                <strong>Integers:</strong> Smaller storage, faster indexes, human-readable for
+                                debugging.<br>
+                                <strong>Recommendation:</strong> Use UUID v7 for most applications. Use integers only if
+                                storage/performance is critical and you don't need distributed ID generation.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can I extract timestamp from a UUID?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Depends on the version. <strong>v1, v6, v7:</strong> Yes, timestamp is embedded.<br>
+                                <strong>v4:</strong> No, it's purely random.<br>
+                                For v7, extract the first 48 bits and interpret as Unix milliseconds. Many libraries
+                                provide helper functions for this.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Why does UUID v1 expose MAC address?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                UUID v1 was designed in 1997 when privacy concerns were different. It uses MAC address
+                                to guarantee uniqueness across machines without coordination. Today, this is a privacy
+                                leak - attackers can identify which machine generated a UUID. Use v4 or v7 instead.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I validate a UUID string?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Use this regex for standard UUIDs:<br>
+                                <code
+                                    class="block mt-2 text-xs">/^[0-9a-f]{8}-[0-9a-f]{4}-[1-7][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i</code><br>
+                                This validates the format, version (1-7), and variant (8/9/a/b). Most UUID libraries
+                                also provide validation functions.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is a nil UUID?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                The nil UUID is all zeros: <code>00000000-0000-0000-0000-000000000000</code>. It's used
+                                to represent the absence of a UUID or as a placeholder. Think of it like
+                                <code>null</code> for UUIDs. There's also a max UUID (all f's) sometimes used for upper
+                                bounds.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can I use UUIDs in URLs?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Yes, UUIDs are URL-safe. They only contain hexadecimal characters and hyphens. Example:
+                                <code>/users/550e8400-e29b-41d4-a716-446655440000</code>. For shorter URLs, consider
+                                ULID or nanoid, or encode UUIDs in Base64 (but you lose readability).
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How much storage does a UUID need?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Binary:</strong> 16 bytes (128 bits) - most efficient<br>
+                                <strong>String with hyphens:</strong> 36 bytes (32 hex + 4 hyphens)<br>
+                                <strong>String without hyphens:</strong> 32 bytes<br>
+                                For databases, always use binary storage when possible. A BIGINT is only 8 bytes by
+                                comparison.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is UUID v7 ready for production use?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Yes! UUID v7 was standardized in RFC 9562 (2024). Major libraries now support it:
+                                <code>uuid</code> (JS), Go's standard library, and many others. It combines the benefits
+                                of time-sorting with random uniqueness. It's the recommended choice for new
+                                applications.
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div
+                    class="p-6 my-12 text-center border rounded-lg bg-cyan-50 dark:bg-cyan-900/20 border-cyan-200 dark:border-cyan-800">
+                    <h3 class="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">Need to generate UUIDs?</h3>
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">Try our free UUID generator. Create v1, v4,
+                        v5, and v7 UUIDs instantly - all client-side.</p>
+                    <a href="/uuid-generator"
+                        class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-700">
+                        <i data-lucide="fingerprint" class="w-4 h-4"></i>
+                        Open UUID Generator
+                    </a>
+                </div>
+
+                <!-- Related Guides -->
+                <section>
+                    <h2>Related Guides</h2>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <a href="/guides/hash-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                                <i data-lucide="hash" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Hash Functions Guide</div>
+                                <div class="text-xs text-neutral-500">UUID v3/v5 use MD5/SHA-1 internally</div>
+                            </div>
+                        </a>
+                        <a href="/guides/base64-encoding-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Base64 Encoding Guide</div>
+                                <div class="text-xs text-neutral-500">Encode UUIDs for shorter URLs</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <script src="layout-guides.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+</body>
+
+</html>

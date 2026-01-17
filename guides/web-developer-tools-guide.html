@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Essential Web Developer Tools: Complete Guide to Free Online Dev Utilities | SimpleDevTools</title>
+    <meta name="description"
+        content="Discover essential free online tools for web developers. From JSON formatting to JWT decoding, Base64 encoding to regex testing - all browser-based with no data collection.">
+    <meta name="keywords"
+        content="web developer tools, online dev tools, JSON formatter, JWT decoder, Base64 encoder, regex tester, UUID generator, hash generator, password analyzer, image compressor">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <link rel="canonical" href="https://simpledevtools.tech/guides/web-developer-tools-guide" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Essential Web Developer Tools: Complete Guide to Free Online Dev Utilities">
+    <meta property="og:description"
+        content="Discover free browser-based developer tools. JSON, JWT, Base64, regex, UUID, hash, and more - all privacy-first with no server processing.">
+    <meta property="og:url" content="https://simpledevtools.tech/guides/web-developer-tools-guide">
+    <meta property="og:type" content="article">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <style>
+        .prose {
+            color: rgb(115 115 120);
+            max-width: none;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgb(24 24 27);
+            border-bottom: 1px solid rgb(229 229 229);
+            padding-bottom: 0.5rem;
+        }
+
+        .dark .prose h2 {
+            color: rgb(250 250 250);
+            border-bottom-color: rgb(38 38 38);
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: rgb(24 24 27);
+        }
+
+        .dark .prose h3 {
+            color: rgb(250 250 250);
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose code {
+            background-color: rgb(243 244 246);
+            color: rgb(239 68 68);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .dark .prose code {
+            background-color: rgb(31 41 55);
+            color: rgb(248 113 113);
+        }
+
+        .prose pre {
+            background-color: rgb(24 24 27);
+            color: rgb(228 228 231);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .prose pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .prose strong {
+            color: rgb(24 24 27);
+            font-weight: 600;
+        }
+
+        .dark .prose strong {
+            color: rgb(250 250 250);
+        }
+
+        .prose a {
+            color: rgb(59 130 246);
+            text-decoration: underline;
+        }
+
+        .prose a:hover {
+            color: rgb(37 99 235);
+        }
+
+        .scroll-mt-24 {
+            scroll-margin-top: 6rem;
+        }
+    </style>
+
+    <script src="../dist/js/lucide.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Essential Web Developer Tools: Complete Guide to Free Online Dev Utilities",
+      "description": "Discover free browser-based developer tools for JSON, JWT, Base64, regex, UUID, and more.",
+      "author": {"@type": "Organization", "name": "SimpleDevTools"},
+      "publisher": {"@type": "Organization", "name": "SimpleDevTools", "url": "https://simpledevtools.tech"},
+      "datePublished": "2026-01-17",
+      "dateModified": "2026-01-17",
+      "mainEntityOfPage": "https://simpledevtools.tech/guides/web-developer-tools-guide"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://simpledevtools.tech/guides"},
+        {"@type": "ListItem", "position": 3, "name": "Web Developer Tools", "item": "https://simpledevtools.tech/guides/web-developer-tools-guide"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Are these tools safe to use with sensitive data?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All SimpleDevTools operate 100% client-side in your browser. Your data is never sent to any server. You can verify this by using the tools while offline or checking network requests in your browser's DevTools."}},
+        {"@type": "Question", "name": "Why use online tools instead of CLI?", "acceptedAnswer": {"@type": "Answer", "text": "Online tools offer instant access without installation, work on any device with a browser, and provide visual interfaces that make debugging easier. CLI tools are powerful but require setup and memorizing commands. Both have their place."}},
+        {"@type": "Question", "name": "Can I use these tools offline?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! SimpleDevTools is a Progressive Web App (PWA). Visit the site once, and it caches for offline use. You can also install it as an app on your device for quick access."}},
+        {"@type": "Question", "name": "Do you track user data or store inputs?", "acceptedAnswer": {"@type": "Answer", "text": "No. We don't track your inputs, store your data, or send anything to servers. The only tracking is standard analytics for page views. Your JSON, passwords, JWTs, and other inputs stay completely private."}},
+        {"@type": "Question", "name": "What's the best tool for debugging API responses?", "acceptedAnswer": {"@type": "Answer", "text": "Use the JSON Formatter for pretty-printing and validating JSON responses. For authentication issues, combine it with the JWT Decoder to inspect tokens. The Base64 tool helps decode encoded payloads."}}
+      ]
+    }
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/guides" class="underline">Guides</a> |
+            <a href="/tools" class="underline">All Tools</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-neutral-900 dark:hover:text-white">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <a href="/guides" class="hover:text-neutral-900 dark:hover:text-white">Guides</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-neutral-900 dark:text-white">Web Developer Tools</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-indigo-600 border border-indigo-100 rounded-full bg-indigo-50 dark:bg-indigo-900/20 dark:text-indigo-400 dark:border-indigo-900/30">
+                    <i data-lucide="wrench" class="w-3 h-3"></i>
+                    <span>Tools Overview</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Essential Web Developer Tools:<br>Your Complete Toolkit
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    A comprehensive guide to free, privacy-first online tools that every developer needs. All tools work
+                    in your browser - no server processing, no data collection.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-neutral-500 dark:text-neutral-400">
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 12 min read</span>
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Updated Jan
+                        2026</span>
+                </div>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="/tools"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700">
+                        <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+                        Browse All Tools
+                    </a>
+                    <a href="#tools-overview"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <i data-lucide="list" class="w-4 h-4"></i>
+                        Tools Overview
+                    </a>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div
+                class="p-6 mb-12 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#why-online-tools" class="text-indigo-600 dark:text-indigo-400 hover:underline">1. Why
+                            Use Online Developer Tools?</a></li>
+                    <li><a href="#tools-overview" class="text-indigo-600 dark:text-indigo-400 hover:underline">2. Tools
+                            Overview</a></li>
+                    <li><a href="#json-formatter" class="text-indigo-600 dark:text-indigo-400 hover:underline">3. JSON
+                            Formatter & Validator</a></li>
+                    <li><a href="#jwt-decoder" class="text-indigo-600 dark:text-indigo-400 hover:underline">4. JWT
+                            Decoder</a></li>
+                    <li><a href="#base64-encoder" class="text-indigo-600 dark:text-indigo-400 hover:underline">5. Base64
+                            Encoder/Decoder</a></li>
+                    <li><a href="#regex-tester" class="text-indigo-600 dark:text-indigo-400 hover:underline">6. Regex
+                            Tester</a></li>
+                    <li><a href="#uuid-generator" class="text-indigo-600 dark:text-indigo-400 hover:underline">7. UUID
+                            Generator</a></li>
+                    <li><a href="#hash-generator" class="text-indigo-600 dark:text-indigo-400 hover:underline">8. Hash
+                            Generator</a></li>
+                    <li><a href="#password-analyzer" class="text-indigo-600 dark:text-indigo-400 hover:underline">9.
+                            Password Strength Analyzer</a></li>
+                    <li><a href="#image-compressor" class="text-indigo-600 dark:text-indigo-400 hover:underline">10.
+                            Image Compressor</a></li>
+                    <li><a href="#workflows" class="text-indigo-600 dark:text-indigo-400 hover:underline">11. Common
+                            Workflows</a></li>
+                    <li><a href="#faq" class="text-indigo-600 dark:text-indigo-400 hover:underline">12. FAQ (10
+                            Questions)</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <article class="prose dark:prose-invert">
+
+                <!-- Section 1: Why Online Tools -->
+                <section id="why-online-tools" class="scroll-mt-24">
+                    <h2>1. Why Use Online Developer Tools?</h2>
+                    <p>In the age of powerful CLI tools and IDE extensions, you might wonder why online tools still
+                        matter. Here's why developers keep coming back:</p>
+
+                    <div class="grid gap-4 my-6 md:grid-cols-2">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base font-semibold">
+                                <i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>
+                                Instant Access
+                            </h3>
+                            <p class="mb-0 text-sm">No installation, no configuration. Open a browser tab and you're
+                                ready. Perfect for quick checks.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base font-semibold">
+                                <i data-lucide="monitor-smartphone" class="w-5 h-5 text-blue-500"></i>
+                                Any Device
+                            </h3>
+                            <p class="mb-0 text-sm">Works on your phone, tablet, or any computer. Debug that production
+                                issue from anywhere.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base font-semibold">
+                                <i data-lucide="eye" class="w-5 h-5 text-green-500"></i>
+                                Visual Output
+                            </h3>
+                            <p class="mb-0 text-sm">See formatted JSON with syntax highlighting, visualize regex
+                                matches, preview images. GUI beats CLI for quick visual inspection.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base font-semibold">
+                                <i data-lucide="share-2" class="w-5 h-5 text-purple-500"></i>
+                                Easy Sharing
+                            </h3>
+                            <p class="mb-0 text-sm">Copy formatted output, share tool links with team members. Great for
+                                collaboration.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 my-6 border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20">
+                        <h3 class="mt-0 mb-2 text-base text-indigo-800 dark:text-indigo-200">🔒 Privacy-First Philosophy
+                        </h3>
+                        <p class="mb-0 text-sm text-indigo-700 dark:text-indigo-300">
+                            SimpleDevTools processes everything in your browser using JavaScript. Your data never
+                            touches our servers. Verify this yourself: disconnect from the internet and the tools still
+                            work. Check network requests in DevTools - you'll see no data being sent.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 2: Tools Overview -->
+                <section id="tools-overview" class="scroll-mt-24">
+                    <h2>2. Tools Overview</h2>
+                    <p>A quick reference of all available tools and their primary use cases:</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Tool</th>
+                                    <th class="p-3 text-left">Primary Use</th>
+                                    <th class="p-3 text-left">Common Scenarios</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-medium">JSON Formatter</td>
+                                    <td class="p-3">Pretty-print & validate JSON</td>
+                                    <td class="p-3">API debugging, config files</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">JWT Decoder</td>
+                                    <td class="p-3">Inspect JWT tokens</td>
+                                    <td class="p-3">Auth debugging, token expiry</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Base64 Encoder</td>
+                                    <td class="p-3">Encode/decode Base64</td>
+                                    <td class="p-3">Data URIs, basic auth, emails</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Regex Tester</td>
+                                    <td class="p-3">Test regex patterns</td>
+                                    <td class="p-3">Validation, parsing, search</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">UUID Generator</td>
+                                    <td class="p-3">Generate UUIDs</td>
+                                    <td class="p-3">Database IDs, unique keys</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Hash Generator</td>
+                                    <td class="p-3">Generate MD5/SHA hashes</td>
+                                    <td class="p-3">File integrity, checksums</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Password Analyzer</td>
+                                    <td class="p-3">Check password strength</td>
+                                    <td class="p-3">Security audit, entropy calc</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-medium">Image Compressor</td>
+                                    <td class="p-3">Compress images</td>
+                                    <td class="p-3">Web optimization, uploads</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 3: JSON Formatter -->
+                <section id="json-formatter" class="scroll-mt-24">
+                    <h2>3. JSON Formatter & Validator</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                        <div class="p-2 bg-blue-100 rounded-lg dark:bg-blue-900/30">
+                            <i data-lucide="braces" class="w-6 h-6 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-blue-800 dark:text-blue-200">The most-used
+                                developer tool</h3>
+                            <p class="mb-0 text-sm text-blue-700 dark:text-blue-300">Every developer works with JSON
+                                daily. Our formatter makes it readable, validates syntax, and spots errors instantly.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Pretty-print</strong> minified JSON with proper indentation</li>
+                        <li><strong>Syntax validation</strong> with clear error messages and line numbers</li>
+                        <li><strong>Syntax highlighting</strong> for easy reading</li>
+                        <li><strong>Minify</strong> to remove whitespace for production</li>
+                        <li><strong>Tree view</strong> for exploring complex structures</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Debugging API responses that return minified JSON</li>
+                        <li>Validating configuration files before deployment</li>
+                        <li>Finding syntax errors in manually edited JSON</li>
+                        <li>Comparing JSON structures visually</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/json-formatter"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open JSON Formatter
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/json-formatter-guide"
+                            class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 4: JWT Decoder -->
+                <section id="jwt-decoder" class="scroll-mt-24">
+                    <h2>4. JWT Decoder</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800">
+                        <div class="p-2 bg-orange-100 rounded-lg dark:bg-orange-900/30">
+                            <i data-lucide="key" class="w-6 h-6 text-orange-600 dark:text-orange-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-orange-800 dark:text-orange-200">Decode
+                                and inspect JWT tokens</h3>
+                            <p class="mb-0 text-sm text-orange-700 dark:text-orange-300">Debugging authentication? See
+                                what's inside your tokens - header, payload, claims, expiration times.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Decode all three parts</strong> - header, payload, signature</li>
+                        <li><strong>Human-readable timestamps</strong> - see exp, iat, nbf as dates</li>
+                        <li><strong>Algorithm detection</strong> - HS256, RS256, ES256, etc.</li>
+                        <li><strong>Expiration status</strong> - instantly know if token is expired</li>
+                        <li><strong>Color-coded display</strong> - each section clearly distinguished</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>"Why is my API returning 401?" - Check if token is expired</li>
+                        <li>Verifying user claims and permissions in tokens</li>
+                        <li>Debugging OAuth/OIDC flows</li>
+                        <li>Checking token structure before implementation</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/jwt-decoder"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open JWT Decoder
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/jwt-guide"
+                            class="text-sm text-orange-600 dark:text-orange-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 5: Base64 -->
+                <section id="base64-encoder" class="scroll-mt-24">
+                    <h2>5. Base64 Encoder/Decoder</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800">
+                        <div class="p-2 bg-purple-100 rounded-lg dark:bg-purple-900/30">
+                            <i data-lucide="binary" class="w-6 h-6 text-purple-600 dark:text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">Convert
+                                between binary and text-safe formats</h3>
+                            <p class="mb-0 text-sm text-purple-700 dark:text-purple-300">Essential for embedding images,
+                                handling basic auth, and debugging encoded data.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Text to Base64</strong> - encode strings for safe transmission</li>
+                        <li><strong>Base64 to Text</strong> - decode to see original content</li>
+                        <li><strong>File support</strong> - encode/decode images and binary files</li>
+                        <li><strong>URL-safe variant</strong> - for use in URLs without encoding issues</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Creating data URIs for embedding small images in HTML/CSS</li>
+                        <li>Setting up HTTP Basic Authentication headers</li>
+                        <li>Decoding email attachments (MIME)</li>
+                        <li>Debugging Base64-encoded API payloads</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/base64-encoder"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-purple-600 rounded-lg hover:bg-purple-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open Base64 Tool
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/base64-encoding-guide"
+                            class="text-sm text-purple-600 dark:text-purple-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 6: Regex Tester -->
+                <section id="regex-tester" class="scroll-mt-24">
+                    <h2>6. Regex Tester</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800">
+                        <div class="p-2 bg-green-100 rounded-lg dark:bg-green-900/30">
+                            <i data-lucide="regex" class="w-6 h-6 text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-green-800 dark:text-green-200">Build and
+                                test regular expressions</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Real-time matching with visual
+                                highlighting. See exactly what your pattern captures.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Live matching</strong> - see matches as you type</li>
+                        <li><strong>Capture groups</strong> - view grouped content separately</li>
+                        <li><strong>All flags supported</strong> - global, case-insensitive, multiline, etc.</li>
+                        <li><strong>Common patterns library</strong> - email, URL, phone templates</li>
+                        <li><strong>Match highlighting</strong> - visual indication in test text</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Building input validation patterns</li>
+                        <li>Parsing log files or text data</li>
+                        <li>Search and replace in code editors</li>
+                        <li>Learning regex with immediate feedback</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/regex-tester"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open Regex Tester
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/regex-patterns-guide"
+                            class="text-sm text-green-600 dark:text-green-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 7: UUID Generator -->
+                <section id="uuid-generator" class="scroll-mt-24">
+                    <h2>7. UUID Generator</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-cyan-50 dark:bg-cyan-900/20 border-cyan-200 dark:border-cyan-800">
+                        <div class="p-2 bg-cyan-100 rounded-lg dark:bg-cyan-900/30">
+                            <i data-lucide="fingerprint" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-cyan-800 dark:text-cyan-200">Generate
+                                universally unique identifiers</h3>
+                            <p class="mb-0 text-sm text-cyan-700 dark:text-cyan-300">Create UUIDs for database records,
+                                API resources, or any scenario needing unique IDs.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Version 4 (random)</strong> - most commonly used</li>
+                        <li><strong>Bulk generation</strong> - create multiple UUIDs at once</li>
+                        <li><strong>Different formats</strong> - standard, uppercase, no hyphens</li>
+                        <li><strong>Instant copy</strong> - one-click copy to clipboard</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Creating primary keys for database records</li>
+                        <li>Generating unique session or request IDs</li>
+                        <li>Tagging resources in distributed systems</li>
+                        <li>Creating file names that won't collide</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/uuid-generator"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open UUID Generator
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/uuid-guide"
+                            class="text-sm text-cyan-600 dark:text-cyan-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 8: Hash Generator -->
+                <section id="hash-generator" class="scroll-mt-24">
+                    <h2>8. Hash Generator</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-pink-50 dark:bg-pink-900/20 border-pink-200 dark:border-pink-800">
+                        <div class="p-2 bg-pink-100 rounded-lg dark:bg-pink-900/30">
+                            <i data-lucide="hash" class="w-6 h-6 text-pink-600 dark:text-pink-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-pink-800 dark:text-pink-200">Generate
+                                cryptographic hashes</h3>
+                            <p class="mb-0 text-sm text-pink-700 dark:text-pink-300">MD5, SHA-1, SHA-256, SHA-512 -
+                                compute checksums and verify file integrity.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Multiple algorithms</strong> - MD5, SHA-1, SHA-256, SHA-512</li>
+                        <li><strong>Text and file input</strong> - hash strings or uploaded files</li>
+                        <li><strong>Instant computation</strong> - hashes calculated in real-time</li>
+                        <li><strong>Compare hashes</strong> - verify against known checksums</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Verifying downloaded file integrity</li>
+                        <li>Creating checksums for data validation</li>
+                        <li>Generating cache keys based on content</li>
+                        <li>Comparing files for changes</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/hash-generator"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-pink-600 rounded-lg hover:bg-pink-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open Hash Generator
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/hash-guide"
+                            class="text-sm text-pink-600 dark:text-pink-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 9: Password Analyzer -->
+                <section id="password-analyzer" class="scroll-mt-24">
+                    <h2>9. Password Strength Analyzer</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800">
+                        <div class="p-2 bg-emerald-100 rounded-lg dark:bg-emerald-900/30">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-emerald-600 dark:text-emerald-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-emerald-800 dark:text-emerald-200">Analyze
+                                password security</h3>
+                            <p class="mb-0 text-sm text-emerald-700 dark:text-emerald-300">Check entropy, detect
+                                patterns, estimate crack time. All analysis happens locally - we never see your
+                                password.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Entropy calculation</strong> - mathematical measure of randomness</li>
+                        <li><strong>Pattern detection</strong> - identifies common weaknesses</li>
+                        <li><strong>Crack time estimation</strong> - how long would brute-force take</li>
+                        <li><strong>Improvement suggestions</strong> - tips for stronger passwords</li>
+                        <li><strong>100% client-side</strong> - password never leaves your browser</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Testing passwords before using them</li>
+                        <li>Building password requirement UIs</li>
+                        <li>Security audits and training</li>
+                        <li>Understanding password entropy</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/password-strength-analyzer"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open Password Analyzer
+                        </a>
+                        <span class="mx-3 text-neutral-400">|</span>
+                        <a href="/guides/password-security-guide"
+                            class="text-sm text-emerald-600 dark:text-emerald-400 hover:underline">Read Full Guide →</a>
+                    </div>
+                </section>
+
+                <!-- Section 10: Image Compressor -->
+                <section id="image-compressor" class="scroll-mt-24">
+                    <h2>10. Image Compressor</h2>
+
+                    <div
+                        class="flex items-start gap-4 p-4 my-4 border rounded-lg bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800">
+                        <div class="p-2 bg-amber-100 rounded-lg dark:bg-amber-900/30">
+                            <i data-lucide="image" class="w-6 h-6 text-amber-600 dark:text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-amber-800 dark:text-amber-200">Compress
+                                images without losing quality</h3>
+                            <p class="mb-0 text-sm text-amber-700 dark:text-amber-300">Reduce file sizes for faster web
+                                pages. All processing happens in your browser.</p>
+                        </div>
+                    </div>
+
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>Quality slider</strong> - balance size vs quality</li>
+                        <li><strong>Multiple formats</strong> - JPEG, PNG, WebP support</li>
+                        <li><strong>Batch processing</strong> - compress multiple images</li>
+                        <li><strong>Size comparison</strong> - see before/after file sizes</li>
+                        <li><strong>Preview</strong> - visual comparison before download</li>
+                    </ul>
+
+                    <h3>When to Use:</h3>
+                    <ul>
+                        <li>Optimizing images for web performance</li>
+                        <li>Meeting file size limits for uploads</li>
+                        <li>Reducing storage costs</li>
+                        <li>Preparing images for email</li>
+                    </ul>
+
+                    <div
+                        class="p-4 text-center border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <a href="/image-compressor"
+                            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Open Image Compressor
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Section 11: Workflows -->
+                <section id="workflows" class="scroll-mt-24">
+                    <h2>11. Common Workflows</h2>
+                    <p>Here's how developers typically combine these tools:</p>
+
+                    <div class="space-y-6">
+                        <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-blue-800 dark:text-blue-200">🔍 Debugging
+                                API Authentication Issues</h3>
+                            <ol class="mb-0 text-sm text-blue-700 dark:text-blue-300">
+                                <li>Copy the JWT from your request headers</li>
+                                <li><strong>JWT Decoder</strong> → Check if token is expired, inspect claims</li>
+                                <li>If payload looks Base64-encoded, use <strong>Base64 Decoder</strong></li>
+                                <li><strong>JSON Formatter</strong> → Pretty-print the API response to find error
+                                    details</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-green-800 dark:text-green-200">✅ Building
+                                Form Validation</h3>
+                            <ol class="mb-0 text-sm text-green-700 dark:text-green-300">
+                                <li><strong>Regex Tester</strong> → Build and test validation patterns for email, phone,
+                                    etc.</li>
+                                <li><strong>Password Analyzer</strong> → Understand entropy requirements for password
+                                    fields</li>
+                                <li><strong>UUID Generator</strong> → Create unique form submission IDs</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-purple-800 dark:text-purple-200">🚀
+                                Optimizing Web Assets</h3>
+                            <ol class="mb-0 text-sm text-purple-700 dark:text-purple-300">
+                                <li><strong>Image Compressor</strong> → Reduce image file sizes</li>
+                                <li><strong>Base64 Encoder</strong> → Convert small icons to data URIs</li>
+                                <li><strong>Hash Generator</strong> → Create cache-busting hashes for assets</li>
+                            </ol>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-orange-800 dark:text-orange-200">🔐
+                                Security Testing</h3>
+                            <ol class="mb-0 text-sm text-orange-700 dark:text-orange-300">
+                                <li><strong>Password Analyzer</strong> → Test password requirements</li>
+                                <li><strong>Hash Generator</strong> → Verify file integrity (checksums)</li>
+                                <li><strong>JWT Decoder</strong> → Audit token contents for sensitive data</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 12: FAQ -->
+                <section id="faq" class="scroll-mt-24">
+                    <h2>12. Frequently Asked Questions</h2>
+
+                    <div class="space-y-4">
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Are these tools safe to use with sensitive data?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Yes, completely safe.</strong> All SimpleDevTools operate 100% client-side using
+                                JavaScript. Your data is processed in your browser and never transmitted to any server.
+                                You can verify this by: (1) Using tools while offline, (2) Checking network requests in
+                                browser DevTools, (3) Reviewing our open-source code.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Why use online tools instead of CLI?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Both have their place. Online tools offer: instant access without installation, visual
+                                interfaces for easier debugging, cross-device availability, and shareability. CLI tools
+                                are powerful but require setup and memorizing commands. For quick checks and visual
+                                inspection, online tools often win. For automation and scripting, CLI is better.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can I use these tools offline?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Yes!</strong> SimpleDevTools is a Progressive Web App (PWA). After visiting the
+                                site once, it's cached for offline use. You can also install it as an app on desktop or
+                                mobile for quick access. Just click "Install" in your browser or add to home screen on
+                                mobile.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Do you track user data or store inputs?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>No.</strong> We don't track your inputs, store your data, or send anything to
+                                servers. The only tracking is standard analytics for page views (which tools are
+                                popular). Your JSON, passwords, JWTs, and other inputs stay completely private in your
+                                browser.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What's the best tool for debugging API responses?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Start with the <strong>JSON Formatter</strong> for pretty-printing and validating
+                                responses. For authentication issues, combine with the <strong>JWT Decoder</strong> to
+                                inspect tokens. If you see Base64-encoded data in responses, the <strong>Base64
+                                    tool</strong> helps decode it.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How does the password analyzer work without sending data?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                All analysis happens in JavaScript in your browser. It calculates entropy mathematically
+                                based on character sets and length. Pattern detection uses local algorithms to identify
+                                common weaknesses (sequences, dictionary words, repetition). No external API calls or
+                                data transmission required.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Are the hashes generated secure enough for production?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                For <strong>file integrity and checksums</strong>, yes. For <strong>password
+                                    storage</strong>, no - use bcrypt, Argon2, or scrypt instead (which require
+                                server-side processing). SHA-256 is excellent for data integrity but too fast for
+                                password hashing. See our <a href="/guides/hash-guide">Hash Guide</a> for details.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can I suggest new tools or features?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Absolutely! Use our <a href="/contact">contact form</a> to suggest new tools or
+                                improvements. We prioritize tools that: (1) are commonly needed by developers, (2) can
+                                work 100% client-side, (3) don't require complex server infrastructure. Popular requests
+                                often get implemented.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Do the tools work on mobile devices?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Yes! All tools are responsive and work on phones and tablets. For tools requiring text
+                                input (JSON, regex), a larger screen is more comfortable, but everything functions on
+                                mobile. Installing as a PWA gives a native app-like experience.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How often are the tools updated?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                We regularly update tools for bug fixes and improvements. New tools are added based on
+                                developer demand. Being browser-based, updates are instant - just refresh the page. No
+                                need to update an app or CLI tool.
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div
+                    class="p-6 my-12 text-center border rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800">
+                    <h3 class="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">Start Using the Tools</h3>
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">Bookmark SimpleDevTools for quick access to
+                        all your developer utilities.</p>
+                    <a href="/tools"
+                        class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700">
+                        <i data-lucide="grid-3x3" class="w-4 h-4"></i>
+                        Browse All Tools
+                    </a>
+                </div>
+
+                <!-- Related Guides -->
+                <section>
+                    <h2>Related Guides</h2>
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <a href="/guides/json-formatter-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="braces" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JSON Guide</div>
+                                <div class="text-xs text-neutral-500">Working with JSON</div>
+                            </div>
+                        </a>
+                        <a href="/guides/jwt-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                                <i data-lucide="key" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JWT Guide</div>
+                                <div class="text-xs text-neutral-500">Token authentication</div>
+                            </div>
+                        </a>
+                        <a href="/guides/regex-patterns-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                                <i data-lucide="regex" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Regex Guide</div>
+                                <div class="text-xs text-neutral-500">Pattern matching</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <script src="layout-guides.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+</body>
+
+</html>

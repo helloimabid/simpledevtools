@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Understanding JWT Tokens: Complete Developer Guide | SimpleDevTools</title>
+    <meta name="description"
+        content="Master JSON Web Tokens (JWT) with our comprehensive guide. Learn JWT structure, authentication flows, security best practices, common vulnerabilities, and implementation in multiple languages.">
+    <meta name="keywords"
+        content="JWT, JSON Web Token, JWT authentication, JWT tutorial, JWT decode, JWT validation, JWT security, bearer token">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <link rel="canonical" href="https://simpledevtools.tech/guides/jwt-guide" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Understanding JWT Tokens: Complete Developer Guide">
+    <meta property="og:description"
+        content="Master JWT authentication with code examples in JavaScript, Python, Java. Learn security best practices and avoid common vulnerabilities.">
+    <meta property="og:url" content="https://simpledevtools.tech/guides/jwt-guide">
+    <meta property="og:type" content="article">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+
+    <style>
+        .prose {
+            color: rgb(115 115 120);
+            max-width: none;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: rgb(24 24 27);
+            border-bottom: 1px solid rgb(229 229 229);
+            padding-bottom: 0.5rem;
+        }
+
+        .dark .prose h2 {
+            color: rgb(250 250 250);
+            border-bottom-color: rgb(38 38 38);
+        }
+
+        .prose h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: rgb(24 24 27);
+        }
+
+        .dark .prose h3 {
+            color: rgb(250 250 250);
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .prose ul,
+        .prose ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .prose li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose code {
+            background-color: rgb(243 244 246);
+            color: rgb(239 68 68);
+            padding: 0.125rem 0.375rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+        }
+
+        .dark .prose code {
+            background-color: rgb(31 41 55);
+            color: rgb(248 113 113);
+        }
+
+        .prose pre {
+            background-color: rgb(24 24 27);
+            color: rgb(228 228 231);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .prose pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .prose strong {
+            color: rgb(24 24 27);
+            font-weight: 600;
+        }
+
+        .dark .prose strong {
+            color: rgb(250 250 250);
+        }
+
+        .prose a {
+            color: rgb(59 130 246);
+            text-decoration: underline;
+        }
+
+        .prose a:hover {
+            color: rgb(37 99 235);
+        }
+
+        .scroll-mt-24 {
+            scroll-margin-top: 6rem;
+        }
+
+        .code-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: rgb(156 163 175);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .jwt-header {
+            color: #ef4444;
+        }
+
+        .jwt-payload {
+            color: #a855f7;
+        }
+
+        .jwt-signature {
+            color: #22c55e;
+        }
+    </style>
+
+    <script src="../dist/js/lucide.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Understanding JWT Tokens: Complete Developer Guide",
+      "description": "Master JSON Web Tokens (JWT) with code examples in JavaScript, Python, Java. Learn security best practices and avoid common vulnerabilities.",
+      "author": {"@type": "Organization", "name": "SimpleDevTools"},
+      "publisher": {"@type": "Organization", "name": "SimpleDevTools", "url": "https://simpledevtools.tech"},
+      "datePublished": "2026-01-17",
+      "dateModified": "2026-01-17",
+      "mainEntityOfPage": "https://simpledevtools.tech/guides/jwt-guide"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://simpledevtools.tech/guides"},
+        {"@type": "ListItem", "position": 3, "name": "JWT Guide", "item": "https://simpledevtools.tech/guides/jwt-guide"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a JWT token?", "acceptedAnswer": {"@type": "Answer", "text": "JWT (JSON Web Token) is a compact, URL-safe means of representing claims between two parties. It consists of three Base64URL-encoded parts separated by dots: header, payload, and signature. JWTs are commonly used for authentication and information exchange."}},
+        {"@type": "Question", "name": "Is JWT secure?", "acceptedAnswer": {"@type": "Answer", "text": "JWT itself is secure when implemented correctly. However, security depends on: using strong signing algorithms (RS256 or ES256), keeping secrets safe, validating tokens properly, setting appropriate expiration times, and using HTTPS. Common vulnerabilities arise from weak secrets, algorithm confusion, or improper validation."}},
+        {"@type": "Question", "name": "What is the difference between HS256 and RS256?", "acceptedAnswer": {"@type": "Answer", "text": "HS256 (HMAC-SHA256) uses a symmetric secret key for both signing and verification. RS256 (RSA-SHA256) uses asymmetric keys - a private key to sign and a public key to verify. RS256 is preferred for distributed systems where multiple services need to verify tokens without sharing a secret."}},
+        {"@type": "Question", "name": "Should I store JWT in localStorage or cookies?", "acceptedAnswer": {"@type": "Answer", "text": "HttpOnly cookies are generally more secure as they're not accessible to JavaScript, protecting against XSS attacks. localStorage is vulnerable to XSS but immune to CSRF. For best security, use HttpOnly cookies with SameSite=Strict and implement CSRF protection."}},
+        {"@type": "Question", "name": "How long should a JWT be valid?", "acceptedAnswer": {"@type": "Answer", "text": "Access tokens should be short-lived (5-15 minutes) to minimize damage if compromised. Use refresh tokens (days to weeks) to obtain new access tokens without re-authentication. Critical applications may use even shorter access token lifetimes."}}
+      ]
+    }
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript>
+        <nav class="p-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <a href="/" class="underline">Home</a> |
+            <a href="/guides" class="underline">Guides</a> |
+            <a href="/jwt-decoder" class="underline">JWT Decoder</a>
+        </nav>
+    </noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-500/10 dark:bg-orange-500/20 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center gap-2 mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+                <a href="/" class="hover:text-neutral-900 dark:hover:text-white">Home</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <a href="/guides" class="hover:text-neutral-900 dark:hover:text-white">Guides</a>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-neutral-900 dark:text-white">JWT Tokens</span>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium text-orange-600 border border-orange-100 rounded-full bg-orange-50 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-900/30">
+                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                    <span>Authentication Guide</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Understanding JWT Tokens:<br>Complete Developer Guide
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Everything you need to know about JSON Web Tokens. Learn the structure, authentication flows,
+                    security best practices, and implementation patterns.
+                </p>
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-neutral-500 dark:text-neutral-400">
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 18 min read</span>
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Updated Jan
+                        2026</span>
+                </div>
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <a href="/jwt-decoder"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700">
+                        <i data-lucide="play" class="w-4 h-4"></i>
+                        Try JWT Decoder
+                    </a>
+                    <a href="#jwt-structure"
+                        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-lg text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                        <i data-lucide="layers" class="w-4 h-4"></i>
+                        JWT Structure
+                    </a>
+                </div>
+            </header>
+
+            <!-- Table of Contents -->
+            <div
+                class="p-6 mb-12 border rounded-lg bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
+                <h2 class="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#what-is-jwt" class="text-orange-600 dark:text-orange-400 hover:underline">1. What is a
+                            JWT Token?</a></li>
+                    <li><a href="#jwt-structure" class="text-orange-600 dark:text-orange-400 hover:underline">2. JWT
+                            Structure (Header, Payload, Signature)</a></li>
+                    <li><a href="#auth-flow" class="text-orange-600 dark:text-orange-400 hover:underline">3. JWT
+                            Authentication Flow</a></li>
+                    <li><a href="#claims" class="text-orange-600 dark:text-orange-400 hover:underline">4. Standard JWT
+                            Claims Explained</a></li>
+                    <li><a href="#algorithms" class="text-orange-600 dark:text-orange-400 hover:underline">5. Signing
+                            Algorithms (HS256, RS256, ES256)</a></li>
+                    <li><a href="#implementation" class="text-orange-600 dark:text-orange-400 hover:underline">6.
+                            Implementation in Different Languages</a></li>
+                    <li><a href="#security" class="text-orange-600 dark:text-orange-400 hover:underline">7. Security
+                            Best Practices</a></li>
+                    <li><a href="#vulnerabilities" class="text-orange-600 dark:text-orange-400 hover:underline">8.
+                            Common Vulnerabilities</a></li>
+                    <li><a href="#storage" class="text-orange-600 dark:text-orange-400 hover:underline">9. Token Storage
+                            (Cookies vs localStorage)</a></li>
+                    <li><a href="#faq" class="text-orange-600 dark:text-orange-400 hover:underline">10. FAQ (10
+                            Questions)</a></li>
+                </ul>
+            </div>
+
+            <!-- Content -->
+            <article class="prose dark:prose-invert">
+
+                <!-- Section 1: What is JWT -->
+                <section id="what-is-jwt" class="scroll-mt-24">
+                    <h2>1. What is a JWT Token?</h2>
+                    <p><strong>JWT (JSON Web Token)</strong> is an open standard (RFC 7519) for securely transmitting
+                        information between parties as a JSON object. JWTs are digitally signed, so the information can
+                        be verified and trusted.</p>
+
+                    <div
+                        class="p-4 my-6 border rounded-lg bg-neutral-100 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
+                        <p class="mb-2 font-semibold text-neutral-900 dark:text-white">Example JWT Token:</p>
+                        <code class="block p-3 overflow-x-auto text-xs rounded bg-neutral-200 dark:bg-neutral-900">
+                            <span class="jwt-header">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.<span class="jwt-payload">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</span>.<span class="jwt-signature">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+                        </code>
+                        <div class="flex flex-wrap gap-4 mt-2 text-xs">
+                            <span class="jwt-header">■ Header</span>
+                            <span class="jwt-payload">■ Payload</span>
+                            <span class="jwt-signature">■ Signature</span>
+                        </div>
+                    </div>
+
+                    <h3>Key Characteristics of JWT:</h3>
+                    <ul>
+                        <li><strong>Compact:</strong> Small size allows transmission in URLs, headers, or POST
+                            parameters</li>
+                        <li><strong>Self-contained:</strong> Contains all the information needed about the user</li>
+                        <li><strong>Stateless:</strong> Server doesn't need to store session data</li>
+                        <li><strong>Verifiable:</strong> Digital signature ensures data integrity</li>
+                    </ul>
+
+                    <h3>Common Use Cases:</h3>
+                    <ul>
+                        <li><strong>Authentication:</strong> After login, each request includes the JWT for access
+                            control</li>
+                        <li><strong>Information Exchange:</strong> Securely transmit data between parties</li>
+                        <li><strong>Authorization:</strong> Determine what resources a user can access</li>
+                        <li><strong>Single Sign-On (SSO):</strong> Share authentication across multiple domains</li>
+                    </ul>
+                </section>
+
+                <!-- Section 2: JWT Structure -->
+                <section id="jwt-structure" class="scroll-mt-24">
+                    <h2>2. JWT Structure (Header, Payload, Signature)</h2>
+                    <p>A JWT consists of three parts separated by dots (<code>.</code>): <code>xxxxx.yyyyy.zzzzz</code>
+                    </p>
+
+                    <div class="grid gap-4 my-6">
+                        <!-- Header -->
+                        <div class="p-4 border-l-4 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-lg font-semibold text-red-800 dark:text-red-200">1. Header</h3>
+                            <p class="mb-2 text-sm text-red-700 dark:text-red-300">Contains metadata about the token:
+                                algorithm and token type.</p>
+                            <pre class="text-xs"><code>{
+  "alg": "HS256",    // Signing algorithm
+  "typ": "JWT"       // Token type
+}</code></pre>
+                            <p class="mt-2 mb-0 text-xs text-red-600 dark:text-red-400">Base64URL encoded →
+                                <code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</code></p>
+                        </div>
+
+                        <!-- Payload -->
+                        <div class="p-4 border-l-4 border-purple-500 rounded-lg bg-purple-50 dark:bg-purple-900/20">
+                            <h3 class="mt-0 mb-2 text-lg font-semibold text-purple-800 dark:text-purple-200">2. Payload
+                                (Claims)</h3>
+                            <p class="mb-2 text-sm text-purple-700 dark:text-purple-300">Contains the claims -
+                                statements about the user and additional metadata.</p>
+                            <pre class="text-xs"><code>{
+  "sub": "1234567890",      // Subject (user ID)
+  "name": "John Doe",       // Custom claim
+  "admin": true,            // Custom claim
+  "iat": 1516239022,        // Issued at
+  "exp": 1516242622         // Expiration time
+}</code></pre>
+                            <p class="mt-2 mb-0 text-xs text-purple-600 dark:text-purple-400">Base64URL encoded →
+                                <code>eyJzdWIiOiIxMjM0NTY3ODkwIi4uLn0</code></p>
+                        </div>
+
+                        <!-- Signature -->
+                        <div class="p-4 border-l-4 border-green-500 rounded-lg bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-lg font-semibold text-green-800 dark:text-green-200">3. Signature
+                            </h3>
+                            <p class="mb-2 text-sm text-green-700 dark:text-green-300">Verifies the token wasn't
+                                tampered with. Created by signing header + payload.</p>
+                            <pre class="text-xs"><code>HMACSHA256(
+  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  secret
+)</code></pre>
+                            <p class="mt-2 mb-0 text-xs text-green-600 dark:text-green-400">Result →
+                                <code>SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 my-6 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20">
+                        <p class="font-semibold text-yellow-800 dark:text-yellow-200">⚠️ Important</p>
+                        <p class="mb-0 text-yellow-700 dark:text-yellow-300">The header and payload are only Base64URL
+                            <strong>encoded</strong>, NOT encrypted. Anyone can decode and read them. Never put
+                            sensitive data (passwords, credit cards) in a JWT payload!</p>
+                    </div>
+                </section>
+
+                <!-- Section 3: Auth Flow -->
+                <section id="auth-flow" class="scroll-mt-24">
+                    <h2>3. JWT Authentication Flow</h2>
+
+                    <div class="p-4 my-6 border rounded-lg bg-neutral-900 text-neutral-100">
+                        <p class="mb-4 code-label">Step-by-step Authentication Flow:</p>
+                        <ol class="pl-5 space-y-2 text-sm list-decimal">
+                            <li><strong>Login Request:</strong> User sends credentials (email/password) to server</li>
+                            <li><strong>Verification:</strong> Server validates credentials against database</li>
+                            <li><strong>Token Creation:</strong> Server creates JWT with user claims and signs it</li>
+                            <li><strong>Token Response:</strong> Server sends JWT back to client</li>
+                            <li><strong>Token Storage:</strong> Client stores JWT (cookie or localStorage)</li>
+                            <li><strong>Authenticated Request:</strong> Client sends JWT with each request
+                                (Authorization header)</li>
+                            <li><strong>Token Validation:</strong> Server verifies JWT signature and checks expiration
+                            </li>
+                            <li><strong>Resource Access:</strong> Server grants/denies access based on claims</li>
+                        </ol>
+                    </div>
+
+                    <h3>Request Header Format:</h3>
+                    <pre><code>// HTTP Authorization Header
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIi4uLn0.signature</code></pre>
+
+                    <h3>Refresh Token Flow:</h3>
+                    <p>For better security, use short-lived access tokens with longer-lived refresh tokens:</p>
+                    <ul>
+                        <li><strong>Access Token:</strong> Short-lived (5-15 minutes), used for API requests</li>
+                        <li><strong>Refresh Token:</strong> Long-lived (days/weeks), used to get new access tokens</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Claims -->
+                <section id="claims" class="scroll-mt-24">
+                    <h2>4. Standard JWT Claims Explained</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Claim</th>
+                                    <th class="p-3 text-left">Name</th>
+                                    <th class="p-3 text-left">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">iss</td>
+                                    <td class="p-3">Issuer</td>
+                                    <td class="p-3">Who created the token (e.g., your auth server)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">sub</td>
+                                    <td class="p-3">Subject</td>
+                                    <td class="p-3">Who the token represents (usually user ID)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">aud</td>
+                                    <td class="p-3">Audience</td>
+                                    <td class="p-3">Intended recipient (e.g., API server)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">exp</td>
+                                    <td class="p-3">Expiration</td>
+                                    <td class="p-3">Unix timestamp when token expires</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">nbf</td>
+                                    <td class="p-3">Not Before</td>
+                                    <td class="p-3">Token not valid before this time</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">iat</td>
+                                    <td class="p-3">Issued At</td>
+                                    <td class="p-3">When the token was created</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono font-semibold">jti</td>
+                                    <td class="p-3">JWT ID</td>
+                                    <td class="p-3">Unique identifier for the token</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Custom Claims:</h3>
+                    <p>You can add any custom claims for your application:</p>
+                    <pre><code>{
+  "sub": "user_123",
+  "email": "john@example.com",
+  "role": "admin",
+  "permissions": ["read", "write", "delete"],
+  "organization_id": "org_456"
+}</code></pre>
+                </section>
+
+                <!-- Section 5: Algorithms -->
+                <section id="algorithms" class="scroll-mt-24">
+                    <h2>5. Signing Algorithms (HS256, RS256, ES256)</h2>
+
+                    <div class="grid gap-4 my-6 md:grid-cols-2">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-blue-600 dark:text-blue-400">Symmetric
+                                (HMAC)</h3>
+                            <p class="mb-2 text-sm">Same secret key for signing and verification</p>
+                            <ul class="mb-0 text-xs list-disc list-inside">
+                                <li><strong>HS256:</strong> HMAC + SHA-256</li>
+                                <li><strong>HS384:</strong> HMAC + SHA-384</li>
+                                <li><strong>HS512:</strong> HMAC + SHA-512</li>
+                            </ul>
+                            <p class="mt-2 mb-0 text-xs text-neutral-500">Best for: Single server, internal APIs</p>
+                        </div>
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="mt-0 mb-2 text-base font-semibold text-green-600 dark:text-green-400">Asymmetric
+                                (RSA/ECDSA)</h3>
+                            <p class="mb-2 text-sm">Private key signs, public key verifies</p>
+                            <ul class="mb-0 text-xs list-disc list-inside">
+                                <li><strong>RS256:</strong> RSA + SHA-256</li>
+                                <li><strong>ES256:</strong> ECDSA + P-256</li>
+                                <li><strong>PS256:</strong> RSA-PSS + SHA-256</li>
+                            </ul>
+                            <p class="mt-2 mb-0 text-xs text-neutral-500">Best for: Microservices, distributed systems
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Algorithm Comparison:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Algorithm</th>
+                                    <th class="p-3 text-left">Type</th>
+                                    <th class="p-3 text-left">Key Size</th>
+                                    <th class="p-3 text-left">Recommended</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-mono">HS256</td>
+                                    <td class="p-3">Symmetric</td>
+                                    <td class="p-3">256-bit secret</td>
+                                    <td class="p-3">✅ Single server</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono">RS256</td>
+                                    <td class="p-3">Asymmetric</td>
+                                    <td class="p-3">2048-bit RSA</td>
+                                    <td class="p-3">✅ Distributed</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono">ES256</td>
+                                    <td class="p-3">Asymmetric</td>
+                                    <td class="p-3">256-bit EC</td>
+                                    <td class="p-3">✅ Modern choice</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono">none</td>
+                                    <td class="p-3">-</td>
+                                    <td class="p-3">-</td>
+                                    <td class="p-3">❌ Never use!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 6: Implementation -->
+                <section id="implementation" class="scroll-mt-24">
+                    <h2>6. Implementation in Different Languages</h2>
+
+                    <h3>JavaScript (Node.js with jsonwebtoken)</h3>
+                    <pre><code>const jwt = require('jsonwebtoken');
+
+// Secret key (use environment variable in production!)
+const SECRET = process.env.JWT_SECRET;
+
+// Create a token
+function createToken(user) {
+    const payload = {
+        sub: user.id,
+        email: user.email,
+        role: user.role
+    };
+    
+    return jwt.sign(payload, SECRET, {
+        expiresIn: '15m',    // Short-lived access token
+        issuer: 'myapp.com',
+        audience: 'myapp.com'
+    });
+}
+
+// Verify a token
+function verifyToken(token) {
+    try {
+        const decoded = jwt.verify(token, SECRET, {
+            issuer: 'myapp.com',
+            audience: 'myapp.com'
+        });
+        return { valid: true, payload: decoded };
+    } catch (err) {
+        return { valid: false, error: err.message };
+    }
+}
+
+// Express middleware
+function authMiddleware(req, res, next) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader?.startsWith('Bearer ')) {
+        return res.status(401).json({ error: 'No token provided' });
+    }
+    
+    const token = authHeader.split(' ')[1];
+    const result = verifyToken(token);
+    
+    if (!result.valid) {
+        return res.status(401).json({ error: result.error });
+    }
+    
+    req.user = result.payload;
+    next();
+}</code></pre>
+
+                    <h3>Python (PyJWT)</h3>
+                    <pre><code>import jwt
+from datetime import datetime, timedelta
+import os
+
+SECRET = os.environ.get('JWT_SECRET')
+
+def create_token(user: dict) -> str:
+    """Create a JWT token for a user."""
+    payload = {
+        'sub': user['id'],
+        'email': user['email'],
+        'role': user['role'],
+        'iat': datetime.utcnow(),
+        'exp': datetime.utcnow() + timedelta(minutes=15)
+    }
+    return jwt.encode(payload, SECRET, algorithm='HS256')
+
+def verify_token(token: str) -> dict:
+    """Verify and decode a JWT token."""
+    try:
+        payload = jwt.decode(token, SECRET, algorithms=['HS256'])
+        return {'valid': True, 'payload': payload}
+    except jwt.ExpiredSignatureError:
+        return {'valid': False, 'error': 'Token expired'}
+    except jwt.InvalidTokenError as e:
+        return {'valid': False, 'error': str(e)}
+
+# Flask decorator
+from functools import wraps
+from flask import request, jsonify
+
+def require_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_header = request.headers.get('Authorization', '')
+        if not auth_header.startswith('Bearer '):
+            return jsonify({'error': 'No token provided'}), 401
+        
+        token = auth_header.split(' ')[1]
+        result = verify_token(token)
+        
+        if not result['valid']:
+            return jsonify({'error': result['error']}), 401
+        
+        request.user = result['payload']
+        return f(*args, **kwargs)
+    return decorated</code></pre>
+
+                    <h3>Java (jjwt)</h3>
+                    <pre><code>import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+import java.util.Date;
+
+public class JwtUtil {
+    private static final Key SECRET = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final long EXPIRATION_MS = 15 * 60 * 1000; // 15 minutes
+    
+    public static String createToken(User user) {
+        return Jwts.builder()
+            .setSubject(user.getId())
+            .claim("email", user.getEmail())
+            .claim("role", user.getRole())
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MS))
+            .signWith(SECRET)
+            .compact();
+    }
+    
+    public static Claims verifyToken(String token) {
+        try {
+            return Jwts.parserBuilder()
+                .setSigningKey(SECRET)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        } catch (JwtException e) {
+            throw new RuntimeException("Invalid token: " + e.getMessage());
+        }
+    }
+}</code></pre>
+                </section>
+
+                <!-- Section 7: Security Best Practices -->
+                <section id="security" class="scroll-mt-24">
+                    <h2>7. Security Best Practices</h2>
+
+                    <div class="grid gap-4 my-6">
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use Strong Secrets
+                            </h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">For HS256, use at least 256-bit
+                                (32 character) random secrets. Generate with: <code>openssl rand -hex 32</code></p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Set Short
+                                Expiration</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Access tokens: 5-15 minutes. Use
+                                refresh tokens for longer sessions. Shorter = less damage if compromised.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Validate All Claims
+                            </h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Always verify: signature,
+                                expiration (exp), issuer (iss), audience (aud). Don't just decode - validate!</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-green-800 dark:text-green-200">✅ Do: Use HTTPS</h3>
+                            <p class="mb-0 text-sm text-green-700 dark:text-green-300">Always transmit JWTs over HTTPS.
+                                HTTP allows token interception via man-in-the-middle attacks.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Store Sensitive Data
+                            </h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Never put passwords, credit cards, or
+                                PII in JWTs. The payload is readable by anyone!</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Use Weak Secrets
+                            </h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Never use "secret", "password", or
+                                short strings. These can be brute-forced in seconds.</p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20">
+                            <h3 class="mt-0 mb-2 text-base text-red-800 dark:text-red-200">❌ Don't: Accept Unsigned
+                                Tokens</h3>
+                            <p class="mb-0 text-sm text-red-700 dark:text-red-300">Explicitly reject tokens with
+                                <code>"alg": "none"</code>. Always specify allowed algorithms.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8: Vulnerabilities -->
+                <section id="vulnerabilities" class="scroll-mt-24">
+                    <h2>8. Common JWT Vulnerabilities</h2>
+
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="px-2 py-0.5 text-xs font-bold text-white bg-red-600 rounded">CVE</span>
+                                Algorithm Confusion Attack</h3>
+                            <p class="mb-2 text-sm">Attacker changes <code>alg</code> from RS256 to HS256 and signs with
+                                the public key (treating it as HMAC secret).</p>
+                            <p class="mb-0 text-xs text-green-600 dark:text-green-400"><strong>Fix:</strong> Always
+                                specify allowed algorithms: <code>algorithms=['RS256']</code></p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="px-2 py-0.5 text-xs font-bold text-white bg-red-600 rounded">CVE</span> None
+                                Algorithm Attack</h3>
+                            <p class="mb-2 text-sm">Attacker sets <code>alg</code> to "none" and removes signature.
+                                Vulnerable libraries accept unsigned tokens.</p>
+                            <p class="mb-0 text-xs text-green-600 dark:text-green-400"><strong>Fix:</strong> Reject
+                                tokens with <code>"alg": "none"</code>. Use updated libraries.</p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="px-2 py-0.5 text-xs font-bold text-white bg-orange-600 rounded">RISK</span>
+                                Weak Secret Key</h3>
+                            <p class="mb-2 text-sm">Short or predictable secrets can be brute-forced. "secret" or
+                                "password" cracked in seconds.</p>
+                            <p class="mb-0 text-xs text-green-600 dark:text-green-400"><strong>Fix:</strong> Use 256+
+                                bit random secrets: <code>openssl rand -hex 32</code></p>
+                        </div>
+
+                        <div class="p-4 border rounded-lg border-neutral-200 dark:border-neutral-700">
+                            <h3 class="flex items-center gap-2 mt-0 mb-2 text-base"><span
+                                    class="px-2 py-0.5 text-xs font-bold text-white bg-orange-600 rounded">RISK</span>
+                                Token Sidejacking</h3>
+                            <p class="mb-2 text-sm">Stolen tokens via XSS or network sniffing can be replayed by
+                                attackers.</p>
+                            <p class="mb-0 text-xs text-green-600 dark:text-green-400"><strong>Fix:</strong> Use
+                                HttpOnly cookies, short expiration, token binding, and HTTPS.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 9: Storage -->
+                <section id="storage" class="scroll-mt-24">
+                    <h2>9. Token Storage: Cookies vs localStorage</h2>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-neutral-200 dark:border-neutral-700">
+                            <thead class="bg-neutral-100 dark:bg-neutral-800">
+                                <tr>
+                                    <th class="p-3 text-left">Storage Method</th>
+                                    <th class="p-3 text-left">XSS Protection</th>
+                                    <th class="p-3 text-left">CSRF Protection</th>
+                                    <th class="p-3 text-left">Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                                <tr>
+                                    <td class="p-3 font-semibold">HttpOnly Cookie</td>
+                                    <td class="p-3 text-green-600">✅ Protected</td>
+                                    <td class="p-3 text-red-600">❌ Vulnerable</td>
+                                    <td class="p-3">Most secure (with CSRF tokens)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">localStorage</td>
+                                    <td class="p-3 text-red-600">❌ Vulnerable</td>
+                                    <td class="p-3 text-green-600">✅ Protected</td>
+                                    <td class="p-3">SPAs with strict CSP</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">sessionStorage</td>
+                                    <td class="p-3 text-red-600">❌ Vulnerable</td>
+                                    <td class="p-3 text-green-600">✅ Protected</td>
+                                    <td class="p-3">Tab-specific sessions</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">Memory (variable)</td>
+                                    <td class="p-3 text-green-600">✅ Protected</td>
+                                    <td class="p-3 text-green-600">✅ Protected</td>
+                                    <td class="p-3">Most secure (lost on refresh)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Recommended: HttpOnly Cookie with SameSite</h3>
+                    <pre><code>// Setting a secure HttpOnly cookie (Node.js/Express)
+res.cookie('accessToken', token, {
+    httpOnly: true,        // Not accessible via JavaScript
+    secure: true,          // HTTPS only
+    sameSite: 'strict',    // CSRF protection
+    maxAge: 15 * 60 * 1000 // 15 minutes
+});</code></pre>
+                </section>
+
+                <!-- Section 10: FAQ -->
+                <section id="faq" class="scroll-mt-24">
+                    <h2>10. Frequently Asked Questions</h2>
+
+                    <div class="space-y-4">
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is a JWT token used for?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                JWTs are primarily used for authentication and authorization. After login, the server
+                                issues a JWT that the client includes with each request. The server validates the token
+                                to grant access to protected resources. JWTs are also used for single sign-on (SSO) and
+                                secure information exchange between parties.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Is JWT more secure than sessions?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Neither is inherently more secure - both have trade-offs. Sessions are stateful (stored
+                                server-side), making revocation easy but requiring database lookups. JWTs are stateless
+                                (no server storage) but harder to revoke. JWTs are better for distributed systems;
+                                sessions are better when you need instant revocation. Security depends on proper
+                                implementation.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How do I invalidate/revoke a JWT?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                Since JWTs are stateless, revocation requires additional infrastructure: (1)
+                                <strong>Token blocklist:</strong> Store revoked token IDs in Redis/database and check on
+                                each request. (2) <strong>Short expiration:</strong> Use 5-15 minute tokens so
+                                compromised tokens expire quickly. (3) <strong>Refresh token rotation:</strong>
+                                Invalidate refresh tokens on logout. (4) <strong>Version claim:</strong> Add a version
+                                to users and tokens; increment on logout.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What's the difference between HS256 and RS256?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>HS256 (symmetric):</strong> Uses the same secret for signing and verification.
+                                The secret must be shared with all verifiers. Best for single-server setups.<br><br>
+                                <strong>RS256 (asymmetric):</strong> Uses a private key to sign and a public key to
+                                verify. Only the auth server needs the private key; others can verify with the public
+                                key. Best for microservices and distributed systems.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Should I store JWT in localStorage or cookies?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>HttpOnly cookies are more secure.</strong> They're not accessible via
+                                JavaScript, protecting against XSS attacks. localStorage is vulnerable to XSS but immune
+                                to CSRF. For best security: use HttpOnly cookies with <code>SameSite=Strict</code> (or
+                                <code>Lax</code>) and implement CSRF tokens. If using localStorage, ensure strict
+                                Content Security Policy.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>How long should a JWT be valid?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Access tokens:</strong> 5-15 minutes. Short-lived to minimize damage if
+                                stolen.<br>
+                                <strong>Refresh tokens:</strong> 7-30 days (stored securely, rotated on use).<br>
+                                Critical applications (banking) may use even shorter access tokens (1-5 minutes). The
+                                key is balancing security (shorter) vs user experience (longer).
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>Can JWT be decoded without the secret?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>Yes!</strong> The header and payload are just Base64URL encoded, not encrypted.
+                                Anyone can decode and read them. The signature only ensures the data wasn't tampered
+                                with - it doesn't hide the content. Never put sensitive information (passwords, credit
+                                card numbers) in JWT payloads. Use our <a href="/jwt-decoder">JWT Decoder</a> to see any
+                                token's contents.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What is a refresh token and why use it?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                A refresh token is a long-lived token used to obtain new access tokens without
+                                re-authentication. Workflow: (1) User logs in → gets access token (15 min) + refresh
+                                token (7 days). (2) Access token expires → client uses refresh token to get new access
+                                token. (3) User stays logged in without entering password again. This combines security
+                                (short-lived access) with convenience (long sessions).
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>JWT vs OAuth vs OpenID Connect - what's the difference?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                <strong>JWT:</strong> A token format - how to structure and sign tokens.<br>
+                                <strong>OAuth 2.0:</strong> An authorization framework - how to grant third-party access
+                                to resources without sharing passwords.<br>
+                                <strong>OpenID Connect:</strong> An identity layer on top of OAuth 2.0 - adds
+                                authentication and user identity.<br>
+                                OAuth and OIDC often use JWTs as their token format, but they're separate concepts.
+                            </div>
+                        </details>
+
+                        <details
+                            class="p-4 border rounded-lg cursor-pointer group border-neutral-200 dark:border-neutral-800">
+                            <summary
+                                class="flex items-center justify-between font-medium text-neutral-900 dark:text-white">
+                                <span>What happens when a JWT expires?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-4 h-4 transition transform group-open:rotate-180"></i>
+                            </summary>
+                            <div class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">
+                                When the <code>exp</code> claim timestamp is in the past, the token is invalid. The
+                                server should reject it with a 401 Unauthorized error. The client should: (1) Attempt to
+                                use the refresh token to get a new access token, or (2) Redirect the user to login again
+                                if no valid refresh token exists. Implement token refresh logic before the access token
+                                expires for seamless UX.
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <div
+                    class="p-6 my-12 text-center border rounded-lg bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800">
+                    <h3 class="mb-2 text-xl font-semibold text-neutral-900 dark:text-white">Need to decode a JWT?</h3>
+                    <p class="mb-4 text-neutral-600 dark:text-neutral-400">Try our free JWT decoder tool. Decode tokens
+                        instantly, validate signatures, and inspect claims - all client-side.</p>
+                    <a href="/jwt-decoder"
+                        class="inline-flex items-center gap-2 px-6 py-3 font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700">
+                        <i data-lucide="key" class="w-4 h-4"></i>
+                        Open JWT Decoder
+                    </a>
+                </div>
+
+                <!-- Related Guides -->
+                <section>
+                    <h2>Related Guides</h2>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <a href="/guides/base64-encoding-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Base64 Encoding Guide</div>
+                                <div class="text-xs text-neutral-500">Understanding Base64 (used in JWT)</div>
+                            </div>
+                        </a>
+                        <a href="/guides/hash-guide"
+                            class="flex items-center gap-3 p-4 transition-colors border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                                <i data-lucide="hash" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Hash Functions Guide</div>
+                                <div class="text-xs text-neutral-500">HMAC signing & cryptographic hashing</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <script src="layout-guides.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    </script>
+</body>
+
+</html>

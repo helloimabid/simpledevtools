@@ -116,8 +116,14 @@ function injectLayout() {
                     <h4 class="font-medium mb-4 text-neutral-900 dark:text-white">Guides</h4>
                     <ul class="space-y-2 text-neutral-500 dark:text-neutral-400">
                         <li><a href="/guides" class="hover:text-black dark:hover:text-white transition-colors">All Guides</a></li>
+                        <li><a href="/guides/web-developer-tools-guide" class="hover:text-black dark:hover:text-white transition-colors">Web Dev Tools Overview</a></li>
                         <li><a href="/guides/json-formatter-guide" class="hover:text-black dark:hover:text-white transition-colors">JSON Formatter Guide</a></li>
+                        <li><a href="/guides/jwt-guide" class="hover:text-black dark:hover:text-white transition-colors">JWT Authentication</a></li>
+                        <li><a href="/guides/base64-encoding-guide" class="hover:text-black dark:hover:text-white transition-colors">Base64 Encoding</a></li>
                         <li><a href="/guides/regex-patterns-guide" class="hover:text-black dark:hover:text-white transition-colors">Regex Cheat Sheet</a></li>
+                        <li><a href="/guides/uuid-guide" class="hover:text-black dark:hover:text-white transition-colors">UUID Guide</a></li>
+                        <li><a href="/guides/hash-guide" class="hover:text-black dark:hover:text-white transition-colors">Hash Functions</a></li>
+                        <li><a href="/guides/password-security-guide" class="hover:text-black dark:hover:text-white transition-colors">Password Security</a></li>
                     </ul>
                 </div>
 
