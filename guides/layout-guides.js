@@ -143,6 +143,12 @@ function injectLayout() {
                         <a href="https://github.com/helloimabid/simpledevtools" target="_blank" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                             <i data-lucide="github" class="w-5 h-5"></i>
                         </a>
+                        <a href="https://x.com/simpledevtools" target="_blank" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@simpledevtools" target="_blank" class="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
                     </div>
                 </div>
 
