@@ -23,7 +23,7 @@ self.addEventListener("install", (event) => {
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Opened cache");
       return cache.addAll(urlsToCache);
-    })
+    }),
   );
 });
 
@@ -38,7 +38,7 @@ self.addEventListener("fetch", (event) => {
           status: 503,
           statusText: "Service Unavailable",
         });
-      })
+      }),
     );
     return;
   }
@@ -84,7 +84,7 @@ self.addEventListener("fetch", (event) => {
             statusText: "Request Timeout",
           });
         });
-    })
+    }),
   );
 });
 
@@ -101,15 +101,14 @@ self.addEventListener("activate", (event) => {
               console.log("Deleting old cache:", cacheName);
               return caches.delete(cacheName);
             }
-          })
+          }),
         );
       })
       .then(() => {
         return self.clients.claim();
-      })
+      }),
   );
 });
-
 
 self.options = {
   domain: "5gvci.com",
