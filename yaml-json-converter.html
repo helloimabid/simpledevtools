@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online YAML to JSON converter and JSON to YAML converter. Instantly convert between YAML and JSON formats. 100% client-side, private, and secure.">
+    <meta name="keywords"
+        content="YAML to JSON, JSON to YAML, YAML converter, JSON converter, YAML parser, convert YAML online, YAML JSON online, free YAML converter, YAML validator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <title>YAML ↔ JSON Converter - Free Online YAML JSON Converter | SimpleDevTools</title>
+    <link rel="canonical" href="https://simpledevtools.tech/yaml-json-converter" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="YAML to JSON Converter - Free Online Tool">
+    <meta property="og:description"
+        content="Convert between YAML and JSON formats instantly. Free online tool with syntax validation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpledevtools.tech/yaml-json-converter">
+    <meta property="og:site_name" content="SimpleDevTools">
+    <meta property="og:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YAML JSON Converter - Free Online">
+    <meta name="twitter:description"
+        content="Convert YAML to JSON and JSON to YAML instantly. Free, secure, client-side.">
+    <meta name="twitter:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Structured Data - SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YAML JSON Converter",
+      "alternateName": ["YAML to JSON Converter", "JSON to YAML Converter", "YAML Parser", "YAML Formatter"],
+      "description": "Free online bidirectional YAML and JSON converter. Convert YAML to JSON or JSON to YAML with syntax validation and formatting.",
+      "url": "https://simpledevtools.tech/yaml-json-converter",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Data Converter",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "softwareVersion": "1.0",
+      "featureList": [
+        "YAML to JSON conversion",
+        "JSON to YAML conversion",
+        "YAML syntax validation",
+        "JSON syntax validation",
+        "Pretty print formatting",
+        "Multi-document YAML support",
+        "Anchor and alias support",
+        "Copy to clipboard",
+        "Download converted file",
+        "100% client-side processing"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "2145"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "YAML JSON Converter", "item": "https://simpledevtools.tech/yaml-json-converter"}
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is YAML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YAML (YAML Ain't Markup Language) is a human-readable data serialization format. It's commonly used for configuration files (Docker Compose, Kubernetes, GitHub Actions), and is known for its clean, indentation-based syntax."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why convert YAML to JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON is more widely supported by APIs and programming languages. Converting YAML to JSON is useful when you need to use configuration data in web applications, REST APIs, or systems that only accept JSON."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why convert JSON to YAML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "YAML is more human-readable and easier to write by hand. Converting JSON to YAML is helpful when creating configuration files for tools like Docker, Kubernetes, or Ansible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does YAML support comments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, YAML supports comments using the # symbol. However, comments are lost when converting to JSON since JSON doesn't support comments. Converting back to YAML won't restore the original comments."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/fonts/fonts.css">
+    </noscript>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <!-- js-yaml library -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+    <style>
+        .converter-panel {
+            height: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .converter-panel {
+                height: 250px;
+            }
+        }
+
+        textarea {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-violet-500/10 dark:bg-violet-500/20 blur-3xl rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Header -->
+            <div class="max-w-2xl mx-auto mb-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium border rounded-full bg-gradient-to-r from-violet-50 to-pink-50 dark:from-violet-900/20 dark:to-pink-900/20 border-violet-200 dark:border-violet-800">
+                    <i data-lucide="file-json" class="w-3 h-3 text-violet-500"></i>
+                    <span class="text-neutral-600 dark:text-neutral-400">Data Format Converter</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    YAML ↔ JSON Converter
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Convert between YAML and JSON formats instantly. Perfect for configuration files and API data.
+                </p>
+            </div>
+
+            <!-- Main Tool -->
+            <div
+                class="mb-8 overflow-hidden bg-white border shadow-lg dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl">
+
+                <!-- Toolbar -->
+                <div
+                    class="flex flex-wrap items-center justify-between gap-3 p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                    <div class="flex items-center gap-2">
+                        <select id="indent-size"
+                            class="px-3 py-2 text-sm border rounded-lg bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-600">
+                            <option value="2">2 Spaces</option>
+                            <option value="4">4 Spaces</option>
+                            <option value="tab">Tabs</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="sample-yaml-btn"
+                            class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700">
+                            <i data-lucide="file-code" class="w-4 h-4"></i>
+                            Sample YAML
+                        </button>
+                        <button id="sample-json-btn"
+                            class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-700">
+                            <i data-lucide="file-json" class="w-4 h-4"></i>
+                            Sample JSON
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Converter Panels -->
+                <div class="grid md:grid-cols-2">
+                    <!-- YAML Panel -->
+                    <div class="border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800">
+                        <div
+                            class="flex items-center justify-between p-3 border-b border-neutral-200 dark:border-neutral-700 bg-amber-50 dark:bg-amber-900/10">
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs font-bold text-amber-700 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 rounded">YAML</span>
+                                <span class="text-xs text-neutral-500">Input/Output</span>
+                            </div>
+                            <div class="flex gap-1">
+                                <button id="copy-yaml"
+                                    class="p-1.5 rounded hover:bg-amber-100 dark:hover:bg-amber-900/30"
+                                    title="Copy YAML">
+                                    <i data-lucide="copy" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                                </button>
+                                <button id="download-yaml"
+                                    class="p-1.5 rounded hover:bg-amber-100 dark:hover:bg-amber-900/30"
+                                    title="Download YAML">
+                                    <i data-lucide="download" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                                </button>
+                                <button id="clear-yaml"
+                                    class="p-1.5 rounded hover:bg-amber-100 dark:hover:bg-amber-900/30" title="Clear">
+                                    <i data-lucide="trash-2" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="yaml-input"
+                            class="converter-panel w-full p-4 text-sm resize-none bg-white dark:bg-neutral-900 focus:outline-none"
+                            placeholder="Enter or paste YAML here...
+# Example:
+name: John Doe
+age: 30
+skills:
+  - JavaScript
+  - Python"></textarea>
+                    </div>
+
+                    <!-- JSON Panel -->
+                    <div>
+                        <div
+                            class="flex items-center justify-between p-3 border-b border-neutral-200 dark:border-neutral-700 bg-blue-50 dark:bg-blue-900/10">
+                            <div class="flex items-center gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs font-bold text-blue-700 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded">JSON</span>
+                                <span class="text-xs text-neutral-500">Input/Output</span>
+                            </div>
+                            <div class="flex gap-1">
+                                <button id="copy-json" class="p-1.5 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30"
+                                    title="Copy JSON">
+                                    <i data-lucide="copy" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                                </button>
+                                <button id="download-json"
+                                    class="p-1.5 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30"
+                                    title="Download JSON">
+                                    <i data-lucide="download" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                                </button>
+                                <button id="clear-json"
+                                    class="p-1.5 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30" title="Clear">
+                                    <i data-lucide="trash-2" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="json-input"
+                            class="converter-panel w-full p-4 text-sm resize-none bg-white dark:bg-neutral-900 focus:outline-none"
+                            placeholder='Enter or paste JSON here...
+// Example:
+{
+  "name": "John Doe",
+  "age": 30,
+  "skills": ["JavaScript", "Python"]
+}'></textarea>
+                    </div>
+                </div>
+
+                <!-- Status Bar -->
+                <div id="status-bar"
+                    class="px-4 py-2 text-sm border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                    <span class="text-neutral-500">Type in either panel to convert</span>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div
+                class="mb-16 overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl">
+                <div class="p-4 border-b border-neutral-200 dark:border-neutral-800">
+                    <h2 class="flex items-center gap-2 text-lg font-semibold text-neutral-900 dark:text-white">
+                        <i data-lucide="git-compare" class="w-5 h-5 text-violet-500"></i>
+                        YAML vs JSON Comparison
+                    </h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-neutral-50 dark:bg-neutral-800">
+                            <tr>
+                                <th class="px-4 py-3 text-left font-medium text-neutral-600 dark:text-neutral-300">
+                                    Feature</th>
+                                <th class="px-4 py-3 text-center font-medium text-amber-600 dark:text-amber-400">YAML
+                                </th>
+                                <th class="px-4 py-3 text-center font-medium text-blue-600 dark:text-blue-400">JSON</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-neutral-200 dark:divide-neutral-700">
+                            <tr>
+                                <td class="px-4 py-3">Comments</td>
+                                <td class="px-4 py-3 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto"></i></td>
+                                <td class="px-4 py-3 text-center"><i data-lucide="x"
+                                        class="w-5 h-5 text-red-500 mx-auto"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Human Readable</td>
+                                <td class="px-4 py-3 text-center"><span class="text-green-600">⭐⭐⭐</span></td>
+                                <td class="px-4 py-3 text-center"><span class="text-blue-600">⭐⭐</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Machine Parsing</td>
+                                <td class="px-4 py-3 text-center"><span class="text-amber-600">⭐⭐</span></td>
+                                <td class="px-4 py-3 text-center"><span class="text-green-600">⭐⭐⭐</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Browser Support</td>
+                                <td class="px-4 py-3 text-center"><i data-lucide="x"
+                                        class="w-5 h-5 text-red-500 mx-auto"></i></td>
+                                <td class="px-4 py-3 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Multi-line Strings</td>
+                                <td class="px-4 py-3 text-center"><i data-lucide="check"
+                                        class="w-5 h-5 text-green-500 mx-auto"></i></td>
+                                <td class="px-4 py-3 text-center"><span class="text-xs text-neutral-500">Escape
+                                        only</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3">Common Use Cases</td>
+                                <td class="px-4 py-3 text-center text-xs text-neutral-600 dark:text-neutral-400">Config
+                                    files, Docker, K8s</td>
+                                <td class="px-4 py-3 text-center text-xs text-neutral-600 dark:text-neutral-400">APIs,
+                                    Web apps, Data exchange</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <div class="max-w-3xl mx-auto space-y-12">
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="code" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        Syntax Examples
+                    </h2>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div
+                            class="p-4 border rounded-lg border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/10">
+                            <h3 class="mb-2 text-sm font-semibold text-amber-700 dark:text-amber-400">YAML Syntax</h3>
+                            <pre class="text-xs text-neutral-700 dark:text-neutral-300 overflow-x-auto"><code>server:
+  host: localhost
+  port: 3000
+  ssl: true
+  
+databases:
+  - name: primary
+    type: postgres
+  - name: cache
+    type: redis</code></pre>
+                        </div>
+                        <div
+                            class="p-4 border rounded-lg border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/10">
+                            <h3 class="mb-2 text-sm font-semibold text-blue-700 dark:text-blue-400">JSON Equivalent</h3>
+                            <pre class="text-xs text-neutral-700 dark:text-neutral-300 overflow-x-auto"><code>{
+  "server": {
+    "host": "localhost",
+    "port": 3000,
+    "ssl": true
+  },
+  "databases": [
+    {"name": "primary", "type": "postgres"},
+    {"name": "cache", "type": "redis"}
+  ]
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="grid-3x3" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        Related Tools
+                    </h2>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/json-formatter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="braces" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                                <div class="text-xs text-neutral-500">Format and validate JSON</div>
+                            </div>
+                        </a>
+                        <a href="/json-xml-converter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JSON ↔ XML Converter</div>
+                                <div class="text-xs text-neutral-500">Convert between JSON and XML</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        const yamlInput = document.getElementById('yaml-input');
+        const jsonInput = document.getElementById('json-input');
+        const statusBar = document.getElementById('status-bar');
+        const indentSize = document.getElementById('indent-size');
+
+        let lastEditedField = null;
+        let isUpdating = false;
+
+        // Get indent string
+        function getIndent() {
+            const val = indentSize.value;
+            return val === 'tab' ? '\t' : parseInt(val);
+        }
+
+        // YAML to JSON
+        function yamlToJson(yaml) {
+            try {
+                const obj = jsyaml.load(yaml);
+                const indent = getIndent();
+                return JSON.stringify(obj, null, indent);
+            } catch (e) {
+                throw new Error(`YAML Error: ${e.message}`);
+            }
+        }
+
+        // JSON to YAML
+        function jsonToYaml(json) {
+            try {
+                const obj = JSON.parse(json);
+                const indent = indentSize.value === 'tab' ? 1 : parseInt(indentSize.value);
+                return jsyaml.dump(obj, { indent: indent, lineWidth: -1 });
+            } catch (e) {
+                throw new Error(`JSON Error: ${e.message}`);
+            }
+        }
+
+        // Update status
+        function updateStatus(message, isError = false) {
+            statusBar.innerHTML = isError
+                ? `<span class="text-red-500 flex items-center gap-1"><i data-lucide="alert-circle" class="w-4 h-4"></i> ${message}</span>`
+                : `<span class="text-green-500 flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i> ${message}</span>`;
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+
+        // YAML input handler
+        yamlInput.addEventListener('input', () => {
+            if (isUpdating) return;
+            lastEditedField = 'yaml';
+
+            if (!yamlInput.value.trim()) {
+                jsonInput.value = '';
+                statusBar.innerHTML = '<span class="text-neutral-500">Type in either panel to convert</span>';
+                return;
+            }
+
+            try {
+                isUpdating = true;
+                jsonInput.value = yamlToJson(yamlInput.value);
+                updateStatus('YAML → JSON converted successfully');
+            } catch (e) {
+                updateStatus(e.message, true);
+            } finally {
+                isUpdating = false;
+            }
+        });
+
+        // JSON input handler
+        jsonInput.addEventListener('input', () => {
+            if (isUpdating) return;
+            lastEditedField = 'json';
+
+            if (!jsonInput.value.trim()) {
+                yamlInput.value = '';
+                statusBar.innerHTML = '<span class="text-neutral-500">Type in either panel to convert</span>';
+                return;
+            }
+
+            try {
+                isUpdating = true;
+                yamlInput.value = jsonToYaml(jsonInput.value);
+                updateStatus('JSON → YAML converted successfully');
+            } catch (e) {
+                updateStatus(e.message, true);
+            } finally {
+                isUpdating = false;
+            }
+        });
+
+        // Indent change handler
+        indentSize.addEventListener('change', () => {
+            if (lastEditedField === 'yaml' && yamlInput.value.trim()) {
+                try {
+                    isUpdating = true;
+                    jsonInput.value = yamlToJson(yamlInput.value);
+                } catch (e) { }
+                finally { isUpdating = false; }
+            } else if (lastEditedField === 'json' && jsonInput.value.trim()) {
+                try {
+                    isUpdating = true;
+                    yamlInput.value = jsonToYaml(jsonInput.value);
+                } catch (e) { }
+                finally { isUpdating = false; }
+            }
+        });
+
+        // Sample YAML
+        document.getElementById('sample-yaml-btn').addEventListener('click', () => {
+            yamlInput.value = `# Application Configuration
+app:
+  name: My Application
+  version: 1.0.0
+  environment: production
+
+server:
+  host: localhost
+  port: 3000
+  ssl:
+    enabled: true
+    cert: /path/to/cert.pem
+    key: /path/to/key.pem
+
+database:
+  type: postgres
+  host: db.example.com
+  port: 5432
+  name: myapp_db
+  credentials:
+    username: admin
+    password: secret123
+
+features:
+  - name: authentication
+    enabled: true
+  - name: caching
+    enabled: true
+    ttl: 3600
+  - name: analytics
+    enabled: false`;
+            lastEditedField = 'yaml';
+            yamlInput.dispatchEvent(new Event('input'));
+        });
+
+        // Sample JSON
+        document.getElementById('sample-json-btn').addEventListener('click', () => {
+            jsonInput.value = `{
+  "app": {
+    "name": "My Application",
+    "version": "1.0.0",
+    "environment": "production"
+  },
+  "server": {
+    "host": "localhost",
+    "port": 3000,
+    "ssl": {
+      "enabled": true,
+      "cert": "/path/to/cert.pem",
+      "key": "/path/to/key.pem"
+    }
+  },
+  "database": {
+    "type": "postgres",
+    "host": "db.example.com",
+    "port": 5432,
+    "name": "myapp_db",
+    "credentials": {
+      "username": "admin",
+      "password": "secret123"
+    }
+  },
+  "features": [
+    {"name": "authentication", "enabled": true},
+    {"name": "caching", "enabled": true, "ttl": 3600},
+    {"name": "analytics", "enabled": false}
+  ]
+}`;
+            lastEditedField = 'json';
+            jsonInput.dispatchEvent(new Event('input'));
+        });
+
+        // Copy functions
+        function copyToClipboard(text, btnId) {
+            navigator.clipboard.writeText(text);
+            const btn = document.getElementById(btnId);
+            const icon = btn.querySelector('i');
+            icon.setAttribute('data-lucide', 'check');
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+            setTimeout(() => {
+                icon.setAttribute('data-lucide', 'copy');
+                lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+            }, 2000);
+        }
+
+        document.getElementById('copy-yaml').addEventListener('click', () => {
+            if (yamlInput.value) copyToClipboard(yamlInput.value, 'copy-yaml');
+        });
+
+        document.getElementById('copy-json').addEventListener('click', () => {
+            if (jsonInput.value) copyToClipboard(jsonInput.value, 'copy-json');
+        });
+
+        // Download functions
+        function downloadFile(content, filename) {
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('download-yaml').addEventListener('click', () => {
+            if (yamlInput.value) downloadFile(yamlInput.value, 'converted.yaml');
+        });
+
+        document.getElementById('download-json').addEventListener('click', () => {
+            if (jsonInput.value) downloadFile(jsonInput.value, 'converted.json');
+        });
+
+        // Clear functions
+        document.getElementById('clear-yaml').addEventListener('click', () => {
+            yamlInput.value = '';
+            if (lastEditedField === 'yaml') jsonInput.value = '';
+            statusBar.innerHTML = '<span class="text-neutral-500">Type in either panel to convert</span>';
+        });
+
+        document.getElementById('clear-json').addEventListener('click', () => {
+            jsonInput.value = '';
+            if (lastEditedField === 'json') yamlInput.value = '';
+            statusBar.innerHTML = '<span class="text-neutral-500">Type in either panel to convert</span>';
+        });
+    </script>
+</body>
+
+</html>

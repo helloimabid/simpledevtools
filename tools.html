@@ -471,6 +471,92 @@
                 </div>
 
             </div>
+
+            <!-- Converters Category -->
+            <div class="grid gap-4 mt-4 md:grid-cols-4">
+
+                <div
+                    class="relative p-6 overflow-hidden border bento-card rounded-2xl group border-neutral-200/50 dark:border-white/10 md:col-span-2">
+                    <div
+                        class="absolute inset-0 transition-opacity duration-500 opacity-0 bg-linear-to-br from-pink-500/5 to-transparent group-hover:opacity-100">
+                    </div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 text-pink-600 transition-transform duration-300 rounded-lg bg-pink-500/10 dark:bg-pink-500/20 dark:text-pink-400 group-hover:scale-110">
+                                <i data-lucide="repeat" class="w-5 h-5 stroke-[1.5]"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold font-display text-neutral-900 dark:text-white">File
+                                Converters</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-x-4">
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="/image-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        Image Converter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/images-to-pdf"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        Images to PDF
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/json-csv-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        JSON ↔ CSV
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/json-xml-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        JSON ↔ XML
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="/yaml-json-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        YAML ↔ JSON
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/markdown-html-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        Markdown ↔ HTML
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/text-case-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        Text Case Converter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/unit-converter"
+                                        class="flex items-center text-sm transition-colors text-neutral-600 dark:text-neutral-400 hover:text-pink-600 dark:hover:text-pink-400">
+                                        <i data-lucide="chevron-right" class="w-4 h-4 mr-2 opacity-50"></i>
+                                        Unit Converter
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <!-- Bento Grid -->
@@ -912,7 +998,16 @@
             { name: 'Color Picker', url: '/color-picker', icon: 'pipette', color: 'pink', keywords: ['color', 'picker', 'hex', 'rgb', 'hsl', 'palette'] },
             { name: 'Timestamp Converter', url: '/timestamp-converter', icon: 'clock', color: 'amber', keywords: ['timestamp', 'unix', 'epoch', 'date', 'time', 'convert'] },
             { name: 'Lorem Ipsum Generator', url: '/lorem-ipsum', icon: 'text', color: 'teal', keywords: ['lorem', 'ipsum', 'placeholder', 'text', 'dummy'] },
-            { name: 'Diff Checker', url: '/diff-checker', icon: 'git-compare', color: 'red', keywords: ['diff', 'compare', 'difference', 'text', 'code'] }
+            { name: 'Diff Checker', url: '/diff-checker', icon: 'git-compare', color: 'red', keywords: ['diff', 'compare', 'difference', 'text', 'code'] },
+            // Converters
+            { name: 'Image Converter', url: '/image-converter', icon: 'image', color: 'pink', keywords: ['image', 'convert', 'png', 'jpg', 'webp', 'gif', 'bmp', 'format'] },
+            { name: 'JSON ↔ CSV Converter', url: '/json-csv-converter', icon: 'table', color: 'emerald', keywords: ['json', 'csv', 'convert', 'spreadsheet', 'excel', 'data'] },
+            { name: 'Markdown ↔ HTML', url: '/markdown-html-converter', icon: 'file-text', color: 'gray', keywords: ['markdown', 'html', 'convert', 'md', 'markup'] },
+            { name: 'Images to PDF', url: '/images-to-pdf', icon: 'file-text', color: 'red', keywords: ['image', 'pdf', 'convert', 'merge', 'combine', 'document'] },
+            { name: 'JSON ↔ XML Converter', url: '/json-xml-converter', icon: 'file-code', color: 'blue', keywords: ['json', 'xml', 'convert', 'data', 'api'] },
+            { name: 'YAML ↔ JSON Converter', url: '/yaml-json-converter', icon: 'file-json', color: 'amber', keywords: ['yaml', 'json', 'convert', 'config', 'kubernetes', 'docker'] },
+            { name: 'Text Case Converter', url: '/text-case-converter', icon: 'type', color: 'violet', keywords: ['text', 'case', 'uppercase', 'lowercase', 'title', 'camel', 'snake', 'kebab'] },
+            { name: 'Unit Converter', url: '/unit-converter', icon: 'ruler', color: 'teal', keywords: ['unit', 'convert', 'length', 'weight', 'temperature', 'data', 'bytes', 'metric'] }
         ];
 
         document.getElementById('tool-count').textContent = tools.length;

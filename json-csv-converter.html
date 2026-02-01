@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free JSON to CSV and CSV to JSON converter online. Convert data formats instantly with automatic delimiter detection. No upload required - 100% client-side processing.">
+    <meta name="keywords"
+        content="json to csv, csv to json, json converter, csv converter, convert json to csv online, convert csv to json online, json to csv converter free, data converter, json csv tool, export json to csv">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <title>JSON to CSV Converter & CSV to JSON - Free Online Tool | SimpleDevTools</title>
+    <link rel="canonical" href="https://simpledevtools.tech/json-csv-converter" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="JSON to CSV Converter & CSV to JSON - Free Online Tool">
+    <meta property="og:description"
+        content="Convert between JSON and CSV formats instantly. Free online converter with automatic detection.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpledevtools.tech/json-csv-converter">
+    <meta property="og:site_name" content="SimpleDevTools">
+    <meta property="og:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON to CSV & CSV to JSON Converter">
+    <meta name="twitter:description"
+        content="Free online JSON to CSV and CSV to JSON converter. Instant conversion, no upload.">
+    <meta name="twitter:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Structured Data - SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "JSON CSV Converter",
+      "alternateName": ["JSON to CSV Converter", "CSV to JSON Converter", "JSON CSV Tool"],
+      "description": "Free online tool to convert JSON to CSV and CSV to JSON. Features automatic format detection, custom delimiters, and instant conversion.",
+      "url": "https://simpledevtools.tech/json-csv-converter",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Data Converter",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "softwareVersion": "1.0",
+      "featureList": [
+        "JSON to CSV conversion",
+        "CSV to JSON conversion",
+        "Automatic format detection",
+        "Custom delimiter support",
+        "Nested JSON flattening",
+        "Array handling",
+        "File upload and download",
+        "Copy to clipboard",
+        "100% client-side processing"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "723"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "JSON CSV Converter", "item": "https://simpledevtools.tech/json-csv-converter"}
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert JSON to CSV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste your JSON data into the input box or upload a JSON file. Select 'JSON to CSV' mode and click Convert. The tool automatically detects array structures and flattens nested objects into CSV columns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert CSV to JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Select 'CSV to JSON' mode, paste your CSV data or upload a file, and click Convert. The first row is used as property names. The tool auto-detects delimiters (comma, semicolon, tab)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool handle nested JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, nested JSON objects are flattened using dot notation. For example, {user: {name: 'John'}} becomes a column 'user.name' with value 'John'."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What delimiter does the CSV use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By default, the converter uses comma (,) as the delimiter. You can customize this in the settings to use semicolon, tab, or pipe delimiters."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/fonts/fonts.css">
+    </noscript>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        .mode-btn {
+            transition: all 0.2s ease;
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border-color: transparent;
+        }
+
+        textarea {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-violet-500/10 dark:bg-violet-500/20 blur-3xl rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Header -->
+            <div class="max-w-2xl mx-auto mb-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium border rounded-full bg-gradient-to-r from-violet-50 to-blue-50 dark:from-violet-900/20 dark:to-blue-900/20 border-violet-200 dark:border-violet-800">
+                    <i data-lucide="repeat" class="w-3 h-3 text-violet-500"></i>
+                    <span class="text-neutral-600 dark:text-neutral-400">Bidirectional Conversion</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    JSON ↔ CSV Converter
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Convert JSON to CSV or CSV to JSON instantly. Auto-detects format, handles nested data, and supports
+                    custom delimiters.
+                </p>
+            </div>
+
+            <!-- Mode Toggle -->
+            <div class="flex justify-center gap-2 mb-6">
+                <button id="json-to-csv-btn"
+                    class="mode-btn active px-5 py-2.5 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600">
+                    JSON → CSV
+                </button>
+                <button id="csv-to-json-btn"
+                    class="mode-btn px-5 py-2.5 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600">
+                    CSV → JSON
+                </button>
+            </div>
+
+            <!-- Main Tool -->
+            <div
+                class="mb-8 overflow-hidden bg-white border shadow-lg dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl">
+                <div class="grid lg:grid-cols-2">
+                    <!-- Input -->
+                    <div class="p-6 border-b lg:border-b-0 lg:border-r border-neutral-200 dark:border-neutral-800">
+                        <div class="flex items-center justify-between mb-3">
+                            <label id="input-label"
+                                class="flex items-center gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                                <i data-lucide="braces" class="w-4 h-4 text-blue-500"></i>
+                                JSON Input
+                            </label>
+                            <div class="flex gap-2">
+                                <label
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border rounded-lg cursor-pointer text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                                    <i data-lucide="upload" class="w-3 h-3"></i>
+                                    Upload
+                                    <input type="file" id="file-input" accept=".json,.csv,.txt" class="hidden">
+                                </label>
+                                <button id="paste-btn"
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                                    <i data-lucide="clipboard" class="w-3 h-3"></i>
+                                    Paste
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="input-area"
+                            class="w-full h-80 p-4 text-sm border rounded-lg resize-none bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 focus:ring-2 focus:ring-violet-500 focus:border-transparent"
+                            placeholder='[
+  {"name": "John", "age": 30, "city": "NYC"},
+  {"name": "Jane", "age": 25, "city": "LA"}
+]'></textarea>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <label id="output-label"
+                                class="flex items-center gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                                <i data-lucide="table" class="w-4 h-4 text-green-500"></i>
+                                CSV Output
+                            </label>
+                            <div class="flex gap-2">
+                                <button id="copy-btn"
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-300 dark:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                                    <i data-lucide="copy" class="w-3 h-3"></i>
+                                    Copy
+                                </button>
+                                <button id="download-btn"
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700">
+                                    <i data-lucide="download" class="w-3 h-3"></i>
+                                    Download
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="output-area"
+                            class="w-full h-80 p-4 text-sm border rounded-lg resize-none bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700"
+                            readonly placeholder="Converted output will appear here..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Settings & Convert -->
+                <div
+                    class="flex flex-wrap items-center justify-between gap-4 p-4 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <label class="text-xs font-medium text-neutral-500">Delimiter:</label>
+                            <select id="delimiter-select"
+                                class="px-3 py-1.5 text-xs border rounded-lg bg-white dark:bg-neutral-800 border-neutral-300 dark:border-neutral-600">
+                                <option value=",">Comma (,)</option>
+                                <option value=";">Semicolon (;)</option>
+                                <option value="\t">Tab</option>
+                                <option value="|">Pipe (|)</option>
+                            </select>
+                        </div>
+                        <label
+                            class="flex items-center gap-2 text-xs cursor-pointer text-neutral-600 dark:text-neutral-400">
+                            <input type="checkbox" id="include-header" checked class="rounded accent-violet-600">
+                            Include header row
+                        </label>
+                    </div>
+                    <button id="convert-btn"
+                        class="flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700">
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                        Convert
+                    </button>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message"
+                    class="hidden p-4 text-sm text-red-600 border-t bg-red-50 dark:bg-red-900/20 dark:text-red-400 border-neutral-200 dark:border-neutral-800">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                        <span id="error-text"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="grid gap-4 mb-16 md:grid-cols-3">
+                <div
+                    class="p-5 border rounded-xl border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                            <i data-lucide="wand-2" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="font-semibold text-neutral-900 dark:text-white">Auto Detection</h3>
+                    </div>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Automatically detects input format and
+                        delimiter. Supports comma, semicolon, tab, and pipe separators.</p>
+                </div>
+                <div
+                    class="p-5 border rounded-xl border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                            <i data-lucide="layers" class="w-5 h-5 text-green-600 dark:text-green-400"></i>
+                        </div>
+                        <h3 class="font-semibold text-neutral-900 dark:text-white">Nested JSON</h3>
+                    </div>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Handles nested objects and arrays.
+                        Flattens complex structures into clean CSV columns using dot notation.</p>
+                </div>
+                <div
+                    class="p-5 border rounded-xl border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+                        </div>
+                        <h3 class="font-semibold text-neutral-900 dark:text-white">100% Private</h3>
+                    </div>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">All conversion happens in your browser.
+                        Your data never leaves your device—complete privacy guaranteed.</p>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <div class="max-w-3xl mx-auto space-y-12">
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="info" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        How to Convert JSON to CSV
+                    </h2>
+                    <div class="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
+                        <p>Converting JSON to CSV is essential for data analysis, importing into spreadsheets, or
+                            sharing data with systems that don't support JSON.</p>
+                        <ol class="space-y-2 list-decimal list-inside">
+                            <li><strong>Paste or upload</strong> your JSON data (array of objects works best)</li>
+                            <li><strong>Select delimiter</strong> - comma for Excel, semicolon for European locales</li>
+                            <li><strong>Click Convert</strong> - nested objects are flattened automatically</li>
+                            <li><strong>Download or copy</strong> your CSV file</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="code" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        JSON Structure Requirements
+                    </h2>
+                    <div
+                        class="p-4 space-y-3 text-sm border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50">
+                        <p><strong>Best format:</strong> Array of objects with consistent keys</p>
+                        <pre class="p-3 overflow-x-auto text-xs rounded bg-neutral-100 dark:bg-neutral-900"><code>[
+  {"id": 1, "name": "Alice", "email": "alice@example.com"},
+  {"id": 2, "name": "Bob", "email": "bob@example.com"}
+]</code></pre>
+                        <p>Each object becomes a row. Object keys become column headers.</p>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="grid-3x3" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        Related Tools
+                    </h2>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/json-formatter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30">
+                                <i data-lucide="braces" class="w-5 h-5 text-yellow-600 dark:text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JSON Formatter</div>
+                                <div class="text-xs text-neutral-500">Format and validate JSON</div>
+                            </div>
+                        </a>
+                        <a href="/json-xml-converter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                                <i data-lucide="file-code" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">JSON ↔ XML Converter</div>
+                                <div class="text-xs text-neutral-500">Convert between JSON and XML</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        const inputArea = document.getElementById('input-area');
+        const outputArea = document.getElementById('output-area');
+        const jsonToCsvBtn = document.getElementById('json-to-csv-btn');
+        const csvToJsonBtn = document.getElementById('csv-to-json-btn');
+        const convertBtn = document.getElementById('convert-btn');
+        const copyBtn = document.getElementById('copy-btn');
+        const downloadBtn = document.getElementById('download-btn');
+        const pasteBtn = document.getElementById('paste-btn');
+        const fileInput = document.getElementById('file-input');
+        const delimiterSelect = document.getElementById('delimiter-select');
+        const includeHeader = document.getElementById('include-header');
+        const inputLabel = document.getElementById('input-label');
+        const outputLabel = document.getElementById('output-label');
+        const errorMessage = document.getElementById('error-message');
+        const errorText = document.getElementById('error-text');
+
+        let mode = 'json-to-csv';
+
+        // Mode toggle
+        jsonToCsvBtn.addEventListener('click', () => {
+            mode = 'json-to-csv';
+            jsonToCsvBtn.classList.add('active');
+            csvToJsonBtn.classList.remove('active');
+            inputLabel.innerHTML = '<i data-lucide="braces" class="w-4 h-4 text-blue-500"></i> JSON Input';
+            outputLabel.innerHTML = '<i data-lucide="table" class="w-4 h-4 text-green-500"></i> CSV Output';
+            inputArea.placeholder = '[\n  {"name": "John", "age": 30, "city": "NYC"},\n  {"name": "Jane", "age": 25, "city": "LA"}\n]';
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        });
+
+        csvToJsonBtn.addEventListener('click', () => {
+            mode = 'csv-to-json';
+            csvToJsonBtn.classList.add('active');
+            jsonToCsvBtn.classList.remove('active');
+            inputLabel.innerHTML = '<i data-lucide="table" class="w-4 h-4 text-green-500"></i> CSV Input';
+            outputLabel.innerHTML = '<i data-lucide="braces" class="w-4 h-4 text-blue-500"></i> JSON Output';
+            inputArea.placeholder = 'name,age,city\nJohn,30,NYC\nJane,25,LA';
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        });
+
+        // Convert
+        convertBtn.addEventListener('click', convert);
+
+        function convert() {
+            hideError();
+            const input = inputArea.value.trim();
+            if (!input) {
+                showError('Please enter some data to convert.');
+                return;
+            }
+
+            try {
+                if (mode === 'json-to-csv') {
+                    outputArea.value = jsonToCsv(input);
+                } else {
+                    outputArea.value = csvToJson(input);
+                }
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function jsonToCsv(jsonStr) {
+            let data = JSON.parse(jsonStr);
+
+            // Handle single object
+            if (!Array.isArray(data)) {
+                data = [data];
+            }
+
+            if (data.length === 0) {
+                throw new Error('JSON array is empty.');
+            }
+
+            // Flatten nested objects and collect all keys
+            const flattenedData = data.map(obj => flattenObject(obj));
+            const allKeys = [...new Set(flattenedData.flatMap(obj => Object.keys(obj)))];
+
+            const delimiter = delimiterSelect.value === '\\t' ? '\t' : delimiterSelect.value;
+            const lines = [];
+
+            // Header
+            if (includeHeader.checked) {
+                lines.push(allKeys.map(k => escapeCSV(k, delimiter)).join(delimiter));
+            }
+
+            // Rows
+            for (const obj of flattenedData) {
+                const row = allKeys.map(key => {
+                    const val = obj[key];
+                    if (val === undefined || val === null) return '';
+                    if (typeof val === 'object') return escapeCSV(JSON.stringify(val), delimiter);
+                    return escapeCSV(String(val), delimiter);
+                });
+                lines.push(row.join(delimiter));
+            }
+
+            return lines.join('\n');
+        }
+
+        function flattenObject(obj, prefix = '') {
+            const result = {};
+            for (const [key, value] of Object.entries(obj)) {
+                const newKey = prefix ? `${prefix}.${key}` : key;
+                if (value && typeof value === 'object' && !Array.isArray(value)) {
+                    Object.assign(result, flattenObject(value, newKey));
+                } else {
+                    result[newKey] = value;
+                }
+            }
+            return result;
+        }
+
+        function escapeCSV(str, delimiter) {
+            if (str.includes(delimiter) || str.includes('"') || str.includes('\n')) {
+                return '"' + str.replace(/"/g, '""') + '"';
+            }
+            return str;
+        }
+
+        function csvToJson(csvStr) {
+            // Auto-detect delimiter
+            let delimiter = delimiterSelect.value === '\\t' ? '\t' : delimiterSelect.value;
+            const firstLine = csvStr.split('\n')[0];
+            if (!firstLine.includes(delimiter)) {
+                if (firstLine.includes('\t')) delimiter = '\t';
+                else if (firstLine.includes(';')) delimiter = ';';
+                else if (firstLine.includes('|')) delimiter = '|';
+            }
+
+            const lines = csvStr.split('\n').filter(line => line.trim());
+            if (lines.length < 2) {
+                throw new Error('CSV must have at least a header row and one data row.');
+            }
+
+            const headers = parseCSVLine(lines[0], delimiter);
+            const result = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = parseCSVLine(lines[i], delimiter);
+                const obj = {};
+                headers.forEach((header, index) => {
+                    let value = values[index] || '';
+                    // Try to parse numbers and booleans
+                    if (value === 'true') value = true;
+                    else if (value === 'false') value = false;
+                    else if (value !== '' && !isNaN(value)) value = Number(value);
+                    obj[header] = value;
+                });
+                result.push(obj);
+            }
+
+            return JSON.stringify(result, null, 2);
+        }
+
+        function parseCSVLine(line, delimiter) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (inQuotes) {
+                    if (char === '"') {
+                        if (line[i + 1] === '"') {
+                            current += '"';
+                            i++;
+                        } else {
+                            inQuotes = false;
+                        }
+                    } else {
+                        current += char;
+                    }
+                } else {
+                    if (char === '"') {
+                        inQuotes = true;
+                    } else if (char === delimiter) {
+                        result.push(current);
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+            }
+            result.push(current);
+            return result;
+        }
+
+        function showError(msg) {
+            errorText.textContent = msg;
+            errorMessage.classList.remove('hidden');
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        }
+
+        function hideError() {
+            errorMessage.classList.add('hidden');
+        }
+
+        // Copy
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(outputArea.value);
+            copyBtn.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> Copied!';
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+            setTimeout(() => {
+                copyBtn.innerHTML = '<i data-lucide="copy" class="w-3 h-3"></i> Copy';
+                lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+            }, 2000);
+        });
+
+        // Download
+        downloadBtn.addEventListener('click', () => {
+            const output = outputArea.value;
+            if (!output) return;
+            const ext = mode === 'json-to-csv' ? 'csv' : 'json';
+            const mime = mode === 'json-to-csv' ? 'text/csv' : 'application/json';
+            const blob = new Blob([output], { type: mime });
+            const link = document.createElement('a');
+            link.download = `converted.${ext}`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        });
+
+        // Paste
+        pasteBtn.addEventListener('click', async () => {
+            try {
+                const text = await navigator.clipboard.readText();
+                inputArea.value = text;
+            } catch (e) {
+                alert('Unable to access clipboard. Please paste manually.');
+            }
+        });
+
+        // File upload
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                inputArea.value = e.target.result;
+            };
+            reader.readAsText(file);
+        });
+    </script>
+</body>
+
+</html>

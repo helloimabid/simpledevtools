@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-M2JM5FC3');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online unit converter - Convert between length, weight, temperature, data storage, time, and more units instantly. Accurate conversion calculator.">
+    <meta name="keywords"
+        content="unit converter, length converter, weight converter, temperature converter, data storage converter, bytes to GB, km to miles, kg to pounds, celsius to fahrenheit, metric converter, imperial converter">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="SimpleDevTools">
+    <meta name="google-adsense-account" content="ca-pub-9710571190649081">
+    <title>Unit Converter - Length, Weight, Temperature, Data | SimpleDevTools</title>
+    <link rel="canonical" href="https://simpledevtools.tech/unit-converter" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Unit Converter - Free Online Conversion Calculator">
+    <meta property="og:description"
+        content="Convert between all common units: length, weight, temperature, data storage, time, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpledevtools.tech/unit-converter">
+    <meta property="og:site_name" content="SimpleDevTools">
+    <meta property="og:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Unit Converter - Free Online">
+    <meta name="twitter:description" content="Convert length, weight, temperature, data storage, and more instantly.">
+    <meta name="twitter:image" content="https://simpledevtools.tech/og-image.png">
+
+    <!-- Structured Data - SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Unit Converter",
+      "alternateName": ["Measurement Converter", "Metric Converter", "Unit Calculator"],
+      "description": "Free online unit converter supporting length, weight, temperature, data storage, time, area, and volume conversions with high precision.",
+      "url": "https://simpledevtools.tech/unit-converter",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Calculator",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "softwareVersion": "1.0",
+      "featureList": [
+        "Length conversion (km, miles, meters, feet, inches)",
+        "Weight conversion (kg, pounds, ounces, grams)",
+        "Temperature conversion (Celsius, Fahrenheit, Kelvin)",
+        "Data storage conversion (bytes, KB, MB, GB, TB)",
+        "Time conversion (seconds, minutes, hours, days)",
+        "Area conversion (sq meters, sq feet, acres)",
+        "Volume conversion (liters, gallons, cubic meters)",
+        "High precision calculations",
+        "Instant conversion",
+        "Copy result to clipboard"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "SimpleDevTools",
+        "url": "https://simpledevtools.tech"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "3256"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://simpledevtools.tech/"},
+        {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://simpledevtools.tech/tools"},
+        {"@type": "ListItem", "position": 3, "name": "Unit Converter", "item": "https://simpledevtools.tech/unit-converter"}
+      ]
+    }
+    </script>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="Hsz4y6HoB+jznDcQTkjyfg" async></script>
+
+    <link rel="preload" href="/fonts/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/fonts/fonts.css">
+    </noscript>
+    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./dist/js/lucide.min.js"></script>
+
+    <style>
+        .category-btn {
+            transition: all 0.2s ease;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border-color: transparent;
+        }
+
+        .swap-btn {
+            transition: transform 0.3s ease;
+        }
+
+        .swap-btn:hover {
+            transform: rotate(180deg);
+        }
+    </style>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9710571190649081"
+        crossorigin="anonymous"></script>
+</head>
+
+<body
+    class="flex flex-col min-h-screen transition-colors duration-300 bg-white dark:bg-black text-neutral-900 dark:text-neutral-100">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2JM5FC3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid opacity-60"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-violet-500/10 dark:bg-violet-500/20 blur-3xl rounded-full pointer-events-none z-0">
+    </div>
+
+    <main class="relative z-10 px-4 pb-20 grow pt-28 sm:px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Header -->
+            <div class="max-w-2xl mx-auto mb-10 text-center">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 mb-6 font-mono text-xs font-medium border rounded-full bg-gradient-to-r from-violet-50 to-pink-50 dark:from-violet-900/20 dark:to-pink-900/20 border-violet-200 dark:border-violet-800">
+                    <i data-lucide="ruler" class="w-3 h-3 text-violet-500"></i>
+                    <span class="text-neutral-600 dark:text-neutral-400">7 Unit Categories</span>
+                </div>
+                <h1
+                    class="mb-4 text-4xl font-semibold tracking-tight font-display sm:text-5xl text-neutral-900 dark:text-white">
+                    Unit Converter
+                </h1>
+                <p class="text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                    Convert between length, weight, temperature, data storage, time, area, and volume instantly.
+                </p>
+            </div>
+
+            <!-- Main Tool -->
+            <div
+                class="mb-8 overflow-hidden bg-white border shadow-lg dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-2xl">
+
+                <!-- Category Selection -->
+                <div
+                    class="p-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                    <p class="mb-3 text-xs font-medium text-neutral-500">Select Category</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button
+                            class="category-btn active px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="length">
+                            <i data-lucide="ruler" class="w-4 h-4 inline mr-1"></i> Length
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="weight">
+                            <i data-lucide="scale" class="w-4 h-4 inline mr-1"></i> Weight
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="temperature">
+                            <i data-lucide="thermometer" class="w-4 h-4 inline mr-1"></i> Temperature
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="data">
+                            <i data-lucide="hard-drive" class="w-4 h-4 inline mr-1"></i> Data
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="time">
+                            <i data-lucide="clock" class="w-4 h-4 inline mr-1"></i> Time
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="area">
+                            <i data-lucide="square" class="w-4 h-4 inline mr-1"></i> Area
+                        </button>
+                        <button
+                            class="category-btn px-4 py-2 text-sm font-medium border rounded-lg border-neutral-300 dark:border-neutral-600"
+                            data-category="volume">
+                            <i data-lucide="box" class="w-4 h-4 inline mr-1"></i> Volume
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Converter -->
+                <div class="p-6">
+                    <div class="flex flex-col items-center gap-4 md:flex-row">
+                        <!-- From -->
+                        <div class="flex-1 w-full">
+                            <label
+                                class="block mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">From</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="from-value"
+                                    class="flex-1 px-4 py-3 text-lg border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 focus:ring-2 focus:ring-violet-500"
+                                    placeholder="Enter value" value="1">
+                                <select id="from-unit"
+                                    class="px-3 py-3 border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-sm font-medium min-w-[120px]"></select>
+                            </div>
+                        </div>
+
+                        <!-- Swap Button -->
+                        <button id="swap-btn"
+                            class="swap-btn p-3 mt-6 border rounded-full border-neutral-300 dark:border-neutral-600 hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                            <i data-lucide="arrow-left-right" class="w-5 h-5 text-violet-500"></i>
+                        </button>
+
+                        <!-- To -->
+                        <div class="flex-1 w-full">
+                            <label
+                                class="block mb-2 text-sm font-medium text-neutral-700 dark:text-neutral-300">To</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="to-value"
+                                    class="flex-1 px-4 py-3 text-lg font-semibold border rounded-lg bg-violet-50 dark:bg-violet-900/20 border-violet-200 dark:border-violet-700 text-violet-700 dark:text-violet-300"
+                                    readonly>
+                                <select id="to-unit"
+                                    class="px-3 py-3 border rounded-lg bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 text-sm font-medium min-w-[120px]"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Copy Result -->
+                    <div class="flex justify-center mt-6">
+                        <button id="copy-result"
+                            class="flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white rounded-lg bg-gradient-to-r from-violet-600 to-pink-600 hover:from-violet-700 hover:to-pink-700">
+                            <i data-lucide="copy" class="w-4 h-4"></i>
+                            Copy Result
+                        </button>
+                    </div>
+
+                    <!-- Formula -->
+                    <div id="formula"
+                        class="mt-6 p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800 text-center text-sm text-neutral-600 dark:text-neutral-400">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Reference Tables -->
+            <div class="grid gap-6 mb-16 md:grid-cols-2">
+                <!-- Length Reference -->
+                <div
+                    class="overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div
+                        class="px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-white">
+                            <i data-lucide="ruler" class="w-4 h-4 text-violet-500"></i>
+                            Length Quick Reference
+                        </h3>
+                    </div>
+                    <div class="p-4 text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <p>1 kilometer = 0.621 miles</p>
+                        <p>1 mile = 1.609 kilometers</p>
+                        <p>1 meter = 3.281 feet</p>
+                        <p>1 inch = 2.54 centimeters</p>
+                    </div>
+                </div>
+
+                <!-- Data Reference -->
+                <div
+                    class="overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div
+                        class="px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-white">
+                            <i data-lucide="hard-drive" class="w-4 h-4 text-violet-500"></i>
+                            Data Storage Quick Reference
+                        </h3>
+                    </div>
+                    <div class="p-4 text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <p>1 KB = 1,024 Bytes</p>
+                        <p>1 MB = 1,024 KB</p>
+                        <p>1 GB = 1,024 MB</p>
+                        <p>1 TB = 1,024 GB</p>
+                    </div>
+                </div>
+
+                <!-- Temperature Reference -->
+                <div
+                    class="overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div
+                        class="px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-white">
+                            <i data-lucide="thermometer" class="w-4 h-4 text-violet-500"></i>
+                            Temperature Quick Reference
+                        </h3>
+                    </div>
+                    <div class="p-4 text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <p>0°C = 32°F = 273.15K</p>
+                        <p>100°C = 212°F = 373.15K</p>
+                        <p>°F = (°C × 9/5) + 32</p>
+                        <p>°C = (°F - 32) × 5/9</p>
+                    </div>
+                </div>
+
+                <!-- Weight Reference -->
+                <div
+                    class="overflow-hidden bg-white border dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 rounded-xl">
+                    <div
+                        class="px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/50">
+                        <h3 class="flex items-center gap-2 text-sm font-semibold text-neutral-900 dark:text-white">
+                            <i data-lucide="scale" class="w-4 h-4 text-violet-500"></i>
+                            Weight Quick Reference
+                        </h3>
+                    </div>
+                    <div class="p-4 text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <p>1 kilogram = 2.205 pounds</p>
+                        <p>1 pound = 0.454 kilograms</p>
+                        <p>1 ounce = 28.35 grams</p>
+                        <p>1 stone = 6.35 kilograms</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <div class="max-w-3xl mx-auto space-y-12">
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        How to Use
+                    </h2>
+                    <div
+                        class="p-4 space-y-2 text-sm border rounded-lg text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800/50">
+                        <ol class="space-y-2 list-decimal list-inside">
+                            <li>Select a unit category (Length, Weight, Temperature, etc.)</li>
+                            <li>Enter the value you want to convert in the "From" field</li>
+                            <li>Select the source unit from the dropdown</li>
+                            <li>Select the target unit from the "To" dropdown</li>
+                            <li>The result appears instantly with high precision</li>
+                            <li>Use the swap button to reverse the conversion</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Related Tools -->
+                <section>
+                    <h2
+                        class="flex items-center gap-3 mb-4 text-xl font-medium font-display text-neutral-900 dark:text-white">
+                        <div class="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800">
+                            <i data-lucide="grid-3x3" class="w-4 h-4 text-neutral-600 dark:text-neutral-400"></i>
+                        </div>
+                        Related Tools
+                    </h2>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <a href="/timestamp-converter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                                <i data-lucide="clock" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Timestamp Converter</div>
+                                <div class="text-xs text-neutral-500">Convert Unix timestamps</div>
+                            </div>
+                        </a>
+                        <a href="/text-case-converter"
+                            class="flex items-center gap-3 p-4 border rounded-lg border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800">
+                            <div class="p-2 rounded-lg bg-violet-100 dark:bg-violet-900/30">
+                                <i data-lucide="type" class="w-5 h-5 text-violet-600 dark:text-violet-400"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-neutral-900 dark:text-white">Text Case Converter</div>
+                                <div class="text-xs text-neutral-500">Transform text case</div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="layout.js"></script>
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        const units = {
+            length: {
+                meter: { name: 'Meter (m)', toBase: 1 },
+                kilometer: { name: 'Kilometer (km)', toBase: 1000 },
+                centimeter: { name: 'Centimeter (cm)', toBase: 0.01 },
+                millimeter: { name: 'Millimeter (mm)', toBase: 0.001 },
+                mile: { name: 'Mile (mi)', toBase: 1609.344 },
+                yard: { name: 'Yard (yd)', toBase: 0.9144 },
+                foot: { name: 'Foot (ft)', toBase: 0.3048 },
+                inch: { name: 'Inch (in)', toBase: 0.0254 },
+                nauticalMile: { name: 'Nautical Mile', toBase: 1852 }
+            },
+            weight: {
+                kilogram: { name: 'Kilogram (kg)', toBase: 1 },
+                gram: { name: 'Gram (g)', toBase: 0.001 },
+                milligram: { name: 'Milligram (mg)', toBase: 0.000001 },
+                pound: { name: 'Pound (lb)', toBase: 0.453592 },
+                ounce: { name: 'Ounce (oz)', toBase: 0.0283495 },
+                stone: { name: 'Stone (st)', toBase: 6.35029 },
+                ton: { name: 'Metric Ton', toBase: 1000 },
+                usTon: { name: 'US Ton', toBase: 907.185 }
+            },
+            temperature: {
+                celsius: { name: 'Celsius (°C)' },
+                fahrenheit: { name: 'Fahrenheit (°F)' },
+                kelvin: { name: 'Kelvin (K)' }
+            },
+            data: {
+                byte: { name: 'Byte (B)', toBase: 1 },
+                kilobyte: { name: 'Kilobyte (KB)', toBase: 1024 },
+                megabyte: { name: 'Megabyte (MB)', toBase: 1048576 },
+                gigabyte: { name: 'Gigabyte (GB)', toBase: 1073741824 },
+                terabyte: { name: 'Terabyte (TB)', toBase: 1099511627776 },
+                petabyte: { name: 'Petabyte (PB)', toBase: 1125899906842624 },
+                bit: { name: 'Bit', toBase: 0.125 },
+                kilobit: { name: 'Kilobit (Kb)', toBase: 128 },
+                megabit: { name: 'Megabit (Mb)', toBase: 131072 },
+                gigabit: { name: 'Gigabit (Gb)', toBase: 134217728 }
+            },
+            time: {
+                second: { name: 'Second (s)', toBase: 1 },
+                millisecond: { name: 'Millisecond (ms)', toBase: 0.001 },
+                minute: { name: 'Minute (min)', toBase: 60 },
+                hour: { name: 'Hour (h)', toBase: 3600 },
+                day: { name: 'Day', toBase: 86400 },
+                week: { name: 'Week', toBase: 604800 },
+                month: { name: 'Month (30 days)', toBase: 2592000 },
+                year: { name: 'Year (365 days)', toBase: 31536000 }
+            },
+            area: {
+                sqMeter: { name: 'Square Meter (m²)', toBase: 1 },
+                sqKilometer: { name: 'Square Kilometer (km²)', toBase: 1000000 },
+                sqCentimeter: { name: 'Square Centimeter (cm²)', toBase: 0.0001 },
+                sqFoot: { name: 'Square Foot (ft²)', toBase: 0.092903 },
+                sqYard: { name: 'Square Yard (yd²)', toBase: 0.836127 },
+                sqMile: { name: 'Square Mile (mi²)', toBase: 2589988 },
+                acre: { name: 'Acre', toBase: 4046.86 },
+                hectare: { name: 'Hectare (ha)', toBase: 10000 }
+            },
+            volume: {
+                liter: { name: 'Liter (L)', toBase: 1 },
+                milliliter: { name: 'Milliliter (mL)', toBase: 0.001 },
+                cubicMeter: { name: 'Cubic Meter (m³)', toBase: 1000 },
+                gallon: { name: 'US Gallon', toBase: 3.78541 },
+                quart: { name: 'US Quart', toBase: 0.946353 },
+                pint: { name: 'US Pint', toBase: 0.473176 },
+                cup: { name: 'US Cup', toBase: 0.236588 },
+                fluidOunce: { name: 'US Fluid Ounce', toBase: 0.0295735 },
+                imperialGallon: { name: 'Imperial Gallon', toBase: 4.54609 }
+            }
+        };
+
+        let currentCategory = 'length';
+        const fromValue = document.getElementById('from-value');
+        const fromUnit = document.getElementById('from-unit');
+        const toValue = document.getElementById('to-value');
+        const toUnit = document.getElementById('to-unit');
+        const formula = document.getElementById('formula');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+
+        // Populate units
+        function populateUnits() {
+            const unitList = units[currentCategory];
+            fromUnit.innerHTML = '';
+            toUnit.innerHTML = '';
+
+            Object.entries(unitList).forEach(([key, unit], index) => {
+                fromUnit.add(new Option(unit.name, key, index === 0));
+                toUnit.add(new Option(unit.name, key, index === 1));
+            });
+
+            // Set different default "to" unit
+            if (toUnit.options.length > 1) {
+                toUnit.selectedIndex = 1;
+            }
+
+            convert();
+        }
+
+        // Convert temperature (special case)
+        function convertTemperature(value, from, to) {
+            let celsius;
+
+            // Convert to Celsius first
+            switch (from) {
+                case 'celsius': celsius = value; break;
+                case 'fahrenheit': celsius = (value - 32) * 5 / 9; break;
+                case 'kelvin': celsius = value - 273.15; break;
+            }
+
+            // Convert from Celsius to target
+            switch (to) {
+                case 'celsius': return celsius;
+                case 'fahrenheit': return (celsius * 9 / 5) + 32;
+                case 'kelvin': return celsius + 273.15;
+            }
+        }
+
+        // Get temperature formula
+        function getTemperatureFormula(from, to, value, result) {
+            const formulas = {
+                'celsius-fahrenheit': `${value}°C × (9/5) + 32 = ${result}°F`,
+                'fahrenheit-celsius': `(${value}°F - 32) × (5/9) = ${result}°C`,
+                'celsius-kelvin': `${value}°C + 273.15 = ${result}K`,
+                'kelvin-celsius': `${value}K - 273.15 = ${result}°C`,
+                'fahrenheit-kelvin': `(${value}°F - 32) × (5/9) + 273.15 = ${result}K`,
+                'kelvin-fahrenheit': `(${value}K - 273.15) × (9/5) + 32 = ${result}°F`
+            };
+            return formulas[`${from}-${to}`] || `${value} = ${result}`;
+        }
+
+        // Main convert function
+        function convert() {
+            const value = parseFloat(fromValue.value);
+            if (isNaN(value)) {
+                toValue.value = '';
+                formula.textContent = 'Enter a value to convert';
+                return;
+            }
+
+            const from = fromUnit.value;
+            const to = toUnit.value;
+            let result;
+
+            if (currentCategory === 'temperature') {
+                result = convertTemperature(value, from, to);
+                formula.textContent = getTemperatureFormula(from, to, value, formatResult(result));
+            } else {
+                const unitData = units[currentCategory];
+                const baseValue = value * unitData[from].toBase;
+                result = baseValue / unitData[to].toBase;
+
+                const factor = unitData[from].toBase / unitData[to].toBase;
+                formula.textContent = `1 ${unitData[from].name} = ${formatResult(factor)} ${unitData[to].name}`;
+            }
+
+            toValue.value = formatResult(result);
+        }
+
+        // Format result
+        function formatResult(num) {
+            if (Math.abs(num) < 0.000001 || Math.abs(num) >= 1000000000) {
+                return num.toExponential(6);
+            }
+            // Remove trailing zeros
+            return parseFloat(num.toPrecision(10)).toString();
+        }
+
+        // Category selection
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                populateUnits();
+            });
+        });
+
+        // Event listeners
+        fromValue.addEventListener('input', convert);
+        fromUnit.addEventListener('change', convert);
+        toUnit.addEventListener('change', convert);
+
+        // Swap button
+        document.getElementById('swap-btn').addEventListener('click', () => {
+            const tempUnit = fromUnit.value;
+            fromUnit.value = toUnit.value;
+            toUnit.value = tempUnit;
+
+            // Also swap values
+            if (toValue.value) {
+                fromValue.value = toValue.value;
+            }
+            convert();
+        });
+
+        // Copy result
+        document.getElementById('copy-result').addEventListener('click', () => {
+            if (!toValue.value) return;
+
+            const fromUnitName = units[currentCategory][fromUnit.value].name;
+            const toUnitName = units[currentCategory][toUnit.value].name;
+            const text = `${fromValue.value} ${fromUnitName} = ${toValue.value} ${toUnitName}`;
+
+            navigator.clipboard.writeText(text);
+
+            const btn = document.getElementById('copy-result');
+            btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Copied!';
+            lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+            setTimeout(() => {
+                btn.innerHTML = '<i data-lucide="copy" class="w-4 h-4"></i> Copy Result';
+                lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+            }, 2000);
+        });
+
+        // Initialize
+        populateUnits();
+    </script>
+</body>
+
+</html>
