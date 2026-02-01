@@ -1,10 +1,11 @@
-const CACHE_NAME = "simpledevtools-v3";
+const CACHE_NAME = "simpledevtools-v4";
 const urlsToCache = [
   "/",
   "/index.html",
   "/tools.html",
   "/json-formatter.html",
   "/base64-encoder.html",
+  "/image-background-remover.html",
   "/guides.html",
   "/guides/json-formatter-guide.html",
   "/dist/output.css",
